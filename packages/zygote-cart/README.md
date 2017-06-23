@@ -1,4 +1,5 @@
 # Zygote Cart/API
 
-- Hot reloading
+- CSS hot reloading
+- HTML hot reloading
 - Inject cart
