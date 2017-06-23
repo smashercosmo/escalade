@@ -9,7 +9,8 @@
 	&.open{
 		display: block;
 	}
-	.zygoteModal{
-		background-color: #fff;
-	}
+}
+
+.zygoteModal{
+	background-color: #fff;
 }

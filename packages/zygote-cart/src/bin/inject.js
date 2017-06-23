@@ -21,9 +21,15 @@ module.exports = function(){
 	}
 
 	// Events
-	this.els.list.addEventListener('click', e => {
-		if(e.target.className === 'zygoteProdDelete'){
-			this.remove(e.target.parentElement.dataset.id)
+	el.addEventListener('click', e => {
+		console.log(e.target.className.split(' ')[0])
+		switch(e.target.className.split(' ')[0]){
+			case 'zygoteProdDelete':
+				this.remove(e.target.parentElement.dataset.id)
+				break
+			case 'zygoteContainer':
+				this.close()
+				break
 		}
 	}, false)
 }
