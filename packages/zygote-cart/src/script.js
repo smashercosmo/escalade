@@ -1,13 +1,17 @@
 
 function Cart(){
 	this.products = []
+	this.qty = []
+	this.findQty()
 	this.inject()
 	this.readCookie()
 	this.findButtons()
+	this.findIcon()
 	return this
 }
 Cart.prototype = {
 	isOpen: false,
+	body: document.getElementsByTagName('body')[0],
 
 	inject: require('./bin/inject'),
 
@@ -18,6 +22,21 @@ Cart.prototype = {
 			els[i].addEventListener('click', () => {
 				this.add(getData(els[i]))
 			}, false)
+		}
+		return this
+	},
+
+	findIcon: function(){
+		const els = document.querySelectorAll('.zygoteIco')
+		for(let i = els.length; i--;){
+			els[i].addEventListener('click', () => this.open(), false)
+		}
+	},
+
+	findQty: function(){
+		const els = document.querySelectorAll('.zygoteQty:not(.zygoteProcessed)')
+		for(let i = els.length; i--;){
+			this.qty.push(els[i])
 		}
 		return this
 	},
@@ -72,7 +91,7 @@ Cart.prototype = {
 			document.cookie = `products=${JSON.stringify(this.products)}; expires=${date.toUTCString()}; path=/`
 		}
 		catch(e){
-			console.error(e)
+			console.log(e)
 		}
 		return this
 	},
@@ -93,7 +112,7 @@ Cart.prototype = {
 			}
 		}
 		catch(e){
-			console.error(e)
+			console.log(e)
 		}
 	},
 
@@ -115,6 +134,7 @@ Cart.prototype = {
 	// Render current cart
 	render: function(){
 		const ids = []
+		let totalQty = 0
 		// Create/alter new products
 		for(let i = 0; i < this.products.length; i++){
 			ids.push(this.products[i].id)
@@ -126,6 +146,7 @@ Cart.prototype = {
 			else{
 				el.querySelector('[data-qty]').textContent = this.products[i].qty
 			}
+			totalQty += this.products[i].qty
 		}
 		// Delete old products
 		const els = this.els.list.children
@@ -141,21 +162,27 @@ Cart.prototype = {
 			removeClass(this.els.container, 'zygoteNotEmpty')
 			this.close()
 		}
+		// Update quantity buttons
+		for(let i = this.qty.length; i--;){
+			this.qty[i].textContent = totalQty
+			if(totalQty) addClass(this.qty[i], 'zygoteHasQty')
+			else removeClass(this.qty[i], 'zygoteHasQty')
+		}
 		return this
 	},
 
 	open: function(){
 		this.isOpen = true
-		addClass(this.els.container, 'zygoteOpen')
+		addClass(this.body, 'zygoteOpen')
 		return this
 	},
 	close: function(){
 		this.isOpen = false
-		removeClass(this.els.container, 'zygoteOpen')
+		removeClass(this.body, 'zygoteOpen')
 		return this
 	},
 	toggle: function(){
-		this.isOpen = toggleClass(this.els.container, 'zygoteOpen')
+		this.isOpen = toggleClass(this.body, 'zygoteOpen')
 		return this
 	}
 }

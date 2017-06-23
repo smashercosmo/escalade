@@ -5,4 +5,5 @@
 - Checkout form
 - CSS hot reloading
 - HTML hot reloading
-- Close cart if all items have been deleted from cart
+- Add .zygoteCartQty to update number in cart icon
+- Add .zygoteCartBtn to toggle cart on click

@@ -6,11 +6,10 @@
 	bottom: 0;
 	background-color: rgba(0, 0, 0, .5);
 	display: none;
-	&.zygoteOpen{
-		display: block;
-	}
 }
-
+.zygoteOpen .zygoteContainer{
+	display: block;
+}
 .zygoteModal{
 	background-color: #fff;
 	max-width: 900px;
@@ -39,4 +38,8 @@
 }
 .zygoteNotEmpty .zygoteEmpty{
 	display: none;
+}
+
+.zygoteIco{
+	cursor: pointer;
 }
