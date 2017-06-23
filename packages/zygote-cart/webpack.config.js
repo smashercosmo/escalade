@@ -1,8 +1,8 @@
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const extractStyles = new ExtractTextPlugin('style.css')
-const extractHtml = new ExtractTextPlugin('test.html')
+const extractStyles = new ExtractTextPlugin('[name].css')
+const extractHtml = new ExtractTextPlugin('index.html')
 
 module.exports = {
 	stats: {
@@ -16,8 +16,8 @@ module.exports = {
 	},
 	context: path.resolve(__dirname, './src'),
 	entry: {
-		app: [
-			'./app.js',
+		zygote: [
+			'./script.js',
 			'./style.css',
 			'./test.pug'
 		]
@@ -63,5 +63,8 @@ module.exports = {
 	plugins: [
 		extractStyles,
 		extractHtml
-	]
+	],
+	devServer: {
+		contentBase: path.resolve(__dirname, './dist')
+	}
 }

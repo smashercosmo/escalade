@@ -6,7 +6,8 @@
   "author": "Kennedy Rose <kennedy@escaladesports.com>",
   "private": true,
   "scripts": {
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "dev": "webpack-dev-server --progress --inline --hot"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
