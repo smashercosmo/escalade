@@ -1,0 +1,8 @@
+{
+  "name": "zygote-client",
+  "version": "0.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:escaladesports/zygote-client.git",
+  "author": "Kennedy Rose <kennedy@escaladesports.com>",
+  "private": true
+}
