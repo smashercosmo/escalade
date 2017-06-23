@@ -1,11 +1,14 @@
 
 function Cart(){
 	this.products = []
+	this.inject()
 	this.readCookie()
 	this.findButtons()
 	return this
 }
 Cart.prototype = {
+
+	inject: require('./bin/inject'),
 
 	// Finds and activates "Add to Cart" buttons
 	findButtons: function(){
@@ -26,7 +29,7 @@ Cart.prototype = {
 		obj.price = Number(obj.price)
 		const index = this.findProduct(obj.id)
 		if(index !== false){
-			this.products[index].qty += qty
+			this.products[index].qty += obj.qty
 		}
 		else{
 			this.products.push(obj)
@@ -78,6 +81,8 @@ Cart.prototype = {
 				if(c.indexOf(nameEQ) == 0){
 					let str = c.substring(nameEQ.length, c.length)
 					this.products = JSON.parse(str)
+					console.log('Cookie:')
+					console.log(this.products)
 					return this.render()
 				}
 			}
@@ -105,9 +110,40 @@ Cart.prototype = {
 	// Render current cart
 	render: function(){
 		console.log('Render!')
-		console.log(this.products)
+		const ids = []
+		// Create/alter new products
+		for(let i = this.products.length; i--;){
+			ids.push(this.products[i].id)
+			let el = this.els.list.querySelector('[data-id]')
+			// Create new element if it doesn't exist
+			if(!el){
+				this.els.list.appendChild(listItem(this.products[i]))
+			}
+			else{
+				el.querySelector('[data-qty]').textContent = this.products[i].qty
+			}
+		}
+		// Delete old products
+		const els = this.els.list.children
+		for(let i = els.length; i--;){
+			if(ids.indexOf(els[i].dataset.id) === -1){
+				this.els.list.removeChild(els[i])
+			}
+		}
 		return this
 	}
+}
+
+function listItem(obj){
+	const el = document.createElement('li')
+	el.dataset.id = obj.id
+	el.innerHTML = `
+		<div>Name: ${obj.name}</div>
+		<div>Qty: <span data-qty>${obj.qty}</span></div>
+		<div>Price: $${obj.price}</div>
+		<button class="zygoteProdDelete">Delete</button>
+	`
+	return el
 }
 
 function getData(el){
@@ -119,4 +155,4 @@ function getData(el){
 }
 
 
-new Cart()
+window.zygote = new Cart()
