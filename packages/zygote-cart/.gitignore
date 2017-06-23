@@ -12,6 +12,7 @@ node_modules/
 # Development/Environment
 dev
 .env
+dist
 
 # Temporary
 temp
