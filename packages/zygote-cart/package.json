@@ -5,6 +5,9 @@
   "repository": "git@github.com:escaladesports/zygote-client.git",
   "author": "Kennedy Rose <kennedy@escaladesports.com>",
   "private": true,
+  "scripts": {
+    "build": "webpack -p"
+  },
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.0",
@@ -12,12 +15,16 @@
     "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
+    "html-loader": "^0.4.5",
     "postcss": "^6.0.2",
     "postcss-cssnext": "^2.11.0",
     "postcss-import": "^10.0.0",
     "postcss-loader": "^2.0.6",
+    "pug": "^2.0.0-rc.2",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "pug-html-loader": "^1.1.5"
+  }
 }
