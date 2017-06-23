@@ -112,11 +112,12 @@ Cart.prototype = {
 		console.log('Render!')
 		const ids = []
 		// Create/alter new products
-		for(let i = this.products.length; i--;){
+		for(let i = 0; i < this.products.length; i++){
 			ids.push(this.products[i].id)
-			let el = this.els.list.querySelector('[data-id]')
+			let el = this.els.list.querySelector(`[data-id="${this.products[i].id}"]`)
 			// Create new element if it doesn't exist
 			if(!el){
+				console.log('Appending...')
 				this.els.list.appendChild(listItem(this.products[i]))
 			}
 			else{
