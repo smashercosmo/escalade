@@ -7,6 +7,7 @@ function Cart(){
 	return this
 }
 Cart.prototype = {
+	isOpen: false,
 
 	inject: require('./bin/inject'),
 
@@ -36,6 +37,7 @@ Cart.prototype = {
 		}
 		this.update()
 		console.log(obj)
+		console.log(this.open)
 		if(obj.openCart){
 			this.open()
 		}
@@ -132,40 +134,61 @@ Cart.prototype = {
 				this.els.list.removeChild(els[i])
 			}
 		}
+		if(this.products.length){
+			addClass(this.els.container, 'zygoteNotEmpty')
+		}
+		else{
+			removeClass(this.els.container, 'zygoteNotEmpty')
+			this.close()
+		}
 		return this
 	},
 
 	open: function(){
-		console.log('opening...')
-		addClass(this.els.container, 'open')
+		this.isOpen = true
+		addClass(this.els.container, 'zygoteOpen')
 		return this
 	},
 	close: function(){
-		removeClass(this.els.container, 'open')
+		this.isOpen = false
+		removeClass(this.els.container, 'zygoteOpen')
 		return this
 	},
 	toggle: function(){
-		toggleClass(this.els.container, 'open')
+		this.isOpen = toggleClass(this.els.container, 'zygoteOpen')
 		return this
 	}
 }
 
 
+
+
 function addClass(el, str){
-	el.className = `${el.className} ${str}`
+	let classes = el.className.split(' ')
+	const index = classes.indexOf(str)
+	if(index === -1){
+		el.className = `${el.className} ${str}`
+	}
 }
 function removeClass(el, str){
 	let classes = el.className.split(' ')
 	const index = classes.indexOf(str)
 	if(index > -1){
 		classes.splice(index, 1)
-		el.className = classes
-		return true
+		el.className = classes.join(' ')
 	}
 }
 function toggleClass(el, str){
-	if(!removeClass(el, str)){
-		addClass(el, str)
+	let classes = el.className.split(' ')
+	const index = classes.indexOf(str)
+	if(index > -1){
+		classes.splice(index, 1)
+		el.className = classes.join(' ')
+		return false
+	}
+	else{
+		el.className = `${el.className} ${str}`
+		return true
 	}
 }
 

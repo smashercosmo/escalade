@@ -1,12 +1,16 @@
 module.exports = function(){
 	// Create cart elements
 	const el = document.createElement('div')
-	el.className = 'zygoteContainer'
+	el.className = 'zygoteContainer zygoteOpen'
 	const html = `
 		<div class="zygoteModal">
-			<form>
-				<h1></h1>
-				<ul class='zygoteProdList'></ul>
+			<div class="zygoteClose">X</div>
+			<div class="zygoteHeader">
+				<h1>Your Cart</h1>
+			</div>
+			<form class="zygoteForm">
+				<ul class="zygoteProdList"></ul>
+				<div class="zygoteEmpty">Your cart is empty.</div>
 			</form>
 		</div>
 	`
@@ -28,6 +32,7 @@ module.exports = function(){
 				this.remove(e.target.parentElement.dataset.id)
 				break
 			case 'zygoteContainer':
+			case 'zygoteClose':
 				this.close()
 				break
 		}
