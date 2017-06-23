@@ -1,8 +1,8 @@
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const extractStyles = new ExtractTextPlugin('[name].css')
-const extractHtml = new ExtractTextPlugin('[name].html')
+const extractStyles = new ExtractTextPlugin('style.css')
+const extractHtml = new ExtractTextPlugin('test.html')
 
 module.exports = {
 	stats: {
@@ -16,10 +16,10 @@ module.exports = {
 	},
 	context: path.resolve(__dirname, './src'),
 	entry: {
-		app: './app.js',
-		style: './style.css',
-		test: [
-			path.resolve(__dirname, 'src/test.pug')
+		app: [
+			'./app.js',
+			'./style.css',
+			'./test.pug'
 		]
 	},
 	output: {
@@ -40,6 +40,7 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
+				exclude: [/node_modules/],
 				use: extractStyles.extract({
 					use: [
 						{
@@ -52,8 +53,9 @@ module.exports = {
 			},
 			{
 				test: /\.pug$/,
-				loader: extractHtml.extract({
-					loader: ['html-loader', 'pug-html-loader?pretty&exports=false']
+				exclude: [/node_modules/],
+				use: extractHtml.extract({
+					use: ['html-loader', 'pug-html-loader?pretty&exports=false']
 				})
 			}
 		]
