@@ -1,10 +1,14 @@
 module.exports = function(){
 	// Create cart elements
-	const el = document.createElement('form')
-	el.className = 'zygote'
+	const el = document.createElement('div')
+	el.className = 'zygoteContainer'
 	const html = `
-		<h1></h1>
-		<ul class='zygoteProdList'></ul>
+		<div class="zygoteModal">
+			<form>
+				<h1></h1>
+				<ul class='zygoteProdList'></ul>
+			</form>
+		</div>
 	`
 	el.innerHTML = html
 	const body = document.getElementsByTagName('body')[0]
@@ -12,6 +16,7 @@ module.exports = function(){
 
 	// Query useful elements
 	this.els = {
+		container: el,
 		list: el.querySelector('.zygoteProdList')
 	}
 

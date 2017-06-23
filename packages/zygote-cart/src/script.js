@@ -34,7 +34,12 @@ Cart.prototype = {
 		else{
 			this.products.push(obj)
 		}
-		return this.update()
+		this.update()
+		console.log(obj)
+		if(obj.openCart){
+			this.open()
+		}
+		return this
 	},
 
 	// Remove item from cart by ID
@@ -81,8 +86,6 @@ Cart.prototype = {
 				if(c.indexOf(nameEQ) == 0){
 					let str = c.substring(nameEQ.length, c.length)
 					this.products = JSON.parse(str)
-					console.log('Cookie:')
-					console.log(this.products)
 					return this.render()
 				}
 			}
@@ -109,7 +112,6 @@ Cart.prototype = {
 
 	// Render current cart
 	render: function(){
-		console.log('Render!')
 		const ids = []
 		// Create/alter new products
 		for(let i = 0; i < this.products.length; i++){
@@ -117,7 +119,6 @@ Cart.prototype = {
 			let el = this.els.list.querySelector(`[data-id="${this.products[i].id}"]`)
 			// Create new element if it doesn't exist
 			if(!el){
-				console.log('Appending...')
 				this.els.list.appendChild(listItem(this.products[i]))
 			}
 			else{
@@ -132,8 +133,42 @@ Cart.prototype = {
 			}
 		}
 		return this
+	},
+
+	open: function(){
+		console.log('opening...')
+		addClass(this.els.container, 'open')
+		return this
+	},
+	close: function(){
+		removeClass(this.els.container, 'open')
+		return this
+	},
+	toggle: function(){
+		toggleClass(this.els.container, 'open')
+		return this
 	}
 }
+
+
+function addClass(el, str){
+	el.className = `${el.className} ${str}`
+}
+function removeClass(el, str){
+	let classes = el.className.split(' ')
+	const index = classes.indexOf(str)
+	if(index > -1){
+		classes.splice(index, 1)
+		el.className = classes
+		return true
+	}
+}
+function toggleClass(el, str){
+	if(!removeClass(el, str)){
+		addClass(el, str)
+	}
+}
+
 
 function listItem(obj){
 	const el = document.createElement('li')
@@ -150,8 +185,9 @@ function listItem(obj){
 
 function getData(el){
 	const obj = {}
+	console.log(el.dataset)
 	for(let i in el.dataset){
-		obj[i] = el.dataset[i]
+		obj[i] = (el.dataset[i] !== '') ? el.dataset[i] : true
 	}
 	return obj
 }
