@@ -1,6 +1,6 @@
 module.exports = function(){
 	// Create cart elements
-	const el = document.createElement('div')
+	const el = document.createElement('form')
 	el.className = 'zygote'
 	const html = `
 		<h1></h1>

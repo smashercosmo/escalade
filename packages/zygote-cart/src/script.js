@@ -138,9 +138,10 @@ function listItem(obj){
 	const el = document.createElement('li')
 	el.dataset.id = obj.id
 	el.innerHTML = `
-		<div>Name: ${obj.name}</div>
-		<div>Qty: <span data-qty>${obj.qty}</span></div>
-		<div>Price: $${obj.price}</div>
+		<div class="zygoteProdName">Name: <a href="${obj.url}">${obj.name}</a></div>
+		<div class="zygoteProdImg"><img src="${obj.img}" /></div>
+		<div class="zygoteProdQty">Qty: <span data-qty>${obj.qty}</span></div>
+		<div class="zygoteProdPrice">Price: $${obj.price}</div>
 		<button class="zygoteProdDelete">Delete</button>
 	`
 	return el
