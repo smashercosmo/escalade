@@ -19,6 +19,7 @@ Cart.prototype = {
 	findQty: require('./bin/find-qty'),
 	add: require('./bin/add'),
 	remove: require('./bin/remove'),
+	modifyQty: require('./bin/modify-qty'),
 	changeQty: require('./bin/change-qty'),
 	findProduct: require('./bin/find-product'),
 

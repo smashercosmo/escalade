@@ -3,6 +3,8 @@ import {
 	add as addClass,
 	remove as removeClass
 } from './class-list'
+import usdFormatter from 'usd-formatter'
+
 module.exports = function(){
 	const ids = []
 	let totalQty = 0
@@ -63,7 +65,7 @@ function listItem(obj){
 			</div>
 		</div>
 		<div class="zygoteProdPrice">
-			<div>$${obj.price}</div>
+			<div>${usdFormatter(obj.price)}</div>
 		</div>
 		<div class="zygoteProdDelete">
 			<div class="zygoteProdX">&#215;</div>
