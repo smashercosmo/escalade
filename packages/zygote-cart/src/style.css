@@ -148,6 +148,7 @@
 .zygoteSection{
 	border-bottom: 1px solid #ccc;
 	& label{
+		cursor: pointer;
 		display: block;
 		margin-bottom: 3px;
 		color: #333;

@@ -8,3 +8,5 @@
 - HTML hot reloading
 - Icons or numbers in tabs
 - Split out stylesheet
+- Make sure cart is still visible on all browser heights
+- Focus on inputs on step change
