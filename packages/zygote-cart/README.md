@@ -1,7 +1,6 @@
 # Zygote Cart/API
 
-- Refactor prototype to modules
-- Style cart
+- Aria roles
 - Checkout form
 - CSS hot reloading
 - HTML hot reloading
