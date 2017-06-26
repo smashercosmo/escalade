@@ -1,4 +1,6 @@
 import { cart as cartTemplate } from './templates'
+import events from './events'
+
 module.exports = function(){
 	// Create cart elements
 	const el = cartTemplate()
@@ -13,27 +15,6 @@ module.exports = function(){
 
 	// Attach events
 	el.addEventListener('click', e => {
-		switch(e.target.className.split(' ')[0]){
-			case 'zygoteProdX':
-				this.remove(getProductId(e.target))
-				break
-			case 'zygoteContainer':
-			case 'zygoteClose':
-				this.close()
-				break
-			case 'zygoteDecrease':
-				this.modifyQty(getProductId(e.target), -1)
-				break
-			case 'zygoteIncrease':
-				this.modifyQty(getProductId(e.target), 1)
-				break
-		}
+		events.call(this, e)
 	}, false)
-}
-
-function getProductId(el){
-	while(!el.dataset.id){
-		el = el.parentElement
-	}
-	return el.dataset.id
 }
