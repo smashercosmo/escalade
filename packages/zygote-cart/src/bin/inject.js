@@ -26,7 +26,6 @@ module.exports = function(){
 
 	// Events
 	el.addEventListener('click', e => {
-		console.log(e.target.className.split(' ')[0])
 		switch(e.target.className.split(' ')[0]){
 			case 'zygoteProdDelete':
 				this.remove(e.target.parentElement.dataset.id)
