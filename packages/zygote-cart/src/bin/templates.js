@@ -28,6 +28,15 @@ exports.cart = () => {
 					<ul class="zygoteProdList"></ul>
 				</div>
 
+				<div class="zygoteStep2 zygoteStep">
+				</div>
+
+				<div class="zygoteStep3 zygoteStep">
+				</div>
+
+				<div class="zygoteStep4 zygoteStep">
+				</div>
+
 				<div class="zygoteStepBtns">
 					<div class="zygoteBtn zygotePrev">Previous Step</div>
 					<div class="zygoteBtn zygoteNext">Next Step</div>

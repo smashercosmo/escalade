@@ -28,7 +28,6 @@ module.exports = function(e){
 
 				// Next/previous steps
 				case 'zygoteNext':
-					console.log(this.step)
 					if(this.step < 5){
 						this.changeStep(this.step + 1)
 					}

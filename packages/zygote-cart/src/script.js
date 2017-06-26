@@ -7,6 +7,7 @@ function Cart(){
 	this.readCookie()
 	this.findButtons()
 	this.findIcons()
+	this.changeStep(1)
 	return this
 }
 Cart.prototype = {

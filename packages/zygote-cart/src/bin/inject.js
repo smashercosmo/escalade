@@ -12,7 +12,7 @@ module.exports = function(){
 		container: el,
 		list: el.querySelector('.zygoteProdList'),
 		steps: el.querySelectorAll('.zygoteStep'),
-		stepBtns: el.querySelectorAll('.zygoteStepBtns .zygoteBtn')
+		stepBtns: el.querySelectorAll('.zygoteSteps li')
 	}
 
 	// Attach events

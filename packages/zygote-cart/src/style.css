@@ -197,6 +197,7 @@
 	font-weight: bold;
 	cursor: pointer;
 	display: inline-block;
+	user-select: none;
 }
 .zygoteStepBtns{
 	display: none;
@@ -235,41 +236,30 @@
 		display: block;
 		clear: both;
 	}
+	& .zygoteActive{
+		background-color: #fff;
+		border-bottom: 0;
+		cursor: default;
+	}
 }
 .zygoteStep{
 	display: none;
+	&.zygoteActive{
+		display: block;
+	}
 }
 
 .zygoteOn1{
 	& .zygotePrev{
 		display: none;
 	}
-	& .zygoteStep1{
-		display: block;
-	}
-	& .zygoteSteps > li:nth-of-type(1){
-		background-color: #fff;
-		border-bottom: 0;
-	}
-}
-.zygoteOn2{
-	& .zygoteStep2{
-		display: block;
-	}
-}
-.zygoteOn3{
-	& .zygoteStep3{
-		display: block;
-	}
 }
 .zygoteOn4{
-	& .zygoteStep4{
-		display: block;
-	}
 	& .zygoteNext{
 		display: none;
 	}
 }
+
 
 
 @media(min-width: 900px){
