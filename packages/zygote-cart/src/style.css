@@ -211,8 +211,8 @@
 	}
 }
 
-.zygoteSteps{
-	/*display: none;*/
+.zygoteTabs{
+	display: none;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -242,6 +242,11 @@
 		cursor: default;
 	}
 }
+.zygoteShowTabs{
+	& .zygoteTabs{
+		display: block;
+	}
+}
 .zygoteStep{
 	display: none;
 	&.zygoteActive{
@@ -269,7 +274,7 @@
 	}
 
 	.zygoteOn2, .zygoteOn3, .zygoteOn4{
-		& .zygoteSteps{
+		& .zygoteTabs{
 			display: block;
 		}
 	}

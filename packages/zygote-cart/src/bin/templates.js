@@ -10,7 +10,7 @@ exports.cart = () => {
 			<div class="zygoteHeader">
 				<h1>Your Cart</h1>
 			</div>
-			<ul class="zygoteSteps">
+			<ul class="zygoteTabs">
 				<li>Your Cart</li>
 				<li>Billing Address</li>
 				<li>Payment Method</li>

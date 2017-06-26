@@ -9,15 +9,19 @@ module.exports = function(n){
 	this.step = n || 1
 	removePrefix(this.els.container, 'zygoteOn')
 	addClass(this.els.container, `zygoteOn${n}`)
+	if(this.step > 1){
+		console.log('zygoteShowTabs')
+		addClass(this.els.container, 'zygoteShowTabs')
+	}
 
 	const cursor = this.step - 1
-	for(let i = this.els.stepBtns.length; i--;){
+	for(let i = this.els.tabs.length; i--;){
 		if(cursor === i){
-			addClass(this.els.stepBtns[i], 'zygoteActive')
+			addClass(this.els.tabs[i], 'zygoteActive')
 			addClass(this.els.steps[i], 'zygoteActive')
 		}
 		else{
-			removeClass(this.els.stepBtns[i], 'zygoteActive')
+			removeClass(this.els.tabs[i], 'zygoteActive')
 			removeClass(this.els.steps[i], 'zygoteActive')
 		}
 	}
