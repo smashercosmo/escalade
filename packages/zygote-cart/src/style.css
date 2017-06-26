@@ -158,7 +158,13 @@
 	& input{
 		margin-bottom: 20px;
 		width: 100%;
-		padding: 5px;
+		padding: 10px;
+		outline: none;
+		border: 1px solid #ccc;
+	}
+	& input:focus{
+		border: 1px solid #000;
+		outline: none;
 	}
 }
 
