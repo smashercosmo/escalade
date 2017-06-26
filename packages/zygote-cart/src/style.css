@@ -49,7 +49,7 @@
 		border-bottom: 0;
 	}
 }
-.zygoteFormHeader{
+.zygoteProdHeader{
 	display: none;
 	list-style-type: none;
 	margin: 0 0 10px 0;
@@ -183,6 +183,26 @@
 }
 
 
+.zygoteBtn{
+	background-color: #000;
+	color: #fff;
+	padding: 13px 20px;
+	min-width: 120px;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: .8em;
+	font-weight: bold;
+	cursor: pointer;
+	display: inline-block;
+}
+.zygoteStepBtn{
+	text-align: right;
+	& .zygoteBtn{
+		width: 100%;
+	}
+}
+
+
 @media(min-width: 900px){
 	.zygoteProd{
 		margin-bottom: 15px;
@@ -192,9 +212,14 @@
 	.zygoteModal{
 		top: 30px;
 	}
+	.zygoteStepBtn{
+		& .zygoteBtn{
+			width: auto;
+		}
+	}
 
 	.zygoteNotEmpty{
-		& .zygoteFormHeader{
+		& .zygoteProdHeader{
 			display: block;
 		}
 	}
