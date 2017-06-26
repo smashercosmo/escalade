@@ -4,7 +4,7 @@ module.exports = function(){
 	el.className = 'zygoteContainer zygoteOpen'
 	const html = `
 		<div class="zygoteModal">
-			<div class="zygoteClose">X</div>
+			<div class="zygoteClose">&#215;</div>
 			<div class="zygoteHeader">
 				<h1>Your Cart</h1>
 			</div>
