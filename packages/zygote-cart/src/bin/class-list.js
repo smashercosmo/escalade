@@ -27,3 +27,13 @@ exports.toggle = (el, str) => {
 		return true
 	}
 }
+
+exports.removePrefix = (el, str) => {
+	let classes = el.className.split(' ')
+	for(let i = classes.length; i--;){
+		if(classes[i].indexOf(str) === 0){
+			classes.splice(i, 1)
+		}
+	}
+	el.className = classes.join(' ')
+}

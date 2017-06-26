@@ -3,7 +3,7 @@ import usdFormatter from 'usd-formatter'
 
 exports.cart = () => {
 	const el = document.createElement('div')
-	el.className = 'zygoteContainer zygoteOpen'
+	el.className = 'zygoteContainer zygoteOpen zygoteOnOne'
 	const html = `
 		<div class="zygoteModal">
 			<div class="zygoteClose">&#215;</div>
@@ -11,7 +11,7 @@ exports.cart = () => {
 				<h1>Your Cart</h1>
 			</div>
 			<form class="zygoteForm">
-				<div class="zygoteStepOne">
+				<div class="zygoteStepOne zygoteStep">
 					<ul class="zygoteProdHeader">
 						<li>Item</li>
 						<li>Quantity</li>
@@ -20,7 +20,7 @@ exports.cart = () => {
 					</ul>
 					<ul class="zygoteProdList"></ul>
 					<div class="zygoteStepBtn">
-						<div class="zygoteBtn">Next Step</div>
+						<div class="zygoteBtn zygoteToTwo">Next Step</div>
 					</div>
 				</div>
 				<div class="zygoteEmpty">Your cart is empty.</div>

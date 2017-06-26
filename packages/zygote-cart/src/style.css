@@ -170,6 +170,9 @@
 	& .zygoteEmpty{
 		display: none;
 	}
+	& .zygoteStepBtn{
+		display: block;
+	}
 }
 
 .zygoteIco{
@@ -197,8 +200,18 @@
 }
 .zygoteStepBtn{
 	text-align: right;
+	display: none;
 	& .zygoteBtn{
 		width: 100%;
+	}
+}
+
+.zygoteStep{
+	display: none;
+}
+.zygoteOnOne{
+	& .zygoteStepOne{
+		display: block;
 	}
 }
 
