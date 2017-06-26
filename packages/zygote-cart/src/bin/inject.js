@@ -1,20 +1,7 @@
+import { cart as cartTemplate } from './templates'
 module.exports = function(){
 	// Create cart elements
-	const el = document.createElement('div')
-	el.className = 'zygoteContainer zygoteOpen'
-	const html = `
-		<div class="zygoteModal">
-			<div class="zygoteClose">&#215;</div>
-			<div class="zygoteHeader">
-				<h1>Your Cart</h1>
-			</div>
-			<form class="zygoteForm">
-				<ul class="zygoteProdList"></ul>
-				<div class="zygoteEmpty">Your cart is empty.</div>
-			</form>
-		</div>
-	`
-	el.innerHTML = html
+	const el = cartTemplate()
 	const body = document.getElementsByTagName('body')[0]
 	if(body) body.appendChild(el)
 

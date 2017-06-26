@@ -1,6 +1,7 @@
 # Zygote Cart/API
 
-- Aria roles
+- Table header
 - Checkout form
+- Aria roles
 - CSS hot reloading
 - HTML hot reloading

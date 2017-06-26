@@ -3,7 +3,7 @@ import {
 	add as addClass,
 	remove as removeClass
 } from './class-list'
-import usdFormatter from 'usd-formatter'
+import { product as productTemplate } from './templates'
 
 module.exports = function(){
 	const ids = []
@@ -14,7 +14,7 @@ module.exports = function(){
 		let el = this.els.list.querySelector(`[data-id="${this.products[i].id}"]`)
 		// Create new element if it doesn't exist
 		if(!el){
-			this.els.list.appendChild(listItem(this.products[i]))
+			this.els.list.appendChild(productTemplate(this.products[i]))
 		}
 		else{
 			el.querySelector('[data-qty]').textContent = this.products[i].qty
@@ -42,34 +42,4 @@ module.exports = function(){
 		else removeClass(this.qty[i], 'zygoteHasQty')
 	}
 	return this
-}
-
-function listItem(obj){
-	const el = document.createElement('li')
-	el.dataset.id = obj.id
-	el.innerHTML = `
-		<div class="zygoteProdImg">
-			<a href="${obj.url}"><img src="${obj.img}" /></a>
-		</div>
-		<div class="zygoteProdName">
-			<div>
-				<a href="${obj.url}">${obj.name}</a>
-				<div>${obj.desc || ''}</div>
-			</div>
-		</div>
-		<div class="zygoteProdQty">
-			<div>
-				<div class="zygoteDecrease">-</div>
-				<div data-qty>${obj.qty}</div>
-				<div class="zygoteIncrease">+</div>
-			</div>
-		</div>
-		<div class="zygoteProdPrice">
-			<div>${usdFormatter(obj.price)}</div>
-		</div>
-		<div class="zygoteProdDelete">
-			<div class="zygoteProdX">&#215;</div>
-		</div>
-	`
-	return el
 }

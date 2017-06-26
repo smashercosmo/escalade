@@ -6,9 +6,6 @@ module.exports = function(id, modifier){
 		if(qty > 0){
 			this.products[index].qty = qty
 		}
-		else{
-			return this.remove(id)
-		}
 	}
 	return this.update()
 }
