@@ -27,8 +27,8 @@ module.exports = function(){
 	// Events
 	el.addEventListener('click', e => {
 		switch(e.target.className.split(' ')[0]){
-			case 'zygoteProdDelete':
-				this.remove(e.target.parentElement.dataset.id)
+			case 'zygoteProdX':
+				this.remove(e.target.parentElement.parentElement.dataset.id)
 				break
 			case 'zygoteContainer':
 			case 'zygoteClose':

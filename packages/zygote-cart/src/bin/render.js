@@ -50,12 +50,24 @@ function listItem(obj){
 			<a href="${obj.url}"><img src="${obj.img}" /></a>
 		</div>
 		<div class="zygoteProdName">
-			<a href="${obj.url}">${obj.name}</a>
-			<span>${obj.desc || ''}</span>
+			<div>
+				<a href="${obj.url}">${obj.name}</a>
+				<div>${obj.desc || ''}</div>
+			</div>
 		</div>
-		<div class="zygoteProdQty"><span data-qty>${obj.qty}</span></div>
-		<div class="zygoteProdPrice">$${obj.price}</div>
-		<button class="zygoteProdDelete">Delete</button>
+		<div class="zygoteProdQty">
+			<div>
+				<div class="zygoteDecrease">-</div>
+				<div data-qty>${obj.qty}</div>
+				<div class="zygoteIncrease">+</div>
+			</div>
+		</div>
+		<div class="zygoteProdPrice">
+			<div>$${obj.price}</div>
+		</div>
+		<div class="zygoteProdDelete">
+			<div class="zygoteProdX">&#215;</div>
+		</div>
 	`
 	return el
 }
