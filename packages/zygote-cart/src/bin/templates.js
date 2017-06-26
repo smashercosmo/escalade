@@ -11,6 +11,12 @@ exports.cart = () => {
 				<h1>Your Cart</h1>
 			</div>
 			<form class="zygoteForm">
+				<ul class="zygoteFormHeader">
+					<li>Item</li>
+					<li>Quantity</li>
+					<li>Price</li>
+					<li>Remove</li>
+				</ul>
 				<ul class="zygoteProdList"></ul>
 				<div class="zygoteEmpty">Your cart is empty.</div>
 			</form>
