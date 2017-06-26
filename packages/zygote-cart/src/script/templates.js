@@ -63,14 +63,35 @@ exports.cart = () => {
 				</div>
 
 				<div class="zygoteStep3 zygoteStep">
+
+					<div class="zygoteSection">
+						<label for="zygotePaymentName">Name on Card</label>
+						<input type="text" id="zygotePaymentName" />
+					</div>
+
+					<div class="zygoteSection">
+						<label for="zygotePaymentNumber">Card Number</label>
+						<input type="text" id="zygotePaymentNumber" />
+
+						<label for="zygotePaymentSecurity">CVC</label>
+						<input type="text" id="zygotePaymentSecurity" />
+					</div>
+
+					<div class="zygoteSection">
+						<label for="zygotePaymentMonth">Expiration Month</label>
+						<input type="text" id="zygotePaymentMonth" />
+
+						<label for="zygotePaymentYear">Expiration Year</label>
+						<input type="text" id="zygotePaymentYear" />
+					</div>
 				</div>
 
 				<div class="zygoteStep4 zygoteStep">
 				</div>
 
 				<div class="zygoteStepBtns">
-					<div class="zygoteBtn zygotePrev">Previous Step</div>
-					<div class="zygoteBtn zygoteNext">Next Step</div>
+					<button class="zygoteBtn zygotePrev" role="button">Previous Step</button>
+					<button class="zygoteBtn zygoteNext" role="button">Next Step</button>
 				</div>
 
 				<div class="zygoteEmpty">Your cart is empty.</div>

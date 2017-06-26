@@ -28,11 +28,13 @@ module.exports = function(e){
 
 				// Next/previous steps
 				case 'zygoteNext':
+					e.preventDefault()
 					if(this.step < 5){
 						this.changeStep(this.step + 1)
 					}
 					break
 				case 'zygotePrev':
+					e.preventDefault()
 					if(this.step > 1){
 						this.changeStep(this.step - 1)
 					}
