@@ -10,6 +10,7 @@ function Cart(){
 	return this
 }
 Cart.prototype = {
+	step: 1,
 	isOpen: false,
 	body: document.getElementsByTagName('body')[0],
 
@@ -22,6 +23,7 @@ Cart.prototype = {
 	modifyQty: require('./bin/modify-qty'),
 	changeQty: require('./bin/change-qty'),
 	findProduct: require('./bin/find-product'),
+	changeStep: require('./bin/change-step'),
 
 	saveCookie: require('./bin/save-cookie'),
 	readCookie: require('./bin/read-cookie'),

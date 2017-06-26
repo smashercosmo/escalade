@@ -3,15 +3,22 @@ import usdFormatter from 'usd-formatter'
 
 exports.cart = () => {
 	const el = document.createElement('div')
-	el.className = 'zygoteContainer zygoteOpen zygoteOnOne'
+	el.className = 'zygoteContainer zygoteOpen zygoteOn1'
 	const html = `
 		<div class="zygoteModal">
 			<div class="zygoteClose">&#215;</div>
 			<div class="zygoteHeader">
 				<h1>Your Cart</h1>
 			</div>
+			<ul class="zygoteSteps">
+				<li>Your Cart</li>
+				<li>Billing Address</li>
+				<li>Payment Method</li>
+				<li>Confirm Order</li>
+			</ul>
 			<form class="zygoteForm">
-				<div class="zygoteStepOne zygoteStep">
+
+				<div class="zygoteStep1 zygoteStep">
 					<ul class="zygoteProdHeader">
 						<li>Item</li>
 						<li>Quantity</li>
@@ -19,10 +26,13 @@ exports.cart = () => {
 						<li>Remove</li>
 					</ul>
 					<ul class="zygoteProdList"></ul>
-					<div class="zygoteStepBtn">
-						<div class="zygoteBtn zygoteToTwo">Next Step</div>
-					</div>
 				</div>
+
+				<div class="zygoteStepBtns">
+					<div class="zygoteBtn zygotePrev">Previous Step</div>
+					<div class="zygoteBtn zygoteNext">Next Step</div>
+				</div>
+
 				<div class="zygoteEmpty">Your cart is empty.</div>
 			</form>
 		</div>

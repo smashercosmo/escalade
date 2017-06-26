@@ -170,7 +170,7 @@
 	& .zygoteEmpty{
 		display: none;
 	}
-	& .zygoteStepBtn{
+	& .zygoteStepBtns{
 		display: block;
 	}
 }
@@ -198,20 +198,76 @@
 	cursor: pointer;
 	display: inline-block;
 }
-.zygoteStepBtn{
-	text-align: right;
+.zygoteStepBtns{
 	display: none;
 	& .zygoteBtn{
 		width: 100%;
 	}
+	&:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
 }
 
+.zygoteSteps{
+	/*display: none;*/
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	color: #333;
+	user-select: none;
+	& li{
+		background-color: #999;
+		width: 25%;
+		float: left;
+		padding: 20px 0;
+		cursor: pointer;
+		border-bottom: 1px solid #666;
+		border-right: 1px solid #666;
+		&:last-of-type{
+			border-right: none;
+		}
+	}
+	&:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
 .zygoteStep{
 	display: none;
 }
-.zygoteOnOne{
-	& .zygoteStepOne{
+
+.zygoteOn1{
+	& .zygotePrev{
+		display: none;
+	}
+	& .zygoteStep1{
 		display: block;
+	}
+	& .zygoteSteps > li:nth-of-type(1){
+		background-color: #fff;
+		border-bottom: 0;
+	}
+}
+.zygoteOn2{
+	& .zygoteStep2{
+		display: block;
+	}
+}
+.zygoteOn3{
+	& .zygoteStep3{
+		display: block;
+	}
+}
+.zygoteOn4{
+	& .zygoteStep4{
+		display: block;
+	}
+	& .zygoteNext{
+		display: none;
 	}
 }
 
@@ -222,13 +278,26 @@
 		padding-bottom: 15px;
 	}
 
+	.zygoteOn2, .zygoteOn3, .zygoteOn4{
+		& .zygoteSteps{
+			display: block;
+		}
+	}
+
 	.zygoteModal{
 		top: 30px;
 	}
-	.zygoteStepBtn{
+	.zygoteStepBtns{
 		& .zygoteBtn{
 			width: auto;
 		}
+	}
+
+	.zygotePrev{
+		float: left;
+	}
+	.zygoteNext{
+		float: right
 	}
 
 	.zygoteNotEmpty{
@@ -245,7 +314,7 @@
 		width: 400px;
 		margin-bottom: 0;
 		& > div{
-			padding-left: 20px;
+			padding: 0 20px;
 			right: 0;
 			left: 0;
 		}

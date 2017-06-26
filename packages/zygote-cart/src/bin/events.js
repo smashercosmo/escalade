@@ -26,12 +26,18 @@ module.exports = function(e){
 					this.modifyQty(getProductId(e.target), 1)
 					break
 
-			}
-			// Next checkout step
-			if(classes[i].indexOf('zygoteTo') === 0){
-				const target = classes[i].replace('zygoteTo', '')
-				classList.removePrefix(this.els.container, 'zygoteOn')
-				classList.add(this.els.container, `zygoteOn${target}`)
+				// Next/previous steps
+				case 'zygoteNext':
+					console.log(this.step)
+					if(this.step < 5){
+						this.changeStep(this.step + 1)
+					}
+					break
+				case 'zygotePrev':
+					if(this.step > 1){
+						this.changeStep(this.step - 1)
+					}
+					break
 			}
 		}
 	}

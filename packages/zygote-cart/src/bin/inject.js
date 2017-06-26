@@ -10,7 +10,9 @@ module.exports = function(){
 	// Query useful elements
 	this.els = {
 		container: el,
-		list: el.querySelector('.zygoteProdList')
+		list: el.querySelector('.zygoteProdList'),
+		steps: el.querySelectorAll('.zygoteStep'),
+		stepBtns: el.querySelectorAll('.zygoteStepBtns .zygoteBtn')
 	}
 
 	// Attach events
