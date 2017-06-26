@@ -1,6 +1,5 @@
 # Zygote Cart/API
 
-- Shipping form
 - Billing form
 - Subtotal in cart
 - Aria roles
@@ -10,3 +9,6 @@
 - Split out stylesheet
 - Make sure cart is still visible on all browser heights
 - Focus on inputs on step change
+- Dropdown for shipping state
+- Dropdown for payment Month
+- Dropdown for payment year
