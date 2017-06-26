@@ -11,10 +11,10 @@ exports.cart = () => {
 				<h1>Your Cart</h1>
 			</div>
 			<ul class="zygoteTabs">
-				<li>Your Cart</li>
-				<li>Billing Address</li>
-				<li>Payment Method</li>
-				<li>Confirm Order</li>
+				<li class="zygoteCartTab">Your Cart</li>
+				<li class="zygoteShipTab">Shipping Address</li>
+				<li class="zygotePayTab">Payment Method</li>
+				<li class="zygoteConfirmTab">Confirm Order</li>
 			</ul>
 			<form class="zygoteForm">
 

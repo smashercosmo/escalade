@@ -37,6 +37,20 @@ module.exports = function(e){
 						this.changeStep(this.step - 1)
 					}
 					break
+
+				// Tab clicks
+				case 'zygoteCartTab':
+					this.changeStep(1)
+					break
+				case 'zygoteShipTab':
+					this.changeStep(2)
+					break
+				case 'zygotePayTab':
+					this.changeStep(3)
+					break
+				case 'zygoteConfirmTab':
+					this.changeStep(4)
+					break
 			}
 		}
 	}
