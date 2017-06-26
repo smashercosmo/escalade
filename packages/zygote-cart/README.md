@@ -1,8 +1,8 @@
 # Zygote Cart/API
 
-- Switch step on tab click
+- Shipping form
+- Billing form
 - Subtotal in cart
-- Checkout form
 - Aria roles
 - CSS hot reloading
 - HTML hot reloading
