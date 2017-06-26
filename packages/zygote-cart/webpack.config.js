@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const extractStyles = new ExtractTextPlugin('[name].css')
 const extractHtml = new ExtractTextPlugin('index.html')
+const OpenBrowserPlugin = require('open-browser-webpack-plugin')
 
 module.exports = {
 	stats: {
@@ -62,7 +63,8 @@ module.exports = {
 	},
 	plugins: [
 		extractStyles,
-		extractHtml
+		extractHtml,
+		new OpenBrowserPlugin({ url: 'http://localhost:8080/' })
 	],
 	devServer: {
 		contentBase: path.resolve(__dirname, './dist')
