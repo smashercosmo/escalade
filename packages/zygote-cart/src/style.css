@@ -53,8 +53,9 @@
 	display: none;
 	list-style-type: none;
 	margin: 0 0 10px 0;
-	padding: 0;
+	padding: 0 0 10px 0;
 	font-size: .8em;
+	border-bottom: 1px solid #ccc;
 	& li{
 		float: left;
 		&:nth-of-type(1){
@@ -126,6 +127,38 @@
 	line-height: 17px;
 	font-size: .9em;
 	border-radius: 100%;
+}
+
+.zygoteStep2, .zygoteStep3{
+	margin: 0 -20px;
+	&:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+	& > div{
+		padding: 20px;
+		&:last-of-type{
+			border-bottom: none;
+			border-right: none;
+		}
+	}
+}
+
+.zygoteSection{
+	border-bottom: 1px solid #ccc;
+	& label{
+		display: block;
+		margin-bottom: 3px;
+		color: #333;
+		text-transform: uppercase;
+		font-size: .9em;
+	}
+	& input{
+		margin-bottom: 20px;
+		width: 100%;
+		padding: 5px;
+	}
 }
 
 /* Fourth column */
@@ -242,11 +275,6 @@
 		cursor: default;
 	}
 }
-.zygoteShowTabs{
-	& .zygoteTabs{
-		display: block;
-	}
-}
 .zygoteStep{
 	display: none;
 	&.zygoteActive{
@@ -277,6 +305,18 @@
 		& .zygoteTabs{
 			display: block;
 		}
+	}
+	.zygoteShowTabs{
+		& .zygoteTabs{
+			display: block;
+		}
+	}
+
+	.zygoteSection{
+		border-right: 1px solid #ccc;
+		border-bottom: none;
+		width: calc(100% / 3);
+		float: left;
 	}
 
 	.zygoteModal{

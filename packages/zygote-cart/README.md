@@ -6,3 +6,5 @@
 - Aria roles
 - CSS hot reloading
 - HTML hot reloading
+- Icons or numbers in tabs
+- Split out stylesheet

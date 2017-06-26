@@ -29,6 +29,37 @@ exports.cart = () => {
 				</div>
 
 				<div class="zygoteStep2 zygoteStep">
+
+					<div class="zygoteSection">
+						<label for="zygoteBillingName">Name</label>
+						<input type="text" id="zygoteBillingName" />
+
+						<label for="zygoteBillingStreet">Street Address</label>
+						<input type="text" id="zygoteBillingStreet" />
+
+						<label for="zygoteBillingStreet2">Street Address 2</label>
+						<input type="text" id="zygoteBillingStreet2" />
+					</div>
+
+					<div class="zygoteSection">
+						<label for="zygoteBillingCity">City</label>
+						<input type="text" id="zygoteBillingCity" />
+
+						<label for="zygoteBillingState">State</label>
+						<input type="text" id="zygoteBillingState" />
+
+						<label for="zygoteBillingZip">Zip / Postal Code</label>
+						<input type="text" id="zygoteBillingZip" />
+					</div>
+
+					<div class="zygoteSection">
+						<label for="zygoteBillingPhone">Phone</label>
+						<input type="text" id="zygoteBillingPhone" />
+
+						<label for="zygoteBillingEmail">Email</label>
+						<input type="text" id="zygoteBillingEmail" />
+					</div>
+
 				</div>
 
 				<div class="zygoteStep3 zygoteStep">
