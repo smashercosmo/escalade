@@ -7,8 +7,10 @@
 	background-color: rgba(0, 0, 0, .5);
 	display: none;
 }
-.zygoteOpen .zygoteContainer{
-	display: block;
+.zygoteOpen{
+	& .zygoteContainer{
+		display: block;
+	}
 }
 .zygoteModal{
 	background-color: #fff;
@@ -36,8 +38,10 @@
 .zygoteEmpty{
 	text-align: center;
 }
-.zygoteNotEmpty .zygoteEmpty{
-	display: none;
+.zygoteNotEmpty{
+	& .zygoteEmpty{
+		display: none;
+	}
 }
 
 .zygoteIco{
