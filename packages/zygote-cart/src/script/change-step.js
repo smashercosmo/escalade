@@ -14,11 +14,14 @@ module.exports = function(n){
 		addClass(this.els.container, 'zygoteShowTabs')
 	}
 
+
 	const cursor = this.step - 1
 	for(let i = this.els.tabs.length; i--;){
 		if(cursor === i){
 			addClass(this.els.tabs[i], 'zygoteActive')
 			addClass(this.els.steps[i], 'zygoteActive')
+			const input = this.els.steps[i].querySelector('input')
+			if(input) input.focus()
 		}
 		else{
 			removeClass(this.els.tabs[i], 'zygoteActive')

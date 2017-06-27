@@ -198,6 +198,7 @@
 }
 .zygoteHeader{
 	background-color: #ccc;
+	text-transform: uppercase;
 }
 .zygoteClose{
 	user-select: none;
