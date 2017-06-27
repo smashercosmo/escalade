@@ -21,6 +21,7 @@ WIP
 WIP
 
 ## Todo
+- If user tries to confirm order tab or hit next to confirm pane, validate all inputs and move to any pane where there are errors
 - Escalade sports subdomain
 - Subtotal in cart
 - Make sure cart is still visible on all browser heights

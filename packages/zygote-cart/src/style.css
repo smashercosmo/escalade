@@ -4,6 +4,7 @@
 	--darkColor: #000;
 	--backgroundColor: #fff;
 	--foregroundColor: #000;
+	--headerColor: #f7f7f7;
 }
 
 .zygoteContainer{
@@ -149,7 +150,7 @@
 }
 
 .zygoteFooter{
-	background-color: var(--lightColor);
+	background-color: var(--headerColor);
 	padding: 10px 20px;
 	text-align: center;
 	user-select: none;
@@ -173,7 +174,7 @@
 		margin-bottom: 3px;
 		color: var(--darkColor);
 		text-transform: uppercase;
-		font-size: .9em;
+		font-size: .8em;
 		user-select: none;
 	}
 	& input{
@@ -242,7 +243,7 @@
 	padding: 20px;
 }
 .zygoteHeader{
-	background-color: var(--lightColor);
+	background-color: var(--headerColor);
 	text-transform: uppercase;
 	& h1{
 		margin: 0;
@@ -320,7 +321,11 @@
 	color: var(--darkColor);
 	user-select: none;
 	text-transform: uppercase;
-	font-size: .9em;
+	color: #666;
+	font-size: .8em;
+	& path{
+		fill: #666;
+	}
 	& svg{
 		width: 17px;
 		height: 17px;
@@ -328,13 +333,13 @@
 		position: relative;
 	}
 	& li{
-		background-color: #999;
+		background-color: var(--lightColor);
 		width: 25%;
 		float: left;
 		padding: 20px 0;
 		cursor: pointer;
-		border-bottom: 1px solid var(--lightColor);
-		border-right: 1px solid var(--lightColor);
+		border-bottom: 1px solid #bbb;
+		border-right: 1px solid #bbb;
 		height: 63px;
 	}
 	& li:last-of-type{
@@ -348,7 +353,12 @@
 	& .zygoteActive{
 		background-color: var(--backgroundColor);
 		border-bottom: 0;
+		color: var(--darkColor);
 		cursor: default;
+
+	}
+	& .zygoteActive path{
+		fill: var(--darkColor);
 	}
 }
 .zygoteCartTab{
@@ -405,9 +415,10 @@
 	& input{
 		display: inline-block;
 		width: auto;
+		height: auto;
 	}
 	& span{
-		font-size: .7em;
+		font-size: .9em;
 	}
 }
 .zygoteBillingToggle{

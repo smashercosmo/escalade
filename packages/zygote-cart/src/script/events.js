@@ -3,7 +3,6 @@ import classList from './class-list'
 // Cart click events
 exports.parent = function(e){
 	if(e.target && typeof e.target.className === 'string'){
-		console.log(e.target.className)
 		const classes = e.target.className.split(' ')
 		for(let i = classes.length; i--;){
 			switch(classes[i]){
