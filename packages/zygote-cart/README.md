@@ -1,6 +1,5 @@
 # Zygote Cart/API
 
-- Clicking on tabs in icons doesn't trigger state change
 - Subtotal in cart
 - Aria roles
 - CSS hot reloading

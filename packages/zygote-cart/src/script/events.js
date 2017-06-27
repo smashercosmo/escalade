@@ -2,7 +2,8 @@ import classList from './class-list'
 
 // Cart click events
 exports.parent = function(e){
-	if(e.target){
+	if(e.target && typeof e.target.className === 'string'){
+		console.log(e.target.className)
 		const classes = e.target.className.split(' ')
 		for(let i = classes.length; i--;){
 			switch(classes[i]){
@@ -39,26 +40,13 @@ exports.parent = function(e){
 						this.changeStep(this.step - 1)
 					}
 					break
-
-				// Tab clicks
-				case 'zygoteCartTab':
-					this.changeStep(1)
-					break
-				case 'zygoteShipTab':
-					this.changeStep(2)
-					break
-				case 'zygotePayTab':
-					this.changeStep(3)
-					break
-				case 'zygoteConfirmTab':
-					this.changeStep(4)
-					break
 			}
 		}
 	}
 }
 
 exports.other = function(){
+	// Toggle same shipping checkbox
 	const els = this.els.container.querySelectorAll('.zygoteBillingToggle')
 	this.els.container
 		.querySelector('[name="sameShipping"]')
@@ -74,6 +62,14 @@ exports.other = function(){
 				}
 			}
 		}, false)
+
+	// Change step tabs
+	for(let i = this.els.tabs.length; i--;){
+		const step = i + 1
+		this.els.tabs[i].addEventListener('click', () => {
+			this.changeStep(step)
+		}, false)
+	}
 }
 
 
