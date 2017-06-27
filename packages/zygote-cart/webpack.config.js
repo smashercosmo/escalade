@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const extractStyles = new ExtractTextPlugin('[name].css')
+const extractStyles = new ExtractTextPlugin('[name]-v1.css')
 const extractHtml = new ExtractTextPlugin('index.html')
 const OpenBrowserPlugin = require('open-browser-webpack-plugin')
 
@@ -25,7 +25,7 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
-		filename: '[name].js',
+		filename: '[name]-v1.js',
 	},
 
 	module: {
