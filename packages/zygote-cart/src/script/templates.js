@@ -31,36 +31,38 @@ exports.cart = () => {
 				<div class="zygoteStep2 zygoteStep">
 
 					<div class="zygoteSection">
-						<label for="zygoteBillingFirst">First Name</label>
-						<input type="text" id="zygoteBillingFirst" />
+						<label for="zygoteShippingFirst">First Name</label>
+						<input type="text" id="zygoteShippingFirst" name="shippingFirst" autocomplete="given-name" required maxlength="100" />
 
-						<label for="zygoteBillingLast">Last Name</label>
-						<input type="text" id="zygoteBillingLast" />
+						<label for="zygoteShippingLast">Last Name</label>
+						<input type="text" id="zygoteShippingLast" name="shippingLast" autocomplete="family-name" required maxlength="100" />
 
-						<label for="zygoteBillingStreet">Street Address</label>
-						<input type="text" id="zygoteBillingStreet" />
+						<label for="zygoteShippingStreet">Street Address</label>
+						<input type="text" id="zygoteShippingStreet" name="shippingAddress1" autocomplete="address-line1" required maxlength="200" />
 
-						<label for="zygoteBillingStreet2">Street Address 2</label>
-						<input type="text" id="zygoteBillingStreet2" />
+						<label for="zygoteShippingStreet2">Street Address 2</label>
+						<input type="text" id="zygoteShippingStreet2" name="shippingAddress2" autocomplete="address-line2" required maxlength="200" />
 					</div>
 
 					<div class="zygoteSection">
-						<label for="zygoteBillingCity">City</label>
-						<input type="text" id="zygoteBillingCity" />
+						<label for="zygoteShippingCity">City</label>
+						<input type="text" id="zygoteShippingCity" name="shippingCity" autocomplete="address-level2" required maxlength="100" />
 
-						<label for="zygoteBillingState">State</label>
-						<input type="text" id="zygoteBillingState" />
+						<label for="zygoteShippingState">State</label>
+						<select type="text" id="zygoteShippingState" name="shippingState" autocomplete="address-level1" required>
+							<option disabled selected></option>
+						</select>
 
-						<label for="zygoteBillingZip">Zip / Postal Code</label>
-						<input type="text" id="zygoteBillingZip" />
+						<label for="zygoteShippingZip">Zip / Postal Code</label>
+						<input type="text" id="zygoteShippingZip" name="shippingZip" autocomplete="postal-code" required inputmode="numeric" pattern="[0-9]*" maxlength="20" />
 					</div>
 
 					<div class="zygoteSection">
-						<label for="zygoteBillingPhone">Phone</label>
-						<input type="text" id="zygoteBillingPhone" />
+						<label for="zygoteShippingPhone">Phone</label>
+						<input type="text" id="zygoteShippingPhone" name="shippingPhone" autocomplete="tel-national" required inputmode="numeric" maxlength="20" />
 
-						<label for="zygoteBillingEmail">Email</label>
-						<input type="text" id="zygoteBillingEmail" />
+						<label for="zygoteShippingEmail">Email</label>
+						<input type="email" id="zygoteShippingEmail" autocomplete="email" name="shippingEmail" required maxlength="200" />
 					</div>
 
 				</div>
@@ -92,7 +94,7 @@ exports.cart = () => {
 
 					<div class="zygoteSection zygoteBillingToggle">
 						<label for="zygoteBillingFirst">First Name</label>
-						<input type="text" id="zygoteBillingFirst" />
+						<input type="text" id="zygoteBillingFirst" name="" />
 
 						<label for="zygoteBillingLast">Last Name</label>
 						<input type="text" id="zygoteBillingLast" />

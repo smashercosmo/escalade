@@ -15,3 +15,7 @@
 - Dropdown for payment Month
 - Dropdown for payment year
 - Test out Google Maps API for address autofill
+- Client side validation
+- Format phone numbers
+- Format card numbers
+- Show card type icon
