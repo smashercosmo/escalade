@@ -428,6 +428,7 @@
 }
 
 .zygoteSub{
+	display: none;
 	list-style-type: none;
 	padding: 10px 0;
 
@@ -523,6 +524,9 @@
 
 	.zygoteNotEmpty{
 		& .zygoteProdHeader{
+			display: block;
+		}
+		& .zygoteSub{
 			display: block;
 		}
 	}
