@@ -1,10 +1,10 @@
 # Zygote Cart/API
 
+- Clicking on tabs in icons doesn't trigger state change
 - Subtotal in cart
 - Aria roles
 - CSS hot reloading
 - HTML hot reloading
-- Icons in tabs
 - Split out stylesheet
 - Make sure cart is still visible on all browser heights
 - Test out Google Maps API for address autofill

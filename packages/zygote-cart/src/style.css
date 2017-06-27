@@ -1,5 +1,9 @@
 :root{
 	--cartWidth: 900px;
+	--lightColor: #ccc;
+	--darkColor: #000;
+	--backgroundColor: #fff;
+	--foregroundColor: #000;
 }
 
 .zygoteContainer{
@@ -24,7 +28,7 @@
 	}
 }
 .zygoteModal{
-	background-color: #fff;
+	background-color: var(--backgroundColor);
 	max-width: var(--cartWidth);
 	margin: 0 auto;
 	position: relative;
@@ -37,7 +41,7 @@
 .zygoteProd{
 	position: relative;
 	margin-bottom: 30px;
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid var(--lightColor);
 	padding-bottom: 30px;
 	&:after{
 		content: '';
@@ -55,7 +59,7 @@
 	margin: 0 0 10px 0;
 	padding: 0 0 10px 0;
 	font-size: .8em;
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid var(--lightColor);
 	& li{
 		float: left;
 		&:nth-of-type(1){
@@ -120,8 +124,8 @@
 .zygoteIncrease, .zygoteDecrease{
 	font-weight: normal;
 	cursor: pointer;
-	background-color: #000;
-	color: #fff;
+	background-color: var(--foregroundColor);
+	color: var(--backgroundColor);
 	width: 19px;
 	height: 19px;
 	line-height: 17px;
@@ -145,7 +149,7 @@
 }
 
 .zygoteFooter{
-	background-color: #ccc;
+	background-color: var(--lightColor);
 	padding: 10px 20px;
 	text-align: center;
 	user-select: none;
@@ -167,7 +171,7 @@
 		cursor: pointer;
 		display: block;
 		margin-bottom: 3px;
-		color: #333;
+		color: var(--darkColor);
 		text-transform: uppercase;
 		font-size: .9em;
 		user-select: none;
@@ -177,15 +181,15 @@
 		width: 100%;
 		padding: 10px;
 		outline: none;
-		border: 1px solid #ccc;
+		border: 1px solid var(--lightColor);
 	}
 	& input:focus, & select:focus{
-		border: 1px solid #000;
+		border: 1px solid var(--foregroundColor);
 		outline: none;
 	}
 	& select{
 		height: 35px;
-		background-color: #fff;
+		background-color: var(--backgroundColor);
 		border-radius: 0;
 	}
 }
@@ -214,7 +218,7 @@
 	padding: 20px;
 }
 .zygoteHeader{
-	background-color: #ccc;
+	background-color: var(--lightColor);
 	text-transform: uppercase;
 }
 .zygoteClose{
@@ -250,10 +254,10 @@
 
 
 .zygoteBtn{
-	background-color: #000;
+	background-color: var(--foregroundColor);
 	outline: 0;
 	border: 0;
-	color: #fff;
+	color: var(--backgroundColor);
 	padding: 13px 20px;
 	min-width: 130px;
 	text-align: center;
@@ -285,10 +289,11 @@
 	margin: 0;
 	padding: 0;
 	text-align: center;
-	color: #333;
+	color: var(--darkColor);
 	user-select: none;
 	text-transform: uppercase;
 	font-size: .9em;
+	border-top: 1px solid var(--darkColor);
 	& svg{
 		width: 17px;
 		height: 17px;
@@ -301,12 +306,12 @@
 		float: left;
 		padding: 20px 0;
 		cursor: pointer;
-		border-bottom: 1px solid #666;
-		border-right: 1px solid #666;
+		border-bottom: 1px solid var(--darkColor);
+		border-right: 1px solid var(--darkColor);
 		height: 63px;
-		&:last-of-type{
-			border-right: none;
-		}
+	}
+	& li:last-of-type{
+		border-right: none;
 	}
 	&:after{
 		content: '';
@@ -314,7 +319,7 @@
 		clear: both;
 	}
 	& .zygoteActive{
-		background-color: #fff;
+		background-color: var(--backgroundColor);
 		border-bottom: 0;
 		cursor: default;
 	}
@@ -405,11 +410,11 @@
 	}
 	.zygoteSection{
 		padding: 20px;
-		border-right: 1px solid #ccc;
+		border-right: 1px solid var(--lightColor);
 		border-bottom: none;
 		float: left;
 		width: calc(100% / 3);
-		border-top: 1px solid #ccc;
+		border-top: 1px solid var(--lightColor);
 	}
 	.zygoteStep{
 		padding: 0;
