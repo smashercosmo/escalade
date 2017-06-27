@@ -4,6 +4,11 @@ An client side ecommerce cart & checkout system.
 
 ## Usage
 
+WIP
+
+## Using with a custom API
+
+WIP
 
 ## Todo
 - Escalade sports subdomain
