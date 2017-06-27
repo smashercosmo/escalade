@@ -21,12 +21,9 @@ WIP
 WIP
 
 ## Todo
-- Subtotal in cart
+- Remove tabs and new lines from JS on build
 - If user tries to confirm order tab or hit next to confirm pane, validate all inputs and move to any pane where there are errors
 - Make sure cart is still visible on all browser heights
-- Format card numbers
-- Show card type icon
-- Remove tabs and new lines from JS on build
 - Confirm order screen checks with API
 - Ability to override which API gets called
 	+ window.zygoteApi = 'https://yourapi.escaladesports.com/'
@@ -36,3 +33,6 @@ WIP
 - Client side validation
 - Format phone numbers
 - Only inject parts of cart that are about to get used
+
+- Format card numbers
+- Show card type icon

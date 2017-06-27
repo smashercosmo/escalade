@@ -7,6 +7,7 @@ import truck from '../img/truck.svg'
 import card from '../img/card.svg'
 import check from '../img/check.svg'
 
+
 // Build state options
 let stateEls = []
 for(let i in states){
