@@ -6,12 +6,12 @@ An client side ecommerce cart & checkout system. The cart/checkout forms are inj
 
 Insert the CSS file before your closing `</head>` tag:
 ```html
-<link type="text/css" rel="stylesheet" href="https://zygote.escaladesports.com/zygote-v1.css">
+<link type="text/css" rel="stylesheet" href="https://zygote.netlify.com/zygote-v1.css">
 ```
 
 Insert the JavaScript file before your closing `</body>` tag:
 ```html
-<script src="https://zygote.escaladesports.com/zygote-v1.js"></script>
+<script src="https://zygote.netlify.com/zygote-v1.js"></script>
 ```
 
 WIP
@@ -21,9 +21,9 @@ WIP
 WIP
 
 ## Todo
+- Subtotal in cart
 - If user tries to confirm order tab or hit next to confirm pane, validate all inputs and move to any pane where there are errors
 - Escalade sports subdomain
-- Subtotal in cart
 - Make sure cart is still visible on all browser heights
 - Format card numbers
 - Show card type icon
@@ -32,8 +32,6 @@ WIP
 - Ability to override which API gets called
 	+ window.zygoteApi = 'https://yourapi.escaladesports.com/'
 	+ Default to https://zygoteapi.escaladesports.com/
-
-- CSS hot reloading
 - HTML hot reloading
 - Split out stylesheet
 - Test out Google Maps API for address autofill

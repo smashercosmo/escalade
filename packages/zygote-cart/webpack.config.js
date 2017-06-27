@@ -1,7 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const extractStyles = new ExtractTextPlugin('[name]-v1.css')
 const extractHtml = new ExtractTextPlugin('index.html')
 const OpenBrowserPlugin = require('open-browser-webpack-plugin')
 
@@ -42,15 +41,16 @@ module.exports = {
 			{
 				test: /\.css$/,
 				exclude: [/node_modules/],
-				use: extractStyles.extract({
-					use: [
-						{
-							loader: 'css-loader',
-							options: { importLoaders: 1 },
-						},
-						'postcss-loader',
-					],
-				}),
+				use: [
+					{
+						loader: 'style-loader'
+					},
+					{
+						loader: 'css-loader',
+						options: { importLoaders: 1 },
+					},
+					'postcss-loader',
+				],
 			},
 			{
 				test: /\.pug$/,
@@ -66,7 +66,6 @@ module.exports = {
 		]
 	},
 	plugins: [
-		extractStyles,
 		extractHtml,
 		new OpenBrowserPlugin({ url: 'http://localhost:8080/' })
 	],
