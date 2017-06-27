@@ -1245,6 +1245,10 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
+datasets-us-states-abbr-names@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/datasets-us-states-abbr-names/-/datasets-us-states-abbr-names-1.0.0.tgz#b1a02ca3aae86e84271b2a5a89e72859049f4b86"
+
 date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"

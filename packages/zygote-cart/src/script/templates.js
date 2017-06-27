@@ -1,5 +1,13 @@
 // HTML templates
 import usdFormatter from 'usd-formatter'
+import states from 'datasets-us-states-abbr-names'
+
+let stateEls = []
+for(let i in states){
+	if(states[i] === 'Alaska' || states[i] === 'Hawaii') continue
+	stateEls.push(`<option value=${i}>${states[i]}</option>`)
+}
+stateEls = stateEls.join('')
 
 exports.cart = () => {
 	const el = document.createElement('div')
@@ -50,7 +58,7 @@ exports.cart = () => {
 
 						<label for="zygoteShippingState">State</label>
 						<select type="text" id="zygoteShippingState" name="shippingState" autocomplete="address-level1" required>
-							<option disabled selected></option>
+							<option disabled selected>${stateEls}</option>
 						</select>
 
 						<label for="zygoteShippingZip">Zip / Postal Code</label>
