@@ -435,6 +435,8 @@
 	text-transform: uppercase;
 	font-weight: bold;
 	border-top: 1px solid var(--lightColor);
+	border-bottom: 1px solid var(--lightColor);
+	text-align: center;
 
 	font-size: .9em;
 	&:after{
@@ -443,18 +445,25 @@
 		clear: both;
 	}
 }
-.zygoteSubHead{
-	float: left;
-}
-.zygoteSubTotal{
-	float: right;
-}
 
+
+.zygoteNotEmpty{
+	& .zygoteSub{
+		display: block;
+	}
+}
 
 @media(min-width: 900px){
 	.zygoteProd{
 		margin-bottom: 15px;
 		padding-bottom: 15px;
+	}
+
+	.zygoteSubHead{
+		float: left;
+	}
+	.zygoteSubTotal{
+		float: right;
 	}
 
 	.zygoteOn2, .zygoteOn3, .zygoteOn4{
@@ -524,9 +533,6 @@
 
 	.zygoteNotEmpty{
 		& .zygoteProdHeader{
-			display: block;
-		}
-		& .zygoteSub{
 			display: block;
 		}
 	}
