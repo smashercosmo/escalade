@@ -1,7 +1,5 @@
 # Zygote Cart/API
 
-- All section columns should have same height
-- Payment same as shipping option
 - Autofill inputs
 - SSL seal
 - Billing form

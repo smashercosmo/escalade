@@ -137,7 +137,6 @@
 		clear: both;
 	}
 	& > div{
-		padding: 20px;
 		&:last-of-type{
 			border-bottom: none;
 			border-right: none;
@@ -146,7 +145,7 @@
 }
 
 .zygoteSection{
-	border-bottom: 1px solid #ccc;
+	padding: 0 20px;
 	& label{
 		cursor: pointer;
 		display: block;
@@ -292,12 +291,16 @@
 }
 .zygoteStep{
 	display: none;
+	padding: 20px 0;
 	&.zygoteActive{
 		display: block;
 	}
 }
 
 .zygoteOn1{
+	& .zygoteNext{
+		margin-top: 0;
+	}
 	& .zygotePrev{
 		display: none;
 	}
@@ -306,6 +309,9 @@
 	& .zygoteNext{
 		display: none;
 	}
+}
+.zygoteNext{
+	margin-top: 20px;
 }
 .zygoteBoxLabel{
 	& input{
@@ -342,6 +348,7 @@
 		}
 	}
 	.zygoteSection{
+		padding: 20px;
 		border-right: 1px solid #ccc;
 		border-bottom: none;
 		float: left;
@@ -349,6 +356,7 @@
 		border-top: 1px solid #ccc;
 	}
 	.zygoteStep{
+		padding: 0;
 		& >div:nth-of-type(1),
 		& >div:nth-of-type(2),
 		& >div:nth-of-type(3){
@@ -390,7 +398,8 @@
 		float: left;
 	}
 	.zygoteNext{
-		float: right
+		float: right;
+		margin-top: 0;
 	}
 
 	.zygoteNotEmpty{
