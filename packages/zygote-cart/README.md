@@ -32,7 +32,6 @@ WIP
 - Ability to override which API gets called
 	+ window.zygoteApi = 'https://yourapi.escaladesports.com/'
 	+ Default to https://zygoteapi.escaladesports.com/
-- HTML hot reloading
 - Split out stylesheet
 - Test out Google Maps API for address autofill
 - Client side validation
