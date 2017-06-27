@@ -13,9 +13,3 @@ node_modules/
 dev
 .env
 dist
-
-# Temporary
-temp
-tmp
-temp-*
-uploads
