@@ -4,10 +4,12 @@ import {
 	remove as removeClass
 } from './class-list'
 import { product as productTemplate } from './templates'
+import formatUsd from 'usd-formatter'
 
 module.exports = function(){
 	const ids = []
 	let totalQty = 0
+	let subTotal = 0
 	// Create/alter new products
 	for(let i = 0; i < this.products.length; i++){
 		ids.push(this.products[i].id)
@@ -20,6 +22,7 @@ module.exports = function(){
 			el.querySelector('[data-qty]').textContent = this.products[i].qty
 		}
 		totalQty += this.products[i].qty
+		subTotal += (this.products[i].price * this.products[i].qty)
 	}
 	// Delete old products
 	const els = this.els.list.children
@@ -40,6 +43,10 @@ module.exports = function(){
 		this.qty[i].textContent = totalQty
 		if(totalQty) addClass(this.qty[i], 'zygoteHasQty')
 		else removeClass(this.qty[i], 'zygoteHasQty')
+	}
+	// Update subtotal
+	for(let i = this.els.subtotals.length; i--;){
+		this.els.subtotals[i].textContent = formatUsd(subTotal)
 	}
 	return this
 }

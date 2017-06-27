@@ -23,7 +23,6 @@ WIP
 ## Todo
 - Subtotal in cart
 - If user tries to confirm order tab or hit next to confirm pane, validate all inputs and move to any pane where there are errors
-- Escalade sports subdomain
 - Make sure cart is still visible on all browser heights
 - Format card numbers
 - Show card type icon
@@ -36,3 +35,4 @@ WIP
 - Test out Google Maps API for address autofill
 - Client side validation
 - Format phone numbers
+- Only inject parts of cart that are about to get used

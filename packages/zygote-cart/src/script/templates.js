@@ -49,6 +49,10 @@ exports.cart = () => {
 						<li>Remove</li>
 					</ul>
 					<ul class="zygoteProdList"></ul>
+					<ul class="zygoteSub">
+						<li class="zygoteSubHead">Subtotal</li>
+						<li class="zygoteSubTotal">$0.00</li>
+					</ul>
 				</div>
 
 				<div class="zygoteStep2 zygoteStep">
