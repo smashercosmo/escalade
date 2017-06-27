@@ -2,12 +2,22 @@
 import usdFormatter from 'usd-formatter'
 import states from 'datasets-us-states-abbr-names'
 
+// Build state options
 let stateEls = []
 for(let i in states){
 	if(states[i] === 'Alaska' || states[i] === 'Hawaii') continue
 	stateEls.push(`<option value=${i}>${states[i]}</option>`)
 }
 stateEls = stateEls.join('')
+
+// Build year options
+let year = new Date().getFullYear()
+let yearEls = []
+for(let i = 0; i < 16; i++){
+	yearEls.push(`<option value=${year}>${year}</option>`)
+	year++
+}
+yearEls = yearEls.join('')
 
 exports.cart = () => {
 	const el = document.createElement('div')
@@ -58,7 +68,8 @@ exports.cart = () => {
 
 						<label for="zygoteShippingState">State</label>
 						<select type="text" id="zygoteShippingState" name="shippingState" autocomplete="address-level1" required>
-							<option disabled selected>${stateEls}</option>
+							<option disabled selected></option>
+							${stateEls}
 						</select>
 
 						<label for="zygoteShippingZip">Zip / Postal Code</label>
@@ -79,18 +90,35 @@ exports.cart = () => {
 
 					<div class="zygoteSection">
 						<label for="zygotePaymentNumber">Card Number</label>
-						<input type="text" id="zygotePaymentNumber" />
+						<input type="text" id="zygotePaymentNumber" name="paymentNumber" autocomplete="cc-number" required inputmode="numeric" pattern="[0-9 ]*" maxlength="100" />
 
 						<label for="zygotePaymentSecurity">CVC</label>
-						<input type="text" id="zygotePaymentSecurity" />
+						<input type="text" id="zygotePaymentSecurity" name="paymentSecurity" autocomplete="cc-csc" required inputmode="numeric" pattern="[0-9]*" maxlength="10" />
 					</div>
 
 					<div class="zygoteSection">
 						<label for="zygotePaymentMonth">Expiration Month</label>
-						<input type="text" id="zygotePaymentMonth" />
+						<select type="text" id="zygotePaymentMonth" autocomplete="cc-exp-month" name="paymentMonth" required>
+							<option disabled selected></option>
+							<option value="January">January</option>
+							<option value="February">February</option>
+							<option value="March">March</option>
+							<option value="April">April</option>
+							<option value="May">May</option>
+							<option value="June">June</option>
+							<option value="July">July</option>
+							<option value="August">August</option>
+							<option value="September">September</option>
+							<option value="October">October</option>
+							<option value="November">November</option>
+							<option value="December">December</option>
+						</select>
 
 						<label for="zygotePaymentYear">Expiration Year</label>
-						<input type="text" id="zygotePaymentYear" />
+						<select type="text" id="zygotePaymentYear" required autocomplete="cc-exp-year" name="paymentYear">
+							<option disabled selected></option>
+							${yearEls}
+						</select>
 					</div>
 
 					<div class="zygoteSection">
@@ -102,35 +130,38 @@ exports.cart = () => {
 
 					<div class="zygoteSection zygoteBillingToggle">
 						<label for="zygoteBillingFirst">First Name</label>
-						<input type="text" id="zygoteBillingFirst" name="" />
+						<input type="text" id="zygoteBillingFirst" name="billingFirst" autocomplete="given-name" required maxlength="100" />
 
 						<label for="zygoteBillingLast">Last Name</label>
-						<input type="text" id="zygoteBillingLast" />
+						<input type="text" id="zygoteBillingLast" name="billingLast" autocomplete="family-name" required maxlength="100" />
 
 						<label for="zygoteBillingStreet">Street Address</label>
-						<input type="text" id="zygoteBillingStreet" />
+						<input type="text" id="zygoteBillingStreet" name="billingAddress1" autocomplete="address-line1" required maxlength="200" />
 
 						<label for="zygoteBillingStreet2">Street Address 2</label>
-						<input type="text" id="zygoteBillingStreet2" />
+						<input type="text" id="zygoteBillingStreet2" name="billingAddress2" autocomplete="address-line2" required maxlength="200" />
 					</div>
 
 					<div class="zygoteSection zygoteBillingToggle">
 						<label for="zygoteBillingCity">City</label>
-						<input type="text" id="zygoteBillingCity" />
+						<input type="text" id="zygoteBillingCity" name="billingCity" autocomplete="address-level2" required maxlength="100" />
 
 						<label for="zygoteBillingState">State</label>
-						<input type="text" id="zygoteBillingState" />
+						<select type="text" id="zygoteBillingState" name="billingState" autocomplete="address-level1" required>
+							<option disabled selected></option>
+							${stateEls}
+						</select>
 
 						<label for="zygoteBillingZip">Zip / Postal Code</label>
-						<input type="text" id="zygoteBillingZip" />
+						<input type="text" id="zygoteBillingZip" name="billingZip" autocomplete="postal-code" required inputmode="numeric" pattern="[0-9]*" maxlength="20" />
 					</div>
 
 					<div class="zygoteSection zygoteBillingToggle">
 						<label for="zygoteBillingPhone">Phone</label>
-						<input type="text" id="zygoteBillingPhone" />
+						<input type="text" id="zygoteBillingPhone" name="billingPhone" autocomplete="tel-national" required inputmode="numeric" maxlength="20" />
 
 						<label for="zygoteBillingEmail">Email</label>
-						<input type="text" id="zygoteBillingEmail" />
+						<input type="email" id="zygoteBillingEmail" autocomplete="email" name="billingEmail" required maxlength="200" />
 					</div>
 
 				</div>
