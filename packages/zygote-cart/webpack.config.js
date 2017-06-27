@@ -58,6 +58,10 @@ module.exports = {
 				use: extractHtml.extract({
 					use: ['html-loader', 'pug-html-loader?pretty&exports=false']
 				})
+			},
+			{
+				test: /\.svg$/,
+				loader: 'svg-inline-loader'
 			}
 		]
 	},

@@ -13,3 +13,4 @@
 - Format card numbers
 - Show card type icon
 - Style select elements
+- Remove tabs and new lines from JS on build
