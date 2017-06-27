@@ -1,7 +1,5 @@
 # Zygote Cart/API
 
-- Focus on inputs on step change
-- SSL seal
 - Subtotal in cart
 - Aria roles
 - CSS hot reloading

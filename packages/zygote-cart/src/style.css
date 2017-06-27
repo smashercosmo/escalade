@@ -144,6 +144,23 @@
 	}
 }
 
+.zygoteFooter{
+	background-color: #ccc;
+	padding: 10px 20px;
+	text-align: center;
+	user-select: none;
+	cursor: default;
+	& svg{
+		width: 11px;
+		height: 11px;
+	}
+	& span{
+		font-size: .75em;
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+}
+
 .zygoteSection{
 	padding: 0 20px;
 	& label{
