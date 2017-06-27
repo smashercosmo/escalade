@@ -13,6 +13,7 @@ function Cart(){
 Cart.prototype = {
 	step: 1,
 	isOpen: false,
+	api: 'https://zygoteapi.escaladesports.com/v1',
 	body: document.getElementsByTagName('body')[0],
 
 	inject: require('./script/inject'),

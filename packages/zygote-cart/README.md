@@ -21,13 +21,9 @@ WIP
 WIP
 
 ## Todo
-- Remove tabs and new lines from JS on build
 - If user tries to confirm order tab or hit next to confirm pane, validate all inputs and move to any pane where there are errors
 - Make sure cart is still visible on all browser heights
 - Confirm order screen checks with API
-- Ability to override which API gets called
-	+ window.zygoteApi = 'https://yourapi.escaladesports.com/'
-	+ Default to https://zygoteapi.escaladesports.com/
 - Split out stylesheet
 - Test out Google Maps API for address autofill
 - Client side validation
@@ -36,3 +32,4 @@ WIP
 
 - Format card numbers
 - Show card type icon
+- Remove tabs and new lines from JS on build
