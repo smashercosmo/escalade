@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const extractHtml = new ExtractTextPlugin('index.html')
+const extractHtml = new ExtractTextPlugin('test.html')
 const OpenBrowserPlugin = require('open-browser-webpack-plugin')
 
 module.exports = {
@@ -67,7 +67,7 @@ module.exports = {
 	},
 	plugins: [
 		extractHtml,
-		new OpenBrowserPlugin({ url: 'http://localhost:8080/' })
+		new OpenBrowserPlugin({ url: 'http://localhost:8080/test.html' })
 	],
 	devServer: {
 		contentBase: path.resolve(__dirname, './dist')
