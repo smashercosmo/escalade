@@ -154,6 +154,7 @@
 		color: #333;
 		text-transform: uppercase;
 		font-size: .9em;
+		user-select: none;
 	}
 	& input{
 		margin-bottom: 20px;
@@ -264,6 +265,8 @@
 	text-align: center;
 	color: #333;
 	user-select: none;
+	text-transform: uppercase;
+	font-size: .9em;
 	& li{
 		background-color: #999;
 		width: 25%;
@@ -304,6 +307,21 @@
 		display: none;
 	}
 }
+.zygoteBoxLabel{
+	& input{
+		display: inline-block;
+		width: auto;
+	}
+	& span{
+		font-size: .7em;
+	}
+}
+.zygoteBillingToggle{
+	display: none;
+	&.zygoteShow{
+		display: block;
+	}
+}
 
 
 
@@ -323,12 +341,37 @@
 			display: block;
 		}
 	}
-
 	.zygoteSection{
 		border-right: 1px solid #ccc;
 		border-bottom: none;
-		width: calc(100% / 3);
 		float: left;
+		width: calc(100% / 3);
+		border-top: 1px solid #ccc;
+	}
+	.zygoteStep{
+		& >div:nth-of-type(1),
+		& >div:nth-of-type(2),
+		& >div:nth-of-type(3){
+			border-top: 0;
+		}
+		& >div:nth-of-type(3n){
+			border-right: 0;
+		}
+		& >div:nth-of-type(3n+1){
+			clear: both;
+		}
+	}
+
+	.zygoteStep2{
+		& .zygoteSection{
+			width: calc(100% / 3);
+			height: 340px;
+		}
+	}
+	.zygoteStep3{
+		& .zygoteSection{
+			width: calc(100% / 3);
+		}
 	}
 
 	.zygoteModal{

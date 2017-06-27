@@ -17,6 +17,7 @@ module.exports = function(){
 
 	// Attach events
 	el.addEventListener('click', e => {
-		events.call(this, e)
+		events.parent.call(this, e)
 	}, false)
+	events.other.call(this)
 }

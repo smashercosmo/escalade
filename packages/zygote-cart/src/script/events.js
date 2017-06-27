@@ -1,7 +1,7 @@
 import classList from './class-list'
 
 // Cart click events
-module.exports = function(e){
+exports.parent = function(e){
 	if(e.target){
 		const classes = e.target.className.split(' ')
 		for(let i = classes.length; i--;){
@@ -56,6 +56,24 @@ module.exports = function(e){
 			}
 		}
 	}
+}
+
+exports.other = function(){
+	const els = this.els.container.querySelectorAll('.zygoteBillingToggle')
+	this.els.container
+		.querySelector('[name="sameShipping"]')
+		.addEventListener('change', function(e){
+			if(this.checked){
+				for(let i = els.length; i--;){
+					classList.remove(els[i], 'zygoteShow')
+				}
+			}
+			else{
+				for(let i = els.length; i--;){
+					classList.add(els[i], 'zygoteShow')
+				}
+			}
+		}, false)
 }
 
 

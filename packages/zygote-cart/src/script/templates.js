@@ -31,8 +31,11 @@ exports.cart = () => {
 				<div class="zygoteStep2 zygoteStep">
 
 					<div class="zygoteSection">
-						<label for="zygoteBillingName">Name</label>
-						<input type="text" id="zygoteBillingName" />
+						<label for="zygoteBillingFirst">First Name</label>
+						<input type="text" id="zygoteBillingFirst" />
+
+						<label for="zygoteBillingLast">Last Name</label>
+						<input type="text" id="zygoteBillingLast" />
 
 						<label for="zygoteBillingStreet">Street Address</label>
 						<input type="text" id="zygoteBillingStreet" />
@@ -65,11 +68,6 @@ exports.cart = () => {
 				<div class="zygoteStep3 zygoteStep">
 
 					<div class="zygoteSection">
-						<label for="zygotePaymentName">Name on Card</label>
-						<input type="text" id="zygotePaymentName" />
-					</div>
-
-					<div class="zygoteSection">
 						<label for="zygotePaymentNumber">Card Number</label>
 						<input type="text" id="zygotePaymentNumber" />
 
@@ -84,6 +82,47 @@ exports.cart = () => {
 						<label for="zygotePaymentYear">Expiration Year</label>
 						<input type="text" id="zygotePaymentYear" />
 					</div>
+
+					<div class="zygoteSection">
+						<label class="zygoteBoxLabel">
+							<input type="checkbox" checked name="sameShipping" />
+							<span>Billing Address Same as Shipping</span>
+						</label>
+					</div>
+
+					<div class="zygoteSection zygoteBillingToggle">
+						<label for="zygoteBillingFirst">First Name</label>
+						<input type="text" id="zygoteBillingFirst" />
+
+						<label for="zygoteBillingLast">Last Name</label>
+						<input type="text" id="zygoteBillingLast" />
+
+						<label for="zygoteBillingStreet">Street Address</label>
+						<input type="text" id="zygoteBillingStreet" />
+
+						<label for="zygoteBillingStreet2">Street Address 2</label>
+						<input type="text" id="zygoteBillingStreet2" />
+					</div>
+
+					<div class="zygoteSection zygoteBillingToggle">
+						<label for="zygoteBillingCity">City</label>
+						<input type="text" id="zygoteBillingCity" />
+
+						<label for="zygoteBillingState">State</label>
+						<input type="text" id="zygoteBillingState" />
+
+						<label for="zygoteBillingZip">Zip / Postal Code</label>
+						<input type="text" id="zygoteBillingZip" />
+					</div>
+
+					<div class="zygoteSection zygoteBillingToggle">
+						<label for="zygoteBillingPhone">Phone</label>
+						<input type="text" id="zygoteBillingPhone" />
+
+						<label for="zygoteBillingEmail">Email</label>
+						<input type="text" id="zygoteBillingEmail" />
+					</div>
+
 				</div>
 
 				<div class="zygoteStep4 zygoteStep">
