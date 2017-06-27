@@ -2,6 +2,10 @@
 import usdFormatter from 'usd-formatter'
 import states from 'datasets-us-states-abbr-names'
 import padlock from '../img/padlock.svg'
+import cart from '../img/cart.svg'
+import truck from '../img/truck.svg'
+import card from '../img/card.svg'
+import check from '../img/check.svg'
 
 // Build state options
 let stateEls = []
@@ -30,10 +34,10 @@ exports.cart = () => {
 				<h1>Your Cart</h1>
 			</div>
 			<ul class="zygoteTabs">
-				<li class="zygoteCartTab">Your Cart</li>
-				<li class="zygoteShipTab">Shipping Address</li>
-				<li class="zygotePayTab">Payment Method</li>
-				<li class="zygoteConfirmTab">Confirm Order</li>
+				<li class="zygoteCartTab">${cart} Your Cart</li>
+				<li class="zygoteShipTab">${truck} Shipping Address</li>
+				<li class="zygotePayTab">${card} Payment Method</li>
+				<li class="zygoteConfirmTab">${check} Confirm Order</li>
 			</ul>
 			<form class="zygoteForm">
 

@@ -289,6 +289,12 @@
 	user-select: none;
 	text-transform: uppercase;
 	font-size: .9em;
+	& svg{
+		width: 17px;
+		height: 17px;
+		margin-right: 5px;
+		position: relative;
+	}
 	& li{
 		background-color: #999;
 		width: 25%;
@@ -297,6 +303,7 @@
 		cursor: pointer;
 		border-bottom: 1px solid #666;
 		border-right: 1px solid #666;
+		height: 63px;
 		&:last-of-type{
 			border-right: none;
 		}
@@ -310,6 +317,32 @@
 		background-color: #fff;
 		border-bottom: 0;
 		cursor: default;
+	}
+}
+.zygoteCartTab{
+	& svg{
+		top: 2px;
+	}
+}
+.zygoteShipTab{
+	& svg{
+		width: 20px;
+		height: 20px;
+		top: 4px;
+	}
+}
+.zygotePayTab{
+	& svg{
+		top: 3px;
+		width: 18px;
+		height: 18px;
+	}
+}
+.zygoteConfirmTab{
+	& svg{
+		width: 15px;
+		height: 15px;
+		top: 1px;
 	}
 }
 .zygoteStep{
