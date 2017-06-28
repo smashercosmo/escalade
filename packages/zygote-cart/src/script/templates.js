@@ -108,7 +108,7 @@ exports.cart = () => {
 
 					<div class="zygoteSection">
 						<label for="zygotePaymentMonth">Expiration Month</label>
-						<select type="text" id="zygotePaymentMonth" autocomplete="cc-exp-month" name="paymentMonth" required>
+						<select type="text" id="zygotePaymentMonth" autocomplete="cc-exp-month" name="billingMonth" required>
 							<option disabled selected></option>
 							<option value="January">January</option>
 							<option value="February">February</option>
@@ -125,7 +125,7 @@ exports.cart = () => {
 						</select>
 
 						<label for="zygotePaymentYear">Expiration Year</label>
-						<select type="text" id="zygotePaymentYear" required autocomplete="cc-exp-year" name="paymentYear">
+						<select type="text" id="zygotePaymentYear" required autocomplete="cc-exp-year" name="billingYear">
 							<option disabled selected></option>
 							${yearEls}
 						</select>
@@ -133,7 +133,7 @@ exports.cart = () => {
 
 					<div class="zygoteSection">
 						<label class="zygoteBoxLabel">
-							<input type="checkbox" checked name="sameShipping" />
+							<input type="checkbox" checked name="billingSame" />
 							<span>Billing Address Same as Shipping</span>
 						</label>
 					</div>
