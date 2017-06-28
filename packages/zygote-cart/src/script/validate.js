@@ -13,5 +13,7 @@ module.exports = function(obj){
 		}
 	}
 	const input = this.getInput()
+	console.log('Sending:')
+	console.log(input)
 	xhr.send(JSON.stringify(input))
 }
