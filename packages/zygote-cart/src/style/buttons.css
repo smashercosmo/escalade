@@ -1,0 +1,30 @@
+
+.zygoteBtn{
+	background-color: var(--foregroundColor);
+	outline: 0;
+	border: 0;
+	color: var(--backgroundColor);
+	padding: 13px 20px;
+	min-width: 130px;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: .8em;
+	font-weight: bold;
+	cursor: pointer;
+	display: inline-block;
+	user-select: none;
+}
+.zygoteBtn:focus, .zygoteBtn:hover{
+	opacity: .7;
+}
+.zygoteStepBtns{
+	display: none;
+	& .zygoteBtn{
+		width: 100%;
+	}
+	&:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+}

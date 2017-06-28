@@ -1,0 +1,13 @@
+
+.zygoteEmpty{
+	text-align: center;
+	margin: 30px 0;
+}
+.zygoteNotEmpty{
+	& .zygoteEmpty{
+		display: none;
+	}
+	& .zygoteStepBtns{
+		display: block;
+	}
+}

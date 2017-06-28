@@ -1,0 +1,76 @@
+
+.zygoteTabs{
+	display: none;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	color: var(--darkColor);
+	user-select: none;
+	text-transform: uppercase;
+	color: #666;
+	font-size: .8em;
+	& path{
+		fill: #666;
+	}
+	& svg{
+		width: 17px;
+		height: 17px;
+		margin-right: 5px;
+		position: relative;
+	}
+	& li{
+		background-color: var(--lightColor);
+		width: 25%;
+		float: left;
+		padding: 20px 0;
+		cursor: pointer;
+		border-bottom: 1px solid #bbb;
+		border-right: 1px solid #bbb;
+		height: 63px;
+	}
+	& li:last-of-type{
+		border-right: none;
+	}
+	&:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+	& .zygoteActive{
+		background-color: var(--backgroundColor);
+		border-bottom: 0;
+		color: var(--darkColor);
+		cursor: default;
+
+	}
+	& .zygoteActive path{
+		fill: var(--darkColor);
+	}
+}
+.zygoteCartTab{
+	& svg{
+		top: 2px;
+	}
+}
+.zygoteShipTab{
+	& svg{
+		width: 20px;
+		height: 20px;
+		top: 4px;
+	}
+}
+.zygotePayTab{
+	& svg{
+		top: 3px;
+		width: 18px;
+		height: 18px;
+	}
+}
+.zygoteConfirmTab{
+	& svg{
+		width: 15px;
+		height: 15px;
+		top: 1px;
+	}
+}

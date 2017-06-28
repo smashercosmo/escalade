@@ -1,0 +1,39 @@
+
+.zygoteStep2, .zygoteStep3{
+	margin: 0 -20px;
+	&:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+	& > div{
+		&:last-of-type{
+			border-bottom: none;
+			border-right: none;
+		}
+	}
+}
+.zygoteStep{
+	display: none;
+	padding: 20px 0;
+	&.zygoteActive{
+		display: block;
+	}
+}
+
+.zygoteOn1{
+	& .zygoteNext{
+		margin-top: 0;
+	}
+	& .zygotePrev{
+		display: none;
+	}
+}
+.zygoteOn4{
+	& .zygoteNext{
+		display: none;
+	}
+}
+.zygoteNext{
+	margin-top: 20px;
+}

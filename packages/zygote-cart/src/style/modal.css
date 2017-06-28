@@ -1,0 +1,7 @@
+
+.zygoteModal{
+	background-color: var(--backgroundColor);
+	max-width: var(--cartWidth);
+	margin: 0 auto;
+	position: relative;
+}

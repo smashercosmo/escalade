@@ -1,0 +1,74 @@
+
+
+
+.zygoteForm{
+	padding: 20px;
+}
+
+.zygoteSection{
+	padding: 0 20px;
+	& label{
+		cursor: pointer;
+		display: block;
+		margin-bottom: 3px;
+		color: var(--darkColor);
+		text-transform: uppercase;
+		font-size: .8em;
+		user-select: none;
+	}
+	& input{
+		padding: 10px;
+	}
+	& input, & select{
+		margin-bottom: 20px;
+		width: 100%;
+		outline: none;
+		border: 1px solid var(--lightColor);
+		font-size: 1em;
+		height: 40px;
+	}
+	& input:focus, & select:focus{
+		border: 1px solid var(--foregroundColor);
+		outline: none;
+	}
+	& select{
+		padding: 0 10px;
+		background-color: var(--backgroundColor);
+		appearance: none;
+		-webkit-border-radius: 0px;
+		border-radius: 0px;
+		position: relative;
+		background-image:
+			linear-gradient(45deg, transparent 50%, var(--foregroundColor) 50%),
+			linear-gradient(135deg, var(--foregroundColor) 50%, transparent 50%),
+			linear-gradient(to right, var(--lightColor), var(--lightColor));
+		background-position:
+			calc(100% - 17px) calc(1em + 2px),
+			calc(100% - 12px) calc(1em + 2px),
+			calc(100% - 2.1em) 0.5em;
+		background-size:
+			5px 5px,
+			5px 5px,
+			1px 1.4em;
+		background-repeat: no-repeat;
+	}
+}
+
+
+.zygoteBoxLabel{
+	& input{
+		display: inline-block;
+		width: auto;
+		height: auto;
+	}
+	& span{
+		font-size: .9em;
+	}
+}
+
+.zygoteBillingToggle{
+	display: none;
+	&.zygoteShow{
+		display: block;
+	}
+}
