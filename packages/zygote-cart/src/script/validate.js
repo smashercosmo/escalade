@@ -1,13 +1,17 @@
 // Validates an order and returns tax/shipping
-module.exports = function(obj, cb){
+module.exports = function(obj){
+
+	this.showLoader()
+
 	const xhr = new XMLHttpRequest()
 	xhr.open('POST', `${this.api}/validate`, true)
 	xhr.setRequestHeader('Content-type','application/json; charset=utf-8')
 	xhr.onload = () => {
 		if(xhr.readyState == 4 && xhr.status == '200'){
-			cb(JSON.parse(xhr.responseText))
+			console.log(JSON.parse(xhr.responseText))
+			this.hideLoader()
 		}
 	}
 	const input = this.getInput()
-	xhr.send(input)
+	xhr.send(JSON.stringify(input))
 }
