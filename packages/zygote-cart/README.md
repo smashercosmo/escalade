@@ -21,6 +21,7 @@ WIP
 WIP
 
 ## Todo
+- Display errors from API
 - Confirm order screen checks with API
 - Client side validation
 - If user tries to confirm order tab or hit next to confirm pane, validate all inputs and move to any pane where there are errors

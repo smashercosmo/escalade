@@ -40,6 +40,7 @@ exports.cart = () => {
 				<li class="zygotePayTab">${card} Payment Method</li>
 				<li class="zygoteConfirmTab">${check} Confirm Order</li>
 			</ul>
+			<ul class="zygoteMsgs"></ul>
 			<form class="zygoteForm">
 
 				<div class="zygoteStep1 zygoteStep">
@@ -100,10 +101,10 @@ exports.cart = () => {
 
 					<div class="zygoteSection">
 						<label for="zygotePaymentNumber">Card Number</label>
-						<input type="text" id="zygotePaymentNumber" name="paymentNumber" autocomplete="cc-number" required inputmode="numeric" pattern="[0-9 ]*" maxlength="100" />
+						<input type="text" id="zygotePaymentNumber" name="billingNumber" autocomplete="cc-number" required inputmode="numeric" pattern="[0-9 ]*" maxlength="100" />
 
 						<label for="zygotePaymentSecurity">CVC</label>
-						<input type="text" id="zygotePaymentSecurity" name="paymentSecurity" autocomplete="cc-csc" required inputmode="numeric" pattern="[0-9]*" maxlength="10" />
+						<input type="text" id="zygotePaymentSecurity" name="billingSecurity" autocomplete="cc-csc" required inputmode="numeric" pattern="[0-9]*" maxlength="10" />
 					</div>
 
 					<div class="zygoteSection">

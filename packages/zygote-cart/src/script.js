@@ -30,6 +30,8 @@ Cart.prototype = {
 	validate: require('./script/validate'),
 	showLoader: require('./script/show-loader'),
 	hideLoader: require('./script/hide-loader'),
+	showMessages: require('./script/show-messages'),
+	hideMessages: require('./script/hide-messages'),
 
 	saveCookie: require('./script/save-cookie'),
 	readCookie: require('./script/read-cookie'),
