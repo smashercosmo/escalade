@@ -64,7 +64,7 @@ exports.other = function(){
 	}
 
 	// Change step tabs
-	for(let i = this.els.tabs.length; i--;){
+	for(let i = this.els.tabs.length - 1; i--;){
 		const step = i + 1
 		this.els.tabs[i].addEventListener('click', () => {
 			this.changeStep(step)
