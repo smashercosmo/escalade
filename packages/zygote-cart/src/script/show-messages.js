@@ -13,7 +13,7 @@ module.exports = function(err, msg){
 		}
 	}
 	if(els.length){
-		addClass(this.els, 'zygoteShow')
-		this.els.msgs.textContent = els.join('')
+		addClass(this.els.msgs, 'zygoteShow')
+		this.els.msgs.innerHTML = els.join('')
 	}
 }
