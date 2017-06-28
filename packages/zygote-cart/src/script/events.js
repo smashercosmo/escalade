@@ -47,9 +47,9 @@ exports.parent = function(e){
 exports.other = function(){
 	// Toggle same shipping checkbox
 	const els = this.els.container.querySelectorAll('.zygoteBillingToggle')
-	this.els.container
-		.querySelector('[name="sameShipping"]')
-		.addEventListener('change', function(e){
+	const checkBox = this.els.container.querySelector('[name="sameShipping"]')
+	if(checkBox){
+		checkBox.addEventListener('change', function(e){
 			if(this.checked){
 				for(let i = els.length; i--;){
 					classList.remove(els[i], 'zygoteShow')
@@ -61,6 +61,7 @@ exports.other = function(){
 				}
 			}
 		}, false)
+	}
 
 	// Change step tabs
 	for(let i = this.els.tabs.length; i--;){

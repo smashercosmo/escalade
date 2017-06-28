@@ -1,11 +1,7 @@
-:root{
-	--cartWidth: 900px;
-	--lightColor: #ccc;
-	--darkColor: #000;
-	--backgroundColor: #fff;
-	--foregroundColor: #000;
-	--headerColor: #f7f7f7;
-}
+
+@import './style/_settings.css';
+@import './style/loader.css';
+
 .zygoteContainer{
 	position: fixed;
 	top: 0;

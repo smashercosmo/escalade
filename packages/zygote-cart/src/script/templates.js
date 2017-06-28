@@ -186,6 +186,14 @@ exports.cart = () => {
 
 				<div class="zygoteEmpty">Your cart is empty.</div>
 			</form>
+
+			<div class="zygoteLoader">
+				<div class="zygoteLoadAnim">
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
 			<div class="zygoteFooter">
 				${padlock}
 				<span>SSL Secure</span>

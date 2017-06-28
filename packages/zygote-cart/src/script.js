@@ -26,6 +26,10 @@ Cart.prototype = {
 	changeQty: require('./script/change-qty'),
 	findProduct: require('./script/find-product'),
 	changeStep: require('./script/change-step'),
+	getInput: require('./script/get-input'),
+	validate: require('./script/validate'),
+	showLoader: require('./script/show-loader'),
+	hideLoader: require('./script/hide-loader'),
 
 	saveCookie: require('./script/save-cookie'),
 	readCookie: require('./script/read-cookie'),
