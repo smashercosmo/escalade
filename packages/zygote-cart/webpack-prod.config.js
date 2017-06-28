@@ -1,8 +1,9 @@
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const extractStyles = new ExtractTextPlugin('[name]-v1.css')
+const extractHtml = new ExtractTextPlugin('index.html')
 const OpenBrowserPlugin = require('open-browser-webpack-plugin')
-const extractHtml = new ExtractTextPlugin('test.html')
 
 module.exports = {
 	stats: {
@@ -35,35 +36,27 @@ module.exports = {
 				//exclude: [/node_modules/],
 				use: [{
 					loader: 'babel-loader',
-					options: {
-						presets: ['es2015']
-					}
+					options: { presets: ['es2015'] }
 				}]
 			},
 			{
 				test: /\.css$/,
-				//exclude: [/node_modules/],
-				use: [
-					{
-						loader: 'style-loader'
-					},
-					{
-						loader: 'css-loader',
-						options: { importLoaders: 1 }
-					},
-					{
-						loader: 'postcss-loader'
-					}
-				]
+				exclude: [/node_modules/],
+				use: extractStyles.extract({
+					use: [
+						{
+							loader: 'css-loader',
+							options: { importLoaders: 1 },
+						},
+						'postcss-loader',
+					],
+				}),
 			},
 			{
 				test: /\.pug$/,
 				exclude: [/node_modules/],
 				use: extractHtml.extract({
-					use: [
-						'html-loader',
-						'pug-html-loader?pretty&exports=false'
-					]
+					use: ['html-loader', 'pug-html-loader?pretty&exports=false']
 				})
 			},
 			{
@@ -73,8 +66,9 @@ module.exports = {
 		]
 	},
 	plugins: [
+		extractStyles,
 		extractHtml,
-		new OpenBrowserPlugin({ url: 'http://localhost:8080/test.html' })
+		new OpenBrowserPlugin({ url: 'http://localhost:8080/' })
 	],
 	devServer: {
 		contentBase: path.resolve(__dirname, './dist')

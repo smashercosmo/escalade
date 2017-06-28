@@ -6,7 +6,7 @@
   "author": "Kennedy Rose <kennedy@escaladesports.com>",
   "private": true,
   "scripts": {
-    "build": "webpack -p",
+    "build": "webpack -p --config webpack-prod.config.js",
     "dev": "webpack-dev-server --inline --content-base dist"
   },
   "devDependencies": {
