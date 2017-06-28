@@ -6,12 +6,11 @@ import {
 
 // Change step in UI
 module.exports = function(n){
+	this.hideMessages()
 	this.step = n || 1
 
-	console.log(this.step)
-
 	if(this.step === 4) this.validate()
-	
+
 	removePrefix(this.els.container, 'zygoteOn')
 	addClass(this.els.container, `zygoteOn${n}`)
 	if(this.step > 1){
