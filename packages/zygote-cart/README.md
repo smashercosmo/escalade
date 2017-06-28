@@ -21,16 +21,15 @@ WIP
 WIP
 
 ## Todo
-- Loading animation between async panes
 - Confirm order screen checks with API
 - Client side validation
 - If user tries to confirm order tab or hit next to confirm pane, validate all inputs and move to any pane where there are errors
 - Make sure cart is still visible on all browser heights
+- Move media query code into CSS modules
 
 - Test out Google Maps API for address autofill
 - Only inject parts of cart that are about to get used
 - Format phone numbers
-- Split out stylesheet
 - Format card numbers
 - Show card type icon
 - Remove tabs and new lines from JS on build

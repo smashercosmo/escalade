@@ -14,6 +14,9 @@
 	& *, & *:before, & *:after{
 		box-sizing: inherit;
 	}
+	& a{
+		color: var(--darkColor);
+	}
 }
 .zygoteOpen{
 	& .zygoteContainer{
