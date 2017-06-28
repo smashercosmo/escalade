@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const extractStyles = new ExtractTextPlugin('[name]-v1.css')
-const extractHtml = new ExtractTextPlugin('index.html')
+const extractHtml = new ExtractTextPlugin('test.html')
 const OpenBrowserPlugin = require('open-browser-webpack-plugin')
 
 module.exports = {
