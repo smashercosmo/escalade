@@ -37,10 +37,9 @@ WIP
 
 ## Todo
 - Client validation
-	+ Client side validation function
-	+ Validate on attempted order review
 - Browser test
 - Enter key goes to next step
+- Denote not required
 
 - Option to show tooltips whenever items are added to cart
 - Format card numbers

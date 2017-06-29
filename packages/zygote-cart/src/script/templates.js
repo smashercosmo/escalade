@@ -153,14 +153,8 @@ exports.cart = () => {
 
 						<label for="zygoteBillingZip">Zip / Postal Code</label>
 						<input type="text" id="zygoteBillingZip" name="billingZip" autocomplete="postal-code" required inputmode="numeric" pattern="[0-9]*" maxlength="20" />
-					</div>
-
-					<div class="zygoteSection zygoteBillingToggle">
 						<label for="zygoteBillingPhone">Phone</label>
 						<input type="text" id="zygoteBillingPhone" name="billingPhone" autocomplete="tel-national" required inputmode="numeric" maxlength="20" />
-
-						<label for="zygoteBillingEmail">Email</label>
-						<input type="email" id="zygoteBillingEmail" autocomplete="email" name="billingEmail" required maxlength="200" />
 					</div>
 
 				</div>

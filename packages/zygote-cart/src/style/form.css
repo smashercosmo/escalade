@@ -2,7 +2,8 @@
 
 
 .zygoteForm{
-	padding: 20px;
+	margin: 20px;
+	overflow: hidden;
 }
 
 .zygoteSection{
