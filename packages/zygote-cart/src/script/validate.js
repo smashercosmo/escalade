@@ -12,7 +12,7 @@ const expectedProperties = [
 // Validates an order and returns tax/shipping
 module.exports = function(obj){
 
-	if(this.skipApi) return this
+	if(!this.api) return this
 
 	this.showLoader()
 

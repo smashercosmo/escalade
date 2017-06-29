@@ -13,9 +13,7 @@ function Cart(){
 }
 Cart.prototype = {
 	step: 1,
-	skipApi: false,
 	isOpen: false,
-	api: 'https://zygote-api-staging.herokuapp.com/v1',
 	body: document.getElementsByTagName('body')[0],
 
 	inject: require('./script/inject'),
