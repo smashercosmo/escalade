@@ -1,7 +1,7 @@
 // Validates an order and returns tax/shipping
 module.exports = function(excludePrefix){
 	const obj = {}
-	const inputs = this.els.container.querySelectorAll('input')
+	const inputs = this.els.container.querySelectorAll('input, select')
 	for(let i = inputs.length; i--;){
 		const name = inputs[i].getAttribute('name')
 		if(name.indexOf(excludePrefix) === 0) continue

@@ -21,6 +21,9 @@ WIP
 WIP
 
 ## Todo
+- Cart items are increasing by 1 when order is placed?
+- Send back cart ID on confirmation
+- Clear cart after order is placed
 - Place order step
 	+ Shipping address
 	+ Payment method

@@ -14,10 +14,7 @@ module.exports = function(obj){
 		if(xhr.readyState == 4 && xhr.status == '200'){
 			const obj = JSON.parse(xhr.responseText)
 			console.log(obj)
-			if(obj.errors && obj.errors.length){
-				this.showMessages(obj.errors)
-			}
-			if(obj.products){
+			if(obj.products && obj.success){
 				// Change price/qty but not any other info
 				for(let i = this.products.length; i--;){
 					const prod = getProduct(obj.products, this.products[i].id)
@@ -42,11 +39,23 @@ module.exports = function(obj){
 			if(obj.total){
 				this.els.total.textContent = formatUsd(obj.total)
 			}
+
+			// If failed
+			if(!obj.success){
+				this.changeStep(4, true)
+			}
+			if(obj.errors && obj.errors.length){
+				this.showMessages(obj.errors)
+			}
 			this.hideLoader()
 		}
 	}
 	const input = this.getInput()
 	input.products = this.products
+	// Include custom variables
+	for(let i in this.custom){
+		input[i] = this.custom[i]
+	}
 	const json = JSON.stringify(input)
 	xhr.send(json)
 }

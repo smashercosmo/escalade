@@ -1,5 +1,14 @@
 import formatUsd from 'usd-formatter'
 
+const expectedProperties = [
+	'products',
+	'tax',
+	'shipping',
+	'total',
+	'succes',
+	'errors'
+]
+
 // Validates an order and returns tax/shipping
 module.exports = function(obj){
 
@@ -13,7 +22,12 @@ module.exports = function(obj){
 	xhr.onload = () => {
 		if(xhr.readyState == 4 && xhr.status == '200'){
 			const obj = JSON.parse(xhr.responseText)
-			console.log(obj)
+			// Set any custom viriables
+			for(let i in obj){
+				if(expectedProperties.indexOf(i) === -1){
+					this.custom[i] = obj[i]
+				}
+			}
 			if(obj.errors && obj.errors.length){
 				this.showMessages(obj.errors)
 			}

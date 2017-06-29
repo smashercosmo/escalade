@@ -5,16 +5,22 @@ import {
 } from './class-list'
 
 // Change step in UI
-module.exports = function(n){
-	this.hideMessages()
+module.exports = function(n, noProcess){
+	if(!noProcess){
+		this.hideMessages()
+	}
 	this.step = n || 1
 
 	if(this.step === 4){
-		this.validate()
+		if(!noProcess){
+			this.validate()
+		}
 		this.els.nextBtn.textContent = 'Confirm Order'
 	}
 	else if(this.step === 5){
-		this.placeOrder()
+		if(!noProcess){
+			this.placeOrder()
+		}
 	}
 	else{
 		this.els.nextBtn.textContent = 'Next Step'

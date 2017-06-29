@@ -2,6 +2,7 @@
 function Cart(){
 	this.products = []
 	this.qty = []
+	this.custom = []
 	this.findQty()
 	this.inject()
 	this.readCookie()
@@ -12,7 +13,7 @@ function Cart(){
 }
 Cart.prototype = {
 	step: 1,
-	skipApi: true,
+	skipApi: false,
 	isOpen: false,
 	api: 'https://zygote-api-staging.herokuapp.com/v1',
 	body: document.getElementsByTagName('body')[0],
