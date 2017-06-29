@@ -47,9 +47,11 @@ exports.parent = function(e){
 exports.other = function(){
 	// Toggle same shipping checkbox
 	const els = this.els.container.querySelectorAll('.zygoteBillingToggle')
-	const checkBox = this.els.container.querySelector('[name="sameShipping"]')
+	const checkBox = this.els.container.querySelector('[name="billingSame"]')
 	if(checkBox){
+		console.log(checkBox)
 		checkBox.addEventListener('change', function(e){
+			console.log('click')
 			if(this.checked){
 				for(let i = els.length; i--;){
 					classList.remove(els[i], 'zygoteShow')
