@@ -9,7 +9,13 @@ module.exports = function(n){
 	this.hideMessages()
 	this.step = n || 1
 
-	if(this.step === 4) this.validate()
+	if(this.step === 4){
+		this.validate()
+		this.els.nextBtn.textContent = 'Confirm Order'
+	}
+	else{
+		this.els.nextBtn.textContent = 'Next Step'
+	}
 
 	removePrefix(this.els.container, 'zygoteOn')
 	addClass(this.els.container, `zygoteOn${n}`)

@@ -14,7 +14,8 @@ module.exports = function(){
 		steps: el.querySelectorAll('.zygoteStep'),
 		tabs: el.querySelectorAll('.zygoteTabs li'),
 		subtotals: el.querySelectorAll('.zygoteSubTotal'),
-		msgs: el.querySelector('.zygoteMsgs')
+		msgs: el.querySelector('.zygoteMsgs'),
+		nextBtn: el.querySelector('.zygoteNext')
 	}
 
 	// Attach events

@@ -29,11 +29,6 @@
 		display: none;
 	}
 }
-.zygoteOn4{
-	& .zygoteNext{
-		display: none;
-	}
-}
 .zygoteNext{
 	margin-top: 20px;
 }
