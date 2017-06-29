@@ -41,20 +41,22 @@ exports.cart = () => {
 				<li class="zygoteConfirmTab">${check} Confirm Order</li>
 			</ul>
 			<ul class="zygoteMsgs"></ul>
+			<div class="zygoteProdTable">
+				<ul class="zygoteProdHeader">
+					<li>Item</li>
+					<li>Quantity</li>
+					<li>Price</li>
+					<li>Remove</li>
+				</ul>
+				<ul class="zygoteProdList"></ul>
+				<ul class="zygoteSub">
+					<li class="zygoteSubHead">Subtotal</li>
+					<li class="zygoteSubTotal">$0.00</li>
+				</ul>
+			</div>
 			<form class="zygoteForm">
 
 				<div class="zygoteStep1 zygoteStep">
-					<ul class="zygoteProdHeader">
-						<li>Item</li>
-						<li>Quantity</li>
-						<li>Price</li>
-						<li>Remove</li>
-					</ul>
-					<ul class="zygoteProdList"></ul>
-					<ul class="zygoteSub">
-						<li class="zygoteSubHead">Subtotal</li>
-						<li class="zygoteSubTotal">$0.00</li>
-					</ul>
 				</div>
 
 				<div class="zygoteStep2 zygoteStep">

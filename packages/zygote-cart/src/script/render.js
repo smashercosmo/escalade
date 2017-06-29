@@ -20,6 +20,7 @@ module.exports = function(){
 		}
 		else{
 			el.querySelector('[data-qty]').textContent = this.products[i].qty
+			el.querySelector('.zygoteProdPrice div').textContent = formatUsd(this.products[i].price)
 		}
 		totalQty += this.products[i].qty
 		subTotal += (this.products[i].price * this.products[i].qty)

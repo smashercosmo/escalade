@@ -21,9 +21,9 @@ WIP
 WIP
 
 ## Todo
-- Display errors from API
-- Confirm order screen checks with API
-- Client side validation
+- Validation step changes cart items
+- Validation step adds 'Confirm order' button
+- Change color of next/back buttons to enphasize next
 - If user tries to confirm order tab or hit next to confirm pane, validate all inputs and move to any pane where there are errors
 - Make sure cart is still visible on all browser heights
 - Move media query code into CSS modules
@@ -34,3 +34,5 @@ WIP
 - Format card numbers
 - Show card type icon
 - Remove tabs and new lines from JS on build
+- Patterns attributes in input elements
+- Client side validation

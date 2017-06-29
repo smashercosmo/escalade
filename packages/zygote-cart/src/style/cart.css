@@ -1,4 +1,11 @@
-
+.zygoteProdTable{
+	padding: 20px;
+}
+.zygoteOn2, .zygoteOn3, .zygoteLoading{
+	& .zygoteProdTable{
+		display: none;
+	}
+}
 .zygoteProdHeader{
 	display: none;
 	list-style-type: none;
