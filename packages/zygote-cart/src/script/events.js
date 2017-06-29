@@ -45,6 +45,16 @@ exports.parent = function(e){
 }
 
 exports.other = function(){
+
+	// Enter key
+	this.els.container.addEventListener('keydown', e => {
+		e.preventDefault()
+		if(e.keyCode === 13 && this.step < 4){
+			this.changeStep(this.step + 1)
+		}
+	}, false)
+
+
 	// Toggle same shipping checkbox
 	const els = this.els.container.querySelectorAll('.zygoteBillingToggle')
 	const checkBox = this.els.container.querySelector('[name="billingSame"]')
