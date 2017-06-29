@@ -1,15 +1,14 @@
 // Validates an order and returns tax/shipping
 module.exports = function(excludePrefix){
 	const obj = {}
-	const inputs = this.els.container.querySelectorAll('input, select')
-	for(let i = inputs.length; i--;){
-		const name = inputs[i].getAttribute('name')
+	for(let i = this.els.input.length; i--;){
+		const name = this.els.input[i].getAttribute('name')
 		if(name.indexOf(excludePrefix) === 0) continue
-		if(inputs[i].getAttribute('type') === 'checkbox'){
-			obj[name] = inputs[i].checked
+		if(this.els.input[i].getAttribute('type') === 'checkbox'){
+			obj[name] = this.els.input[i].checked
 		}
 		else{
-			obj[name] = inputs[i].value
+			obj[name] = this.els.input[i].value
 		}
 	}
 	for(let i in this.properties){

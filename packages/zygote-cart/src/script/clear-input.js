@@ -1,12 +1,11 @@
 // Empties out all input fields
 module.exports = function(){
-	const inputs = this.els.container.querySelectorAll('input, select')
-	for(let i = inputs.length; i--;){
-		if(inputs[i].getAttribute('type') !== 'checkbox'){
-			inputs[i].value = ''
+	for(let i = this.els.input.length; i--;){
+		if(this.els.input[i].getAttribute('type') !== 'checkbox'){
+			this.els.input[i].value = ''
 		}
 		else{
-			inputs[i].click()
+			this.els.input[i].click()
 		}
 	}
 	this.properties.length = 0

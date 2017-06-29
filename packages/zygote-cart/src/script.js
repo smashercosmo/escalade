@@ -35,6 +35,7 @@ Cart.prototype = {
 	hideMessages: require('./script/hide-messages'),
 	clearCart: require('./script/clear-cart'),
 	clearInput: require('./script/clear-input'),
+	validateInput: require('./script/validate-input'),
 
 	saveCookie: require('./script/save-cookie'),
 	readCookie: require('./script/read-cookie'),

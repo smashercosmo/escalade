@@ -18,7 +18,8 @@ module.exports = function(){
 		nextBtn: el.querySelector('.zygoteNext'),
 		tax: el.querySelector('.zygoteTax'),
 		ship: el.querySelector('.zygoteShip'),
-		total: el.querySelector('.zygoteTotal')
+		total: el.querySelector('.zygoteTotal'),
+		input: el.querySelectorAll('input, select')
 	}
 
 	// Attach events

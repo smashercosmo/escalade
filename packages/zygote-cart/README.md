@@ -36,17 +36,16 @@ The API should have 2 endpoints: `validate` and `place`.
 WIP
 
 ## Todo
-- If user tries to confirm order tab or hit next to confirm pane, validate all inputs and move to any pane where there are errors
+- Client validation
+	+ Client side validation function
 	+ Validate on attempted order review
-	+ Patterns in inputs
-	+ Client side validation
 - Browser test
 
+- Option to show tooltips whenever items are added to cart
 - Format card numbers
 - Show card type icon
 
 - Hashes in URLs
 - Remove tabs and new lines from JS on build
 - Only inject parts of cart that are about to get used
-- Move media query code into CSS modules
 - Test out Google Maps API for address autofill
