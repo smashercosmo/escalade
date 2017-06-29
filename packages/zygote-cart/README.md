@@ -1,4 +1,4 @@
-# Zygote Cart/API
+# Zygote
 
 An client side ecommerce cart & checkout system. The cart/checkout forms are injected into the page via JavaScript. No other dependencies are needed other than the JavaScript file, but the CSS file is recommended.
 
