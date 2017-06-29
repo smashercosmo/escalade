@@ -13,6 +13,7 @@ function Cart(){
 }
 Cart.prototype = {
 	step: 1,
+	inputValidation: true,
 	isOpen: false,
 	body: document.getElementsByTagName('body')[0],
 

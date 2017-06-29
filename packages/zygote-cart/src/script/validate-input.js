@@ -1,5 +1,8 @@
 // Validates client side inputs
 module.exports = function(){
+
+	if(!this.inputValidation) return false
+
 	const input = this.getInput()
 	const errors = {}
 
