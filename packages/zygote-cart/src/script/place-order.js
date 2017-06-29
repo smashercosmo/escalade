@@ -3,7 +3,7 @@ import formatUsd from 'usd-formatter'
 // Validates an order and returns tax/shipping
 module.exports = function(obj){
 
-	if(!this.api) return this
+	if(!this.api) return this.clearCart()
 
 	this.showLoader()
 
@@ -43,6 +43,9 @@ module.exports = function(obj){
 			// If failed
 			if(!obj.success){
 				this.changeStep(4, true)
+			}
+			else{
+				this.clearCart()
 			}
 			if(obj.errors && obj.errors.length){
 				this.showMessages(obj.errors)
