@@ -31,3 +31,21 @@
 .zygotePrev{
 	background-color: #bbb;
 }
+
+
+@media(min-width: 900px){
+
+	.zygotePrev{
+		float: left;
+	}
+	.zygoteNext{
+		float: right;
+		margin-top: 0;
+	}
+
+	.zygoteNotEmpty{
+		& .zygoteProdHeader{
+			display: block;
+		}
+	}
+}

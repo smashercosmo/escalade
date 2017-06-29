@@ -178,4 +178,58 @@
 			float: right;
 		}
 	}
+
+	.zygoteProd{
+		margin-bottom: 15px;
+		padding-bottom: 15px;
+	}
+	.zygoteProdImg{
+		display: block;
+	}
+
+	.zygoteProdName{
+		width: 400px;
+		margin-bottom: 0;
+		& > div{
+			padding: 0 20px;
+			right: 0;
+			left: 0;
+		}
+	}
+
+	.zygoteProdQty, .zygoteProdPrice{
+		width: 120px;
+		text-align: center;
+		& > div{
+			width: 100%;
+		}
+	}
+
+	.zygoteProdDelete{
+		float: right;
+	}
+	.zygoteProdX{
+		width: 100%;
+	}
+
+	.zygoteProdName, .zygoteProdQty, .zygoteProdPrice{
+		float: left
+	}
+	.zygoteProdDelete{
+		width: 20px;
+	}
+
+	.zygoteProdImg, .zygoteProdName, .zygoteProdQty, .zygoteProdPrice{
+		float: left;
+	}
+
+	.zygoteProdName, .zygoteProdQty, .zygoteProdPrice, .zygoteProdDelete{
+		height: 150px;
+		position: relative;
+		& > div{
+			position: absolute;
+			top: 50%;
+			transform: translate(0, -50%);
+		}
+	}
 }

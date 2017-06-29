@@ -1,0 +1,12 @@
+
+@media(min-width: 900px){
+	.zygoteSection{
+		padding: 20px;
+		border-right: 1px solid var(--lightColor);
+		border-bottom: none;
+		float: left;
+		width: calc(100% / 3);
+		border-top: 1px solid var(--lightColor);
+	}
+
+}
