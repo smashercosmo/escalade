@@ -27,7 +27,7 @@ yearEls = yearEls.join('')
 
 exports.cart = () => {
 	const el = document.createElement('div')
-	el.className = 'zygoteContainer zygoteOpen zygoteOn1'
+	el.className = 'zygoteContainer zygoteOn1'
 	const html = `
 		<div class="zygoteModal">
 			<div class="zygoteClose">&#215;</div>

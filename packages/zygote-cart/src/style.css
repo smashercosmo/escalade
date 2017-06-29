@@ -1,5 +1,6 @@
 
 @import './style/_settings.css';
+@import './style/open.css';
 @import './style/container.css';
 @import './style/modal.css';
 @import './style/close.css';
@@ -75,9 +76,6 @@
 		}
 	}
 
-	.zygoteModal{
-		top: 30px;
-	}
 	.zygoteStepBtns{
 		& .zygoteBtn{
 			width: auto;
