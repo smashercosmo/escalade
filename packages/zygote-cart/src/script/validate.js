@@ -25,9 +25,13 @@ module.exports = function(obj){
 			const input = this.els.container.querySelector(`.zygote${cap(i)}`)
 			if(input){
 				addClass(input, 'zygoteInputErr')
-			}
-			else{
-				console.log(`.zygote${cap(i)} not found`)
+				let el = input.querySelector('.zygoteInputMsg')
+				if(!el){
+					el = document.createElement('div')
+					el.classList = 'zygoteInputMsg'
+					input.appendChild(el)
+				}
+				el.textContent = errors[i]
 			}
 		}
 		// Go back to step with errors
