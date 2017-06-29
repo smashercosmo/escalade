@@ -15,7 +15,7 @@ module.exports = function(n, noProcess){
 		if(!noProcess){
 			this.validate()
 		}
-		this.els.nextBtn.textContent = 'Confirm Order'
+		this.els.nextBtn.textContent = 'Place Order'
 	}
 	else if(this.step === 5){
 		if(!noProcess){
