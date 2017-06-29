@@ -57,8 +57,8 @@ exports.cart = () => {
 						<label for="zygoteShippingStreet">Street Address</label>
 						<input type="text" id="zygoteShippingStreet" name="shippingAddress1" autocomplete="address-line1" required maxlength="200" />
 
-						<label for="zygoteShippingStreet2">Street Address 2</label>
-						<input type="text" id="zygoteShippingStreet2" name="shippingAddress2" autocomplete="address-line2" required maxlength="200" />
+						<label for="zygoteShippingStreet2">Street Address 2 (Not required)</label>
+						<input type="text" id="zygoteShippingStreet2" name="shippingAddress2" autocomplete="address-line2" maxlength="200" />
 					</div>
 
 					<div class="zygoteSection">
@@ -137,8 +137,8 @@ exports.cart = () => {
 						<label for="zygoteBillingStreet">Street Address</label>
 						<input type="text" id="zygoteBillingStreet" name="billingAddress1" autocomplete="address-line1" required maxlength="200" />
 
-						<label for="zygoteBillingStreet2">Street Address 2</label>
-						<input type="text" id="zygoteBillingStreet2" name="billingAddress2" autocomplete="address-line2" required maxlength="200" />
+						<label for="zygoteBillingStreet2">Street Address 2 (Not required)</label>
+						<input type="text" id="zygoteBillingStreet2" name="billingAddress2" autocomplete="address-line2" maxlength="200" />
 					</div>
 
 					<div class="zygoteSection zygoteBillingToggle">

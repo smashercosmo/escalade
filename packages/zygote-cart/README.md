@@ -36,8 +36,6 @@ The API should have 2 endpoints: `validate` and `place`.
 WIP
 
 ## Todo
-- Enter key goes to next step
-- Denote not required
 - Show validation errors under input
 - Browser test
 
