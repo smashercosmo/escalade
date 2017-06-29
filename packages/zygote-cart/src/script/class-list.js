@@ -3,7 +3,9 @@ exports.add = (el, str) => {
 	let classes = el.className.split(' ')
 	const index = classes.indexOf(str)
 	if(index === -1){
-		el.className = `${el.className} ${str}`
+		let cn = el.className
+		if(cn) cn = `${cn} `
+		el.className = `${cn}${str}`
 	}
 }
 exports.remove = (el, str) => {

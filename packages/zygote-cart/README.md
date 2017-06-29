@@ -36,12 +36,11 @@ The API should have 2 endpoints: `validate` and `place`.
 WIP
 
 ## Todo
-- Clear inputs on successful order
+- Make sure cart is still visible on all browser heights
 - If user tries to confirm order tab or hit next to confirm pane, validate all inputs and move to any pane where there are errors
 	+ Validate on attempted order review
 	+ Patterns in inputs
 	+ Client side validation
-- Make sure cart is still visible on all browser heights
 - Browser test
 
 - Format card numbers
