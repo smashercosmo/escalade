@@ -12,7 +12,7 @@ function Cart(){
 }
 Cart.prototype = {
 	step: 1,
-	skipApi: false,
+	skipApi: true,
 	isOpen: false,
 	api: 'https://zygote-api-staging.herokuapp.com/v1',
 	body: document.getElementsByTagName('body')[0],
@@ -29,6 +29,7 @@ Cart.prototype = {
 	changeStep: require('./script/change-step'),
 	getInput: require('./script/get-input'),
 	validate: require('./script/validate'),
+	placeOrder: require('./script/place-order'),
 	showLoader: require('./script/show-loader'),
 	hideLoader: require('./script/hide-loader'),
 	showMessages: require('./script/show-messages'),

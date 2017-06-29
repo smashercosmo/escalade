@@ -21,6 +21,26 @@
 	}
 }
 
+.zygoteOn5{
+	& .zygoteStepBtns{
+		display: none;
+	}
+	& .zygoteProdDelete,
+	& .zygoteDecrease,
+	& .zygoteIncrease,
+	& .zygoteProdHeader li:last-of-type{
+		display: none;
+	}
+	& .zygoteProdPrice{
+		float: right;
+		text-align: right;
+	}
+	& .zygoteProdHeader li:nth-of-type(2){
+		float: right;
+		width: auto;
+	}
+}
+
 .zygoteOn1{
 	& .zygoteNext{
 		margin-top: 0;
@@ -31,4 +51,12 @@
 }
 .zygoteNext{
 	margin-top: 20px;
+}
+
+@media(min-width:900px){
+	.zygoteShowTabs.zygoteOn5{
+		& .zygoteTabs{
+			display: none;
+		}
+	}
 }
