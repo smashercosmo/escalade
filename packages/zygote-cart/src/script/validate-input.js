@@ -3,8 +3,6 @@ module.exports = function(){
 	const input = this.getInput()
 	const errors = {}
 
-	console.log(input)
-
 	// Shipping
 	if(!input.shippingFirst){
 		errors.shippingFirst = template('first name')

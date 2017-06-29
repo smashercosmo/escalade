@@ -70,6 +70,15 @@ exports.other = function(){
 			this.changeStep(step)
 		}, false)
 	}
+
+	// Clear errors in input
+	for(let i = this.els.input.length; i--;){
+		this.els.input[i].addEventListener('change', clearError, false)
+	}
+}
+
+function clearError(){
+	classList.remove(this, 'zygoteInputErr')
 }
 
 
