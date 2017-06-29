@@ -36,6 +36,7 @@ Cart.prototype = {
 	clearCart: require('./script/clear-cart'),
 	clearInput: require('./script/clear-input'),
 	validateInput: require('./script/validate-input'),
+	getElements: require('./script/get-elements'),
 
 	saveCookie: require('./script/save-cookie'),
 	readCookie: require('./script/read-cookie'),
