@@ -46,6 +46,7 @@ module.exports = function(obj){
 			}
 			else{
 				this.clearCart()
+				this.clearInput()
 			}
 			if(obj.errors && obj.errors.length){
 				this.showMessages(obj.errors)

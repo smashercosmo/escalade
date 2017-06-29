@@ -36,6 +36,7 @@ The API should have 2 endpoints: `validate` and `place`.
 WIP
 
 ## Todo
+- Clear inputs on successful order
 - If user tries to confirm order tab or hit next to confirm pane, validate all inputs and move to any pane where there are errors
 	+ Validate on attempted order review
 	+ Patterns in inputs
@@ -46,6 +47,7 @@ WIP
 - Format card numbers
 - Show card type icon
 
+- Hashes in URLs
 - Remove tabs and new lines from JS on build
 - Only inject parts of cart that are about to get used
 - Move media query code into CSS modules
