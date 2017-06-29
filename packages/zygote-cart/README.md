@@ -40,6 +40,7 @@ WIP
 	+ Client side validation function
 	+ Validate on attempted order review
 - Browser test
+- Enter key goes to next step
 
 - Option to show tooltips whenever items are added to cart
 - Format card numbers
