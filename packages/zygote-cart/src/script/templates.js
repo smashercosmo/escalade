@@ -58,14 +58,14 @@ exports.cart = () => {
 							<input type="text" id="zygoteShippingLast" name="shippingLast" autocomplete="family-name" required maxlength="100" />
 						</div>
 
-						<div class="zygoteShippingStreet">
-							<label for="zygoteShippingStreet">Street Address</label>
-							<input type="text" id="zygoteShippingStreet" name="shippingAddress1" autocomplete="address-line1" required maxlength="200" />
+						<div class="zygoteShippingAddress1">
+							<label for="zygoteShippingAddress1">Street Address</label>
+							<input type="text" id="zygoteShippingAddress1" name="shippingAddress1" autocomplete="address-line1" required maxlength="200" />
 						</div>
 
-						<div class="zygoteShippingStreet2">
-							<label for="zygoteShippingStreet2">Street Address 2 (Not required)</label>
-							<input type="text" id="zygoteShippingStreet2" name="shippingAddress2" autocomplete="address-line2" maxlength="200" />
+						<div class="zygoteShippingAddress2">
+							<label for="zygoteShippingAddress2">Street Address 2 (Not required)</label>
+							<input type="text" id="zygoteShippingAddress2" name="shippingAddress2" autocomplete="address-line2" maxlength="200" />
 						</div>
 					</div>
 
@@ -93,7 +93,7 @@ exports.cart = () => {
 
 						<div class="zygoteShippingPhone">
 							<label for="zygoteShippingPhone">Phone</label>
-							<input type="text" id="zygoteShippingPhone" name="shippingPhone" autocomplete="tel-national" required inputmode="numeric" maxlength="20" />
+							<input type="text" id="zygoteShippingPhone" name="shippingPhone" autocomplete="tel-national" inputmode="numeric" maxlength="20" />
 						</div>
 
 						<div class="zygoteShippingEmail">
@@ -107,21 +107,21 @@ exports.cart = () => {
 				<div class="zygoteStep3 zygoteStep">
 
 					<div class="zygoteSection">
-						<div class="zygotePaymentNumber">
-							<label for="zygotePaymentNumber">Card Number</label>
-							<input type="text" id="zygotePaymentNumber" name="billingNumber" autocomplete="cc-number" required inputmode="numeric" pattern="[0-9 ]*" maxlength="100" />
+						<div class="zygoteBillingNumber">
+							<label for="zygoteBillingNumber">Card Number</label>
+							<input type="text" id="zygoteBillingNumber" name="billingNumber" autocomplete="cc-number" required inputmode="numeric" pattern="[0-9 ]*" maxlength="100" />
 						</div>
 
-						<div class="zygotePaymentSecurity">
-							<label for="zygotePaymentSecurity">CVC</label>
-							<input type="text" id="zygotePaymentSecurity" name="billingSecurity" autocomplete="cc-csc" required inputmode="numeric" pattern="[0-9]*" maxlength="10" />
+						<div class="zygoteBillingSecurity">
+							<label for="zygoteBillingSecurity">CVC</label>
+							<input type="text" id="zygoteBillingSecurity" name="billingSecurity" autocomplete="cc-csc" required inputmode="numeric" pattern="[0-9]*" maxlength="10" />
 						</div>
 					</div>
 
 					<div class="zygoteSection">
-						<div class="zygotePaymentMonth">
-							<label for="zygotePaymentMonth">Expiration Month</label>
-							<select type="text" id="zygotePaymentMonth" autocomplete="cc-exp-month" name="billingMonth" required>
+						<div class="zygoteBillingMonth">
+							<label for="zygoteBillingMonth">Expiration Month</label>
+							<select type="text" id="zygoteBillingMonth" autocomplete="cc-exp-month" name="billingMonth" required>
 								<option disabled selected></option>
 								<option value="January">January</option>
 								<option value="February">February</option>
@@ -138,9 +138,9 @@ exports.cart = () => {
 							</select>
 						</div>
 
-						<div class="zygotePaymentYear">
-							<label for="zygotePaymentYear">Expiration Year</label>
-							<select type="text" id="zygotePaymentYear" required autocomplete="cc-exp-year" name="billingYear">
+						<div class="zygoteBillingYear">
+							<label for="zygoteBillingYear">Expiration Year</label>
+							<select type="text" id="zygoteBillingYear" required autocomplete="cc-exp-year" name="billingYear">
 								<option disabled selected></option>
 								${yearEls}
 							</select>
@@ -166,14 +166,14 @@ exports.cart = () => {
 							<input type="text" id="zygoteBillingLast" name="billingLast" autocomplete="family-name" required maxlength="100" />
 						</div>
 
-						<div class="zygoteBillingStreet">
-							<label for="zygoteBillingStreet">Street Address</label>
-							<input type="text" id="zygoteBillingStreet" name="billingAddress1" autocomplete="address-line1" required maxlength="200" />
+						<div class="zygoteBillingAddress1">
+							<label for="zygoteBillingAddress1">Street Address</label>
+							<input type="text" id="zygoteBillingAddress1" name="billingAddress1" autocomplete="address-line1" required maxlength="200" />
 						</div>
 
-						<div class="zygoteBillingStreet2">
-							<label for="zygoteBillingStreet2">Street Address 2 (Not required)</label>
-							<input type="text" id="zygoteBillingStreet2" name="billingAddress2" autocomplete="address-line2" maxlength="200" />
+						<div class="zygoteBillingAddress2">
+							<label for="zygoteBillingAddress2">Street Address 2 (Not required)</label>
+							<input type="text" id="zygoteBillingAddress2" name="billingAddress2" autocomplete="address-line2" maxlength="200" />
 						</div>
 					</div>
 

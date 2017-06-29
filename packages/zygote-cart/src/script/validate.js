@@ -22,9 +22,12 @@ module.exports = function(obj){
 				step = 'shipping'
 			}
 			// Style error
-			const input = this.els.container.querySelector(`[name="${i}"]`)
+			const input = this.els.container.querySelector(`.zygote${cap(i)}`)
 			if(input){
 				addClass(input, 'zygoteInputErr')
+			}
+			else{
+				console.log(`.zygote${cap(i)} not found`)
 			}
 		}
 		// Go back to step with errors
@@ -88,6 +91,10 @@ module.exports = function(obj){
 	input.products = this.products
 	const json = JSON.stringify(input)
 	xhr.send(json)
+}
+
+function cap(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
 function getProduct(arr, id){

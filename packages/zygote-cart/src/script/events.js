@@ -48,8 +48,8 @@ exports.other = function(){
 
 	// Enter key
 	this.els.container.addEventListener('keydown', e => {
-		e.preventDefault()
 		if(e.keyCode === 13 && this.step < 4){
+			e.preventDefault()
 			this.changeStep(this.step + 1)
 		}
 	}, false)
@@ -88,7 +88,7 @@ exports.other = function(){
 }
 
 function clearError(){
-	classList.remove(this, 'zygoteInputErr')
+	classList.remove(this.parentElement, 'zygoteInputErr')
 }
 
 

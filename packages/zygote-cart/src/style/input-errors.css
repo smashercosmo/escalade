@@ -1,7 +1,10 @@
-input.zygoteInputErr,
-input.zygoteInputErr:focus,
-select.zygoteInputErr,
-select.zygoteInputErr:focus{
-	border: 1px solid #f00;
-	background-color: rgba(255, 0, 0, .1);
+
+.zygoteInputErr{
+	& input,
+	& input:focus,
+	& select,
+	& select:focus{
+		border: 1px solid #f00;
+		background-color: rgba(255, 0, 0, .1);
+	}
 }
