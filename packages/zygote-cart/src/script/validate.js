@@ -1,4 +1,5 @@
 import formatUsd from 'usd-formatter'
+import { add as addClass } from './class-list'
 
 const expectedProperties = [
 	'products',
@@ -11,6 +12,30 @@ const expectedProperties = [
 
 // Validates an order and returns tax/shipping
 module.exports = function(obj){
+
+	// Client side validation
+	const errors = this.validateInput()
+	if(errors){
+		let step
+		for(let i in errors){
+			if(i.indexOf('shipping') === 0){
+				step = 'shipping'
+			}
+			// Style error
+			const input = this.els.container.querySelector(`[name="${i}"]`)
+			if(input){
+				addClass(input, 'zygoteInputErr')
+			}
+		}
+		// Go back to step with errors
+		if(step === 'shipping'){
+			this.changeStep(2)
+		}
+		else{
+			this.changeStep(3)
+		}
+		return this
+	}
 
 	if(!this.api) return this
 

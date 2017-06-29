@@ -11,29 +11,14 @@ module.exports = function(n, noProcess){
 	}
 	this.step = n || 1
 
-	if(this.step === 4){
-		if(!noProcess){
-			this.validate()
-		}
-		this.els.nextBtn.textContent = 'Place Order'
-	}
-	else if(this.step === 5){
-		if(!noProcess){
-			this.placeOrder()
-		}
-	}
-	else{
-		this.els.nextBtn.textContent = 'Next Step'
-	}
-
 	removePrefix(this.els.container, 'zygoteOn')
 	addClass(this.els.container, `zygoteOn${n}`)
 	if(this.step > 1){
-		console.log('zygoteShowTabs')
 		addClass(this.els.container, 'zygoteShowTabs')
 	}
 
 
+	// Change tab and step container
 	const cursor = this.step - 1
 	for(let i = 5; i--;){
 		if(cursor === i){
@@ -51,5 +36,22 @@ module.exports = function(n, noProcess){
 			removeClass(this.els.steps[i], 'zygoteActive')
 		}
 	}
+
+	if(this.step === 4){
+		if(!noProcess){
+			this.validate()
+		}
+		this.els.nextBtn.textContent = 'Place Order'
+	}
+	else if(this.step === 5){
+		if(!noProcess){
+			this.placeOrder()
+		}
+	}
+	else{
+		this.els.nextBtn.textContent = 'Next Step'
+	}
+
+
 	return this
 }
