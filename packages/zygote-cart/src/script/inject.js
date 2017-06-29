@@ -15,7 +15,10 @@ module.exports = function(){
 		tabs: el.querySelectorAll('.zygoteTabs li'),
 		subtotals: el.querySelectorAll('.zygoteSubTotal'),
 		msgs: el.querySelector('.zygoteMsgs'),
-		nextBtn: el.querySelector('.zygoteNext')
+		nextBtn: el.querySelector('.zygoteNext'),
+		tax: el.querySelector('.zygoteTax'),
+		ship: el.querySelector('.zygoteShip'),
+		total: el.querySelector('.zygoteTotal')
 	}
 
 	// Attach events

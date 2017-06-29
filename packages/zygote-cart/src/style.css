@@ -20,18 +20,10 @@
 
 
 
-
 @media(min-width: 900px){
 	.zygoteProd{
 		margin-bottom: 15px;
 		padding-bottom: 15px;
-	}
-
-	.zygoteSubHead{
-		float: left;
-	}
-	.zygoteSubTotal{
-		float: right;
 	}
 
 	.zygoteOn2, .zygoteOn3, .zygoteOn4{

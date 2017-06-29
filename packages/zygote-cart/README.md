@@ -21,12 +21,19 @@ WIP
 WIP
 
 ## Todo
-- Validation step adds 'Confirm order' button
-- Change color of next/back buttons to emphasize next
+- Total in validate step
+- Tax in validate step
+- Shipping in validate step
+- Place order step
+	+ Shipping address
+	+ Payment method
+	+ Remove qty buttons
+	+ Remove "x" button
 - If user tries to confirm order tab or hit next to confirm pane, validate all inputs and move to any pane where there are errors
 - Make sure cart is still visible on all browser heights
 - Move media query code into CSS modules
 
+- Printable order confirmation screen
 - Test out Google Maps API for address autofill
 - Only inject parts of cart that are about to get used
 - Format phone numbers
