@@ -49,9 +49,7 @@ exports.other = function(){
 	const els = this.els.container.querySelectorAll('.zygoteBillingToggle')
 	const checkBox = this.els.container.querySelector('[name="billingSame"]')
 	if(checkBox){
-		console.log(checkBox)
 		checkBox.addEventListener('change', function(e){
-			console.log('click')
 			if(this.checked){
 				for(let i = els.length; i--;){
 					classList.remove(els[i], 'zygoteShow')

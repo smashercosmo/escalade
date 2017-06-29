@@ -41,35 +41,9 @@ exports.cart = () => {
 				<li class="zygoteConfirmTab">${check} Confirm Order</li>
 			</ul>
 			<ul class="zygoteMsgs"></ul>
-			<div class="zygoteProdTable">
-				<ul class="zygoteProdHeader">
-					<li>Item</li>
-					<li>Quantity</li>
-					<li>Price</li>
-					<li>Remove</li>
-				</ul>
-				<ul class="zygoteProdList"></ul>
-				<ul class="zygoteSubLine">
-					<li class="zygoteSubHead">Subtotal</li>
-					<li class="zygoteSubTotal">$0.00</li>
-				</ul>
-				<ul class="zygoteShipLine">
-					<li class="zygoteShipHead">Shipping</li>
-					<li class="zygoteShip">$0.00</li>
-				</ul>
-				<ul class="zygoteTaxLine">
-					<li class="zygoteTaxHead">Tax</li>
-					<li class="zygoteTax">$0.00</li>
-				</ul>
-				<ul class="zygoteTotalLine">
-					<li class="zygoteTotalHead">Total</li>
-					<li class="zygoteTotal">$0.00</li>
-				</ul>
-			</div>
 			<form class="zygoteForm">
 
-				<div class="zygoteStep1 zygoteStep">
-				</div>
+				<div class="zygoteStep1 zygoteStep"></div>
 
 				<div class="zygoteStep2 zygoteStep">
 
@@ -191,7 +165,35 @@ exports.cart = () => {
 
 				</div>
 
-				<div class="zygoteStep4 zygoteStep">
+				<div class="zygoteStep4 zygoteStep"></div>
+				<div class="zygoteStep5 zygoteStep">
+					<h2>Your order has been placed!</h2>
+				</div>
+
+				<div class="zygoteProdTable">
+					<ul class="zygoteProdHeader">
+						<li>Item</li>
+						<li>Quantity</li>
+						<li>Price</li>
+						<li>Remove</li>
+					</ul>
+					<ul class="zygoteProdList"></ul>
+					<ul class="zygoteSubLine">
+						<li class="zygoteSubHead">Subtotal</li>
+						<li class="zygoteSubTotal">$0.00</li>
+					</ul>
+					<ul class="zygoteShipLine">
+						<li class="zygoteShipHead">Shipping</li>
+						<li class="zygoteShip">$0.00</li>
+					</ul>
+					<ul class="zygoteTaxLine">
+						<li class="zygoteTaxHead">Tax</li>
+						<li class="zygoteTax">$0.00</li>
+					</ul>
+					<ul class="zygoteTotalLine">
+						<li class="zygoteTotalHead">Total</li>
+						<li class="zygoteTotal">$0.00</li>
+					</ul>
 				</div>
 
 				<div class="zygoteStepBtns">
