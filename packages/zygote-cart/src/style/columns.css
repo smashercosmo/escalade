@@ -6,15 +6,53 @@
 		border-bottom: none;
 		float: left;
 		width: calc(100% / 3);
-		border-top: 1px solid var(--lightColor);
 	}
-	.zygoteStep3{
-		& >div:nth-of-type(4),
-		& >div:nth-of-type(5){
-			width: 50%;
-		}
-		& >div:nth-of-type(5){
-			border-right: 0;
+
+	.zygoteTable{
+		display: table;
+	}
+	.zygoteRow{
+		display: table-row;
+		& >div{
+			display: table-cell;
+			float: none;
+			&:last-of-type{
+				border-right: 0;
+			}
 		}
 	}
+
+	.zygoteTable{
+		width: 100%;
+		margin: 0 -20px;
+	}
+	.zygoteTable{
+		&.zygoteBillingToggle{
+			width: 100%;
+			display: none;
+			&.zygoteShow{
+				display: table;
+			}
+		}
+	}
+
+	.zygoteBillingToggle{
+		& .zygoteRow{
+			width: 100%;
+			& >div{
+				display: table-cell;
+				width: 50%;
+			}
+		}
+	}
+
+
+
+
+	.zygoteStep2.zygoteActive, .zygoteStep3.zygoteActive{
+		width: 100%;
+		display: table;
+	}
+
+
 }

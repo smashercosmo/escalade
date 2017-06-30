@@ -90,15 +90,11 @@
 	.zygoteStep2{
 		& .zygoteSection{
 			width: calc(100% / 3);
-			height: 340px;
 		}
 	}
 	.zygoteStep3{
 		& .zygoteSection{
 			width: calc(100% / 3);
-		}
-		& >div:nth-of-type(5){
-			height: 341px;
 		}
 	}
 

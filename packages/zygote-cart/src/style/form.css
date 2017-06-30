@@ -2,12 +2,13 @@
 
 
 .zygoteForm{
-	margin: 20px;
 	overflow: hidden;
+	& >div{
+		margin: 20px;
+	}
 }
 
 .zygoteSection{
-	padding: 0 20px;
 	& label{
 		cursor: pointer;
 		display: block;
@@ -64,12 +65,5 @@
 	}
 	& span{
 		font-size: .9em;
-	}
-}
-
-.zygoteBillingToggle{
-	display: none;
-	&.zygoteShow{
-		display: block;
 	}
 }

@@ -36,7 +36,7 @@ The API should have 2 endpoints: `validate` and `place`.
 WIP
 
 ## Todo
-- Show validation errors under input
+- Heights of columns
 - Browser test
 
 - Option to show tooltips whenever items are added to cart
