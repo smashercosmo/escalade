@@ -98,6 +98,10 @@
 		}
 	}
 
+	.zygoteNext{
+		margin-top: 0;
+	}
+
 	.zygoteStepBtns{
 		& .zygoteBtn{
 			width: auto;

@@ -36,9 +36,6 @@ The API should have 2 endpoints: `validate` and `place`.
 WIP
 
 ## Todo
-- Heights of columns
-- Browser test
-
 - Option to show tooltips whenever items are added to cart
 - Format card numbers
 - Show card type icon
