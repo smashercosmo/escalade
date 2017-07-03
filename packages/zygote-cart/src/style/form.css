@@ -54,6 +54,9 @@
 			1px 1.4em;
 		background-repeat: no-repeat;
 	}
+	& select::-ms-expand{
+		display: none;
+	}
 }
 
 
