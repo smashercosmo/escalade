@@ -1,3 +1,5 @@
+import { getAll as getData } from './data-set'
+
 // Finds and activates "Add to Cart" buttons
 module.exports = function(){
 	const els = document.querySelectorAll('[data-id][data-price]:not(.zygoteProcessed)')
@@ -8,13 +10,4 @@ module.exports = function(){
 		}, false)
 	}
 	return this
-}
-
-
-function getData(el){
-	const obj = {}
-	for(let i in el.dataset){
-		obj[i] = (el.dataset[i] !== '') ? el.dataset[i] : true
-	}
-	return obj
 }

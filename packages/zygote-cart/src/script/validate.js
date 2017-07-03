@@ -28,7 +28,7 @@ module.exports = function(obj){
 				let el = input.querySelector('.zygoteInputMsg')
 				if(!el){
 					el = document.createElement('div')
-					el.classList = 'zygoteInputMsg'
+					el.className = 'zygoteInputMsg'
 					input.appendChild(el)
 				}
 				el.textContent = errors[i]

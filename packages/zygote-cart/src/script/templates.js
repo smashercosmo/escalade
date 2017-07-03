@@ -6,6 +6,7 @@ import cart from '../img/cart.svg'
 import truck from '../img/truck.svg'
 import card from '../img/card.svg'
 import check from '../img/check.svg'
+import { setData } from './data-set'
 
 
 // Build state options
@@ -275,8 +276,8 @@ exports.cart = () => {
 
 exports.product = obj => {
 	const el = document.createElement('li')
-	el.classList = 'zygoteProd'
-	el.dataset.id = obj.id
+	el.className = 'zygoteProd'
+	setData(el, 'id', obj.id)
 	el.innerHTML = `
 		<div class="zygoteProdImg">
 			<a href="${obj.url}"><img src="${obj.img}" /></a>
