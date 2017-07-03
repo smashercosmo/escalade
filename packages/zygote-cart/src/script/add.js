@@ -16,6 +16,7 @@ module.exports = function(obj){
 		this.products.push(obj)
 	}
 	this.update()
+	console.log(obj)
 	if(obj.openCart){
 		this.open()
 	}

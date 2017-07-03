@@ -5,6 +5,7 @@ import {
 } from './class-list'
 import { product as productTemplate } from './templates'
 import formatUsd from 'usd-formatter'
+import { getData } from './data-set'
 
 module.exports = function(){
 	const ids = []
@@ -28,7 +29,7 @@ module.exports = function(){
 	// Delete old products
 	const els = this.els.list.children
 	for(let i = els.length; i--;){
-		if(ids.indexOf(els[i].dataset.id) === -1){
+		if(ids.indexOf(getData(els[i], 'id')) === -1){
 			this.els.list.removeChild(els[i])
 		}
 	}

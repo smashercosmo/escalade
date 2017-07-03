@@ -5,9 +5,12 @@ const getAll = exports.getAll = el => {
 	for(let i = 0; i < attrs.length; i++){
 		const attr = attrs.item(i)
 		if(attr.nodeName.match(regData)){
-			dataset[attr.nodeName.replace(regData, '')] = attr.nodeValue
+			let key = attr.nodeName.replace(regData, '')
+			key = camelize(key)
+			dataset[key] = attr.nodeValue || true
 		}
 	}
+	console.log(dataset)
 	return dataset
 }
 
@@ -21,3 +24,12 @@ exports.getData = (el, key) => {
 }
 
 const regData = /^data-/
+const regDash = /-/g
+
+function camelize(str) {
+	const split = str.split('-')
+	for(let i = 1, len = split.length; i < len; i++){
+		split[i] = split[i].charAt(0).toUpperCase() + split[i].slice(1)
+	}
+	return split.join('')
+}

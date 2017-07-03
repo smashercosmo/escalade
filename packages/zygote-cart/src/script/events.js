@@ -1,4 +1,5 @@
 import classList from './class-list'
+import { getData } from './data-set'
 
 // Cart click events
 exports.parent = function(e){
@@ -93,8 +94,10 @@ function clearError(){
 
 
 function getProductId(el){
-	while(!el.dataset.id){
+	console.log('getProductId')
+	let data
+	while(!(data = getData(el, 'id'))){
 		el = el.parentElement
 	}
-	return el.dataset.id
+	return data
 }
