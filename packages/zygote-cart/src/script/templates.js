@@ -231,6 +231,14 @@ exports.cart = () => {
 						<li>Remove</li>
 					</ul>
 					<ul class="zygoteProdList"></ul>
+					<ul class="zygoteCouponLine">
+						<li class="zygoteCouponHead">
+							<label for="zygoteCouponCode">Coupon Code</label>
+						</li>
+						<li class="zygoteCoupon">
+							<input type="text" name="couponCode" id="zygoteCouponCode" />
+						</li>
+					</ul>
 					<ul class="zygoteSubLine">
 						<li class="zygoteSubHead">Subtotal</li>
 						<li class="zygoteSubTotal">$0.00</li>
