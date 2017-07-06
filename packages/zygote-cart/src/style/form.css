@@ -75,6 +75,7 @@
 		cursor: pointer;
 		background: transparent;
 		position: inline-block;
+		padding: 0;
 	}
 }
 .zygoteCouponLine.zygoteShow{
