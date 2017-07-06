@@ -54,6 +54,8 @@ module.exports = function(obj){
 	xhr.onload = () => {
 		if(xhr.readyState == 4 && xhr.status == '200'){
 			const obj = JSON.parse(xhr.responseText)
+			console.log('API response:')
+			console.log(obj)
 			// Set any custom viriables
 			for(let i in obj){
 				if(expectedProperties.indexOf(i) === -1){

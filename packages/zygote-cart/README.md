@@ -31,14 +31,14 @@ The API should have 2 endpoints: `validate` and `place`.
 
 `validate` will validate the information, return any errors. If everything validates, it should return tax and a shipping quote along with the new total.
 
-`place` will do just that, place the order.
+`place` will place place the order in your system.
 
 WIP
 
 ## Todo
 - Coupon codes
-	+ Send coupon code to API
 	+ Show coupon code in order confirmation
+	+ Show coupon message
 	+ Show coupon code in order summary
 - Option to show tooltips whenever items are added to cart
 - Format card numbers
