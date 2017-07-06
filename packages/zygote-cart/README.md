@@ -37,6 +37,9 @@ WIP
 
 ## Todo
 - Coupon codes
+	+ Send coupon code to API
+	+ Show coupon code in order confirmation
+	+ Show coupon code in order summary
 - Option to show tooltips whenever items are added to cart
 - Format card numbers
 - Show card type icon

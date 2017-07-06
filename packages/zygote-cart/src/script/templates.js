@@ -232,11 +232,10 @@ exports.cart = () => {
 					</ul>
 					<ul class="zygoteProdList"></ul>
 					<ul class="zygoteCouponLine">
-						<li class="zygoteCouponHead">
-							<label for="zygoteCouponCode">Coupon Code</label>
-						</li>
+						<li class="zygoteCouponHead"></li>
 						<li class="zygoteCoupon">
-							<input type="text" name="couponCode" id="zygoteCouponCode" />
+							<label for="zygoteCouponCode">Coupon Code <small>(Applied at checkout)</small></label>
+							<input type="text" name="couponCode" id="zygoteCouponCode" placeholder="Coupon Code" />
 						</li>
 					</ul>
 					<ul class="zygoteSubLine">

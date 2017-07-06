@@ -86,6 +86,22 @@ exports.other = function(){
 	for(let i = this.els.input.length; i--;){
 		this.els.input[i].addEventListener('change', clearError, false)
 	}
+
+
+	// Coupon code show/hide
+	const couponLine = this.els.container.querySelector('.zygoteCouponLine')
+	const couponInput = couponLine.querySelector('#zygoteCouponCode')
+	couponInput.addEventListener('focus', () => {
+		classList.add(couponLine, 'zygoteShow')
+		couponInput.setAttribute('placeholder', '')
+	}, false)
+	couponInput.addEventListener('blur', () => {
+		if(couponInput.value) return true
+		classList.remove(couponLine, 'zygoteShow')
+		couponInput.setAttribute('placeholder', 'Coupon Code')
+	}, false)
+
+
 }
 
 function clearError(){

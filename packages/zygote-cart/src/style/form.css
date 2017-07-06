@@ -14,8 +14,12 @@
 		text-transform: uppercase;
 		font-size: .8em;
 	}
+	& input{
+		padding: 10px;
+	}
 	& input, & select{
 		margin-bottom: 20px;
+		border: 1px solid var(--lightColor);
 	}
 }
 .zygoteSection, .zygoteCouponLine{
@@ -24,13 +28,9 @@
 		display: block;
 		user-select: none;
 	}
-	& input{
-		padding: 10px;
-	}
 	& input, & select{
 		width: 100%;
 		outline: none;
-		border: 1px solid var(--lightColor);
 		font-size: 1em;
 		height: 40px;
 	}
@@ -65,9 +65,18 @@
 .zygoteCouponLine{
 	& label{
 		margin-bottom: 5px;
+		display: none;
 	}
 	& input{
 		margin: 0;
+		border: 0;
+		outline: 0;
+		text-align: center;
+	}
+}
+.zygoteCouponLine.zygoteShow{
+	& label{
+		display: inline-block;
 	}
 }
 
@@ -87,11 +96,16 @@
 	.zygoteCouponLine{
 		& label{
 			margin-bottom: 0;
-			position: relative;
-			top: 10px;
+			margin-right: 10px;
 		}
 		& input{
 			width: 120px;
+			text-align: right;
+		}
+	}
+	.zygoteCouponLine.zygoteShow{
+		& input{
+			text-align: center;
 		}
 	}
 }
