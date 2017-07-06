@@ -72,11 +72,15 @@
 		border: 0;
 		outline: 0;
 		text-align: center;
+		cursor: pointer;
 	}
 }
 .zygoteCouponLine.zygoteShow{
 	& label{
 		display: inline-block;
+	}
+	& input{
+		cursor: text;
 	}
 }
 
