@@ -74,7 +74,7 @@
 		text-align: center;
 		cursor: pointer;
 		background: transparent;
-		position: inline-block;
+		display: inline-block;
 		padding: 0;
 	}
 }
