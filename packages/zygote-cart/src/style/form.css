@@ -73,6 +73,8 @@
 		outline: 0;
 		text-align: center;
 		cursor: pointer;
+		background: transparent;
+		position: inline-block;
 	}
 }
 .zygoteCouponLine.zygoteShow{
@@ -103,7 +105,7 @@
 			margin-right: 10px;
 		}
 		& input{
-			width: 120px;
+			width: 125px;
 			text-align: right;
 		}
 	}
