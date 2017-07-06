@@ -38,7 +38,10 @@ module.exports = {
 					loader: 'babel-loader',
 					options: {
 						presets: [ 'es2015' ],
-						plugins: [ 'transform-remove-console' ]
+						plugins: [
+							'transform-remove-console',
+							'babel-plugin-remove-template-whitespace'
+						]
 					}
 				}]
 			},

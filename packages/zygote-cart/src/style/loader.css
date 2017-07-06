@@ -22,12 +22,16 @@
 		background-color: var(--foregroundColor);
 		border-radius: 100%;
 		display: inline-block;
+		margin-right: 7px;
 		animation: zygote-bouncedelay 1.4s infinite ease-in-out both;
 		&:nth-of-type(1){
 			animation-delay: -0.32s;
 		}
 		&:nth-of-type(2){
 			animation-delay: -0.16s;
+		}
+		&:last-of-type{
+			margin-right: 0;
 		}
 	}
 }

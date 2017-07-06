@@ -36,7 +36,8 @@ module.exports = {
 				use: [{
 					loader: 'babel-loader',
 					options: {
-						presets: ['es2015']
+						presets: [ 'es2015' ],
+						plugins: [ 'babel-plugin-remove-template-whitespace' ]
 					}
 				}]
 			},

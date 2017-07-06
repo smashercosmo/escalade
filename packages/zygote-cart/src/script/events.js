@@ -94,7 +94,6 @@ function clearError(){
 
 
 function getProductId(el){
-	console.log('getProductId')
 	let data
 	while(!(data = getData(el, 'id'))){
 		el = el.parentElement
