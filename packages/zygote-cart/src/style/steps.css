@@ -36,6 +36,9 @@
 		float: right;
 		width: auto;
 	}
+	& .zygoteAdjLine.zygoteShow{
+		display: block;
+	}
 }
 .zygoteOn5{
 	& .zygoteStepBtns{

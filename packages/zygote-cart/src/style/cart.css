@@ -134,7 +134,7 @@
 .zygoteSubLine{
 	border-top: 1px solid var(--lightColor);
 }
-.zygoteSubLine, .zygoteShipLine, .zygoteTaxLine, .zygoteCouponLine{
+.zygoteSubLine, .zygoteShipLine, .zygoteTaxLine, .zygoteCouponLine, .zygoteAdjLine{
 	color: #aaa;
 }
 .zygoteSubLine, .zygoteShipLine, .zygoteTaxLine, .zygoteTotalLine{
@@ -155,6 +155,12 @@
 		display: block;
 		clear: both;
 	}
+}
+.zygoteAdjLine{
+	list-style-type: none;
+	padding: 10px 0;
+	margin: 0;
+	text-align: right;
 }
 .zygoteTotalLine{
 	font-weight: bold;

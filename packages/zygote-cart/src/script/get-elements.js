@@ -11,6 +11,7 @@ module.exports = function(el){
 		tax: el.querySelector('.zygoteTax'),
 		ship: el.querySelector('.zygoteShip'),
 		total: el.querySelector('.zygoteTotal'),
-		input: el.querySelectorAll('input, select')
+		input: el.querySelectorAll('input, select'),
+		adjustments: el.querySelector('.zygoteAdjLine')
 	}
 }

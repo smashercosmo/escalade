@@ -1,15 +1,16 @@
 // Manipulates classList
 exports.add = (el, str) => {
-	let classes = el.className.split(' ')
+	let className = el.className || ''
+	let classes = className.split(' ')
 	const index = classes.indexOf(str)
 	if(index === -1){
-		let cn = el.className
-		if(cn) cn = `${cn} `
-		el.className = `${cn}${str}`
+		if(className) className = `${className} `
+		el.className = `${className}${str}`
 	}
 }
 exports.remove = (el, str) => {
-	let classes = el.className.split(' ')
+	const className = el.className || ''
+	let classes = className.split(' ')
 	const index = classes.indexOf(str)
 	if(index > -1){
 		classes.splice(index, 1)
@@ -17,7 +18,8 @@ exports.remove = (el, str) => {
 	}
 }
 exports.toggle = (el, str) => {
-	let classes = el.className.split(' ')
+	const className = el.className || ''
+	let classes = className.split(' ')
 	const index = classes.indexOf(str)
 	if(index > -1){
 		classes.splice(index, 1)
@@ -25,13 +27,14 @@ exports.toggle = (el, str) => {
 		return false
 	}
 	else{
-		el.className = `${el.className} ${str}`
+		el.className = `${className} ${str}`
 		return true
 	}
 }
 
 exports.removePrefix = (el, str) => {
-	let classes = el.className.split(' ')
+	const className = el.className || ''
+	let classes = className.split(' ')
 	for(let i = classes.length; i--;){
 		if(classes[i].indexOf(str) === 0){
 			classes.splice(i, 1)

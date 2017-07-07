@@ -1,5 +1,5 @@
 import formatUsd from 'usd-formatter'
-import { add as addClass } from './class-list'
+import classList from './class-list'
 
 const expectedProperties = [
 	'products',
@@ -24,7 +24,7 @@ module.exports = function(obj){
 			// Style error
 			const input = this.els.container.querySelector(`.zygote${cap(i)}`)
 			if(input){
-				addClass(input, 'zygoteInputErr')
+				classList.add(input, 'zygoteInputErr')
 				let el = input.querySelector('.zygoteInputMsg')
 				if(!el){
 					el = document.createElement('div')
@@ -89,6 +89,14 @@ module.exports = function(obj){
 			}
 			if(obj.total){
 				this.els.total.textContent = formatUsd(obj.total)
+			}
+			// Add adjustments
+			if(obj.adjustments){
+				this.els.adjustments.innerHTML = `<li>${obj.adjustments.join(' Applied!</li><li>')} Applied!</li>`
+				classList.add(this.els.adjustments, 'zygoteShow')
+			}
+			else{
+				classList.remove(this.els.adjustments, 'zygoteShow')
 			}
 			this.hideLoader()
 		}
