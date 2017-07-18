@@ -88,7 +88,7 @@ exports.cart = () => {
 
 								<div class="zygoteShippingZip">
 									<label for="zygoteShippingZip">Zip / Postal Code</label>
-									<input type="text" id="zygoteShippingZip" name="shippingZip" autocomplete="postal-code" required inputmode="numeric" pattern="[0-9]*" maxlength="20" />
+									<input type="text" id="zygoteShippingZip" name="shippingZip" autocomplete="postal-code" required inputmode="numeric" pattern="\d*" maxlength="20" />
 								</div>
 							</div>
 
@@ -96,7 +96,7 @@ exports.cart = () => {
 
 								<div class="zygoteShippingPhone">
 									<label for="zygoteShippingPhone">Phone</label>
-									<input type="text" id="zygoteShippingPhone" name="shippingPhone" autocomplete="tel-national" inputmode="numeric" maxlength="20" />
+									<input type="text" id="zygoteShippingPhone" name="shippingPhone" autocomplete="tel-national" inputmode="numeric" pattern="\d*" maxlength="20" />
 								</div>
 
 								<div class="zygoteShippingEmail">
@@ -117,12 +117,12 @@ exports.cart = () => {
 							<div class="zygoteSection">
 								<div class="zygoteBillingNumber">
 									<label for="zygoteBillingNumber">Card Number</label>
-									<input type="text" id="zygoteBillingNumber" name="billingNumber" autocomplete="cc-number" required inputmode="numeric" pattern="[0-9 ]*" maxlength="100" />
+									<input type="text" id="zygoteBillingNumber" name="billingNumber" autocomplete="cc-number" required inputmode="numeric" pattern="\d*" maxlength="100" />
 								</div>
 
 								<div class="zygoteBillingSecurity">
 									<label for="zygoteBillingSecurity">CVC</label>
-									<input type="text" id="zygoteBillingSecurity" name="billingSecurity" autocomplete="cc-csc" required inputmode="numeric" pattern="[0-9]*" maxlength="10" />
+									<input type="text" id="zygoteBillingSecurity" name="billingSecurity" autocomplete="cc-csc" required inputmode="numeric" pattern="\d*" maxlength="10" />
 								</div>
 							</div>
 
@@ -206,9 +206,9 @@ exports.cart = () => {
 
 								<div class="zygoteBillingZip">
 									<label for="zygoteBillingZip">Zip / Postal Code</label>
-									<input type="text" id="zygoteBillingZip" name="billingZip" autocomplete="postal-code" required inputmode="numeric" pattern="[0-9]*" maxlength="20" />
+									<input type="text" id="zygoteBillingZip" name="billingZip" autocomplete="postal-code" required inputmode="numeric" maxlength="20" pattern="\d*" />
 									<label for="zygoteBillingPhone">Phone</label>
-									<input type="text" id="zygoteBillingPhone" name="billingPhone" autocomplete="tel-national" required inputmode="numeric" maxlength="20" />
+									<input type="text" id="zygoteBillingPhone" name="billingPhone" pattern="\d*" autocomplete="tel-national" required inputmode="numeric" maxlength="20" />
 								</div>
 							</div>
 						</div>

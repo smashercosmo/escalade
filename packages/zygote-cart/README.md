@@ -36,13 +36,9 @@ The API should have 2 endpoints: `validate` and `place`.
 WIP
 
 ## Todo
-- Coupon codes
-	+ Show coupon code in order confirmation
-	+ Show coupon message
-	+ Show coupon code in order summary
-- Option to show tooltips whenever items are added to cart
 - Format card numbers
 - Show card type icon
+- Option to show tooltips whenever items are added to cart
 
 - Hashes in URLs
 - Remove tabs and new lines from JS on build
