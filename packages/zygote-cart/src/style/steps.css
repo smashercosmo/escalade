@@ -32,7 +32,7 @@
 		float: right;
 		text-align: right;
 	}
-	& .zygoteProdHeader li:nth-of-type(2){
+	& .zygoteProdHeader li:nth-of-type(3){
 		float: right;
 		width: auto;
 	}
