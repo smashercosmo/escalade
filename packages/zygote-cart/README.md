@@ -36,7 +36,7 @@ Point Zygote to your API endpoint that will handle the order validation/entry af
 ```html
 <script src="https://zygote.netlify.com/zygote-v1.js"></script>
 <script>
-	zygote.api = https://yoursite.com/api
+	zygote.api = "https://yoursite.com/api"
 </script>
 ```
 
