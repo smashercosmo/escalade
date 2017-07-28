@@ -14,7 +14,20 @@ Insert the JavaScript file before your closing `</body>` tag:
 <script src="https://zygote.netlify.com/zygote-v1.js"></script>
 ```
 
-WIP
+Turn any element into a buy button with data attributes:
+```html
+<button
+	data-id="as701r10"
+	data-name="React One Pro"
+	data-price="259.99"
+	data-img="/img/product/thumbnail.jpg"
+	data-url="/product/as701r10"
+	data-desc="This is the product description."
+	data-open-cart
+	>
+	Add to Cart
+</button>
+```
 
 ## Using with a custom API
 
