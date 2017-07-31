@@ -4,7 +4,6 @@
   "main": "index.js",
   "repository": "git@github.com:escaladesports/zygote-client.git",
   "author": "Kennedy Rose <kennedy@escaladesports.com>",
-  "private": true,
   "scripts": {
     "build": "webpack -p --config webpack-prod.config.js",
     "dev": "webpack-dev-server --hot --inline --content-base dist"

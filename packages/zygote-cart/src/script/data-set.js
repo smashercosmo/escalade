@@ -10,7 +10,9 @@ const getAll = exports.getAll = el => {
 			dataset[key] = attr.nodeValue || true
 		}
 	}
-	console.log(dataset)
+	if('qty' in dataset){
+		dataset.qty = Number(dataset.qty)
+	}
 	return dataset
 }
 
