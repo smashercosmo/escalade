@@ -42,8 +42,7 @@ module.exports = function(n, noProcess){
 		if(this.googleAnalytics && 'ga' in window){
 			ga('send', 'event', {
 				eventCategory: 'Zygote Cart',
-				eventAction: 'shipping',
-				eventLabel: obj.id.toUpperCase()
+				eventAction: 'shipping'
 			})
 		}
 	}
@@ -51,8 +50,7 @@ module.exports = function(n, noProcess){
 		if(this.googleAnalytics && 'ga' in window){
 			ga('send', 'event', {
 				eventCategory: 'Zygote Cart',
-				eventAction: 'billing',
-				eventLabel: obj.id.toUpperCase()
+				eventAction: 'billing'
 			})
 		}
 	}
@@ -61,8 +59,7 @@ module.exports = function(n, noProcess){
 		if(this.googleAnalytics && 'ga' in window){
 			ga('send', 'event', {
 				eventCategory: 'Zygote Cart',
-				eventAction: 'validation',
-				eventLabel: obj.id.toUpperCase()
+				eventAction: 'validation'
 			})
 		}
 		if(!noProcess){
@@ -75,8 +72,7 @@ module.exports = function(n, noProcess){
 		if(this.googleAnalytics && 'ga' in window){
 			ga('send', 'event', {
 				eventCategory: 'Zygote Cart',
-				eventAction: 'confirmation',
-				eventLabel: obj.id.toUpperCase()
+				eventAction: 'confirmation'
 			})
 		}
 		if(!noProcess){
