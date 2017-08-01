@@ -20,5 +20,15 @@ module.exports = function(obj){
 	if(obj.openCart){
 		this.open()
 	}
+
+	// Analytics
+	if(this.googleAnalytics && 'ga' in window){
+		ga('send', 'event', {
+			eventCategory: 'Zygote Cart',
+			eventAction: 'add',
+			eventLabel: obj.id.toUpperCase()
+		})
+	}
+
 	return this
 }

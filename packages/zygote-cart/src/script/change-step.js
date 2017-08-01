@@ -37,13 +37,48 @@ module.exports = function(n, noProcess){
 		}
 	}
 
-	if(this.step === 4){
+	// If on shipping
+	if(this.step === 2){
+		if(this.googleAnalytics && 'ga' in window){
+			ga('send', 'event', {
+				eventCategory: 'Zygote Cart',
+				eventAction: 'shipping',
+				eventLabel: obj.id.toUpperCase()
+			})
+		}
+	}
+	else if(this.step === 3){
+		if(this.googleAnalytics && 'ga' in window){
+			ga('send', 'event', {
+				eventCategory: 'Zygote Cart',
+				eventAction: 'billing',
+				eventLabel: obj.id.toUpperCase()
+			})
+		}
+	}
+	// If on validation
+	else if(this.step === 4){
+		if(this.googleAnalytics && 'ga' in window){
+			ga('send', 'event', {
+				eventCategory: 'Zygote Cart',
+				eventAction: 'validation',
+				eventLabel: obj.id.toUpperCase()
+			})
+		}
 		if(!noProcess){
 			this.validate()
 		}
 		this.els.nextBtn.textContent = 'Place Order'
 	}
+	// If placing order
 	else if(this.step === 5){
+		if(this.googleAnalytics && 'ga' in window){
+			ga('send', 'event', {
+				eventCategory: 'Zygote Cart',
+				eventAction: 'confirmation',
+				eventLabel: obj.id.toUpperCase()
+			})
+		}
 		if(!noProcess){
 			this.placeOrder()
 		}
