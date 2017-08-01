@@ -15,6 +15,7 @@ Cart.prototype = {
 	step: 1,
 	inputValidation: true,
 	isOpen: false,
+	googleAnalytics: true,
 	body: document.getElementsByTagName('body')[0],
 
 	inject: require('./script/inject'),
