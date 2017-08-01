@@ -38,7 +38,7 @@ module.exports = function(n, noProcess){
 	}
 
 	// If on shipping
-	else if(this.step === 2){
+	if(this.step === 2){
 		if(this.googleAnalytics && 'ga' in window){
 			ga('send', 'event', {
 				eventCategory: 'Zygote Cart',
