@@ -4,11 +4,6 @@ An client side ecommerce cart & checkout system. The cart/checkout forms are inj
 
 ## Usage
 
-Insert the CSS file before your closing `</head>` tag:
-```html
-<link type="text/css" rel="stylesheet" href="https://zygote.netlify.com/zygote-v1.css">
-```
-
 Insert the JavaScript file before your closing `</body>` tag:
 ```html
 <script src="https://zygote.netlify.com/zygote-v1.js"></script>
@@ -27,6 +22,13 @@ Turn any element into a buy button with data attributes:
 	>
 	Add to Cart
 </button>
+```
+
+## Optional Styles
+
+Insert the CSS file before your closing `</head>` tag:
+```html
+<link type="text/css" rel="stylesheet" href="https://zygote.netlify.com/zygote-v1.css">
 ```
 
 ## Using with a custom API
