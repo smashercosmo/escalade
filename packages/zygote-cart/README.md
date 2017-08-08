@@ -40,20 +40,14 @@ Point Zygote to your API endpoint that will handle the order validation/entry af
 </script>
 ```
 
-The API should have 2 endpoints: `validate` and `place`.
+The endpoint should be able to differentiate between validation and an order by the billing information. Billing information will **only** be supplied once the user is actually placing an order. Any other post request should be considered validation, shipping cost request, and tax cost request.
 
-`validate` will validate the information, return any errors. If everything validates, it should return tax and a shipping quote along with the new total.
-
-`place` will place place the order in your system.
-
-WIP
 
 ## Todo
 - Format card numbers
 - Show card type icon
 - Option to show tooltips whenever items are added to cart
 
-- Hashes in URLs
 - Remove tabs and new lines from JS on build
 - Only inject parts of cart that are about to get used
 - Test out Google Maps API for address autofill
