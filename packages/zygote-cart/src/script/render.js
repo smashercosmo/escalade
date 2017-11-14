@@ -46,6 +46,10 @@ module.exports = function(){
 		if(totalQty) addClass(this.qty[i], 'zygoteHasQty')
 		else removeClass(this.qty[i], 'zygoteHasQty')
 	}
+	// Quantity event
+	if(this.onQtyUpdate){
+		this.onQtyUpdate(totalQty)
+	}
 	// Update subtotal
 	for(let i = this.els.subtotals.length; i--;){
 		this.els.subtotals[i].textContent = formatUsd(subTotal)
