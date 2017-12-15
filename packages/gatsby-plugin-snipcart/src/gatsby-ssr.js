@@ -24,7 +24,7 @@ exports.onRenderBody = ({ setPostBodyComponents }, options = {}) => {
 	if(options.jquery){
 		components.unshift(<script key='snipcartJquery' src={options.jquery}></script>)
 	}
-	if(options.defaultStyles){
+	if (options.styles){
 		components.push(<link key='snipcartStyle' href={options.styles} type="text/css" rel="stylesheet" />)
 	}
 
