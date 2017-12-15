@@ -21,9 +21,6 @@
   "peerDependencies": {
     "react": "^15.0.0-0 || ^16.0.0-0"
   },
-  "dependencies": {
-    "@segment/snippet": "^4.0.1"
-  },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.3",
