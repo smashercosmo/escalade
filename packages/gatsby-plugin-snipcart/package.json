@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-snipcart",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A Gatsby plugin ecommerce with Snipcart.",
   "keywords": [
     "snipcart",
