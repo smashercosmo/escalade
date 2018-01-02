@@ -5,6 +5,7 @@ let warning = false
 exports.onRenderBody = ({ setPostBodyComponents }, options = {}) => {
 	options = Object.assign({
 		apiKey: process.env.GATSBY_SNIPCART_API_KEY,
+		autopop: false,
 		js: 'https://cdn.snipcart.com/scripts/2.0/snipcart.js',
 		jquery: 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js',
 		styles: 'https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css',
@@ -19,7 +20,7 @@ exports.onRenderBody = ({ setPostBodyComponents }, options = {}) => {
 	}
 
 	const components = [
-		<script key='snipcartJs' src={options.js} id="snipcart" data-api-key={options.apiKey}></script>
+		<script key='snipcartJs' src={options.js} id="snipcart" data-api-key={options.apiKey} data-autopop={options.autopop}></script>
 	]
 	if(options.jquery){
 		components.unshift(<script key='snipcartJquery' src={options.jquery}></script>)
