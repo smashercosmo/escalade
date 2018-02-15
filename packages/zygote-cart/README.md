@@ -54,7 +54,7 @@ If you need to add items to the cart without using an element with data attribut
 zygote.add({
 	id: "as701r10",
 	name: "React One Pro",
-	price: "259.99",
+	price: 259.99,
 	img: "/img/product/thumbnail.jpg",
 	url: "/product/as701r10",
 	desc: "This is the product description."
