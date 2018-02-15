@@ -67,7 +67,7 @@ zygote.add({
 zygote.remove('PRODUCT_ID')
 ```
 
-## Opening the Cart
+### Opening the Cart
 
 ```javascript
 zygote.open()
