@@ -44,12 +44,25 @@ Point Zygote to your API endpoint that will handle the order validation/entry af
 
 The endpoint should be able to differentiate between validation and an order by the billing information. Billing information will **only** be supplied once the user is actually placing an order. Any other post request should be considered validation, shipping cost request, and tax cost request.
 
+## Client API
 
-## Todo
-- Format card numbers
-- Show card type icon
-- Option to show tooltips whenever items are added to cart
+If you need to add items to the cart without using an element with data attributes, you can use the JavaScript API directly.
 
-- Remove tabs and new lines from JS on build
-- Only inject parts of cart that are about to get used
-- Test out Google Maps API for address autofill
+### Adding Product
+
+```javascript
+zygote.add({
+	id: "as701r10",
+	name: "React One Pro",
+	price: "259.99",
+	img: "/img/product/thumbnail.jpg",
+	url: "/product/as701r10",
+	desc: "This is the product description."
+})
+```
+
+## Opening the Cart
+
+```javascript
+zygote.open()
+```
