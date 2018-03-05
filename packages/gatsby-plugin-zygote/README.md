@@ -1,17 +1,33 @@
-# Gatsby Plugin Boilerplate
+# gatsby-plugin-zygote
 
-A simple Gatsby plugin boilerplate.
+A Gatsby plugin for using the [Zygote](https://github.com/escaladesports/zygote-client) ecommerce system.
 
-## Getting started
+## Install
+
+With npm:
 
 ```bash
-git clone git@github.com:escaladesports/gatsby-plugin-boilerplate.git your-module
-cd your-module
-yarn
-yarn reset
+npm install --save gatsby-plugin-zygote
+```
+
+With Yarn:
+
+```bash
+yarn add gatsby-plugin-zygote
 ```
 
 ## Usage
 
-- `yarn test`: Run mocha tests
-- `yarn analyze`: View bundle sizes
+```javascript
+// In gatsby-config.js
+module.exports = {
+	plugins: [
+		{
+			resolve: 'gatsby-plugin-zygote',
+			options: {
+				api: 'https://yh5fc30fhh.execute-api.us-east-1.amazonaws.com/production/handler'
+			},
+		}
+	]
+}
+```
