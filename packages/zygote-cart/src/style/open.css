@@ -1,8 +1,0 @@
-
-.zygoteOpen{
-	height: auto !important;
-	overflow: hidden !important;
-	& .zygoteContainer{
-		display: block;
-	}
-}

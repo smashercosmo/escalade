@@ -1,0 +1,121 @@
+.zygoteProdDelete {
+  float: right;
+  cursor: pointer;
+  line-height: 14px;
+  font-size: 1.5em;
+  text-align: right;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.zygoteDecrease,
+.zygoteIncrease {
+  text-align: center;
+  cursor: pointer;
+  background: black;
+  color: white;
+  width: 19px;
+  height: 19px;
+  font-weight: 500;
+  font-size: 0.9em;
+  line-height: 17px;
+  border-radius: 100%;
+  display: inline-block;
+}
+.zygoteProdList {
+  width: 100%;
+  margin-top: 50px;
+}
+.zygoteProd {
+  margin: 15px auto;
+  width: 100%;
+  position: relative;
+}
+.zygoteProd:after,
+.zygoteProd:before {
+  content: '';
+  display: block;
+  clear: both;
+}
+.zygoteProdImg {
+  display: none;
+}
+.zygoteProdImg img {
+  width: 150px;
+  border: 0;
+}
+.zygoteProdQty {
+  float: left;
+}
+.zygoteProdName {
+  margin-bottom: 15px;
+  text-decoration: none;
+}
+.zygoteProdPrice {
+  text-align: right;
+  font-weight: 700;
+}
+.zygoteProdImg a {
+  display: block;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  color: #000;
+}
+@media (min-width: 900px) {
+  .zygoteProd {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+  }
+  .zygoteProdImg {
+    float: left;
+    display: block;
+  }
+  .zygoteProdName,
+  .zygoteProdDelete,
+  .zygoteProdPrice,
+  .zygoteProdQty {
+    height: 150px;
+    position: relative;
+    float: left;
+  }
+  .zygoteProdName {
+    width: 393px;
+    margin-bottom: 0;
+  }
+  .zygoteProdName a {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .zygoteProdName > div,
+  .zygoteProdDelete > div,
+  .zygoteProdPrice > div,
+  .zygoteProdQty > div {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .zygoteProdName > div {
+    padding: 0 20px;
+  }
+  .zygoteProdName > div > div {
+    margin-top: 5px;
+    font-size: 0.9em;
+  }
+  .zygoteProdPrice,
+  .zygoteProdQty {
+    width: 120px;
+    text-align: center;
+  }
+  .zygoteProdPrice > div,
+  .zygoteProdQty > div {
+    width: 100%;
+  }
+  .zygoteProdDelete {
+    width: 8%;
+  }
+  .zygoteProdDelete > div {
+    text-align: right;
+    width: 100%;
+  }
+}
