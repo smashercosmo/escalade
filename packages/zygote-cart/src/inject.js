@@ -4,6 +4,7 @@ import ZygoteToggleButton from './components/zygoteToggleButton';
 
 function initZygoteButtons() {
   document.addEventListener('click', e => {
+    console.log(e.target.dataset);
     const dataId = e.target.dataset.id;
     const dataPrice = e.target.dataset.price;
     if (dataId && dataPrice) {
