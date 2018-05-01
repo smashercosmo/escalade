@@ -28,10 +28,8 @@ function initZygoteButtons() {
 function queryRender(query, component) {
   const els = document.querySelectorAll(`[data-zygote-${query}]`);
   for (let i = els.length; i--; ) {
-    if (!els[i].dataset.zygoteProcess) {
-      render(component, els[i]);
-      els[i].dataset.zygoteProcess = true;
-    }
+    render(component, els[i]);
+    els[i].dataset.zygoteProcess = true;
   }
 }
 
