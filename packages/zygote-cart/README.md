@@ -1,18 +1,25 @@
-# React Component Boilerplate
+# React Zygote
 
-A simple React boilerplate that outputs to ES5 and ES6.
+Zygote 2.0 built with React
 
 ## Getting started
 
-```bash
-git clone git@github.com:escaladesports/react-component-boilerplate.git --depth=1 your-component
-cd your-component
-rm -rf .git
-```
+```javascript
+with npm
 
-Also make sure to edit the `package.json` file with a new name, version number, author, and anything else you might need.
+npm i -S zygote-cart
+
+with yarn
+
+yarn add zygote-cart
+```
 
 ## Usage
 
-- `yarn dev`: Runs a local dev server from the `dev` directory
-- `yarn analyze`: View bundle sizes
+```
+importing
+
+const zygote = require('zygote-cart');
+
+import zygote from 'zygote-cart';
+```

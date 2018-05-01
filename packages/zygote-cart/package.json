@@ -26,14 +26,14 @@
     "esca-scripts": "^0.14.12",
     "opn-cli": "^3.1.0",
     "react": "^16.1.1",
-    "react-dom": "^16.1.1"
+    "react-dom": "^16.1.1",
+    "styled-jsx": "^2.2.6"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "js-cookie": "^2.2.0",
     "statable": "^0.2.3",
     "styled-components": "^3.2.5",
-    "styled-jsx": "^2.2.6",
     "validator": "^9.4.1"
   }
 }
