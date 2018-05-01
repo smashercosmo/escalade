@@ -18,8 +18,6 @@ import {
   site
 } from './injectState';
 
-import { injectZygote } from './injectSource';
-
 module.exports = {
   ZygoteToggleButton,
   ZygoteContainer,
@@ -35,7 +33,6 @@ module.exports = {
   api,
   resetCart,
   removeCookies,
-  injectZygote,
   site,
   AddToCart
 };
