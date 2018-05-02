@@ -7,10 +7,9 @@ import ZygoteToggleButton from './components/zygoteToggleButton';
 
 function initZygoteButtons() {
   document.addEventListener('click', e => {
-    console.log(e.target.dataset);
     const dataId = e.target.dataset.id;
     const dataPrice = e.target.dataset.price;
-    if (e.target.dataset.toggleZygote) {
+    if (e.target.dataset.zygoteToggle) {
       toggleCart();
     }
     if (dataId && dataPrice) {
@@ -22,7 +21,7 @@ function initZygoteButtons() {
       if (!updated.qty) updated.qty = 1;
 
       addItems([updated]);
-      if (data.openCart) {
+      if (data.open) {
         openCart();
       }
       if (data.site) {
@@ -44,7 +43,8 @@ function queryRender(query, component) {
 }
 
 class ZygoteInject {
-  constructor() {
+  constructor(site = '') {
+    console.log(site);
     this.inject();
     initZygoteButtons();
   }
