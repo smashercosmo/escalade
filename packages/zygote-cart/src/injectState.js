@@ -25,7 +25,6 @@ const closeCart = () => {
 };
 
 const toggleCart = () => {
-  console.log('Toggled');
   cartState.state.open ? closeCart() : openCart();
 };
 

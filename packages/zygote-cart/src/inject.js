@@ -10,7 +10,6 @@ function initZygoteButtons() {
     const dataId = e.target.dataset.id;
     const dataPrice = e.target.dataset.price;
     if (e.target.dataset.zygoteToggle) {
-      console.log('clicked');
       toggleCart();
     }
     if (dataId && dataPrice) {
@@ -37,7 +36,6 @@ function queryRender(query, component) {
     if (els[i].dataset.zygoteProcessed) {
       continue;
     }
-    console.log(els[i]);
     render(component, els[i]);
     els[i].dataset.zygoteProcessed = true;
   }
