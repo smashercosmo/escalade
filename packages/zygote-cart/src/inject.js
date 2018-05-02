@@ -1,4 +1,4 @@
-import { openCart, addItems, site } from './injectState';
+import { openCart, addItems, site, toggleCart } from './injectState';
 import { ZygoteContainer } from './components/containers';
 import ZygoteToggleButton from './components/zygoteToggleButton';
 
@@ -7,6 +7,9 @@ function initZygoteButtons() {
     console.log(e.target.dataset);
     const dataId = e.target.dataset.id;
     const dataPrice = e.target.dataset.price;
+    if (e.target.dataset.toggleZygote) {
+      toggleCart();
+    }
     if (dataId && dataPrice) {
       const data = e.target.dataset;
       let updated = {};
@@ -35,15 +38,15 @@ function queryRender(query, component) {
 }
 
 class ZygoteInject {
-  constructor(site = '') {
-    this.site = site;
-    site(site);
+  constructor() {
     this.inject();
     initZygoteButtons();
   }
   inject() {
-    queryRender('button', <ZygoteToggleButton />);
     queryRender('modal', <ZygoteContainer />);
+  }
+  setSite(site) {
+    site(site);
   }
 }
 
