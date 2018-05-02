@@ -5,8 +5,11 @@ import { openCart, addItems, site, toggleCart } from './injectState';
 import { ZygoteContainer } from './components/containers';
 import ZygoteToggleButton from './components/zygoteToggleButton';
 
+console.log(site);
+
 function initZygoteButtons() {
   document.addEventListener('click', e => {
+    console.log(e.target.dataset);
     const dataId = e.target.dataset.id;
     const dataPrice = e.target.dataset.price;
     if (e.target.dataset.zygoteToggle) {
@@ -19,8 +22,8 @@ function initZygoteButtons() {
         updated[k] = data[k];
       });
       if (!updated.qty) updated.qty = 1;
-
-      addItems([updated]);
+      console.log(updated);
+      addItems(updated);
       if (data.open) {
         openCart();
       }
@@ -33,6 +36,7 @@ function initZygoteButtons() {
 
 function queryRender(query, component) {
   const els = document.querySelectorAll(`[data-zygote-${query}]`);
+  console.log(els);
   for (let i = els.length; i--; ) {
     if (els[i].dataset.zygoteProcessed) {
       continue;
@@ -43,15 +47,14 @@ function queryRender(query, component) {
 }
 
 class ZygoteInject {
-  constructor() {
+  constructor(site = '') {
+    this.site = site;
+    site(site);
     this.inject();
     initZygoteButtons();
   }
   inject() {
     queryRender('modal', <ZygoteContainer />);
-  }
-  setSite(site) {
-    site(site);
   }
 }
 
