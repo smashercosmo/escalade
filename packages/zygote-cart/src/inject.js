@@ -1,3 +1,6 @@
+import React from 'react';
+import { render } from 'react-dom';
+
 import { openCart, addItems, site, toggleCart } from './injectState';
 import { ZygoteContainer } from './components/containers';
 import ZygoteToggleButton from './components/zygoteToggleButton';
@@ -32,8 +35,11 @@ function initZygoteButtons() {
 function queryRender(query, component) {
   const els = document.querySelectorAll(`[data-zygote-${query}]`);
   for (let i = els.length; i--; ) {
+    if (els[i].dataset.zygoteProcessed) {
+      continue;
+    }
     render(component, els[i]);
-    els[i].dataset.zygoteProcess = true;
+    els[i].dataset.zygoteProcessed = true;
   }
 }
 
