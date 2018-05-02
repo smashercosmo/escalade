@@ -44,7 +44,7 @@ function queryRender(query, component) {
 
 class ZygoteInject {
   constructor(site = '') {
-    console.log(site);
+    site(site);
     this.inject();
     initZygoteButtons();
   }
