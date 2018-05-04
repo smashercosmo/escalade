@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Subscribe } from 'statable';
 
 import { itemState } from '../../state';
+import styles from './styles';
 
 export default class Subtotal extends Component {
   constructor(props) {
@@ -30,27 +31,9 @@ export default class Subtotal extends Component {
                 maximumFractionDigits: 2
               })}
             </div>
-            <style jsx global>{`
-              .zygoteSubLine {
-                width: 100%;
-                border-top: 1px solid #ccc;
-                border-bottom: 1px solid #ccc;
-                padding: 10px 0;
-                text-transform: uppercase;
-                text-align: center;
-                font-size: 0.9em;
-                margin-top: 20px;
-                color: #aaa;
-              }
-              @media (min-width: 900px) {
-                .zygoteSubLine div:first-of-type {
-                  float: left;
-                }
-                .zygoteSubLine div:nth-of-type(2) {
-                  float: right;
-                }
-              }
-            `}</style>
+            <style jsx global>
+              {styles}
+            </style>
           </div>
         )}
       </Subscribe>

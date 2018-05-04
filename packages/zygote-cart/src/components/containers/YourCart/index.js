@@ -3,6 +3,7 @@ import { Subscribe } from 'statable';
 
 import { Item, Coupon, Subtotal } from '../../containers';
 import { itemState } from '../../state';
+import styles from './styles';
 
 export default class YourCart extends Component {
   render() {
@@ -21,12 +22,9 @@ export default class YourCart extends Component {
             )
           }
         </Subscribe>
-        <style jsx global>{`
-          .zygoteEmpty {
-            text-align: center;
-            margin: 30px 0;
-          }
-        `}</style>
+        <style jsx global>
+          {styles}
+        </style>
       </div>
     );
   }

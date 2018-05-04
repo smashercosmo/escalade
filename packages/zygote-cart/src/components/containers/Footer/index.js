@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './styles';
 
 export default class Footer extends Component {
   render() {
@@ -17,24 +18,9 @@ export default class Footer extends Component {
           </g>
         </svg>
         <span>ssl secure</span>
-        <style jsx global>{`
-          .zygoteFooter {
-            text-align: center;
-            background-color: #f7f7f7;
-            padding: 10px 20px;
-            cursor: default;
-          }
-          .zygoteFooter span {
-            font-size: 0.75em;
-            text-transform: uppercase;
-            font-weight: 700;
-          }
-          .zygoteFooter svg {
-            width: 11px;
-            height: 11px;
-            margin-right: 1px;
-          }
-        `}</style>
+        <style jsx global>
+          {styles}
+        </style>
       </div>
     );
   }

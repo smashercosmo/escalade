@@ -11,6 +11,7 @@ import {
   Loading
 } from '../../containers';
 import { cartState, cost, userInfo, zygoteApi, itemState } from '../../state';
+import styles from './styles';
 
 export default class Confirm extends Component {
   constructor(props) {
@@ -134,24 +135,9 @@ export default class Confirm extends Component {
             <ShippingCost />
             <Tax />
             <Total />
-            <style jsx global>{`
-              .zygoteShippingInputs label {
-                margin-top: 5px;
-                display: block;
-              }
-              .zygoteModal {
-                background-color: #fff;
-                max-width: 900px;
-                margin: 0 auto;
-                position: relative;
-              }
-              @media (min-width: 900px) {
-                .zygoteModal {
-                  top: 30px;
-                  margin-bottom: 30px;
-                }
-              }
-            `}</style>
+            <style jsx global>
+              {styles}
+            </style>
           </div>
         )}
       </Subscribe>

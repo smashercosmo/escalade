@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { ZygoteContainer, ZygoteToggleButton, AddToCart } from '../dist';
-import zygote from '../dist';
+import { ZygoteContainer, ZygoteToggleButton, AddToCart } from '../src';
+import zygote from '../src';
 import Loader from '../src/components/containers/Loading';
 
 const containerEl = document.createElement('div');

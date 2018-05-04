@@ -3,6 +3,7 @@ import { Subscribe } from 'statable';
 
 import { shipping } from '../../utils';
 import { userInfo, cartState } from '../../state';
+import styles from './styles';
 
 export default class Shipping extends Component {
   constructor(props) {

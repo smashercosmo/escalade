@@ -10,6 +10,7 @@ import {
   Loading
 } from '../../containers';
 import { cartState } from '../../state';
+import styles from './styles';
 
 export default class OrderPlaced extends Component {
   constructor(props) {
@@ -32,32 +33,28 @@ export default class OrderPlaced extends Component {
         {state => (
           <div className="zygoteStep zygoteStep5">
             <div className="zygoteMsgs">
-              {state.apiErrors
-                ? state.apiErrors.length > 0 &&
-                  state.apiErrors.map((err, i) => {
-                    this.setState({
-                      header: ''
-                    });
-
-                    return (
-                      <div key={i} className="zygoteErr">
-                        {err}
-                      </div>
-                    );
-                  })
-                : null}
+              {state.apiErrors ? (
+                state.apiErrors.length > 0 &&
+                state.apiErrors.map((err, i) => {
+                  return (
+                    <div key={i} className="zygoteErr">
+                      {err}
+                    </div>
+                  );
+                })
+              ) : (
+                <h2>{this.state.header}</h2>
+              )}
             </div>
-            <h2>{this.state.header}</h2>
+
             <Item />
             <Subtotal />
             <ShippingCost />
             <Tax />
             <Total />
-            <style jsx global>{`
-              .zygoteStep5 h2 {
-                text-align: center;
-              }
-            `}</style>
+            <style jsx global>
+              {styles}
+            </style>
           </div>
         )}
       </Subscribe>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Subscribe } from 'statable';
 
 import { cost } from '../../state';
+import styles from './styles';
 
 export default class ShippingCost extends Component {
   render() {
@@ -16,26 +17,9 @@ export default class ShippingCost extends Component {
                 maximumFractionDigits: 2
               })}
             </div>
-            <style jsx global>{`
-              .zygoteShipLine {
-                width: 100%;
-                border-bottom: 1px solid #ccc;
-                padding: 10px 0;
-                text-transform: uppercase;
-                text-align: center;
-                font-size: 0.9em;
-                margin: 0;
-                color: #aaa;
-              }
-              @media (min-width: 900px) {
-                .zygoteShipLine div:first-of-type {
-                  float: left;
-                }
-                .zygoteShipLine div:nth-of-type(2) {
-                  float: right;
-                }
-              }
-            `}</style>
+            <style jsx global>
+              {styles}
+            </style>
           </div>
         )}
       </Subscribe>

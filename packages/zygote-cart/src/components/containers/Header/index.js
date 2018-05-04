@@ -3,6 +3,7 @@ import Cookie from 'js-cookie';
 
 import { cartState, itemState, cost, userInfo } from '../../state';
 import { closeCart } from '../../../injectState';
+import styles from './styles.js';
 
 export default class Header extends Component {
   constructor(props) {
@@ -13,8 +14,13 @@ export default class Header extends Component {
 
   checkState() {
     closeCart();
-    const { tab, loading } = cartState.state;
+    const { tab, loading, apiErrors, errors } = cartState.state;
+
     if (tab === 4 && loading === false) {
+      if (errors || apiErrors) {
+        cartState.setState({ tab: 0, showNav: true });
+        return;
+      }
       itemState.setState({ items: [], coupon: '' });
       cartState.setState({ tab: 0, showNav: false });
       cost.setState({
@@ -64,26 +70,9 @@ export default class Header extends Component {
           ×
         </div>
         <h1>Your Cart</h1>
-        <style jsx global>{`
-          .zygoteClose {
-            float: right;
-            color: #000;
-            font-size: 2em;
-            margin-right: 5px;
-            cursor: pointer;
-          }
-          .zygoteHeader {
-            background-color: #f7f7f7;
-            padding: 20px;
-          }
-          .zygoteHeader > h1 {
-            margin: 0;
-            color: #000;
-            font-size: 1.7em;
-            font-family: Special Elite, serif;
-            text-transform: uppercase;
-          }
-        `}</style>
+        <style jsx global>
+          {styles}
+        </style>
       </div>
     );
   }

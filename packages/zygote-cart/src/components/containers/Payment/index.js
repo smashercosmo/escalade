@@ -3,6 +3,7 @@ import { Subscribe } from 'statable';
 
 import { payment } from '../../utils';
 import { userInfo, cartState } from '../../state';
+import styles from './styles';
 
 export default class Payment extends Component {
   constructor(props) {
@@ -259,16 +260,9 @@ export default class Payment extends Component {
                 </div>
               </div>
             )}
-            <style jsx global>{`
-              .zygoteBoxLabel input {
-                display: inline-block;
-                width: auto !important;
-                height: auto !important;
-              }
-              .zygoteBoxLabel span {
-                font-size: 0.9em;
-              }
-            `}</style>
+            <style jsx global>
+              {styles}
+            </style>
           </div>
         )}
       </Subscribe>

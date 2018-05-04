@@ -3,6 +3,7 @@ import { Subscribe } from 'statable';
 
 import { cartState } from '../../state';
 import { cartContent } from '../../utils';
+import styles from './styles';
 
 export default class Tab extends Component {
   render() {

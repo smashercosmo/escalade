@@ -7,6 +7,7 @@ import {
   Confirm,
   OrderPlaced
 } from '../../containers';
+import styles from './styles';
 
 export default class Content extends Component {
   constructor(props) {
@@ -37,11 +38,9 @@ export default class Content extends Component {
     return (
       <div className="zygoteProdTable">
         {this.renderContent(active)}
-        <style jsx global>{`
-          .zygoteProdTable {
-            margin: 20px;
-          }
-        `}</style>
+        <style jsx global>
+          {styles}
+        </style>
       </div>
     );
   }
