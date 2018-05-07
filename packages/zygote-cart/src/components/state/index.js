@@ -32,7 +32,8 @@ itemState.subscribe(() => {
 });
 
 const zygoteApi = new State({
-  api: 'https://hzrxrm0s9b.execute-api.us-east-1.amazonaws.com/staging/handler'
+  api:
+    'https://yh5fc30fhh.execute-api.us-east-1.amazonaws.com/production/handler'
 });
 
 const userInfo = new State(
