@@ -70,9 +70,7 @@ export default class Header extends Component {
           ×
         </div>
         <h1>Your Cart</h1>
-        <style jsx global>
-          {styles}
-        </style>
+        <style jsx>{styles}</style>
       </div>
     );
   }
