@@ -69,15 +69,11 @@ export default class Item extends Component {
             {state.items.map((item, i) => (
               <div key={i} className="zygoteProd">
                 <div className="zygoteProdImg">
-                  <a href={item.url}>
-                    <img src={item.image} alt="" />
-                  </a>
+                  <img src={item.image} alt="" />
                 </div>
                 <div className="zygoteProdName">
-                  <div>
-                    <a href={item.url}>{item.name}</a>
-                    <div>{item.desc}</div>
-                  </div>
+                  <div className="zygoteProdNameTitle">{item.name}</div>
+                  <div>{item.desc}</div>
                 </div>
                 <div className="zygoteProdQty">
                   <div>

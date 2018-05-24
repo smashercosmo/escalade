@@ -2,7 +2,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import { ZygoteContainer, ZygoteToggleButton, AddToCart } from '../src';
 import zygote from '../src';
-import Loader from '../src/components/containers/Loading';
+const brandLogo =
+  'https://cdn.pixabay.com/photo/2018/05/21/22/44/logo-3419889_1280.png';
 
 const containerEl = document.createElement('div');
 document.body.appendChild(containerEl);
@@ -21,8 +22,10 @@ render(
     >
       <button className="cartButton">Add to Cart</button>
     </AddToCart>
-    <Loader />
-    <ZygoteContainer />
+    <ZygoteContainer
+      //  brandLogo={brandLogo}
+      promoMessage={'Here is your promo message'}
+    />
   </div>,
   containerEl
 );

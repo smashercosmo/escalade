@@ -5,10 +5,6 @@ export default class ItemHeader extends Component {
   render() {
     return (
       <div className="zygoteProdHeader">
-        <div>Item</div>
-        <div>Quantity</div>
-        <div>Price</div>
-        <div>Remove</div>
         <style jsx global>
           {styles}
         </style>

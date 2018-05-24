@@ -2,7 +2,7 @@ import { State } from 'statable';
 import Cookie from 'js-cookie';
 
 const cartState = new State({
-  open: false,
+  open: true,
   tab: 0,
   errors: null,
   apiErrors: null,
@@ -22,7 +22,17 @@ const itemState = new State(
   Cookie.get('item')
     ? JSON.parse(Cookie.get('item'))
     : {
-        items: [],
+        items: [
+          {
+            desc: 'Table tennis paddle.',
+            id: 'abf4010',
+            image: 'https://pingpong.com/img/product/t1265-0-s.jpg?1496431075',
+            name: 'Cajun Thing',
+            price: 21.99,
+            qty: 1,
+            url: 'https://pingpong.comproduct/t1265'
+          }
+        ],
         coupon: ''
       }
 );

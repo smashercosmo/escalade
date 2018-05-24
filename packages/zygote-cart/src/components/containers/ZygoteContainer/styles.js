@@ -47,7 +47,7 @@ export default css`
     color: #000;
   }
   .zygoteStep {
-    padding: 20px 0;
+    padding: 0;
   }
   .zygoteSection label {
     cursor: pointer;
@@ -82,22 +82,14 @@ export default css`
   .zygoteStep5 .zygoteProdHeader div:last-of-type {
     display: none;
   }
-  .zygoteStep4 .zygoteProdHeader div:nth-of-type(3),
-  .zygoteStep5 .zygoteProdHeader div:nth-of-type(3) {
-    float: right;
-    width: auto;
-  }
+
   .zygoteCouponLine:after,
   .zygoteShipLine:after,
   .zygoteSubLine:after,
   .zygoteTaxLine:after,
-  .zygoteTotalLine:after {
-    content: '';
-    display: block;
-    clear: both;
-  }
   .zygoteProdHeader:after,
-  .zygoteStepBtns:after {
+  .zygoteStepBtns:after,
+  .zygoteTotalLine:after {
     content: '';
     display: block;
     clear: both;

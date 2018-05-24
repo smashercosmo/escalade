@@ -69,9 +69,23 @@ export default class Header extends Component {
         <div className="zygoteClose" onClick={() => this.checkState()}>
           ×
         </div>
-        <h1>Your Cart</h1>
+        <div className="zygoteBrandLogo">
+          {this.props.brandLogo ? (
+            <img src={this.props.brandLogo} alt="" />
+          ) : (
+            <div className="zygoteDefaultBrandLogo">Brand Logo</div>
+          )}
+        </div>
+        <div className="zygoteAddedToCart">{this.props.addedToCartMessage}</div>
+        {this.props.promoMessage ? (
+          <div className="zygotePromoMessage">{this.props.promoMessage}</div>
+        ) : null}
         <style jsx>{styles}</style>
       </div>
     );
   }
 }
+
+Header.defaultProps = {
+  addedToCartMessage: "You've added to your cart!"
+};

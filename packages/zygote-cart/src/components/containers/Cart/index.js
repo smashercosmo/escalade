@@ -15,7 +15,10 @@ export default class Cart extends Component {
       <Subscribe to={cartState}>
         {state => (
           <div className="zygoteModal" onClick={e => e.stopPropagation()}>
-            <Header />
+            <Header
+              brandLogo={this.props.brandLogo}
+              promoMessage={this.props.promoMessage}
+            />
             {state.showNav ? <Nav /> : null}
             <div className="zygoteForm">
               <Content

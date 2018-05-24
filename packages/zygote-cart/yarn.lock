@@ -3577,6 +3577,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+material-ui-credit-card-icons@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/material-ui-credit-card-icons/-/material-ui-credit-card-icons-3.2.1.tgz#9134d0642fa6ec6c2c6cbf918e382145adb8ca28"
+
 md5.js@^1.3.4:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/md5.js/-/md5.js-1.3.4.tgz#e9bdbde94a20a5ac18b04340fc5764d5b09d901d"

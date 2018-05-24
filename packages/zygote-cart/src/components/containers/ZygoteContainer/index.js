@@ -70,7 +70,10 @@ export default class Container extends Component {
           <div onClick={() => this.checkState()}>
             {state.open && (
               <div className="zygoteContainer">
-                <Cart />
+                <Cart
+                  brandLogo={this.props.brandLogo}
+                  promoMessage={this.props.promoMessage}
+                />
               </div>
             )}
             <style jsx global>
