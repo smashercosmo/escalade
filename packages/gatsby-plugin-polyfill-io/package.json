@@ -5,7 +5,7 @@
     "gatsby",
     "plugin",
     "polyfill",
-    "io"
+    "polyfill.io"
   ],
   "main": "gatsby-browser.js",
   "author": "Kennedy Rose <krose@escaladesports.com>",

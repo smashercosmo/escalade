@@ -1,9 +1,22 @@
 import React from 'react'
 
-export function onRenderBody({ setPostBodyComponents }, pluginOptions) {
-	if (process.env.NODE_ENV === 'production' && pluginOptions.id) {
-		return setPostBodyComponents([
-			<script key='gatsby-plugin-hubspot' type='text/javascript' id='hs-script-loader' async defer src={`//js.hs-scripts.com/${pluginOptions.id}.js`}></script>
-		])
+export function onRenderBody({ setPostBodyComponents }, options){
+	let args = []
+	for (let i in options) {
+		if (i === 'plugins') continue
+		let opt = options[i]
+		if (Array.isArray(opt)) {
+			opt = opt.join(`,`)
+		}
+		args.push(`${i}=${opt}`)
 	}
+	if (args.length) {
+		args = `?${args.join(`&`)}`
+	}
+	else {
+		args = ``
+	}
+	setPostBodyComponents([
+		<script src={`https://cdn.polyfill.io/v2/polyfill.min.js${args}`}></script>
+	])
 }
