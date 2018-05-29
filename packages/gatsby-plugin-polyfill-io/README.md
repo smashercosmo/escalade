@@ -1,17 +1,39 @@
-# Gatsby Plugin Boilerplate
+# gatsby-plugin-polyfill-io
 
-A simple Gatsby plugin boilerplate.
+A Gatsby plugin to polyfill your site with [Polyfill.io](https://polyfill.io/v2/docs/).
 
-## Getting started
+## Installation
+
+With npm:
 
 ```bash
-git clone git@github.com:escaladesports/gatsby-plugin-boilerplate.git your-module
-cd your-module
-yarn
-yarn reset
+npm install --save gatsby-plugin-polyfill-io
 ```
 
-## Usage
+Or with Yarn:
 
-- `yarn test`: Run mocha tests
-- `yarn analyze`: View bundle sizes
+```bash
+yarn add gatsby-plugin-polyfill-io
+```
+
+## Implementation
+
+```javascript
+// In your gatsby-config.js
+plugins: [`gatsby-plugin-polyfill-io`]
+```
+
+## Options
+
+To include [Polyfill.io options](https://polyfill.io/v2/docs/api):
+
+```javascript
+plugins: [
+   {
+      resolve: `gatsby-plugin-polyfill-io`,
+      options: {
+         features: [`Array.prototype.map`, `fetch`]
+      },
+   },
+]
+```
