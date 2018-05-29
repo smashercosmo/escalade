@@ -7,7 +7,7 @@
     "polyfill",
     "polyfill.io"
   ],
-  "main": "gatsby-browser.js",
+  "main": "gatsby-ssr.js",
   "author": "Kennedy Rose <krose@escaladesports.com>",
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "analyze": "esca-scripts analyze --input './src/gatsby-browser.js'",
+    "analyze": "esca-scripts analyze --input './src/gatsby-ssr.js'",
     "build": "esca-scripts build --input src --output . --multiple --react --babel",
     "prepublishOnly": "npm run build",
     "reset": "esca-scripts reset",
