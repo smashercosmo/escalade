@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import { Subscribe } from 'statable';
 
-import { Item, Coupon, Subtotal } from '../../containers';
+import {
+  Item,
+  Coupon,
+  Subtotal,
+  ShippingCost,
+  Tax,
+  Total,
+  PaymentLine
+} from '../../containers';
 import { itemState } from '../../state';
 import styles from './styles';
 
@@ -17,7 +25,15 @@ export default class YourCart extends Component {
               <div className="zygoteStep1 zygoteStep">
                 <Item />
                 <Coupon />
-                <Subtotal />
+                <div className="zygoteSubFieldsContainer">
+                  <div className="zygoteSubFields">
+                    <Subtotal />
+                    <ShippingCost />
+                    <Tax />
+                  </div>
+                </div>
+                <Total />
+                <PaymentLine />
               </div>
             )
           }

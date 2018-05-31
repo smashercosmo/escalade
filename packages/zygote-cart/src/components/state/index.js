@@ -3,7 +3,7 @@ import Cookie from 'js-cookie';
 
 const cartState = new State({
   open: true,
-  tab: 0,
+  tab: 2,
   errors: null,
   apiErrors: null,
   loading: false,
@@ -25,9 +25,19 @@ const itemState = new State(
         items: [
           {
             desc: 'Table tennis paddle.',
-            id: 'abf4010',
+            id: 't8591w',
             image: 'https://pingpong.com/img/product/t1265-0-s.jpg?1496431075',
             name: 'Cajun Thing',
+            price: 21.99,
+            qty: 1,
+            url: 'https://pingpong.comproduct/t1265'
+          },
+          {
+            desc:
+              'Table tennis paddle. This is an item, Table tennis paddle. This is an itemTable tennis paddle. This is an itemTable tennis paddle. This is an itemTable tennis paddle. This is an itemTable tennis paddle. This is an item',
+            id: 't8591w',
+            image: 'https://pingpong.com/img/product/t1265-0-s.jpg?1496431075',
+            name: 'Cajun Thing 22234',
             price: 21.99,
             qty: 1,
             url: 'https://pingpong.comproduct/t1265'
@@ -50,33 +60,31 @@ const userInfo = new State(
     ? JSON.parse(Cookie.get('userInfo'))
     : {
         addressSame: true,
+        specialOffers: true,
         preOrderInfo: null,
         shipping: {
-          ShippingFirst: '',
-          ShippingLast: '',
-          ShippingAddress1: '',
-          ShippingCity: '',
-          ShippingState: '',
-          ShippingZip: '',
-          ShippingPhone: '',
-          ShippingEmail: '',
-          ShippingAddress2: ''
+          shippingFullName: '',
+          shippingEmail: '',
+          shippingPhone: '',
+          shippingApt: '',
+          shippingCompanyName: '',
+          shippingAddress: '',
+          shippingCity: '',
+          shippingState: '',
+          shippingZip: ''
         },
         payment: {
-          BillingNumber: '',
-          BillingSecurity: '',
-          BillingMonth: '',
-          BillingYear: ''
-        },
-        paymentAddress: {
-          BillingFirst: '',
-          BillingLast: '',
-          BillingAddress1: '',
-          BillingCity: '',
-          BillingState: '',
-          BillingZip: '',
-          BillingPhone: '',
-          BillingAddress2: ''
+          billingNumber: '',
+          billingSecurity: '',
+          billingMonth: '',
+          billingYear: '',
+          billingAddress: '',
+          billingCity: '',
+          billingState: '',
+          billingZip: '',
+          billingPhone: '',
+          billingApt: '',
+          billingCompnayName: ''
         }
       }
 );

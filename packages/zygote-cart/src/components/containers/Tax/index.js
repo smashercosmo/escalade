@@ -10,7 +10,7 @@ export default class Tax extends Component {
       <Subscribe to={cost}>
         {state => (
           <div className="zygoteTaxLine">
-            <div className="zygoteTaxHead">Tax</div>
+            <div className="zygoteTaxHead">Estimated Tax</div>
             <div className="zygoteTax">
               ${state.tax.toLocaleString(undefined, {
                 minimumFractionDigits: 2,

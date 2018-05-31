@@ -8,12 +8,12 @@ import styles from './styles';
 
 export default class Nav extends Component {
   render() {
-    const { tabs } = cartContent;
+    const { nav } = cartContent;
     return (
       <Subscribe to={cartState}>
         {state => (
           <div className="zygoteTabs">
-            {tabs.map((tab, i) => {
+            {nav.map((tab, i) => {
               return <Tab key={i} tab={tab} />;
             })}
             <style jsx global>

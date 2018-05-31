@@ -8,7 +8,7 @@ const brandLogo =
 const containerEl = document.createElement('div');
 document.body.appendChild(containerEl);
 zygote.site('stiga');
-
+// zygote.removeCookies();
 render(
   <div>
     <AddToCart
@@ -24,7 +24,14 @@ render(
     </AddToCart>
     <ZygoteContainer
       //  brandLogo={brandLogo}
-      promoMessage={'Here is your promo message'}
+      // addToCartMessage={'Custom Add To Cart MeSsAgE'}
+      // cartHeader={'Here is your cart header'}
+      // footerMessage={'Here is from me'}
+      // cartButtonOneMessage={'Do da checkout'}
+      // cartButtonTwoMessage={'Quit this checkout'}
+      contactInfoButtonMessage={'the next step'}
+      paymentButtonMessage={'give us money'}
+      orderCompleteMessage={'just bought from the best store ever'}
     />
   </div>,
   containerEl

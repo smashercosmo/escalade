@@ -72,7 +72,14 @@ export default class Container extends Component {
               <div className="zygoteContainer">
                 <Cart
                   brandLogo={this.props.brandLogo}
-                  promoMessage={this.props.promoMessage}
+                  cartHeader={this.props.cartHeader}
+                  addToCartMessage={this.props.addToCartMessage}
+                  footerMessage={this.props.footerMessage}
+                  cartButtonOneMessage={this.props.cartButtonOneMessage}
+                  cartButtonTwoMessage={this.props.cartButtonTwoMessage}
+                  detailsButtonMessage={this.props.detailsButtonMessage}
+                  paymentButtonMessage={this.props.paymentButtonMessage}
+                  orderCompleteMessage={this.props.orderCompleteMessage}
                 />
               </div>
             )}

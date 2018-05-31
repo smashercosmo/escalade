@@ -14,17 +14,15 @@ export default class Tab extends Component {
       <Subscribe to={cartState}>
         {state => (
           <div
-            onClick={
-              title === 'Confirm Order'
-                ? null
-                : () => cartState.setState({ tab: tabs.indexOf(tab) })
-            }
+            onClick={() => {
+              cartState.setState({ tab: tab.active });
+            }}
             className={`zygoteTab ${tab.class} ${
-              state.tab === tabs.indexOf(tab) ? 'zygoteActive' : ''
+              state.tab === tab.active ? 'zygoteActive' : ''
             }`}
           >
-            {tab.icon}
             {title}
+            <style jsx>{styles}</style>
           </div>
         )}
       </Subscribe>

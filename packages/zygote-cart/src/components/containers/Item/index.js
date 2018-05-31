@@ -73,7 +73,7 @@ export default class Item extends Component {
                 </div>
                 <div className="zygoteProdName">
                   <div className="zygoteProdNameTitle">{item.name}</div>
-                  <div>{item.desc}</div>
+                  <div className="zygoteProdDesc">{item.desc}</div>
                 </div>
                 <div className="zygoteProdQty">
                   <div>

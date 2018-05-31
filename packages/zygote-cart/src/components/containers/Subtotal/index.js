@@ -24,7 +24,7 @@ export default class Subtotal extends Component {
       <Subscribe to={itemState}>
         {state => (
           <div className="zygoteSubLine">
-            <div className="zygoteSubHead">subtotal</div>
+            <div className="zygoteSubHead">Subtotal</div>
             <div className="zygoteSubTotal">
               ${this.renderPrice(state.items).toLocaleString(undefined, {
                 minimumFractionDigits: 2,

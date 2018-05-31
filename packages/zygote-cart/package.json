@@ -32,8 +32,14 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "better-react-spinkit": "^2.0.4",
+    "datasets-us-states-names-abbr": "^1.0.0",
+    "isomorphic-fetch": "^2.2.1",
     "js-cookie": "^2.2.0",
+    "material-ui": "^0.20.1",
     "material-ui-credit-card-icons": "^3.2.1",
+    "payment-icons": "^1.1.0",
+    "react-icons": "^2.2.7",
     "statable": "^0.2.3",
     "styled-components": "^3.2.5",
     "validator": "^9.4.1"

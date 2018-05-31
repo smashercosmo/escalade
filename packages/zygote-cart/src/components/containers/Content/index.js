@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 
 import {
   YourCart,
-  Shipping,
-  Payment,
-  Confirm,
-  OrderPlaced
+  YourDetails,
+  YourPayment,
+  YourOrder
 } from '../../containers';
 import styles from './styles';
 
@@ -20,14 +19,13 @@ export default class Content extends Component {
     switch (title) {
       case 'Your Cart':
         return <YourCart />;
-      case 'Shipping Address':
-        return <Shipping />;
-      case 'Payment Method':
-        return <Payment />;
-      case 'Confirm Order':
-        return <Confirm />;
-      case 'Order Placed':
-        return <OrderPlaced />;
+      case 'Your Details':
+        return <YourDetails />;
+      case 'Your Payment':
+        return <YourPayment />;
+      case 'Your Order':
+        return <YourOrder />;
+
       default:
         return <YourCart />;
     }

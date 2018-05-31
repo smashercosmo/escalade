@@ -9,8 +9,8 @@ import Footer from './Footer';
 import Content from './Content';
 import StepButtons from './StepButtons';
 import YourCart from './YourCart';
-import Shipping from './Shipping';
-import Payment from './Payment';
+import YourDetails from './YourDetails';
+import YourPayment from './YourPayment';
 import Confirm from './Confirm';
 import ShippingCost from './ShippingCost';
 import Tax from './Tax';
@@ -18,6 +18,9 @@ import Total from './Total';
 import ZygoteContainer from './ZygoteContainer';
 import OrderPlaced from './OrderPlaced';
 import Loading from './Loading';
+import PaymentLine from './PaymentLine';
+import OrderSummary from './OrderSummary';
+import ShippingOptions from './ShippingOptions';
 
 export {
   Cart,
@@ -31,13 +34,16 @@ export {
   Content,
   StepButtons,
   YourCart,
-  Shipping,
-  Payment,
+  YourDetails,
+  YourPayment,
   Confirm,
   ShippingCost,
   Tax,
   Total,
   ZygoteContainer,
   OrderPlaced,
-  Loading
+  Loading,
+  PaymentLine,
+  OrderSummary,
+  ShippingOptions
 };

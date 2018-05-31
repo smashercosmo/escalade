@@ -2,51 +2,40 @@ import css from 'styled-jsx/css';
 
 export default css`
   .zygoteBtn {
-    background-color: #000;
+    background-color: rgba(0, 207, 255, 1);
     outline: 0;
     border: 0;
     color: #fff;
-    padding: 13px 20px;
+    height: 44px;
     min-width: 130px;
+    width: 80%;
+    border-radius: 22px;
     text-align: center;
-    text-transform: uppercase;
-    font-size: 0.8em;
-    font-weight: 700;
+    font-size: 1em;
+    font-weight: 600;
+    letter-spacing: 0.05em;
     cursor: pointer;
-    display: inline-block;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    display: block;
+    margin: 0px auto 10px auto;
+    &:hover {
+      background: #66e2ff;
+    }
+    &:active {
+      background: rgba(0, 207, 255, 1);
+    }
   }
   .zygoteStepBtns {
-    margin: 20px;
     display: block;
   }
-  .zygoteNext {
-    width: 100%;
-  }
-  .zygoteNext:hover {
-    background-color: #666;
-  }
-  .zygotePrev {
-    background-color: #bbb;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  .zygotePrev:hover {
-    background-color: #ddd;
-  }
-  @media (min-width: 900px) {
-    .zygoteStepBtns .zygoteBtn {
-      width: auto;
+  .zygoteShoppingBtn {
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+    &:hover {
+      background: #f2f2f2;
     }
-    .zygotePrev {
-      float: left;
-    }
-    .zygoteNext {
-      margin-top: 0;
-      float: right;
+    &:active {
+      background: #fff;
     }
   }
 `;

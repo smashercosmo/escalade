@@ -173,85 +173,59 @@ export default class StepButtons extends Component {
       });
   }
 
+  renderButtons(tab) {
+    switch (tab) {
+      case 0:
+        return (
+          <div>
+            <button
+              onClick={() => cartState.setState({ tab: tab + 1 })}
+              className="zygoteBtn zygoteCheckoutBtn"
+            >
+              {this.props.cartButtonOneMessage}
+            </button>
+            <button
+              onClick={() => cartState.setState({ open: false })}
+              className="zygoteBtn zygoteShoppingBtn"
+            >
+              {this.props.cartButtonTwoMessage}
+            </button>
+          </div>
+        );
+
+      case 1:
+        return (
+          <div>
+            <button
+              className="zygoteBtn"
+              onClick={() => cartState.setState({ tab: tab + 1 })}
+            >
+              {this.props.detailsButtonMessage}
+            </button>
+          </div>
+        );
+    }
+  }
+
   render() {
     const { tabs } = cartContent;
     return (
       <Subscribe to={[cartState, userInfo, itemState]}>
-        {(state, userState, itemState) =>
-          state.tab === tabs.length ||
-          state.loading ||
-          itemState.items.length === 0 ? null : (
-            <div className="zygoteStepBtns">
-              {state.tab > 0 ? (
-                <button
-                  className="zygoteBtn zygotePrev"
-                  onClick={() =>
-                    cartState.setState({
-                      tab: state.tab - 1
-                    })
-                  }
-                >
-                  Prrevious Step
-                </button>
-              ) : null}
-              {tabs.length - 1 === state.tab ? (
-                (state.errors || state.apiErrors) && state.tab === 3 ? null : (
-                  <button
-                    className="zygoteBtn zygoteNext"
-                    onClick={() => this.submitOrder()}
-                  >
-                    Place Order
-                  </button>
-                )
-              ) : (
-                <button
-                  className="zygoteBtn zygoteNext"
-                  onClick={() => {
-                    if (state.tab === 2) {
-                      let errorsObj = {};
-                      const errors = validateInputs(userState);
-                      if (Object.keys(errors.payment).length > 0) {
-                        errorsObj = { ...errorsObj, ...errors.payment };
-                      }
-                      if (Object.keys(errors.paymentAddress).length > 0) {
-                        errorsObj = { ...errorsObj, ...errors.paymentAddress };
-                      }
-                      if (Object.keys(errors.shipping).length > 0) {
-                        errorsObj = { ...errorsObj, ...errors.shipping };
-                        cartState.setState({
-                          tab: 1
-                        });
-                      }
-                      if (Object.keys(errorsObj).length > 0) {
-                        cartState.setState({
-                          errors: errorsObj
-                        });
-
-                        return;
-                      }
-                      cartState.setState({
-                        errors: null
-                      });
-                      this.submitUser();
-                      return;
-                    }
-
-                    cartState.setState({
-                      showNav: true,
-                      tab: state.tab + 1
-                    });
-                  }}
-                >
-                  Next Step
-                </button>
-              )}
-              <style jsx global>
-                {styles}
-              </style>
-            </div>
-          )
-        }
+        {(state, userState, itemState) => (
+          <div className="zygoteStepBtns">
+            {this.renderButtons(state.tab)}
+            <style jsx global>
+              {styles}
+            </style>
+          </div>
+        )}
       </Subscribe>
     );
   }
 }
+
+StepButtons.defaultProps = {
+  cartButtonOneMessage: 'Secure Checkout',
+  cartButtonTwoMessage: 'Continue Shopping',
+  detailsButtonMessage: 'Next Step'
+};

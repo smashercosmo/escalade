@@ -1,4 +1,5 @@
 import css from 'styled-jsx/css';
+import React from 'react';
 
 export default css`
   .zygoteOpen {
@@ -27,62 +28,69 @@ export default css`
     box-sizing: border-box;
   }
   .zygoteContainer select {
-    padding: 0 10px;
-    background-color: #fff;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    border-radius: 0;
     position: relative;
-    background-image: linear-gradient(45deg, transparent 50%, #000 0),
-      linear-gradient(135deg, #000 50%, transparent 0),
-      linear-gradient(90deg, #ccc, #ccc);
-    background-position: calc(100% - 17px) calc(1em + 2px),
-      calc(100% - 12px) calc(1em + 2px), calc(100% - 2.1em) 0.5em;
-    background-size: 5px 5px, 5px 5px, 1px 1.4em;
+    cursor: pointer;
+  }
+  .zygoteContainer select {
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='30'><path fill='rgb(102, 102, 103)'
+    d='M 35 0 L 40 0 L 22.5 30 L 17.5 30 L 0 0 L 5 0 L 20 25 35 0'
+    /></svg>")
+      no-repeat;
+    background-color: #f8f8f8;
+    background-size: 1.8em 0.8em;
+    background-position: 90% 50%;
     background-repeat: no-repeat;
+  }
+  .zygoteSubFieldsContainer {
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+    margin-top: 10px;
+  }
+  .zygoteSubFields {
+    width: 95%;
+    margin: 0 auto;
+    color: #666;
+  }
+  .zygoteDownArrow,
+  .zygoteUpArrow {
+    fill: #666667;
+    transform: scale(0.5, 0.3);
+    cursor: pointer;
+  }
+  .zygoteSelect {
+    position: relative;
   }
   .zygoteContainer a {
     text-decoration: none;
     color: #000;
   }
   .zygoteStep {
+    width: 100%;
     padding: 0;
   }
-  .zygoteSection label {
-    cursor: pointer;
-    display: block;
-    margin-bottom: 3px;
-    color: #000;
-    text-transform: uppercase;
-    font-size: 0.8em;
+  .zygoteSection:first-of-type {
+    margin-bottom: 50px;
   }
   .zygoteSection input,
   select {
-    font-size: 1em;
+    display: block;
+    font-size: 0.75em;
+    color: #666667;
     height: 40px;
     padding: 10px;
-    border: solid 1px #ccc;
+    border: solid 1px #e8e9e9;
     margin-bottom: 20px;
     outline: none;
     width: 100%;
+    border-radius: 5px;
+    background-color: #f8f8f8;
   }
   .zygoteSection input:focus {
     border: 1px solid #333;
   }
-  .zygoteStep4 .zygoteProdDelete,
-  .zygoteStep5 .zygoteProdDelete,
-  .zygoteStep4 .zygoteDecrease,
-  .zygoteStep5 .zygoteDecrease,
-  .zygoteStep4 .zygoteIncrease,
-  .zygoteStep5 .zygoteIncrease {
-    display: none;
-  }
-  .zygoteStep4 .zygoteProdHeader div:last-of-type,
-  .zygoteStep5 .zygoteProdHeader div:last-of-type {
-    display: none;
-  }
-
   .zygoteCouponLine:after,
   .zygoteShipLine:after,
   .zygoteSubLine:after,
@@ -117,31 +125,124 @@ export default css`
     border: 1px solid #f00;
     background-color: rgba(255, 0, 0, 0.1);
   }
-  @media (min-width: 900px) {
-    .zygoteStep {
-      padding: 0;
+  .zygoteSectionTitle {
+    display: block;
+    margin: 15px 0;
+    color: #000;
+    font-size: 0.9em;
+  }
+  .zygoteSection label {
+    font-size: 0.6em;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .zygoteCheckboxContainer {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  .zygoteCheckboxContainer input[type='checkbox'],
+  .zygoteCheckboxContainer input[type='radio'] {
+    position: absolute;
+    cursor: pointer;
+    height: auto;
+    width: auto;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    opacity: 0;
+    &:checked ~ .zygoteCheckbox {
+      background-color: #666;
     }
-    .zygoteTable {
-      margin: 0 -20px;
+    &:checked ~ .zygoteCheckbox:after {
+      display: block;
     }
-    .zygoteSection {
-      width: calc(100% / 3);
-      display: table-cell;
-      padding: 20px;
-      border-right: 1px solid #ccc;
-      height: 100%;
+  }
+  .zygoteCheckbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    cursor: pointer;
+    &:hover {
+      background-color: #ccc;
     }
-    .zygoteRow {
-      height: auto;
-      display: table;
-      width: 100%;
+    &:after {
+      content: '';
+      position: absolute;
+      display: none;
+      left: 7px;
+      top: 1.5px;
+      width: 7px;
+      height: 14px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      -webkit-transform: rotate(35deg);
+      -ms-transform: rotate(35deg);
+      transform: rotate(35deg);
     }
-    .zygoteRow > div:last-of-type {
-      border-right: 0;
-    }
-    .zygoteBillingToggle .zygoteRow .zygoteSection {
-      display: table-cell;
-      width: calc(100% / 2);
-    }
+  }
+  .zygoteEscaAdd {
+    margin-right: 8px;
+    text-align: center;
+    cursor: pointer;
+    background: rgb(0, 207, 255);
+    color: white;
+    width: 15px;
+    height: 15px;
+    font-weight: 300;
+    font-size: 1em;
+    line-height: 13px;
+    border-radius: 100%;
+    display: inline-block;
+  }
+  .zygoteToggleField {
+    display: inline-block;
+  }
+  .zygoteToggleFieldWrapper {
+    width: 47.5%;
+    float: left;
+    color: #666667;
+    font-size: 0.75em;
+  }
+  .zygoteShippingCompanyNameContainer,
+  .zygoteBillingCompanyNameContainer {
+    float: right;
+  }
+  .zygoteToggleFieldContainer {
+    margin-bottom: 20px;
+  }
+  .zygoteShippingCityContainer,
+  .zygoteBillingCityContainer {
+    width: 68%;
+    float: left;
+  }
+  .zygoteShippingStateContainer,
+  .zygoteBillingStateContainer {
+    width: 27%;
+    float: right;
+  }
+  .zygoteShippingZipContainer,
+  .zygoteBillingZipContainer {
+    width: 27%;
+  }
+  .zygoteSection > div:after {
+    content: '';
+    clear: both;
+    display: block;
+  }
+  .zygoteLoading {
+    width: 100%;
+    margin: 20px 0;
+  }
+  .zygoteLoader {
+    width: 100px;
+    margin: 0 auto;
   }
 `;

@@ -12,7 +12,7 @@ export default css`
   }
   .zygoteHeader {
     text-align: center;
-    padding: 20px;
+    padding: 20px 20px 0px 20px;
     position: relative;
   }
   .zygoteBrandLogo > img {
@@ -38,11 +38,7 @@ export default css`
     font-style: italic;
     margin-bottom: 0.8em;
   }
-  .zygotePromoMessage {
-    padding: 10px;
-    background: #f2f2f2;
-    border: 1px solid #e5e5e5;
-    color: #999;
-    font-size: 0.8em;
+  .zygoteCartHeader {
+    margin-bottom: 20px;
   }
 `;

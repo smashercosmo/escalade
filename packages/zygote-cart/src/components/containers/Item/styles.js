@@ -5,9 +5,7 @@ export default css`
     margin: 10px auto;
     width: 100%;
     position: relative;
-    margin-bottom: 30px;
-    padding-bottom: 30px;
-    color: #999;
+    color: #666667;
     font-size: 0.9em;
   }
   .zygoteProdDelete {
@@ -17,9 +15,6 @@ export default css`
     font-size: 1.9em;
     font-weight: 300;
     text-align: right;
-    position: absolute;
-    top: -5px;
-    right: 0;
   }
   .zygoteDecrease,
   .zygoteIncrease {
@@ -42,7 +37,12 @@ export default css`
     width: 100%;
   }
   .zygoteProdNameTitle {
-    color: #333;
+    color: #000;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  .zygoteProdDesc {
+    font-size: 0.8em;
   }
   .zygoteProd > div {
     float: left;
@@ -58,22 +58,30 @@ export default css`
   }
   .zygoteProdImg {
     text-align: center;
-    width: 20%;
-    min-width: 75px;
+    width: 17%;
+    margin-right: 3%;
   }
   .zygoteProdName {
     width: 32%;
-    min-width: 125px;
   }
 
   .zygoteProdQty {
     width: 20%;
-    min-width: 30px;
     text-align: center;
   }
   .zygoteProdPrice {
     width: 20%;
     text-align: right;
-    min-width: 30px;
+  }
+  .zygoteStep2 .zygoteProdDelete,
+  .zygoteStep2 .zygoteDecrease,
+  .zygoteStep2 .zygoteIncrease {
+    display: none;
+  }
+  .zygoteStep2 .zygoteProd div:nth-child(4) {
+    float: right;
+  }
+  .zygoteStep2 .zygoteProd div:nth-child(3) {
+    text-align: right;
   }
 `;
