@@ -106,7 +106,7 @@ export default css`
     display: block;
     margin-bottom: 20px;
     margin-top: 3px;
-    font-size: 0.9em;
+    font-size: 0.7em;
     color: #f00;
   }
   .zygoteInputErr input,
@@ -115,15 +115,33 @@ export default css`
   .zygoteInputErr select:focus {
     border: 1px solid #f00;
     background-color: rgba(255, 0, 0, 0.1);
+    color: #f00;
     margin-bottom: 0;
+  }
+  .zygoteInputErr input ::placeholder,
+  .zygoteInputErr select ::placeholder {
+    color: #f00;
   }
   .zygoteMsgs > div {
     padding: 7px 10px;
     margin-bottom: 15px;
   }
-  .zygoteErr {
+  .zygoteMsgs > div:last-child {
+    margin-bottom: 0;
+  }
+  .zygoteShippingErrors {
     border: 1px solid #f00;
+    color: #f00;
     background-color: rgba(255, 0, 0, 0.1);
+    font-size: 0.8em;
+    text-align: center;
+  }
+  .zygoteErrorsTitle {
+    font-size: 1.6em;
+    padding: 10px 10px 0 10px;
+  }
+  .zygoteErrorsContact {
+    padding-bottom: 15px;
   }
   .zygoteSectionTitle {
     display: block;
@@ -242,7 +260,7 @@ export default css`
     margin: 20px 0;
   }
   .zygoteLoader {
-    width: 100px;
+    width: 50px;
     margin: 0 auto;
   }
 `;

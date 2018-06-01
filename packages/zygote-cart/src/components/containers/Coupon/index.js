@@ -15,10 +15,8 @@ export default class Coupon extends Component {
   }
 
   handleCoupon() {
-    if (this.coupon.value) {
-      itemState.setState({ coupon: this.coupon.value });
-      this.setState({ show: false });
-    }
+    itemState.setState({ coupon: this.coupon.value });
+    this.setState({ show: false });
   }
 
   render() {

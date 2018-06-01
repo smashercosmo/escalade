@@ -1,9 +1,6 @@
 import css from 'styled-jsx/css';
 
 export default css`
-  .zygoteShippingPhoneContainer input {
-    margin-bottom: 10px;
-  }
   .zygoteOrderSummaryBanner {
     width: auto;
     background-color: #f8f8f8;

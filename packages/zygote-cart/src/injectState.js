@@ -134,33 +134,33 @@ const resetCart = () => {
   });
   userInfo.setState({
     addressSame: true,
+    specialOffers: true,
     preOrderInfo: null,
     shipping: {
-      ShippingFirst: '',
-      ShippingLast: '',
-      ShippingAddress1: '',
-      ShippingCity: '',
-      ShippingState: '',
-      ShippingZip: '',
-      ShippingPhone: '',
-      ShippingEmail: '',
-      ShippingAddress2: ''
+      shippingFullName: '',
+      shippingEmail: '',
+      shippingPhone: '',
+      shippingApt: '',
+      shippingCompanyName: '',
+      shippingAddress: '',
+      shippingCity: '',
+      shippingState: '',
+      shippingZip: ''
     },
     payment: {
-      BillingNumber: '',
-      BillingSecurity: '',
-      BillingMonth: '',
-      BillingYear: ''
+      billingNumber: '',
+      billingSecurity: '',
+      billingMonth: '',
+      billingYear: ''
     },
     paymentAddress: {
-      BillingFirst: '',
-      BillingLast: '',
-      BillingAddress1: '',
-      BillingCity: '',
-      BillingState: '',
-      BillingZip: '',
-      BillingPhone: '',
-      BillingAddress2: ''
+      billingAddress: '',
+      billingCity: '',
+      billingState: '',
+      billingZip: '',
+      billingPhone: '',
+      billingApt: '',
+      billingCompnayName: ''
     }
   });
 };

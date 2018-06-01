@@ -5,7 +5,7 @@ import { FoldingCube } from 'better-react-spinkit';
 
 import styles from './styles';
 import { cost, cartState, userInfo, itemState, zygoteApi } from '../../state';
-import { Divider } from 'material-ui';
+import { removeCookies, resetCart } from '../../../injectState';
 
 export default class ShippingOptions extends Component {
   constructor(props) {
@@ -42,6 +42,7 @@ export default class ShippingOptions extends Component {
       })
         .then(res => res.json())
         .catch(err => {
+          removeCookies();
           let error = '';
           if (err.request && err.request.status === 404) {
             error = `Error with API: ${err.response.statusText}`;
@@ -56,7 +57,6 @@ export default class ShippingOptions extends Component {
             loading: false
           });
         });
-
       shippingRes.products.forEach(product => {
         const regexp = new RegExp(product.id, 'gi');
         const updatedItem = items.find(({ id }) => regexp.test(id));
@@ -79,19 +79,7 @@ export default class ShippingOptions extends Component {
           )
         });
       });
-      updated.shippingOptions = [
-        {
-          amount: '300.00',
-          name: 'Ground',
-          carrier: {
-            total: 166.67,
-            carrierCode: 'abfs',
-            paymentTerms: 'Outbound Prepaid',
-            serviceType: 'Standard'
-          }
-        }
-      ];
-      console.log(shippingRes);
+      updated.shippingOptions = [];
       if (shippingRes.shippingOptions) {
         Object.keys(shippingRes.shippingOptions).forEach(option => {
           if (shippingRes.shippingOptions[option].length > 0) {
@@ -119,6 +107,14 @@ export default class ShippingOptions extends Component {
         loading: false,
         apiErrors: shippingRes.errors.length > 0 ? shippingRes.errors : null
       });
+      if (shippingRes.errors.length > 0) {
+        removeCookies();
+        shippingRes.errors.forEach(err => {
+          if (err.includes('CRT-1-00013')) {
+            itemState.setState({ coupon: '' });
+          }
+        });
+      }
     }
   }
 
@@ -130,7 +126,7 @@ export default class ShippingOptions extends Component {
             return (
               <div className="zygoteLoading">
                 <div className="zygoteLoader">
-                  <FoldingCube size={100} color="rgb(0, 207, 255)" />
+                  <FoldingCube size={50} color="rgb(0, 207, 255)" />
                 </div>
               </div>
             );
@@ -138,6 +134,12 @@ export default class ShippingOptions extends Component {
           if (cart.apiErrors) {
             return (
               <div className="zygoteShippingErrors">
+                <div className="zygoteErrorsTitle">
+                  Please Contact Customer Support
+                </div>
+                <div className="zygoteErrorsContact">
+                  (contact information for customer support)
+                </div>
                 <div className="zygoteMsgs">
                   {cart.apiErrors.map((error, i) => {
                     return (
@@ -166,22 +168,24 @@ export default class ShippingOptions extends Component {
                           className="zygoteCheckboxContainer"
                           onClick={() => this.changeShipping(i)}
                         >
-                          <div className="zygoteShippingName">
-                            {shipOption.name}
-                          </div>
-                          <div className="zygoteShippingPrice">
-                            (${shipOption.amount})
-                          </div>
-                          <input
-                            type="radio"
-                            className="zygoteShippingInput"
-                            value={i}
-                            onChange={() =>
-                              this.setState({ shippingOption: i })
-                            }
-                            checked={this.state.shippingOption === i}
-                          />
-                          <span className="zygoteCheckbox" />
+                          <label>
+                            <div className="zygoteShippingName">
+                              {shipOption.carrier.serviceType} {shipOption.name}
+                            </div>
+                            <div className="zygoteShippingPrice">
+                              ${shipOption.amount}
+                            </div>
+                            <input
+                              type="radio"
+                              value={i}
+                              className="zygoteShippingInput"
+                              onChange={() =>
+                                this.setState({ shippingOption: i })
+                              }
+                              checked={this.state.shippingOption === i}
+                            />
+                            <span className="zygoteCheckbox" />
+                          </label>
                         </div>
                       ))}
                     </div>

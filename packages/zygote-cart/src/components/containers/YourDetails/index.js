@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Subscribe } from 'statable';
+import validator from 'validator';
 
-import { yourDetails } from '../../utils';
+import { yourDetails, validateInputs } from '../../utils';
 import { userInfo, cartState, cost } from '../../state';
 import { OrderSummary } from '../../containers';
 import styles from './styles';
@@ -12,11 +13,23 @@ export default class Shipping extends Component {
 
     this.state = {
       checked: true,
-      showSummary: false
+      showSummary: false,
+      inputErrors: {}
     };
     this.update = this.update.bind(this);
     this.renderField = this.renderField.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
+  }
+
+  componentDidUpdate() {
+    if (typeof cartState.state.errors === 'object') {
+      if (this.state.inputErrors === cartState.state.errors) {
+        return;
+      }
+      this.setState({
+        inputErrors: cartState.state.errors
+      });
+    }
   }
 
   handleCheck(value) {
@@ -25,13 +38,50 @@ export default class Shipping extends Component {
 
   update(e) {
     e.preventDefault();
+    const { value } = e.target;
+    const { inputErrors } = this.state;
+    let updatedErrs = { ...inputErrors };
     const name = `shipping${e.target.name.replace(/\s/g, '')}`;
     userInfo.setState({
-      shipping: { ...userInfo.state.shipping, [name]: e.target.value }
+      shipping: { ...userInfo.state.shipping, [name]: value }
     });
+    if (value.length === 0) {
+      updatedErrs[name] = name => `Please enter a valid ${name}`;
+    } else if (value.length > 0) {
+      delete updatedErrs[name];
+    }
+    if (e.target.name === 'Email' && !validator.isEmail(value)) {
+      updatedErrs[name] = name => `Please enter a valid ${name}.`;
+    } else if (e.target.name === 'Email' && validator.isEmail(value)) {
+      delete updatedErrs[name];
+    }
+    if (e.target.name === 'Zip' && !validator.isPostalCode(value, 'any')) {
+      updatedErrs[name] = name => `Please enter a valid ${name}.`;
+    } else if (
+      e.target.name === 'Zip' &&
+      validator.isPostalCode(value, 'any')
+    ) {
+      delete updatedErrs[name];
+    }
+    if (e.target.name === 'Phone' && !validator.isMobilePhone(value, 'any')) {
+      updatedErrs[name] = name => `Please enter a valid ${name}.`;
+    } else if (
+      e.target.name === 'Phone' &&
+      validator.isMobilePhone(value, 'any')
+    ) {
+      delete updatedErrs[name];
+    }
+    if (Object.keys(updatedErrs).length > 0) {
+      cartState.setState({ errors: true });
+    } else {
+      cartState.setState({ errors: null });
+    }
+
+    this.setState({ inputErrors: updatedErrs });
   }
 
-  renderField(field, i) {
+  renderField(field, i, user) {
+    const { inputErrors } = this.state;
     switch (field.type) {
       case 'checkbox':
         return (
@@ -69,7 +119,13 @@ export default class Shipping extends Component {
         return (
           <div
             key={i}
-            className={`${field.class}Container zygoteToggleFieldWrapper`}
+            className={`${
+              inputErrors
+                ? inputErrors[field.formattedName]
+                  ? 'zygoteInputErr'
+                  : ''
+                : ''
+            } ${field.class}Container zygoteToggleFieldWrapper`}
           >
             {this.state[field.name] ? (
               <div>
@@ -78,6 +134,7 @@ export default class Shipping extends Component {
                   className={field.class}
                   name={field.name}
                   onChange={this.update}
+                  value={user.shipping[field.formattedName]}
                   placeholder={`${field.label} ${field.span ? field.span : ''}`}
                 />
               </div>
@@ -101,33 +158,69 @@ export default class Shipping extends Component {
         );
       case 'select':
         return (
-          <div key={i} className={`${field.class}Container zygoteSelect`}>
+          <div
+            key={i}
+            className={`${
+              inputErrors
+                ? inputErrors[field.formattedName]
+                  ? 'zygoteInputErr'
+                  : ''
+                : ''
+            } ${field.class}Container zygoteSelect`}
+          >
             <select
               type="text"
-              className={field.class}
+              className={`${field.class}`}
               name={field.name}
               onChange={this.update}
+              value={user.shipping[field.formattedName]}
             >
-              <option value="">State</option>
+              <option disabled value="">
+                State
+              </option>
               {field.options.map(option => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
               ))}
             </select>
+            {inputErrors ? (
+              inputErrors[field.formattedName] ? (
+                <div className="zygoteInputMsg">
+                  {inputErrors[field.formattedName](field.name)}
+                </div>
+              ) : null
+            ) : null}
             <style jsx>{styles}</style>
           </div>
         );
       default:
         return (
-          <div key={i} className={`${field.class}Container`}>
+          <div
+            key={i}
+            className={`${
+              inputErrors
+                ? inputErrors[field.formattedName]
+                  ? 'zygoteInputErr'
+                  : ''
+                : ''
+            } ${field.class}Container`}
+          >
             <input
               type="text"
               className={field.class}
               onChange={this.update}
               name={field.name}
+              value={user.shipping[field.formattedName]}
               placeholder={`${field.label} ${field.span ? field.span : ''}`}
             />
+            {inputErrors ? (
+              inputErrors[field.formattedName] ? (
+                <div className="zygoteInputMsg">
+                  {inputErrors[field.formattedName](field.name)}
+                </div>
+              ) : null
+            ) : null}
             <style jsx>{styles}</style>
           </div>
         );
@@ -193,7 +286,7 @@ export default class Shipping extends Component {
                           {section.title}
                         </div>
                         {section.fields.map((field, i) => {
-                          return this.renderField(field, i);
+                          return this.renderField(field, i, state);
                         })}
                       </div>
                     );

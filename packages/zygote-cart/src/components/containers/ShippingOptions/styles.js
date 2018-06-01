@@ -13,18 +13,21 @@ export default css`
   .zygoteShippingInputs {
     color: #666667;
   }
-  .zygoteShippingName {
-    float: left;
-  }
-  zygoteShippingPrice {
-    float: right;
-  }
   .zygoteCheckboxContainer {
-    width: 100%;
-    & > div:after {
+    &:after,
+    :before {
       content: '';
       clear: both;
       display: block;
     }
+  }
+  .zygoteCheckbox {
+    float: left;
+  }
+  .zygoteShippingName {
+    float: left;
+  }
+  .zygoteShippingPrice {
+    float: right;
   }
 `;

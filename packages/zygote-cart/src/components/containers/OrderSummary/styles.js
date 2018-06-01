@@ -8,4 +8,9 @@ export default css`
     padding: 15px;
     margin: -20px -20px 20px -20px;
   }
+  .zygoteStep3 .zygoteOrderSummaryContainer {
+    margin: 10px 0;
+    background-color: #fff;
+    border: none;
+  }
 `;

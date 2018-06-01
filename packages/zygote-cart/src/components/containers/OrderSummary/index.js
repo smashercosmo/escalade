@@ -15,7 +15,9 @@ export default class OrderSummary extends Component {
           </div>
         </div>
         <Total />
-        <style jsx>{styles}</style>
+        <style jsx global>
+          {styles}
+        </style>
       </div>
     );
   }

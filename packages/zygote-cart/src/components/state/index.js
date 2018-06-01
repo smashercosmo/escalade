@@ -76,8 +76,9 @@ const userInfo = new State(
         payment: {
           billingNumber: '',
           billingSecurity: '',
-          billingMonth: '',
-          billingYear: '',
+          billingExpiration: ''
+        },
+        paymentAddress: {
           billingAddress: '',
           billingCity: '',
           billingState: '',
