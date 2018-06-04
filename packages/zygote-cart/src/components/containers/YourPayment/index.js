@@ -13,7 +13,12 @@ import FaCreditCardAlt from 'react-icons/lib/fa/credit-card-alt';
 
 import { yourPayment } from '../../utils';
 import { userInfo, cartState, cost } from '../../state';
-import { ShippingOptions, Coupon, OrderSummary } from '../../containers';
+import {
+  ShippingOptions,
+  Coupon,
+  OrderSummary,
+  PaymentLine
+} from '../../containers';
 import styles from './styles';
 import { address } from 'ip';
 
@@ -85,7 +90,6 @@ export default class Payment extends Component {
     }
     if (e.target.name === 'Number' && !cardValid.number(value).isValid) {
       updatedErrs[name] = name => `Please enter a valid ${name}`;
-
       const numberValidation = cardValid.number(value);
       if (!numberValidation.isPotentiallyValid) {
         this.setState({ cardType: null });
@@ -94,6 +98,22 @@ export default class Payment extends Component {
         this.setState({ cardType: numberValidation.card.type });
       }
     } else if (e.target.name === 'Number' && cardValid.number(value).isValid) {
+      delete updatedErrs[name];
+    }
+    if (
+      e.target.name === 'Expiration' &&
+      !cardValid.expirationDate(value).isValid
+    ) {
+      updatedErrs[name] = name => `Please enter a valid ${name}`;
+    } else if (
+      e.target.name === 'Expiration' &&
+      !cardValid.expirationDate(value).isValid
+    ) {
+      delete updatedErrs[name];
+    }
+    if (e.target.name === 'Security' && !cardValid.cvv(value).isValid) {
+      updatedErrs[name] = name => `Please enter a valid ${name}`;
+    } else if (e.target.name === 'Security' && cardValid.cvv(value).isValid) {
       delete updatedErrs[name];
     }
 
@@ -301,17 +321,18 @@ export default class Payment extends Component {
   renderCard(type) {
     switch (type) {
       case 'visa':
-        return;
-        <div className="zygotePaymentIcon">
-          <Icon_Visa style={inLineStyles.cardIcon} />
-        </div>;
+        return (
+          <div className="zygotePaymentIcon">
+            <Icon_Visa style={inLineStyles.cardIcon} />
+          </div>
+        );
       case 'mastercard':
         return (
           <div className="zygotePaymentIcon">
             <Icon_MasterCard style={inLineStyles.cardIcon} />
           </div>
         );
-      case 'americanexpress':
+      case 'american-express':
         return;
         <div className="zygotePaymentIcon">
           <Icon_AmericanExpress style={inLineStyles.cardIcon} />
@@ -346,6 +367,11 @@ export default class Payment extends Component {
                           <div className="zygoteSection" key={i}>
                             <div className="zygoteSectionTitle">
                               {section.title}
+                              {section.title === '3. Payment' ? (
+                                <div className="zygotePaymentLineWrapper">
+                                  <PaymentLine />
+                                </div>
+                              ) : null}
                             </div>
                             {section.fields.map((field, i) => {
                               return this.renderField(
