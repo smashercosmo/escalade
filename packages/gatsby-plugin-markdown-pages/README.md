@@ -1,17 +1,26 @@
-# Gatsby Plugin Boilerplate
+# gatsby-plugin-markdown-pages
 
-A simple Gatsby plugin boilerplate.
+A Gatsby plugin for turning markdown files into templated pages.
 
-## Getting started
+## Install
+
+With Yarn:
 
 ```bash
-git clone git@github.com:escaladesports/gatsby-plugin-boilerplate.git your-module
-cd your-module
-yarn
-yarn reset
+yarn add gatsby-plugin-markdown-pages
+```
+
+Or with npm:
+
+```bash
+npm install --save gatsby-plugin-markdown-pages
 ```
 
 ## Usage
 
-- `yarn test`: Run mocha tests
-- `yarn analyze`: View bundle sizes
+```javascript
+// In your gatsby-config.js
+plugins: [
+  'gatsby-plugin-markdown-pages',
+]
+```
