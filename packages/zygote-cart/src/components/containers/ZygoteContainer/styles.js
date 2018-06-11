@@ -27,6 +27,11 @@ export default css`
   .zygoteContainer *:after {
     box-sizing: border-box;
   }
+  .zygoteContainer input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
   .zygoteContainer select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -90,6 +95,7 @@ export default css`
   }
   .zygoteSection input:focus {
     border: 1px solid #333;
+    box-shadow: none;
   }
   .zygoteCouponLine:after,
   .zygoteShipLine:after,
@@ -147,7 +153,8 @@ export default css`
     display: block;
     margin: 15px 0;
     color: #000;
-    font-size: 0.9em;
+    font-size: 1.05em;
+    font-weight: 300;
   }
   .zygoteSection label {
     font-size: 0.6em;
@@ -175,6 +182,7 @@ export default css`
     opacity: 0;
     &:checked ~ .zygoteCheckbox {
       background-color: #666;
+      border: none;
     }
     &:checked ~ .zygoteCheckbox:after {
       display: block;
@@ -187,6 +195,7 @@ export default css`
     height: 20px;
     width: 20px;
     background-color: #eee;
+    border: 1px solid #d2d2d2;
     cursor: pointer;
     &:hover {
       background-color: #ccc;
@@ -250,10 +259,13 @@ export default css`
   .zygoteBillingZipContainer {
     width: 27%;
   }
-  .zygoteSection > div:after {
-    content: '';
-    clear: both;
-    display: block;
+  .zygoteSection > div {
+    &:after,
+    :before {
+      content: '';
+      clear: both;
+      display: block;
+    }
   }
   .zygoteLoading {
     width: 100%;

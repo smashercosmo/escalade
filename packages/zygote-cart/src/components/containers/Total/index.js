@@ -5,6 +5,20 @@ import { cost } from '../../state';
 import styles from './styles';
 
 export default class Total extends Component {
+  componentDidMount() {
+    cost.subscribe(state => {
+      if (cost.state.total !== state.subtotal + state.tax + state.shipping) {
+        cost.setState({
+          total: state.subtotal + state.tax + state.shipping
+        });
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    cost.unsubscribe();
+  }
+
   render() {
     return (
       <Subscribe to={cost}>

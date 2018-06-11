@@ -11,16 +11,16 @@ import StepButtons from './StepButtons';
 import YourCart from './YourCart';
 import YourDetails from './YourDetails';
 import YourPayment from './YourPayment';
-import Confirm from './Confirm';
+import YourOrder from './YourOrder';
 import ShippingCost from './ShippingCost';
 import Tax from './Tax';
 import Total from './Total';
 import ZygoteContainer from './ZygoteContainer';
-import OrderPlaced from './OrderPlaced';
 import Loading from './Loading';
 import PaymentLine from './PaymentLine';
 import OrderSummary from './OrderSummary';
 import ShippingOptions from './ShippingOptions';
+import CouponLine from './CouponLine';
 
 export {
   Cart,
@@ -36,14 +36,14 @@ export {
   YourCart,
   YourDetails,
   YourPayment,
-  Confirm,
+  YourOrder,
   ShippingCost,
   Tax,
   Total,
   ZygoteContainer,
-  OrderPlaced,
   Loading,
   PaymentLine,
   OrderSummary,
-  ShippingOptions
+  ShippingOptions,
+  CouponLine
 };

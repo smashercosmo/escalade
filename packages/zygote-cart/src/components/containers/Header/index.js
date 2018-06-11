@@ -4,7 +4,8 @@ import { Subscribe } from 'statable';
 
 import { cartState, itemState, cost, userInfo } from '../../state';
 import { Nav } from '../../containers';
-import { closeCart } from '../../../injectState';
+import { closeCart, resetCart } from '../../../injectState';
+import { upperFirst } from '../../utils';
 import styles from './styles.js';
 
 export default class Header extends Component {
@@ -18,50 +19,12 @@ export default class Header extends Component {
     closeCart();
     const { tab, loading, apiErrors, errors } = cartState.state;
 
-    if (tab === 4 && loading === false) {
+    if (tab === 3 && loading === false) {
       if (errors || apiErrors) {
-        cartState.setState({ tab: 0, showNav: true });
+        cartState.setState({ tab: 0 });
         return;
       }
-      itemState.setState({ items: [], coupon: '' });
-      cartState.setState({ tab: 0, showNav: false });
-      cost.setState({
-        tax: 0,
-        shipping: 0,
-        total: 0,
-        shippingOptions: null
-      });
-      userInfo.setState({
-        addressSame: true,
-        preOrderInfo: null,
-        shipping: {
-          ShippingFirst: '',
-          ShippingLast: '',
-          ShippingAddress1: '',
-          ShippingCity: '',
-          ShippingState: '',
-          ShippingZip: '',
-          ShippingPhone: '',
-          ShippingEmail: '',
-          ShippingAddress2: ''
-        },
-        payment: {
-          BillingNumber: '',
-          BillingSecurity: '',
-          BillingMonth: '',
-          BillingYear: ''
-        },
-        paymentAddress: {
-          BillingFirst: '',
-          BillingLast: '',
-          BillingAddress1: '',
-          BillingCity: '',
-          BillingState: '',
-          BillingZip: '',
-          BillingPhone: '',
-          BillingAddress2: ''
-        }
-      });
+      resetCart();
     }
   }
 
@@ -85,7 +48,17 @@ export default class Header extends Component {
             ) : state.tab === 2 ? (
               <Nav />
             ) : state.tab === 3 ? (
-              <div>tab 3</div>
+              <div>
+                <div className="zygoteOrderComplete">
+                  <div className="zygoteOrderCompleteTitle">
+                    {this.props.orderCompleteTitle}
+                  </div>
+                  <div className="zygoteOrderCompleteBody">
+                    {this.props.orderCompleteBody ||
+                      `Your ${upperFirst(state.site)} order is in!`}
+                  </div>
+                </div>
+              </div>
             ) : (
               <div>
                 <div className="zygoteAddedToCart">
@@ -108,5 +81,6 @@ export default class Header extends Component {
 }
 
 Header.defaultProps = {
-  addToCartMessage: "You've added to your cart!"
+  addToCartMessage: "You've added to your cart!",
+  orderCompleteTitle: 'Yessss!'
 };

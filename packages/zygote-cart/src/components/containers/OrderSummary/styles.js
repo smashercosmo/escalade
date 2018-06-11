@@ -13,4 +13,8 @@ export default css`
     background-color: #fff;
     border: none;
   }
+  .zygoteStep4 .zygoteOrderSummaryContainer {
+    margin-top: 0px;
+    border-top: none;
+  }
 `;

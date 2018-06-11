@@ -75,18 +75,23 @@ export default css`
   }
   .zygoteStep2 .zygoteProdDelete,
   .zygoteStep3 .zygoteProdDelete,
+  .zygoteStep4 .zygoteProdDelete,
   .zygoteStep2 .zygoteDecrease,
   .zygoteStep3 .zygoteDecrease,
+  .zygoteStep4 .zygoteDecrease,
   .zygoteStep2 .zygoteIncrease,
-  .zygoteStep3 .zygoteIncrease {
+  .zygoteStep3 .zygoteIncrease,
+  .zygoteStep4 .zygoteIncrease {
     display: none;
   }
   .zygoteStep2 .zygoteProd div:nth-child(4),
-  .zygoteStep3 .zygoteProd div:nth-child(4) {
+  .zygoteStep3 .zygoteProd div:nth-child(4),
+  .zygoteStep4 .zygoteProd div:nth-child(4) {
     float: right;
   }
   .zygoteStep2 .zygoteProd div:nth-child(3),
-  .zygoteStep3 .zygoteProd div:nth-child(3) {
+  .zygoteStep3 .zygoteProd div:nth-child(3),
+  .zygoteStep4 .zygoteProd div:nth-child(3) {
     text-align: right;
   }
 `;

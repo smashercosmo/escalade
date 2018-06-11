@@ -11,19 +11,22 @@ const yourPayment = {
           label: 'Card Number',
           class: 'zygoteBillingNumber',
           name: 'Number',
-          formattedName: 'billingNumber'
+          formattedName: 'billingNumber',
+          type: 'text'
         },
         {
-          label: 'Expiration',
+          label: 'MM/YY',
           class: 'zygoteBillingExpiration',
           name: 'Expiration',
-          formattedName: 'billingExpiration'
+          formattedName: 'billingExpiration',
+          type: 'text'
         },
         {
           label: 'CVV',
           class: 'zygoteBillingSecurity',
           name: 'Security',
-          formattedName: 'billingSecurity'
+          formattedName: 'billingSecurity',
+          type: 'number'
         },
         {
           label: 'Same Billing and Shipping Address',
@@ -44,7 +47,8 @@ const yourPayment = {
             label: 'Address',
             class: 'zygoteBillingAddress',
             name: 'Address',
-            formattedName: 'billingAddress'
+            formattedName: 'billingAddress',
+            type: 'text'
           },
           {
             type: 'toggle',
@@ -66,7 +70,8 @@ const yourPayment = {
             label: 'City',
             class: 'zygoteBillingCity',
             name: 'City',
-            formattedName: 'billingCity'
+            formattedName: 'billingCity',
+            type: 'text'
           },
           {
             label: 'State',
@@ -82,7 +87,8 @@ const yourPayment = {
             label: 'Zip Code',
             class: 'zygoteBillingZip',
             name: 'Zip',
-            formattedName: 'billingZip'
+            formattedName: 'billingZip',
+            type: 'number'
           }
         ]
       }
@@ -99,20 +105,23 @@ const yourDetails = {
           label: 'Full Name',
           class: 'zygoteShippingFullName',
           name: 'Full Name',
-          formattedName: 'shippingFullName'
+          formattedName: 'shippingFullName',
+          type: 'text'
         },
         {
           label: 'Email',
           class: 'zygoteShippingEmail',
           name: 'Email',
-          formattedName: 'shippingEmail'
+          formattedName: 'shippingEmail',
+          type: 'text'
         },
         {
           label: 'Phone',
           span: '(for shipping related questions)',
           class: 'zygoteShippingPhone',
           name: 'Phone',
-          formattedName: 'shippingPhone'
+          formattedName: 'shippingPhone',
+          type: 'tel'
         },
         {
           label: "I'd like to recieve news and special offeres from",
@@ -130,7 +139,8 @@ const yourDetails = {
           label: 'Address',
           class: 'zygoteShippingAddress',
           name: 'Address',
-          formattedName: 'shippingAddress'
+          formattedName: 'shippingAddress',
+          type: 'text'
         },
         {
           type: 'toggle',
@@ -152,7 +162,8 @@ const yourDetails = {
           label: 'City',
           class: 'zygoteShippingCity',
           name: 'City',
-          formattedName: 'shippingCity'
+          formattedName: 'shippingCity',
+          type: 'text'
         },
         {
           label: 'State',
@@ -168,7 +179,8 @@ const yourDetails = {
           label: 'Zip Code',
           class: 'zygoteShippingZip',
           name: 'Zip',
-          formattedName: 'shippingZip'
+          formattedName: 'shippingZip',
+          type: 'number'
         }
       ]
     }
@@ -190,7 +202,7 @@ const cartContent = {
       class: 'zygotePayTab'
     },
     {
-      title: 'Confirm Order',
+      title: 'Your Order',
       class: 'zygoteConfirmTab'
     }
   ],
@@ -200,4 +212,8 @@ const cartContent = {
   ]
 };
 
-export { yourDetails, yourPayment, cartContent };
+const upperFirst = string => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+export { yourDetails, yourPayment, cartContent, upperFirst };

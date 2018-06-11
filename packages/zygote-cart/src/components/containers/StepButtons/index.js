@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Subscribe } from 'statable';
 import { FoldingCube } from 'better-react-spinkit';
+import cardValid from 'card-validator';
 import axios from 'axios';
 
 import { cartState, userInfo, zygoteApi, itemState, cost } from '../../state';
 import { cartContent } from '../../utils';
+import { resetCart, closeCart } from '../../../injectState';
 import styles from './styles';
 
 export default class StepButtons extends Component {
@@ -47,6 +49,39 @@ export default class StepButtons extends Component {
     const { payment, paymentAddress, addressSame } = userInfo.state;
     let errors = null;
     Object.keys(payment).forEach(k => {
+      if (k === 'billingMonth' || k === 'billingYear') {
+        return;
+      }
+      if (k === 'billingNumber' && !cardValid.number(payment[k]).isValid) {
+        areErrors = true;
+        errors
+          ? (errors = {
+              ...errors,
+              [k]: k => `Please enter a valid ${k}.`
+            })
+          : (errors = { [k]: k => `Please enter a valid ${k}.` });
+      }
+      if (
+        k === 'billingExpiration' &&
+        !cardValid.expirationDate(payment[k]).isValid
+      ) {
+        areErrors = true;
+        errors
+          ? (errors = {
+              ...errors,
+              [k]: k => `Please enter a valid ${k}.`
+            })
+          : (errors = { [k]: k => `Please enter a valid ${k}.` });
+      }
+      if (k === 'billingSecurity' && !cardValid.cvv(payment[k]).isValid) {
+        areErrors = true;
+        errors
+          ? (errors = {
+              ...errors,
+              [k]: k => `Please enter a valid ${k}.`
+            })
+          : (errors = { [k]: k => `Please enter a valid ${k}.` });
+      }
       if (payment[k].length === 0) {
         areErrors = true;
         errors
@@ -87,17 +122,20 @@ export default class StepButtons extends Component {
       case 0:
         return (
           <div>
-            <button
-              onClick={() => {
-                cartState.setState({ tab: tab + 1 });
-              }}
-              className="zygoteBtn zygoteCheckoutBtn"
-            >
-              {this.props.cartButtonOneMessage}
-            </button>
+            {itemState.state.items.length === 0 ? null : (
+              <button
+                onClick={() => {
+                  cartState.setState({ tab: tab + 1 });
+                }}
+                className="zygoteBtn zygoteCheckoutBtn"
+              >
+                {this.props.cartButtonOneMessage}
+              </button>
+            )}
+
             <button
               onClick={() => cartState.setState({ open: false })}
-              className="zygoteBtn zygoteShoppingBtn"
+              className="zygoteBtn zygoteAltBtn"
             >
               {this.props.cartButtonTwoMessage}
             </button>
@@ -147,6 +185,20 @@ export default class StepButtons extends Component {
                   <FoldingCube color="#fff" size={20} />
                 </div>
               ) : null}
+            </button>
+          </div>
+        );
+      case 3:
+        return (
+          <div>
+            <button
+              className="zygoteBtn zygoteAltBtn"
+              onClick={() => {
+                resetCart();
+                closeCart();
+              }}
+            >
+              Return Home
             </button>
           </div>
         );

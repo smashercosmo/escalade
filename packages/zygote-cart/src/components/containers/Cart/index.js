@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { Subscribe } from 'statable';
+import React, { Component } from 'react'
+import { Subscribe } from 'statable'
 
-import { cartState, itemState } from '../../state';
-import { cartContent } from '../../utils';
-import { Header, Footer, Content, StepButtons } from '../../containers';
-import styles from './styles';
+import { cartState, itemState } from '../../state'
+import { cartContent } from '../../utils'
+import { Header, Footer, Content, StepButtons } from '../../containers'
+import styles from './styles'
 
 export default class Cart extends Component {
   render() {
-    const { tabs } = cartContent;
+    const { tabs } = cartContent
     return (
       <Subscribe to={cartState}>
         {state => (
@@ -17,9 +17,12 @@ export default class Cart extends Component {
               brandLogo={this.props.brandLogo}
               cartHeader={this.props.cartHeader}
               addToCartMessage={this.props.addToCartMessage}
+              orderCompleteTitle={this.props.orderCompleteTitle}
+              orderCompleteBody={this.props.orderCompleteBody}
             />
             <div className="zygoteForm">
               <Content
+                googleApiKey={this.props.googleApiKey}
                 active={
                   state.tab === tabs.length
                     ? 'Order Placed'
@@ -41,6 +44,6 @@ export default class Cart extends Component {
           </div>
         )}
       </Subscribe>
-    );
+    )
   }
 }

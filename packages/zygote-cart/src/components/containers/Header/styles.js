@@ -41,4 +41,12 @@ export default css`
   .zygoteCartHeader {
     margin-bottom: 20px;
   }
+  .zygoteOrderCompleteTitle {
+    font-size: 1.8em;
+    font-style: italic;
+  }
+  .zygoteOrderCompleteBody {
+    font-size: 1.05em;
+    font-weight: 300;
+  }
 `;

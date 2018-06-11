@@ -15,7 +15,7 @@ export default css`
     margin-top: 15px;
   }
   .zygoteStep3 {
-    margin-bottom: 20px;
+    margin: 30px 0 20px 0;
   }
   .zygoteBillingNumberContainer {
     position: relative;
@@ -28,5 +28,18 @@ export default css`
   .zygotePaymentLineWrapper {
     float: right;
     margin-top: -10px;
+    transform: translateY(20%);
+  }
+  .zygoteBillingExpirationContainer {
+    width: 47.5%;
+    margin-right: 5%;
+    float: left;
+  }
+  .zygoteBillingSecurityContainer {
+    width: 47.5%;
+    float: right;
+  }
+  .zygoteCheckboxContainer {
+    clear: both;
   }
 `;

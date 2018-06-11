@@ -123,7 +123,6 @@ const resetCart = () => {
     errors: null,
     apiErrors: null,
     loading: false,
-    showNav: false,
     site: ''
   });
   cost.setState({

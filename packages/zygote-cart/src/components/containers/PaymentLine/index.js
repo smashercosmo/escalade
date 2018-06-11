@@ -18,7 +18,7 @@ const inLineStyles = {
   lockIcon: {
     height: '20px',
     width: '20px',
-    transform: 'translateY(-50%)'
+    transform: 'translateY(-53%)'
   }
 };
 
@@ -28,7 +28,7 @@ export default class PaymentLine extends Component {
       <MuiThemeProvider>
         <div className="zygotePaymentLine">
           <div className="zygotePaymentIcon">
-            <MdLock style={inLineStyles.lockIcon} />
+            <MdLock style={inLineStyles.lockIcon} color="#ccc" />
           </div>
           <div className="zygotePaymentIcon">
             <Icon_Visa style={inLineStyles.cardIcon} />

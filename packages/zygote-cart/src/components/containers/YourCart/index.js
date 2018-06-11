@@ -8,7 +8,8 @@ import {
   ShippingCost,
   Tax,
   Total,
-  PaymentLine
+  PaymentLine,
+  CouponLine
 } from '../../containers';
 import { itemState } from '../../state';
 import styles from './styles';
@@ -17,7 +18,7 @@ export default class YourCart extends Component {
   render() {
     return (
       <div>
-        <Subscribe to={itemState}>
+        <Subscribe to={[itemState]}>
           {state =>
             state.items.length === 0 ? (
               <div className="zygoteEmpty">Your cart is empty</div>
@@ -28,6 +29,7 @@ export default class YourCart extends Component {
                 <div className="zygoteSubFieldsContainer">
                   <div className="zygoteSubFields">
                     <Subtotal />
+                    {state.coupon ? <CouponLine /> : null}
                     <ShippingCost />
                     <Tax />
                   </div>

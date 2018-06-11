@@ -10,6 +10,7 @@ import {
 } from 'material-ui-credit-card-icons';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FaCreditCardAlt from 'react-icons/lib/fa/credit-card-alt';
+import MaskedInput from 'react-maskedinput';
 
 import { yourPayment } from '../../utils';
 import { userInfo, cartState, cost } from '../../state';
@@ -42,6 +43,7 @@ export default class Payment extends Component {
     this.handleCheck = this.handleCheck.bind(this);
     this.update = this.update.bind(this);
     this.updateAddress = this.updateAddress.bind(this);
+    this.onKeyPress = this.onKeyPress.bind(this);
   }
 
   componentDidUpdate() {
@@ -74,31 +76,42 @@ export default class Payment extends Component {
     userInfo.setState({ addressSame: !this.state.checked });
   }
 
+  onKeyPress(e) {
+    if ((e.which != 8 && e.which != 0 && e.which < 48) || e.which > 57) {
+      e.preventDefault();
+    }
+  }
+
   update(e) {
     e.preventDefault();
     const { value } = e.target;
     const { inputErrors } = this.state;
     let updatedErrs = { ...inputErrors };
+    let formattedCard = null;
     const name = `billing${e.target.name.replace(/\s/g, '')}`;
     userInfo.setState({
       payment: { ...userInfo.state.payment, [name]: e.target.value }
     });
-    if (value.length === 0) {
+    if (value.length === 0 && e.target.name !== 'Number') {
       updatedErrs[name] = name => `Please enter a valid ${name}`;
     } else if (value.length > 0) {
       delete updatedErrs[name];
     }
-    if (e.target.name === 'Number' && !cardValid.number(value).isValid) {
-      updatedErrs[name] = name => `Please enter a valid ${name}`;
-      const numberValidation = cardValid.number(value);
-      if (!numberValidation.isPotentiallyValid) {
+    if (e.target.name === 'Number') {
+      formattedCard = value.replace(/_|\s+/g, '');
+    }
+    if (e.target.name === 'Number') {
+      const numberValidation = cardValid.number(formattedCard);
+      if (
+        !numberValidation.isPotentiallyValid ||
+        !numberValidation.card ||
+        formattedCard.length === 0
+      ) {
         this.setState({ cardType: null });
       }
       if (numberValidation.isPotentiallyValid && numberValidation.card) {
         this.setState({ cardType: numberValidation.card.type });
       }
-    } else if (e.target.name === 'Number' && cardValid.number(value).isValid) {
-      delete updatedErrs[name];
     }
     if (
       e.target.name === 'Expiration' &&
@@ -125,7 +138,41 @@ export default class Payment extends Component {
 
     this.setState({ inputErrors: updatedErrs });
   }
-
+  validateCC(e) {
+    const { value } = e.target;
+    const name = `billing${e.target.name.replace(/\s/g, '')}`;
+    const { inputErrors } = this.state;
+    let updatedErrs = { ...inputErrors };
+    let formattedCard = null;
+    if (value.length === 0) {
+      updatedErrs[name] = name => `Please enter a valid ${name}`;
+    } else if (value.length > 0) {
+      delete updatedErrs[name];
+    }
+    if (e.target.name === 'Number') {
+      formattedCard = value.replace(/_|\s+/g, '');
+    }
+    if (formattedCard) {
+      if (
+        e.target.name === 'Number' &&
+        !cardValid.number(formattedCard).isValid
+      ) {
+        updatedErrs[name] = name => `Please enter a valid ${name}`;
+      } else if (
+        e.target.name === 'Number' &&
+        cardValid.number(formattedCard).isValid
+      ) {
+        this.setState({ cardType: cardValid.number(formattedCard).card.type });
+        delete updatedErrs[name];
+      }
+    }
+    if (Object.keys(updatedErrs).length > 0) {
+      cartState.setState({ errors: true });
+    } else {
+      cartState.setState({ errors: null });
+    }
+    this.setState({ inputErrors: updatedErrs });
+  }
   updateAddress(e) {
     e.preventDefault();
     const { value } = e.target;
@@ -289,14 +336,59 @@ export default class Payment extends Component {
                 : ''
             } ${field.class}Container`}
           >
-            <input
-              type="text"
-              className={field.class}
-              name={field.name}
-              onChange={this[func]}
-              value={user[type][field.formattedName]}
-              placeholder={`${field.label} ${field.span ? field.span : ''}`}
-            />
+            {field.name === 'Expiration' ? (
+              <MaskedInput
+                mask="11/11"
+                type={field.type}
+                className={field.class}
+                name={field.name}
+                ref={ref => (this[field.name] = ref)}
+                onChange={this[func]}
+                onFocus={e => {
+                  e.target.placeholder = '__/__';
+                }}
+                onBlur={e => {
+                  e.target.placeholder = 'MM/YY';
+                }}
+                value={user[type][field.formattedName]}
+                placeholder={`${field.label} ${field.span ? field.span : ''}`}
+              />
+            ) : field.name === 'Number' ? (
+              <MaskedInput
+                mask={
+                  this.state.cardType === 'american-express'
+                    ? '1111 111111 11111'
+                    : '1111 1111 1111 1111'
+                }
+                placeholderChar=" "
+                type={field.type}
+                className={field.class}
+                name={field.name}
+                ref={ref => (this[field.name] = ref)}
+                onChange={this[func]}
+                onFocus={e => {
+                  e.target.placeholder = '';
+                }}
+                onBlur={e => {
+                  e.target.placeholder = 'Card Number';
+                  this.validateCC(e);
+                }}
+                value={user[type][field.formattedName]}
+                placeholder={`${field.label} ${field.span ? field.span : ''}`}
+              />
+            ) : (
+              <input
+                type={field.type}
+                onKeyDown={field.type === 'number' ? this.onKeyPress : null}
+                className={field.class}
+                name={field.name}
+                ref={ref => (this[field.name] = ref)}
+                onChange={this[func]}
+                defaultValue={user[type][field.formattedName]}
+                placeholder={`${field.label} ${field.span ? field.span : ''}`}
+              />
+            )}
+
             {field.name === 'Number' ? (
               <div className="zygoteCardPreview">
                 <MuiThemeProvider>
@@ -319,6 +411,15 @@ export default class Payment extends Component {
   }
 
   renderCard(type) {
+    if (!type) {
+      const numberValidation = cardValid.number(
+        userInfo.state.payment.billingNumber
+      );
+      if (numberValidation.isPotentiallyValid && numberValidation.card) {
+        type = numberValidation.card.type;
+      }
+    }
+
     switch (type) {
       case 'visa':
         return (
@@ -333,10 +434,11 @@ export default class Payment extends Component {
           </div>
         );
       case 'american-express':
-        return;
-        <div className="zygotePaymentIcon">
-          <Icon_AmericanExpress style={inLineStyles.cardIcon} />
-        </div>;
+        return (
+          <div className="zygotePaymentIcon">
+            <Icon_AmericanExpress style={inLineStyles.cardIcon} />
+          </div>
+        );
       case 'discover':
         return (
           <div className="zygotePaymentIcon">
@@ -346,7 +448,7 @@ export default class Payment extends Component {
       default:
         return (
           <div>
-            <FaCreditCardAlt style={inLineStyles.cardIcon} />
+            <FaCreditCardAlt style={inLineStyles.cardIcon} color="#cccccc" />
           </div>
         );
     }

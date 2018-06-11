@@ -27,7 +27,7 @@ export default css`
   .zygoteStepBtns {
     display: block;
   }
-  .zygoteShoppingBtn {
+  .zygoteAltBtn {
     background: #fff;
     color: #000;
     border: 1px solid #000;

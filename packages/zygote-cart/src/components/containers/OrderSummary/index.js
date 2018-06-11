@@ -1,24 +1,39 @@
 import React, { Component } from 'react';
+import { Subscribe } from 'statable';
+
 import styles from './styles';
-import { Item, Subtotal, ShippingCost, Tax, Total } from '../../containers';
+import { itemState } from '../../state';
+import {
+  Item,
+  Subtotal,
+  ShippingCost,
+  Tax,
+  Total,
+  CouponLine
+} from '../../containers';
 
 export default class OrderSummary extends Component {
   render() {
     return (
-      <div className="zygoteOrderSummaryContainer">
-        <Item />
-        <div className="zygoteSubFieldsContainer">
-          <div className="zygoteSubFields">
-            <Subtotal />
-            <ShippingCost />
-            <Tax />
+      <Subscribe to={itemState}>
+        {state => (
+          <div className="zygoteOrderSummaryContainer">
+            <Item />
+            <div className="zygoteSubFieldsContainer">
+              <div className="zygoteSubFields">
+                <Subtotal />
+                {state.coupon ? <CouponLine /> : null}
+                <ShippingCost />
+                <Tax />
+              </div>
+            </div>
+            <Total />
+            <style jsx global>
+              {styles}
+            </style>
           </div>
-        </div>
-        <Total />
-        <style jsx global>
-          {styles}
-        </style>
-      </div>
+        )}
+      </Subscribe>
     );
   }
 }

@@ -60,7 +60,10 @@ export default class Coupon extends Component {
                 {state.coupon ? (
                   <div style={{ display: 'inline-block' }}>
                     Coupon:
-                    <div className="zygoteCouponHighlight"> {state.coupon}</div>
+                    <div className="zygoteCouponHighlight">
+                      {' '}
+                      {state.coupon} applied!
+                    </div>
                   </div>
                 ) : (
                   'Apply a Coupon'
