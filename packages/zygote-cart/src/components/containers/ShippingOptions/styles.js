@@ -12,11 +12,18 @@ export default css`
   }
   .zygoteShippingInputs {
     color: #666667;
-    margin-bottom: 25px;
+    margin: 0 -20px 25px -20px;
+    padding: 0 20px 10px 20px;
+    border-bottom: 2px solid #e8e9e9;
+    &:last-child {
+      border: none;
+      padding-bottom: 0px;
+    }
   }
   .zygoteShippingInputs:last-child {
     margin-bottom: 0;
   }
+
   .zygoteShipOptionLine > div {
     &:after,
     :before {

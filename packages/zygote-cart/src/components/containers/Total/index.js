@@ -1,22 +1,30 @@
-import React, { Component } from 'react';
-import { Subscribe } from 'statable';
+import React, { Component } from 'react'
+import { Subscribe } from 'statable'
 
-import { cost } from '../../state';
-import styles from './styles';
+import { cost } from '../../state'
+import styles from './styles'
 
 export default class Total extends Component {
   componentDidMount() {
+    if (
+      cost.state.total !==
+      cost.state.subtotal + cost.state.tax + cost.state.shipping
+    ) {
+      cost.setState({
+        total: cost.state.subtotal + cost.state.tax + cost.state.shipping
+      })
+    }
     cost.subscribe(state => {
       if (cost.state.total !== state.subtotal + state.tax + state.shipping) {
         cost.setState({
           total: state.subtotal + state.tax + state.shipping
-        });
+        })
       }
-    });
+    })
   }
 
   componentWillUnmount() {
-    cost.unsubscribe();
+    cost.unsubscribe()
   }
 
   render() {
@@ -37,6 +45,6 @@ export default class Total extends Component {
           </div>
         )}
       </Subscribe>
-    );
+    )
   }
 }

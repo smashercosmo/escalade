@@ -17,12 +17,76 @@ export default class ShippingOptions extends Component {
     this.changeShipping = this.changeShipping.bind(this)
   }
 
-  changeShipping(i) {
-    console.log(i)
+  changeShipping(shipOption) {
+    let updatedShipOption = {}
+    Object.keys(shipOption).forEach(k => {
+      updatedShipOption = userInfo.state.preOrderInfo.setShip
+        ? { ...userInfo.state.preOrderInfo.setShip, [k]: shipOption[k] }
+        : shipOption
+    })
+
+    userInfo.setState({
+      preOrderInfo: {
+        ...userInfo.state.preOrderInfo,
+        setShip: updatedShipOption
+      }
+    })
   }
 
   async componentDidMount() {
     if (cartState.state.tab === 2) {
+      const testShipOptions = {
+        evansville: {
+          options: [
+            {
+              amount: '200.00',
+              name: 'Freight',
+              carrier: {
+                total: 166.67,
+                carrierCode: 'abfs',
+                paymentTerms: 'Outbound Prepaid',
+                serviceType: 'Standard'
+              }
+            },
+            {
+              amount: '205.00',
+              name: 'Parcel',
+              carrier: {
+                total: 166.67,
+                carrierCode: 'abfs',
+                paymentTerms: 'Outbound Prepaid',
+                serviceType: 'Standard'
+              }
+            }
+          ],
+          products: [{ id: 'b9000w' }, { id: 'tr0002w' }, { id: 'b3100w' }]
+        },
+        california: {
+          options: [
+            {
+              amount: '200.00',
+              name: 'Freight',
+              carrier: {
+                total: 166.67,
+                carrierCode: 'abfs',
+                paymentTerms: 'Outbound Prepaid',
+                serviceType: 'Standard'
+              }
+            },
+            {
+              amount: '207.00',
+              name: 'Parcel',
+              carrier: {
+                total: 166.67,
+                carrierCode: 'abfs',
+                paymentTerms: 'Outbound Prepaid',
+                serviceType: 'Standard'
+              }
+            }
+          ],
+          products: [{ id: 'b9000w' }, { id: 'tr0002w' }, { id: 'b3100w' }]
+        }
+      }
       const { shipping } = userInfo.state
       const { items, coupon } = itemState.state
       let updated = { ...shipping }
@@ -60,7 +124,7 @@ export default class ShippingOptions extends Component {
             loading: false
           })
         })
-      console.log(shippingRes)
+      // console.log(shippingRes)
       shippingRes.products.forEach(product => {
         const regexp = new RegExp(product.id, 'gi')
         const updatedItem = items.find(({ id }) => regexp.test(id))
@@ -83,7 +147,8 @@ export default class ShippingOptions extends Component {
         })
       })
       updated.shippingOptions = shippingRes.shippingOptions
-      Object.keys(updated.shippingOptions).forEach(k => {
+      // NEED TO SWITCH
+      Object.keys(testShipOptions).forEach(k => {
         this.setState({
           shippingOption: { ...this.state.shippingOption, [k]: 0 }
         })
@@ -98,10 +163,11 @@ export default class ShippingOptions extends Component {
       cost.setState({
         tax: shippingRes.tax,
         shipping: shippingRes.shipping,
-        shippingOptions:
-          Object.keys(updated.shippingOptions).length > 0
-            ? updated.shippingOptions
-            : null
+        // NEED TO SWITCH
+        shippingOptions: testShipOptions
+        // Object.keys(updated.shippingOptions).length > 0
+        //   ? updated.shippingOptions
+        //   : null
       })
       cartState.setState({
         loading: false,
@@ -119,6 +185,9 @@ export default class ShippingOptions extends Component {
   }
 
   render() {
+    userInfo.state.preOrderInfo.setShip
+      ? console.log(userInfo.state.preOrderInfo.setShip)
+      : null
     return (
       <Subscribe to={[cartState, cost, itemState]}>
         {(cart, cost, itemState) => {

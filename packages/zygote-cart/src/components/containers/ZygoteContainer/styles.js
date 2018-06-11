@@ -1,5 +1,5 @@
-import css from 'styled-jsx/css';
-import React from 'react';
+import css from 'styled-jsx/css'
+import React from 'react'
 
 export default css`
   .zygoteOpen {
@@ -231,12 +231,12 @@ export default css`
   }
   .zygoteToggleField {
     display: inline-block;
+    font-size: 0.75em;
   }
   .zygoteToggleFieldWrapper {
     width: 47.5%;
     float: left;
     color: #666667;
-    font-size: 0.75em;
   }
   .zygoteShippingCompanyNameContainer,
   .zygoteBillingCompanyNameContainer {
@@ -275,4 +275,4 @@ export default css`
     width: 50px;
     margin: 0 auto;
   }
-`;
+`

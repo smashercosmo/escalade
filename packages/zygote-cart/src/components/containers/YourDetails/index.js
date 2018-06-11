@@ -105,7 +105,6 @@ export default class Shipping extends Component {
   }
 
   renderField(field, i, user) {
-    console.log(user)
     const { inputErrors } = this.state
     switch (field.type) {
       case 'checkbox':
