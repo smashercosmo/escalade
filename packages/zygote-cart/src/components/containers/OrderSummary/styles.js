@@ -1,4 +1,4 @@
-import css from 'styled-jsx/css';
+import css from 'styled-jsx/css'
 
 export default css`
   .zygoteOrderSummaryContainer {
@@ -8,13 +8,13 @@ export default css`
     padding: 15px;
     margin: -20px -20px 20px -20px;
   }
-  .zygoteStep3 .zygoteOrderSummaryContainer {
-    margin: 10px 0;
-    background-color: #fff;
-    border: none;
+  .zygoteAnim {
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.5s ease-in-out;
+    overflow: hidden;
   }
-  .zygoteStep4 .zygoteOrderSummaryContainer {
-    margin-top: 0px;
-    border-top: none;
+  .zygoteAnimAction {
+    transform: scaleY(1);
   }
-`;
+`

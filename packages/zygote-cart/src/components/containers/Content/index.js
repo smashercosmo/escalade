@@ -17,7 +17,7 @@ export default class Content extends Component {
       case 'Your Details':
         return <YourDetails googleApiKey={this.props.googleApiKey} />
       case 'Your Payment':
-        return <YourPayment />
+        return <YourPayment googleApiKey={this.props.googleApiKey} />
       case 'Your Order':
         return <YourOrder />
 

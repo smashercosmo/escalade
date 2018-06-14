@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Subscribe } from 'statable';
+import React, { Component } from 'react'
+import { Subscribe } from 'statable'
 
 import {
   Item,
@@ -10,11 +10,35 @@ import {
   Total,
   PaymentLine,
   CouponLine
-} from '../../containers';
-import { itemState } from '../../state';
-import styles from './styles';
+} from '../../containers'
+import { itemState } from '../../state'
+import styles from './styles'
 
 export default class YourCart extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      animate: false
+    }
+  }
+
+  componentDidMount() {
+    // For initial load of animation
+    if (!itemState.state.coupon) {
+      this.setState({ animate: true })
+    }
+    // For checking when coupon is toggled
+    itemState.subscribe(state => {
+      if (!state.coupon) {
+        this.setState({ animate: true })
+      }
+    })
+  }
+
+  componentWillUnmount() {
+    itemState.unsubscribe()
+  }
+
   render() {
     return (
       <div>
@@ -29,7 +53,11 @@ export default class YourCart extends Component {
                 <div className="zygoteSubFieldsContainer">
                   <div className="zygoteSubFields">
                     <Subtotal />
-                    {state.coupon ? <CouponLine /> : null}
+                    <CouponLine
+                      isMounted={state.coupon ? true : false}
+                      delayTime={500}
+                      animate={this.state.animate}
+                    />
                     <ShippingCost />
                     <Tax />
                   </div>
@@ -44,6 +72,6 @@ export default class YourCart extends Component {
           {styles}
         </style>
       </div>
-    );
+    )
   }
 }

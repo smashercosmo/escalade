@@ -17,7 +17,12 @@ export default class ShippingOptions extends Component {
     this.changeShipping = this.changeShipping.bind(this)
   }
 
-  changeShipping(shipOption) {
+  async changeShipping(shipOption) {
+    const shipKey = Object.keys(shipOption)[0]
+    if (userInfo.state.preOrderInfo.setShip[shipKey] === shipOption[shipKey]) {
+      return
+    }
+
     let updatedShipOption = {}
     Object.keys(shipOption).forEach(k => {
       updatedShipOption = userInfo.state.preOrderInfo.setShip
@@ -31,62 +36,68 @@ export default class ShippingOptions extends Component {
         setShip: updatedShipOption
       }
     })
+
+    // Make request to change shipping option
+    cartState.setState({
+      loading: true
+    })
+    const { preOrderInfo } = userInfo.state
+    const shippingRes = await fetch(zygoteApi.state.api, {
+      body: JSON.stringify(preOrderInfo),
+      method: 'POST'
+    })
+      .then(res => res.json())
+      .catch(err => {
+        let error = ''
+        if (
+          err.request &&
+          (err.request.status === 404 || err.request.status === 502)
+        ) {
+          error = `Error with API: ${err.response.statusText}`
+        } else if (err.request && err.request.status === 0 && !err.response) {
+          error =
+            'Something went wrong with the request, no response was given.'
+        } else {
+          error = err.response || JSON.stringify(err) || err
+        }
+        cartState.setState({
+          apiErrors: [error],
+          loading: false
+        })
+      })
+    if (shippingRes) {
+      Object.keys(shippingRes.shippingOptions).forEach(k => {
+        this.setState({
+          shippingOption: {
+            ...this.state.shippingOption,
+            [k]: Number(shippingRes.shippingOptions[k].selected)
+          }
+        })
+      })
+      cost.setState({
+        tax: shippingRes.tax,
+        shipping: shippingRes.shipping,
+        shippingOptions:
+          Object.keys(shippingRes.shippingOptions).length > 0
+            ? shippingRes.shippingOptions
+            : null
+      })
+      cartState.setState({
+        loading: false,
+        apiErrors: shippingRes.errors.length > 0 ? shippingRes.errors : null
+      })
+      if (shippingRes.errors.length > 0) {
+        shippingRes.errors.forEach(err => {
+          if (err.includes('CRT-1-00013')) {
+            itemState.setState({ coupon: '' })
+          }
+        })
+      }
+    }
   }
 
   async componentDidMount() {
     if (cartState.state.tab === 2) {
-      const testShipOptions = {
-        evansville: {
-          options: [
-            {
-              amount: '200.00',
-              name: 'Freight',
-              carrier: {
-                total: 166.67,
-                carrierCode: 'abfs',
-                paymentTerms: 'Outbound Prepaid',
-                serviceType: 'Standard'
-              }
-            },
-            {
-              amount: '205.00',
-              name: 'Parcel',
-              carrier: {
-                total: 166.67,
-                carrierCode: 'abfs',
-                paymentTerms: 'Outbound Prepaid',
-                serviceType: 'Standard'
-              }
-            }
-          ],
-          products: [{ id: 'b9000w' }, { id: 'tr0002w' }, { id: 'b3100w' }]
-        },
-        california: {
-          options: [
-            {
-              amount: '200.00',
-              name: 'Freight',
-              carrier: {
-                total: 166.67,
-                carrierCode: 'abfs',
-                paymentTerms: 'Outbound Prepaid',
-                serviceType: 'Standard'
-              }
-            },
-            {
-              amount: '207.00',
-              name: 'Parcel',
-              carrier: {
-                total: 166.67,
-                carrierCode: 'abfs',
-                paymentTerms: 'Outbound Prepaid',
-                serviceType: 'Standard'
-              }
-            }
-          ],
-          products: [{ id: 'b9000w' }, { id: 'tr0002w' }, { id: 'b3100w' }]
-        }
-      }
       const { shipping } = userInfo.state
       const { items, coupon } = itemState.state
       let updated = { ...shipping }
@@ -147,11 +158,13 @@ export default class ShippingOptions extends Component {
         })
       })
       updated.shippingOptions = shippingRes.shippingOptions
-      // NEED TO SWITCH
-      Object.keys(testShipOptions).forEach(k => {
+      Object.keys(updated.shippingOptions).forEach(k => {
         this.setState({
           shippingOption: { ...this.state.shippingOption, [k]: 0 }
         })
+        updated.setShip = updated.setShip
+          ? { ...updated.setShip, [k]: 0 }
+          : { [k]: 0 }
       })
 
       updated.success = shippingRes.success
@@ -163,18 +176,16 @@ export default class ShippingOptions extends Component {
       cost.setState({
         tax: shippingRes.tax,
         shipping: shippingRes.shipping,
-        // NEED TO SWITCH
-        shippingOptions: testShipOptions
-        // Object.keys(updated.shippingOptions).length > 0
-        //   ? updated.shippingOptions
-        //   : null
+        shippingOptions:
+          Object.keys(updated.shippingOptions).length > 0
+            ? updated.shippingOptions
+            : null
       })
       cartState.setState({
         loading: false,
         apiErrors: shippingRes.errors.length > 0 ? shippingRes.errors : null
       })
       if (shippingRes.errors.length > 0) {
-        removeCookies()
         shippingRes.errors.forEach(err => {
           if (err.includes('CRT-1-00013')) {
             itemState.setState({ coupon: '' })
@@ -185,9 +196,7 @@ export default class ShippingOptions extends Component {
   }
 
   render() {
-    userInfo.state.preOrderInfo.setShip
-      ? console.log(userInfo.state.preOrderInfo.setShip)
-      : null
+    // console.log(this.state.shippingOption)
     return (
       <Subscribe to={[cartState, cost, itemState]}>
         {(cart, cost, itemState) => {
@@ -232,39 +241,39 @@ export default class ShippingOptions extends Component {
                       const updatedProducts =
                         shipOptions.products.length === 0
                           ? []
-                          : shipOptions.products.map(product =>
-                              itemState.items.find(
-                                item => item.id === product.id
+                          : shipOptions.products.map(product => {
+                              return itemState.items.find(
+                                item =>
+                                  item.id.toLowerCase() ===
+                                  product.id.toLowerCase()
                               )
-                            )
+                            })
                       return (
                         <div className="zygoteShippingInputs" key={i}>
+                          <div className="zygoteSectionTitle">
+                            4.{' '}
+                            {shipOptions.type.charAt(0).toUpperCase() +
+                              shipOptions.type.slice(1)}{' '}
+                            Shipping Options
+                          </div>
+                          {updatedProducts.length > 0 ? (
+                            <div className="zygoteShippingProducts">
+                              {updatedProducts.map((product, i) => (
+                                <div key={i}>
+                                  for{' '}
+                                  {shipOptions.type === 'freight'
+                                    ? 'Large'
+                                    : 'Small'}{' '}
+                                  {product.name} from{' '}
+                                  {k.charAt(0).toUpperCase() + k.slice(1)}
+                                </div>
+                              ))}
+                            </div>
+                          ) : null}
                           {shipOptions.options.map((shipOption, i) => {
                             return (
                               <div className="zygoteShippingSection" key={i}>
-                                <div className="zygoteSectionTitle">
-                                  4. {shipOption.name} Shipping Options
-                                </div>
-                                {updatedProducts.length > 0 ? (
-                                  <div className="zygoteShippingProducts">
-                                    {updatedProducts.map((product, i) => (
-                                      <div key={i}>
-                                        for{' '}
-                                        {shipOption.name === 'Freight'
-                                          ? 'Large'
-                                          : 'Small'}{' '}
-                                        {product.name} from{' '}
-                                        {k.charAt(0).toUpperCase() + k.slice(1)}
-                                      </div>
-                                    ))}
-                                  </div>
-                                ) : null}
-                                <div
-                                  className="zygoteCheckboxContainer"
-                                  onClick={() =>
-                                    this.changeShipping({ [k]: i })
-                                  }
-                                >
+                                <div className="zygoteCheckboxContainer">
                                   <label>
                                     <div className="zygoteShippingName">
                                       {shipOption.carrier
@@ -286,6 +295,9 @@ export default class ShippingOptions extends Component {
                                             [k]: i
                                           }
                                         })
+                                      }
+                                      onClick={() =>
+                                        this.changeShipping({ [k]: i })
                                       }
                                       checked={
                                         this.state.shippingOption[k] === i

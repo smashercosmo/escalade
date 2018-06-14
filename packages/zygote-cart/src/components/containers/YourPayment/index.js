@@ -1,27 +1,28 @@
-import React, { Component } from 'react';
-import { Subscribe } from 'statable';
-import validator from 'validator';
-import cardValid from 'card-validator';
+import React, { Component } from 'react'
+import { Subscribe } from 'statable'
+import validator from 'validator'
+import cardValid from 'card-validator'
 import {
   Icon_Visa,
   Icon_MasterCard,
   Icon_AmericanExpress,
   Icon_Discover
-} from 'material-ui-credit-card-icons';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import FaCreditCardAlt from 'react-icons/lib/fa/credit-card-alt';
-import MaskedInput from 'react-maskedinput';
+} from 'material-ui-credit-card-icons'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import FaCreditCardAlt from 'react-icons/lib/fa/credit-card-alt'
+import MaskedInput from 'react-maskedinput'
+import { AutoComplete } from 'react-store-locator'
 
-import { yourPayment } from '../../utils';
-import { userInfo, cartState, cost } from '../../state';
+import { yourPayment } from '../../utils'
+import { userInfo, cartState, cost } from '../../state'
 import {
   ShippingOptions,
   Coupon,
   OrderSummary,
   PaymentLine
-} from '../../containers';
-import styles from './styles';
-import { address } from 'ip';
+} from '../../containers'
+import styles from './styles'
+import { address } from 'ip'
 
 const inLineStyles = {
   cardIcon: {
@@ -29,187 +30,214 @@ const inLineStyles = {
     width: '30px',
     transform: 'translateY(-15%)'
   }
-};
+}
 
 export default class Payment extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       checked: true,
       inputErrors: {},
-      cardType: null
-    };
-    this.renderField = this.renderField.bind(this);
-    this.handleCheck = this.handleCheck.bind(this);
-    this.update = this.update.bind(this);
-    this.updateAddress = this.updateAddress.bind(this);
-    this.onKeyPress = this.onKeyPress.bind(this);
+      cardType: null,
+      class: ''
+    }
+    this.renderField = this.renderField.bind(this)
+    this.handleCheck = this.handleCheck.bind(this)
+    this.update = this.update.bind(this)
+    this.updateAddress = this.updateAddress.bind(this)
+    this.onKeyPress = this.onKeyPress.bind(this)
+    this.addressSearch = this.addressSearch.bind(this)
   }
 
   componentDidUpdate() {
-    let { errors } = cartState.state;
-    const { paymentAddress } = userInfo.state;
+    let { errors } = cartState.state
+    const { paymentAddress } = userInfo.state
     if (this.state.checked) {
       Object.keys(paymentAddress).forEach(k => {
         if (errors) {
           if (errors[k]) {
-            delete errors[k];
+            delete errors[k]
           }
         }
-      });
+      })
+      if (this.state.class === '') return
+      this.setState({ class: '' })
+    } else if (!this.state.checked) {
+      if (this.state.class === 'zygoteAnimAction') return
+      setTimeout(() => {
+        this.setState({ class: 'zygoteAnimAction' })
+      }, 0)
     }
     if (typeof errors === 'object') {
       if (errors && Object.keys(errors).length === 0) {
-        cartState.setState({ errors: null });
+        cartState.setState({ errors: null })
       }
       if (this.state.inputErrors === errors) {
-        return;
+        return
       }
       this.setState({
         inputErrors: errors
-      });
+      })
+    }
+  }
+
+  addressSearch(place) {
+    if (typeof place === 'object') {
+      console.log(place)
+      userInfo.setState({
+        paymentAddress: {
+          ...userInfo.state.paymentAddress,
+          billingAddress: place.address || '',
+          billingZip: place.zip || '',
+          billingCity: place.city || '',
+          billingState: place.state || ''
+        }
+      })
     }
   }
 
   handleCheck() {
-    this.setState({ checked: !this.state.checked });
-    userInfo.setState({ addressSame: !this.state.checked });
+    this.setState({ checked: !this.state.checked })
+    userInfo.setState({ addressSame: !this.state.checked })
   }
 
   onKeyPress(e) {
     if ((e.which != 8 && e.which != 0 && e.which < 48) || e.which > 57) {
-      e.preventDefault();
+      e.preventDefault()
     }
   }
 
   update(e) {
-    e.preventDefault();
-    const { value } = e.target;
-    const { inputErrors } = this.state;
-    let updatedErrs = { ...inputErrors };
-    let formattedCard = null;
-    const name = `billing${e.target.name.replace(/\s/g, '')}`;
+    e.preventDefault()
+    const { value } = e.target
+    const { inputErrors } = this.state
+    let updatedErrs = { ...inputErrors }
+    let formattedCard = null
+    const name = `billing${e.target.name.replace(/\s/g, '')}`
     userInfo.setState({
-      payment: { ...userInfo.state.payment, [name]: e.target.value }
-    });
+      payment: {
+        ...userInfo.state.payment,
+        [name]: e.target.value.replace(/_|\s+/g, '')
+      }
+    })
     if (value.length === 0 && e.target.name !== 'Number') {
-      updatedErrs[name] = name => `Please enter a valid ${name}`;
+      updatedErrs[name] = name => `Please enter a valid ${name}`
     } else if (value.length > 0) {
-      delete updatedErrs[name];
+      delete updatedErrs[name]
     }
     if (e.target.name === 'Number') {
-      formattedCard = value.replace(/_|\s+/g, '');
+      formattedCard = value.replace(/_|\s+/g, '')
     }
     if (e.target.name === 'Number') {
-      const numberValidation = cardValid.number(formattedCard);
+      const numberValidation = cardValid.number(formattedCard)
       if (
         !numberValidation.isPotentiallyValid ||
         !numberValidation.card ||
         formattedCard.length === 0
       ) {
-        this.setState({ cardType: null });
+        this.setState({ cardType: null })
       }
       if (numberValidation.isPotentiallyValid && numberValidation.card) {
-        this.setState({ cardType: numberValidation.card.type });
+        this.setState({ cardType: numberValidation.card.type })
       }
     }
     if (
       e.target.name === 'Expiration' &&
       !cardValid.expirationDate(value).isValid
     ) {
-      updatedErrs[name] = name => `Please enter a valid ${name}`;
+      updatedErrs[name] = name => `Please enter a valid ${name}`
     } else if (
       e.target.name === 'Expiration' &&
       !cardValid.expirationDate(value).isValid
     ) {
-      delete updatedErrs[name];
+      delete updatedErrs[name]
     }
     if (e.target.name === 'Security' && !cardValid.cvv(value).isValid) {
-      updatedErrs[name] = name => `Please enter a valid ${name}`;
+      updatedErrs[name] = name => `Please enter a valid ${name}`
     } else if (e.target.name === 'Security' && cardValid.cvv(value).isValid) {
-      delete updatedErrs[name];
+      delete updatedErrs[name]
     }
 
     if (Object.keys(updatedErrs).length > 0) {
-      cartState.setState({ errors: true });
+      cartState.setState({ errors: true })
     } else {
-      cartState.setState({ errors: null });
+      cartState.setState({ errors: null })
     }
 
-    this.setState({ inputErrors: updatedErrs });
+    this.setState({ inputErrors: updatedErrs })
   }
   validateCC(e) {
-    const { value } = e.target;
-    const name = `billing${e.target.name.replace(/\s/g, '')}`;
-    const { inputErrors } = this.state;
-    let updatedErrs = { ...inputErrors };
-    let formattedCard = null;
+    const { value } = e.target
+    const name = `billing${e.target.name.replace(/\s/g, '')}`
+    const { inputErrors } = this.state
+    let updatedErrs = { ...inputErrors }
+    let formattedCard = null
     if (value.length === 0) {
-      updatedErrs[name] = name => `Please enter a valid ${name}`;
+      updatedErrs[name] = name => `Please enter a valid ${name}`
     } else if (value.length > 0) {
-      delete updatedErrs[name];
+      delete updatedErrs[name]
     }
     if (e.target.name === 'Number') {
-      formattedCard = value.replace(/_|\s+/g, '');
+      formattedCard = value.replace(/_|\s+/g, '')
     }
     if (formattedCard) {
       if (
         e.target.name === 'Number' &&
         !cardValid.number(formattedCard).isValid
       ) {
-        updatedErrs[name] = name => `Please enter a valid ${name}`;
+        updatedErrs[name] = name => `Please enter a valid ${name}`
       } else if (
         e.target.name === 'Number' &&
         cardValid.number(formattedCard).isValid
       ) {
-        this.setState({ cardType: cardValid.number(formattedCard).card.type });
-        delete updatedErrs[name];
+        this.setState({ cardType: cardValid.number(formattedCard).card.type })
+        delete updatedErrs[name]
       }
     }
     if (Object.keys(updatedErrs).length > 0) {
-      cartState.setState({ errors: true });
+      cartState.setState({ errors: true })
     } else {
-      cartState.setState({ errors: null });
+      cartState.setState({ errors: null })
     }
-    this.setState({ inputErrors: updatedErrs });
+    this.setState({ inputErrors: updatedErrs })
   }
   updateAddress(e) {
-    e.preventDefault();
-    const { value } = e.target;
-    const { inputErrors } = this.state;
-    let updatedErrs = { ...inputErrors };
-    const name = `billing${e.target.name.replace(/\s/g, '')}`;
+    e.preventDefault()
+    const { value } = e.target
+    const { inputErrors } = this.state
+    let updatedErrs = { ...inputErrors }
+    const name = `billing${e.target.name.replace(/\s/g, '')}`
     userInfo.setState({
       paymentAddress: {
         ...userInfo.state.paymentAddress,
         [name]: e.target.value
       }
-    });
+    })
     if (value.length === 0) {
-      updatedErrs[name] = name => `Please enter a valid ${name}`;
+      updatedErrs[name] = name => `Please enter a valid ${name}`
     } else if (value.length > 0) {
-      delete updatedErrs[name];
+      delete updatedErrs[name]
     }
     if (e.target.name === 'Zip' && !validator.isPostalCode(value, 'any')) {
-      updatedErrs[name] = name => `Please enter a valid ${name}.`;
+      updatedErrs[name] = name => `Please enter a valid ${name}.`
     } else if (
       e.target.name === 'Zip' &&
       validator.isPostalCode(value, 'any')
     ) {
-      delete updatedErrs[name];
+      delete updatedErrs[name]
     }
     if (Object.keys(updatedErrs).length > 0) {
-      cartState.setState({ errors: true });
+      cartState.setState({ errors: true })
     } else {
-      cartState.setState({ errors: null });
+      cartState.setState({ errors: null })
     }
 
-    this.setState({ inputErrors: updatedErrs });
+    this.setState({ inputErrors: updatedErrs })
   }
 
   renderField(func, field, i, user) {
-    const { inputErrors } = this.state;
-    const type = func === 'update' ? 'payment' : 'paymentAddress';
+    const { inputErrors } = this.state
+    const type = func === 'update' ? 'payment' : 'paymentAddress'
     switch (field.type) {
       case 'checkbox':
         return (
@@ -239,7 +267,7 @@ export default class Payment extends Component {
             </label>
             <style jsx>{styles}</style>
           </div>
-        );
+        )
       case 'toggle':
         return (
           <div
@@ -287,7 +315,7 @@ export default class Payment extends Component {
               </div>
             )}
           </div>
-        );
+        )
       case 'select':
         return (
           <div
@@ -307,7 +335,9 @@ export default class Payment extends Component {
               value={user[type][field.formattedName]}
               onChange={this[func]}
             >
-              <option value="">State</option>
+              <option value="" disabled>
+                State
+              </option>
               {field.options.map(option => (
                 <option key={option.value} value={option.value}>
                   {option.label}
@@ -323,8 +353,9 @@ export default class Payment extends Component {
             ) : null}
             <style jsx>{styles}</style>
           </div>
-        );
+        )
       default:
+        // NEED TO ADD GOOGLE SEARCH FOR ADDRESS <<<<!!!!!!!!-----!!!!!!!!!>>>>
         return (
           <div
             key={i}
@@ -345,10 +376,10 @@ export default class Payment extends Component {
                 ref={ref => (this[field.name] = ref)}
                 onChange={this[func]}
                 onFocus={e => {
-                  e.target.placeholder = '__/__';
+                  e.target.placeholder = '__/__'
                 }}
                 onBlur={e => {
-                  e.target.placeholder = 'MM/YY';
+                  e.target.placeholder = 'MM/YY'
                 }}
                 value={user[type][field.formattedName]}
                 placeholder={`${field.label} ${field.span ? field.span : ''}`}
@@ -367,13 +398,24 @@ export default class Payment extends Component {
                 ref={ref => (this[field.name] = ref)}
                 onChange={this[func]}
                 onFocus={e => {
-                  e.target.placeholder = '';
+                  e.target.placeholder = ''
                 }}
                 onBlur={e => {
-                  e.target.placeholder = 'Card Number';
-                  this.validateCC(e);
+                  e.target.placeholder = 'Card Number'
+                  this.validateCC(e)
                 }}
                 value={user[type][field.formattedName]}
+                placeholder={`${field.label} ${field.span ? field.span : ''}`}
+              />
+            ) : field.name === 'Address' ? (
+              <AutoComplete
+                type={field.type}
+                onChange={this[func]}
+                googleApiKey={this.props.googleApiKey || null}
+                getValue={this.addressSearch}
+                name={field.name}
+                value={user[type][field.formattedName]}
+                onKeyPress={field.name === 'Zip' ? this.onKeyPress : null}
                 placeholder={`${field.label} ${field.span ? field.span : ''}`}
               />
             ) : (
@@ -384,7 +426,7 @@ export default class Payment extends Component {
                 name={field.name}
                 ref={ref => (this[field.name] = ref)}
                 onChange={this[func]}
-                defaultValue={user[type][field.formattedName]}
+                value={user[type][field.formattedName]}
                 placeholder={`${field.label} ${field.span ? field.span : ''}`}
               />
             )}
@@ -406,7 +448,7 @@ export default class Payment extends Component {
             ) : null}
             <style jsx>{styles}</style>
           </div>
-        );
+        )
     }
   }
 
@@ -414,9 +456,9 @@ export default class Payment extends Component {
     if (!type) {
       const numberValidation = cardValid.number(
         userInfo.state.payment.billingNumber
-      );
+      )
       if (numberValidation.isPotentiallyValid && numberValidation.card) {
-        type = numberValidation.card.type;
+        type = numberValidation.card.type
       }
     }
 
@@ -426,32 +468,38 @@ export default class Payment extends Component {
           <div className="zygotePaymentIcon">
             <Icon_Visa style={inLineStyles.cardIcon} />
           </div>
-        );
+        )
       case 'mastercard':
         return (
           <div className="zygotePaymentIcon">
             <Icon_MasterCard style={inLineStyles.cardIcon} />
           </div>
-        );
+        )
       case 'american-express':
         return (
           <div className="zygotePaymentIcon">
             <Icon_AmericanExpress style={inLineStyles.cardIcon} />
           </div>
-        );
+        )
       case 'discover':
         return (
           <div className="zygotePaymentIcon">
             <Icon_Discover style={inLineStyles.cardIcon} />
           </div>
-        );
+        )
       default:
         return (
           <div>
             <FaCreditCardAlt style={inLineStyles.cardIcon} color="#cccccc" />
           </div>
-        );
+        )
     }
+  }
+
+  componentDidMount() {
+    userInfo.setState({
+      addressSame: true
+    })
   }
 
   render() {
@@ -476,15 +524,10 @@ export default class Payment extends Component {
                               ) : null}
                             </div>
                             {section.fields.map((field, i) => {
-                              return this.renderField(
-                                'update',
-                                field,
-                                i,
-                                state
-                              );
+                              return this.renderField('update', field, i, state)
                             })}
                           </div>
-                        );
+                        )
                       })}
                     </form>
                     {this.state.checked &&
@@ -501,7 +544,7 @@ export default class Payment extends Component {
                     ) : null}
                   </div>
                   {!this.state.checked ? (
-                    <div className="zygoteRow">
+                    <div className={`zygoteRow zygoteAnim ${this.state.class}`}>
                       <form action="" className="zygoteForm">
                         {yourPayment.additionalFields.sections.map(
                           (section, i) => {
@@ -516,10 +559,10 @@ export default class Payment extends Component {
                                     field,
                                     i,
                                     state
-                                  );
+                                  )
                                 })}
                               </div>
-                            );
+                            )
                           }
                         )}
                       </form>
@@ -541,7 +584,7 @@ export default class Payment extends Component {
                     <div className="zygoteFinalOrderTitle">
                       Final Order Summary
                     </div>
-                    <OrderSummary />
+                    <OrderSummary animateCoupon={true} />
                   </div>
                 </div>
               )}
@@ -552,6 +595,6 @@ export default class Payment extends Component {
           </div>
         )}
       </Subscribe>
-    );
+    )
   }
 }

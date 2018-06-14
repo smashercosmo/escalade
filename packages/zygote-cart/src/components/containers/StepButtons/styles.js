@@ -1,11 +1,9 @@
-import css from 'styled-jsx/css';
+import css from 'styled-jsx/css'
 
 export default css`
   .zygoteBtn {
-    background-color: rgba(0, 207, 255, 1);
     outline: 0;
-    border: 0;
-    color: #fff;
+    color: rgb(0, 207, 255);
     height: 44px;
     min-width: 130px;
     width: 80%;
@@ -17,25 +15,59 @@ export default css`
     cursor: pointer;
     display: block;
     margin: 0px auto 10px auto;
-    &:hover {
-      background: #66e2ff;
+    border: 2px solid rgb(0, 207, 255);
+    transition: all 0.2s ease;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+    &:before {
+      transition: 0.2s all ease;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      right: 50%;
+      bottom: 0;
+      opacity: 0;
+      content: '';
+      background-color: rgb(0, 207, 255);
+      border-radius: 22px;
+      z-index: -1;
     }
-    &:active {
-      background: rgba(0, 207, 255, 1);
+    &:hover {
+      color: #fff;
+      &:before {
+        transition: 0.2s all ease;
+        left: -2px;
+        right: -2px;
+        opacity: 1;
+      }
     }
   }
   .zygoteStepBtns {
     display: block;
   }
   .zygoteAltBtn {
-    background: #fff;
     color: #000;
-    border: 1px solid #000;
-    &:hover {
-      background: #f2f2f2;
+    border: 2px solid #000;
+    &:before {
+      transition: 0.2s all ease;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      right: 50%;
+      bottom: 0;
+      opacity: 0;
+      content: '';
+      background-color: #000;
+      z-index: -1;
     }
-    &:active {
-      background: #fff;
+    &:hover {
+      &:before {
+        transition: 0.2s all ease;
+        left: -2px;
+        right: -2px;
+        opacity: 1;
+      }
     }
   }
   .zygoteButtonLoad {
@@ -58,4 +90,4 @@ export default css`
     display: block;
     margin: 0px auto 10px auto;
   }
-`;
+`

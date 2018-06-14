@@ -1,4 +1,4 @@
-import css from 'styled-jsx/css';
+import css from 'styled-jsx/css'
 
 export default css`
   .zygotePreviewAddress {
@@ -16,6 +16,13 @@ export default css`
   }
   .zygoteStep3 {
     margin: 30px 0 20px 0;
+  }
+  .zygoteAnim {
+    transform: translateX(-100%);
+    transition: transform 0.5s linear;
+  }
+  .zygoteAnimAction {
+    transform: translateX(0%);
   }
   .zygoteBillingNumberContainer {
     position: relative;
@@ -42,4 +49,4 @@ export default css`
   .zygoteCheckboxContainer {
     clear: both;
   }
-`;
+`

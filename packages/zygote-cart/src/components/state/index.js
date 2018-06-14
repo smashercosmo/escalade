@@ -3,7 +3,7 @@ import Cookie from 'js-cookie'
 
 const cartState = new State({
   open: true,
-  tab: 2,
+  tab: 0,
   errors: null,
   apiErrors: null,
   loading: false,
@@ -23,48 +23,11 @@ const itemState = new State(
     ? JSON.parse(Cookie.get('item'))
     : {
         items: [
-          // {
-          //   desc: 'Table tennis paddle.',
-          //   id: 't1265',
-          //   image: 'https://pingpong.com/img/product/t1265-0-s.jpg?1496431075',
-          //   name: 'Item One',
-          //   price: 21.99,
-          //   qty: 1,
-          //   url: 'https://pingpong.comproduct/t1265'
-          // },
-          // {
-          //   desc: 'Table tennis paddle.',
-          //   id: 't8672',
-          //   image: 'https://pingpong.com/img/product/t1265-0-s.jpg?1496431075',
-          //   name: 'Item Two',
-          //   price: 21.99,
-          //   qty: 1,
-          //   url: 'https://pingpong.comproduct/t1265'
-          // }
-
           {
             desc: 'Table tennis paddle.',
-            id: 'b9000w',
+            id: 'B1002',
             image: 'https://pingpong.com/img/product/t1265-0-s.jpg?1496431075',
             name: 'Item One',
-            price: 21.99,
-            qty: 1,
-            url: 'https://pingpong.comproduct/t1265'
-          },
-          {
-            desc: 'Table tennis paddle.',
-            id: 'tr0002w',
-            image: 'https://pingpong.com/img/product/t1265-0-s.jpg?1496431075',
-            name: 'Item Two',
-            price: 21.99,
-            qty: 1,
-            url: 'https://pingpong.comproduct/t1265'
-          },
-          {
-            desc: 'Table tennis paddle.',
-            id: 'b3100w',
-            image: 'https://pingpong.com/img/product/t1265-0-s.jpg?1496431075',
-            name: 'Item Three',
             price: 21.99,
             qty: 1,
             url: 'https://pingpong.comproduct/t1265'
@@ -110,9 +73,8 @@ const userInfo = new State(
           billingCity: '',
           billingState: '',
           billingZip: '',
-          billingPhone: '',
           billingApt: '',
-          billingCompnayName: ''
+          billingCompanyName: ''
         }
       }
 )

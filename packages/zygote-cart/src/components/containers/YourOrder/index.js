@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Subscribe } from 'statable';
+import React, { Component } from 'react'
+import { Subscribe } from 'statable'
 
-import styles from './styles';
-import { userInfo } from '../../state';
-import { OrderSummary } from '../../containers';
+import styles from './styles'
+import { userInfo } from '../../state'
+import { OrderSummary } from '../../containers'
 
 export default class YourOrder extends Component {
   render() {
@@ -39,7 +39,6 @@ export default class YourOrder extends Component {
                         {user.shipping.shippingState}{' '}
                         {user.shipping.shippingZip}
                       </p>
-                      {console.log(user)}
                     </div>
                     <div className="zygoteBillingDetials">
                       <div>Bill to:</div>
@@ -56,7 +55,7 @@ export default class YourOrder extends Component {
                         </div>
                       ) : (
                         <div>
-                          <p>{user.paymentAddress.billingFullName}</p>
+                          <p>{user.shipping.shippingFullName}</p>
                           <p>{user.paymentAddress.billingAddress}</p>
                           <p>
                             {user.paymentAddress.billingCity},{' '}
@@ -77,6 +76,6 @@ export default class YourOrder extends Component {
           </div>
         )}
       </Subscribe>
-    );
+    )
   }
 }

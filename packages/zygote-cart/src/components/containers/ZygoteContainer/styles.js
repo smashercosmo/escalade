@@ -242,6 +242,15 @@ export default css`
   .zygoteBillingCompanyNameContainer {
     float: right;
   }
+  .zygoteStep3 .zygoteOrderSummaryContainer {
+    margin: 10px 0;
+    background-color: #fff;
+    border: none;
+  }
+  .zygoteStep4 .zygoteOrderSummaryContainer {
+    margin-top: 0px;
+    border-top: none;
+  }
   .zygoteToggleFieldContainer {
     margin-bottom: 20px;
   }

@@ -41,7 +41,6 @@ export default class Shipping extends Component {
 
   addressSearch(place) {
     if (typeof place === 'object') {
-      console.log(place)
       userInfo.setState({
         shipping: {
           ...userInfo.state.shipping,
@@ -312,7 +311,7 @@ export default class Shipping extends Component {
                 </div>
                 {this.state.showSummary ? (
                   <div className="zygoteOrderSummary">
-                    <OrderSummary />
+                    <OrderSummary animate={true} />
                   </div>
                 ) : null}
               </div>
