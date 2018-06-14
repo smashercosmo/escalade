@@ -10,6 +10,7 @@ module.exports = async ({ node, boundActionCreators }, userOptions) => {
 		...userOptions,
 	}
 	const markdownPath = resolve(cwd, options.path)
+	if (node.fileAbsolutePath.indexOf(markdownPath) !== 0) return
 	const { createNodeField } = boundActionCreators
 	const { template, permalink } = node.frontmatter
 	const slug = permalink || node.fileAbsolutePath
