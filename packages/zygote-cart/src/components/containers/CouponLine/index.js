@@ -3,7 +3,7 @@ import { Subscribe } from 'statable'
 
 import { itemState } from '../../state'
 import styles from './styles'
-import DelayedHOC from '../../utils/DelayedHOC'
+import AnimateHOC from '../../utils/AnimateHOC'
 
 class CouponLine extends Component {
   constructor(props) {
@@ -22,7 +22,6 @@ class CouponLine extends Component {
   }
 
   render() {
-    console.log(this.props.animate)
     return (
       <Subscribe to={itemState}>
         {state => (
@@ -40,4 +39,4 @@ class CouponLine extends Component {
   }
 }
 
-export default DelayedHOC(CouponLine)
+export default AnimateHOC(CouponLine)

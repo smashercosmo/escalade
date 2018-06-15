@@ -23,6 +23,7 @@ import {
 } from '../../containers'
 import styles from './styles'
 import { address } from 'ip'
+import AnimateHOC from '../../utils/AnimateHOC'
 
 const inLineStyles = {
   cardIcon: {
@@ -31,6 +32,27 @@ const inLineStyles = {
     transform: 'translateY(-15%)'
   }
 }
+
+function Comp(props) {
+  return (
+    <div className={`zygoteRow`}>
+      <form action="" className="zygoteForm">
+        {yourPayment.additionalFields.sections.map((section, i) => {
+          return (
+            <div className="zygoteSection" key={i}>
+              <div className="zygoteSectionTitle">{section.title}</div>
+              {section.fields.map((field, i) => {
+                return props.renderField('updateAddress', field, i, props.user)
+              })}
+            </div>
+          )
+        })}
+      </form>
+    </div>
+  )
+}
+
+const AnimateComp = AnimateHOC(Comp)
 
 export default class Payment extends Component {
   constructor(props) {
@@ -60,13 +82,6 @@ export default class Payment extends Component {
           }
         }
       })
-      if (this.state.class === '') return
-      this.setState({ class: '' })
-    } else if (!this.state.checked) {
-      if (this.state.class === 'zygoteAnimAction') return
-      setTimeout(() => {
-        this.setState({ class: 'zygoteAnimAction' })
-      }, 0)
     }
     if (typeof errors === 'object') {
       if (errors && Object.keys(errors).length === 0) {
@@ -500,6 +515,9 @@ export default class Payment extends Component {
     userInfo.setState({
       addressSame: true
     })
+    setTimeout(() => {
+      this.setState({ class: 'zygoteAnimAction' })
+    }, 0)
   }
 
   render() {
@@ -530,7 +548,7 @@ export default class Payment extends Component {
                         )
                       })}
                     </form>
-                    {this.state.checked &&
+                    {!cart.mounted &&
                     state.shipping.shippingAddress.length > 0 ? (
                       <div className="zygotePreviewAddress">
                         <div>{state.shipping.shippingFullName}</div>
@@ -543,31 +561,14 @@ export default class Payment extends Component {
                       </div>
                     ) : null}
                   </div>
-                  {!this.state.checked ? (
-                    <div className={`zygoteRow zygoteAnim ${this.state.class}`}>
-                      <form action="" className="zygoteForm">
-                        {yourPayment.additionalFields.sections.map(
-                          (section, i) => {
-                            return (
-                              <div className="zygoteSection" key={i}>
-                                <div className="zygoteSectionTitle">
-                                  {section.title}
-                                </div>
-                                {section.fields.map((field, i) => {
-                                  return this.renderField(
-                                    'updateAddress',
-                                    field,
-                                    i,
-                                    state
-                                  )
-                                })}
-                              </div>
-                            )
-                          }
-                        )}
-                      </form>
-                    </div>
-                  ) : null}
+                  <AnimateComp
+                    delayTime={500}
+                    isMounted={!this.state.checked}
+                    renderField={this.renderField}
+                    user={state}
+                    base={'zygoteAnim'}
+                    action={this.state.class}
+                  />
                 </div>
               )}
 
@@ -584,7 +585,7 @@ export default class Payment extends Component {
                     <div className="zygoteFinalOrderTitle">
                       Final Order Summary
                     </div>
-                    <OrderSummary animateCoupon={true} />
+                    <OrderSummary animateCoupon={true} isMounted={true} />
                   </div>
                 </div>
               )}

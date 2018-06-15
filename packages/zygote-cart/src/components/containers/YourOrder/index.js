@@ -69,7 +69,7 @@ export default class YourOrder extends Component {
                 </div>
               </div>
               <div className="zygoteRow">
-                <OrderSummary />
+                <OrderSummary isMounted={true} />
               </div>
             </div>
             <style jsx>{styles}</style>

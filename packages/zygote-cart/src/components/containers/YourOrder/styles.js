@@ -1,4 +1,4 @@
-import css from 'styled-jsx/css';
+import css from 'styled-jsx/css'
 
 export default css`
   .zygoteUserEmail {
@@ -43,4 +43,8 @@ export default css`
       width: 50%;
     }
   }
-`;
+  .zygoteStep4 .zygoteOrderSummaryContainer {
+    margin-top: 0px;
+    border-top: none;
+  }
+`

@@ -18,11 +18,17 @@ export default css`
     margin: 30px 0 20px 0;
   }
   .zygoteAnim {
-    transform: translateX(-100%);
-    transition: transform 0.5s linear;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: all 0.5s linear;
+  }
+  .zygoteStep3 .zygoteOrderSummaryContainer {
+    margin: 10px auto;
+    background-color: #fff;
+    border: none;
   }
   .zygoteAnimAction {
-    transform: translateX(0%);
+    transform: scaleY(1);
   }
   .zygoteBillingNumberContainer {
     position: relative;

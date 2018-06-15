@@ -8,13 +8,12 @@ export default css`
     padding: 15px;
     margin: -20px -20px 20px -20px;
   }
-  .zygoteAnim {
+  .zygoteAnimate {
     transform: scaleY(0);
     transform-origin: top;
     transition: transform 0.5s ease-in-out;
-    overflow: hidden;
   }
-  .zygoteAnimAction {
+  .zygoteAnimMount {
     transform: scaleY(1);
   }
 `

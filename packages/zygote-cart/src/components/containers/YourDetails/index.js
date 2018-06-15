@@ -274,7 +274,13 @@ export default class Shipping extends Component {
               <div className="zygoteRow">
                 <div
                   className="zygoteOrderSummaryBanner"
-                  style={this.state.showSummary ? { borderBottom: 'none' } : {}}
+                  style={
+                    this.state.showSummary
+                      ? { borderBottom: 'none' }
+                      : cart.mounted
+                        ? { borderBottom: 'none' }
+                        : {}
+                  }
                   onClick={() =>
                     this.setState({
                       showSummary: !this.state.showSummary
@@ -309,11 +315,14 @@ export default class Shipping extends Component {
                     })}
                   </div>
                 </div>
-                {this.state.showSummary ? (
-                  <div className="zygoteOrderSummary">
-                    <OrderSummary animate={true} />
-                  </div>
-                ) : null}
+
+                <div className="zygoteOrderSummary">
+                  <OrderSummary
+                    isMounted={this.state.showSummary}
+                    delayTime={500}
+                    animate={true}
+                  />
+                </div>
               </div>
               <div className="zygoteRow">
                 <form action="" className="zygoteForm">
