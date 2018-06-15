@@ -20,7 +20,6 @@ export default class Content extends Component {
         return <YourPayment googleApiKey={this.props.googleApiKey} />
       case 'Your Order':
         return <YourOrder />
-
       default:
         return <YourCart />
     }

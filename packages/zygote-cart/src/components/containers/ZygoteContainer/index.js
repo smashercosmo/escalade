@@ -5,8 +5,40 @@ import { cartState, userInfo, cost, itemState } from '../../state'
 import { Cart } from '../../containers'
 import { closeCart, resetCart } from '../../../injectState'
 import styles from './styles'
+import AnimateHOC from '../../utils/AnimateHOC'
 
-export default class Container extends Component {
+class Container extends Component {
+  render() {
+    const AnimatedCart = AnimateHOC(Cart)
+    return (
+      <Subscribe to={cartState}>
+        {state => (
+          <div>
+            <Cart
+              brandLogo={this.props.brandLogo}
+              cartHeader={this.props.cartHeader}
+              addToCartMessage={this.props.addToCartMessage}
+              footerMessage={this.props.footerMessage}
+              cartButtonOneMessage={this.props.cartButtonOneMessage}
+              cartButtonTwoMessage={this.props.cartButtonTwoMessage}
+              detailsButtonMessage={this.props.detailsButtonMessage}
+              paymentButtonMessage={this.props.paymentButtonMessage}
+              orderCompleteTitle={this.props.orderCompleteTitle}
+              orderCompleteBody={this.props.orderCompleteBody}
+              googleApiKey={this.props.googleApiKey}
+            />
+            <style jsx global>
+              {styles}
+            </style>
+          </div>
+        )}
+      </Subscribe>
+    )
+  }
+}
+const AnimatedComp = AnimateHOC(Container)
+
+class App extends Component {
   constructor(props) {
     super(props)
 
@@ -30,23 +62,24 @@ export default class Container extends Component {
       <Subscribe to={cartState}>
         {state => (
           <div onClick={() => this.checkState()}>
-            {state.open && (
-              <div className="zygoteContainer">
-                <Cart
-                  brandLogo={this.props.brandLogo}
-                  cartHeader={this.props.cartHeader}
-                  addToCartMessage={this.props.addToCartMessage}
-                  footerMessage={this.props.footerMessage}
-                  cartButtonOneMessage={this.props.cartButtonOneMessage}
-                  cartButtonTwoMessage={this.props.cartButtonTwoMessage}
-                  detailsButtonMessage={this.props.detailsButtonMessage}
-                  paymentButtonMessage={this.props.paymentButtonMessage}
-                  orderCompleteTitle={this.props.orderCompleteTitle}
-                  orderCompleteBody={this.props.orderCompleteBody}
-                  googleApiKey={this.props.googleApiKey}
-                />
-              </div>
-            )}
+            <AnimatedComp
+              isMounted={state.open}
+              delayTime={600}
+              base={'zygoteContainer'}
+              action={'zygoteContainerAction'}
+              animate={true}
+              brandLogo={this.props.brandLogo}
+              cartHeader={this.props.cartHeader}
+              addToCartMessage={this.props.addToCartMessage}
+              footerMessage={this.props.footerMessage}
+              cartButtonOneMessage={this.props.cartButtonOneMessage}
+              cartButtonTwoMessage={this.props.cartButtonTwoMessage}
+              detailsButtonMessage={this.props.detailsButtonMessage}
+              paymentButtonMessage={this.props.paymentButtonMessage}
+              orderCompleteTitle={this.props.orderCompleteTitle}
+              orderCompleteBody={this.props.orderCompleteBody}
+              googleApiKey={this.props.googleApiKey}
+            />
             <style jsx global>
               {styles}
             </style>
@@ -56,3 +89,5 @@ export default class Container extends Component {
     )
   }
 }
+
+export default App

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { cartState } from '../state'
 
-export default Comp => {
+export default (Comp, customProps) => {
   return class extends React.Component {
     constructor(props) {
       super(props)
@@ -12,19 +12,26 @@ export default Comp => {
     }
 
     componentWillReceiveProps(nextProps) {
-      if (this.props.isMounted && !nextProps.isMounted) {
+      const { isMounted, delayTime } = this.props
+      if (isMounted && !nextProps.isMounted) {
         setTimeout(() => {
           this.setState({ shouldRender: false })
           cartState.setState({ mounted: false })
         }, this.props.delayTime)
         this.setState({ didMount: false })
-      } else if (!this.props.isMounted && nextProps.isMounted) {
+      } else if (!isMounted && nextProps.isMounted) {
         setTimeout(() => {
           this.setState({ didMount: true })
         }, 0)
         this.setState({ shouldRender: true })
         cartState.setState({ mounted: true })
       }
+    }
+
+    componentDidMount() {
+      setTimeout(() => {
+        this.setState({ didMount: true })
+      }, 0)
     }
 
     render() {

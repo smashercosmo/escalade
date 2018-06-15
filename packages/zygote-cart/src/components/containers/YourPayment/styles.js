@@ -22,14 +22,15 @@ export default css`
     transform-origin: top;
     transition: all 0.5s linear;
   }
+  .zygoteAnimAction {
+    transform: scaleY(1);
+  }
   .zygoteStep3 .zygoteOrderSummaryContainer {
     margin: 10px auto;
     background-color: #fff;
     border: none;
   }
-  .zygoteAnimAction {
-    transform: scaleY(1);
-  }
+
   .zygoteBillingNumberContainer {
     position: relative;
   }

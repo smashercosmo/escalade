@@ -15,6 +15,8 @@ document.body.appendChild(containerEl)
 zygote.site('goalrilla')
 render(
   <div>
+    <button onClick={() => zygote.toggleCart()}>Toggle</button>
+
     <AddToCart
       price={12.33}
       desc="Hello there"
@@ -26,9 +28,70 @@ render(
     >
       <button className="cartButton">Add to Cart</button>
     </AddToCart>
+    <div
+      style={{
+        width: '200px',
+        height: '200px',
+        background: '#333',
+        margin: '5px',
+        display: 'inline-block'
+      }}
+    />
+    <div
+      style={{
+        width: '200px',
+        height: '200px',
+        background: '#ccc',
+        margin: '5px',
+        display: 'inline-block'
+      }}
+    />
+    <div
+      style={{
+        width: '200px',
+        height: '200px',
+        background: 'yellow',
+        margin: '5px'
+      }}
+    />
+    <div
+      style={{
+        width: '200px',
+        height: '200px',
+        background: 'orange',
+        margin: '5px'
+      }}
+    />
+    <div
+      style={{
+        width: '200px',
+        height: '200px',
+        background: '#333',
+        margin: '5px',
+        display: 'inline-block'
+      }}
+    />
+    <div
+      style={{
+        width: '200px',
+        height: '200px',
+        background: '#333',
+        margin: '5px',
+        display: 'inline-block'
+      }}
+    />
+    <div
+      style={{
+        width: '200px',
+        height: '200px',
+        background: '#333',
+        margin: '5px',
+        display: 'inline-block'
+      }}
+    />
     <ZygoteContainer
       googleApiKey={'AIzaSyD2pAEWs2VMApgeuoNhy3dJoPWDvMOm49Y'}
-      //  brandLogo={brandLogo}
+      // brandLogo={brandLogo}
       // addToCartMessage={'Custom Add To Cart MeSsAgE'}
       // cartHeader={'Here is your cart header'}
       // footerMessage={'Here is from me'}

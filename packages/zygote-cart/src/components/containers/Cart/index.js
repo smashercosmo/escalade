@@ -5,14 +5,15 @@ import { cartState, itemState } from '../../state'
 import { cartContent } from '../../utils'
 import { Header, Footer, Content, StepButtons } from '../../containers'
 import styles from './styles'
+import AnimateHOC from '../../utils/AnimateHOC'
 
-export default class Cart extends Component {
+class Cart extends Component {
   render() {
     const { tabs } = cartContent
     return (
       <Subscribe to={cartState}>
         {state => (
-          <div className="zygoteModal" onClick={e => e.stopPropagation()}>
+          <div>
             <Header
               brandLogo={this.props.brandLogo}
               cartHeader={this.props.cartHeader}
@@ -38,6 +39,32 @@ export default class Cart extends Component {
               />
             </div>
             <Footer footerMessage={this.props.footerMessage} />
+            <style jsx global>
+              {styles}
+            </style>
+          </div>
+        )}
+      </Subscribe>
+    )
+  }
+}
+
+const AnimateComp = AnimateHOC(Cart)
+
+export default class App extends Component {
+  render() {
+    return (
+      <Subscribe to={cartState}>
+        {state => (
+          <div onClick={e => e.stopPropagation()}>
+            <AnimateComp
+              isMounted={state.open}
+              base="zygoteModal"
+              action="zygoteModalAction"
+              delayTime={500}
+              animate={true}
+              {...this.props}
+            />
             <style jsx global>
               {styles}
             </style>

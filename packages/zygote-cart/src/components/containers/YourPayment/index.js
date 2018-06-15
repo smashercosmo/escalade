@@ -51,7 +51,6 @@ function Comp(props) {
     </div>
   )
 }
-
 const AnimateComp = AnimateHOC(Comp)
 
 export default class Payment extends Component {
@@ -60,8 +59,7 @@ export default class Payment extends Component {
     this.state = {
       checked: true,
       inputErrors: {},
-      cardType: null,
-      class: ''
+      cardType: null
     }
     this.renderField = this.renderField.bind(this)
     this.handleCheck = this.handleCheck.bind(this)
@@ -515,9 +513,6 @@ export default class Payment extends Component {
     userInfo.setState({
       addressSame: true
     })
-    setTimeout(() => {
-      this.setState({ class: 'zygoteAnimAction' })
-    }, 0)
   }
 
   render() {
@@ -562,12 +557,13 @@ export default class Payment extends Component {
                     ) : null}
                   </div>
                   <AnimateComp
-                    delayTime={500}
                     isMounted={!this.state.checked}
+                    delayTime={500}
+                    animate={true}
                     renderField={this.renderField}
                     user={state}
                     base={'zygoteAnim'}
-                    action={this.state.class}
+                    action={'zygoteAnimAction'}
                   />
                 </div>
               )}

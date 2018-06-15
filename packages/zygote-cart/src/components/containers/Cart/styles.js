@@ -1,16 +1,20 @@
-import css from 'styled-jsx/css';
+import css from 'styled-jsx/css'
 
 export default css`
   .zygoteModal {
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.4);
+    border-radius: 2px;
     background-color: #fff;
-    max-width: 900px;
-    margin: 0 auto;
-    position: relative;
+    width: 500px;
+    right: 5px;
+    bottom: 5px;
+    position: absolute;
+    top: 5px;
+    overflow-x: auto;
+    transform: translateX(100%);
+    transition: transform 0.5s linear;
   }
-  @media (min-width: 900px) {
-    .zygoteModal {
-      top: 30px;
-      margin-bottom: 30px;
-    }
+  .zygoteModalAction {
+    transform: translateX(0%);
   }
-`;
+`

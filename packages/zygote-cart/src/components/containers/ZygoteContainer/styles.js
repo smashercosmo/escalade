@@ -18,9 +18,13 @@ export default css`
     bottom: 0;
     overflow-x: auto;
     box-sizing: border-box;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 207, 255, 0);
+    transition: background-color 0.6s;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  }
+  .zygoteContainerAction {
+    background-color: rgba(0, 207, 255, 0.7);
   }
   .zygoteContainer *,
   .zygoteContainer *:before,
