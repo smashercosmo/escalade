@@ -1,5 +1,5 @@
 {
-  "name": "zygote-cart-v2-test",
+  "name": "zygote-cart-v2",
   "version": "2.0.7",
   "keywords": [
     "zygote",
@@ -7,7 +7,7 @@
     "cart"
   ],
   "main": "dist/index.js",
-  "author": "Kennedy Rose <krose@escaladesports.com>",
+  "author": "Taylor Austin <taustin@escaladesports.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/escaladesports/react-component-boilerplate.git"
