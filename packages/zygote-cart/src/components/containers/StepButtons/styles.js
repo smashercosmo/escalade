@@ -19,7 +19,6 @@ export default css`
     transition: all 0.2s ease;
     position: relative;
     z-index: 1;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
     &:before {
       transition: 0.2s all ease;
       position: absolute;
@@ -34,6 +33,7 @@ export default css`
       z-index: -1;
     }
     &:hover {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.2);
       color: #fff;
       &:before {
         transition: 0.2s all ease;
@@ -62,6 +62,7 @@ export default css`
       z-index: -1;
     }
     &:hover {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4), 0 3px 6px rgba(0, 0, 0, 0.4);
       &:before {
         transition: 0.2s all ease;
         left: -2px;

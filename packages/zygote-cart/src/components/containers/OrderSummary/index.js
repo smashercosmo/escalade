@@ -67,7 +67,7 @@ class OrderSummary extends Component {
                 <Subtotal />
                 <CouponLine
                   isMounted={state.coupon ? true : false}
-                  delayTime={500}
+                  delayTime={250}
                   animate={this.state.animate}
                 />
                 <ShippingCost />

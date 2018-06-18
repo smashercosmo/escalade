@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import { Subscribe } from 'statable';
-import FaEdit from 'react-icons/lib/fa/edit';
+import React, { Component } from 'react'
+import { Subscribe } from 'statable'
+import FaEdit from 'react-icons/lib/fa/edit'
 
-import { itemState } from '../../state';
-import styles from './styles';
+import { itemState } from '../../state'
+import styles from './styles'
 
 export default class Coupon extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       show: false
-    };
-    this.handleCoupon = this.handleCoupon.bind(this);
+    }
+    this.handleCoupon = this.handleCoupon.bind(this)
   }
 
   handleCoupon() {
-    itemState.setState({ coupon: this.coupon.value });
-    this.setState({ show: false });
+    itemState.setState({ coupon: this.coupon.value })
+    this.setState({ show: false })
   }
 
   render() {
@@ -38,6 +38,15 @@ export default class Coupon extends Component {
                 >
                   Apply
                 </button>
+                <span
+                  className="zygoteRemoveCoupon"
+                  onClick={() => {
+                    itemState.setState({ coupon: '' })
+                    this.setState({ show: false })
+                  }}
+                >
+                  ×
+                </span>
               </div>
             ) : (
               <div>
@@ -77,6 +86,6 @@ export default class Coupon extends Component {
           </div>
         )}
       </Subscribe>
-    );
+    )
   }
 }

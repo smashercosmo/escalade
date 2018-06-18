@@ -9,7 +9,7 @@ export default css`
   }
   .zygoteAnimate {
     transform: translateX(-150%);
-    transition: transform 0.5s linear;
+    transition: transform 0.25s linear;
   }
   .zygoteAnimMount {
     transform: translateX(0%);

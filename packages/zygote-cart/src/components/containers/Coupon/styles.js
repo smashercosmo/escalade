@@ -1,4 +1,4 @@
-import css from 'styled-jsx/css';
+import css from 'styled-jsx/css'
 
 export default css`
   .zygoteCouponLine {
@@ -68,4 +68,13 @@ export default css`
       border-color: white;
     }
   }
-`;
+  .zygoteRemoveCoupon {
+    color: #f00;
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    &:hover {
+      font-size: 1.4em;
+    }
+  }
+`

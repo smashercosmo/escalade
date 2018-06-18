@@ -61,7 +61,7 @@ export default class App extends Component {
               isMounted={state.open}
               base="zygoteModal"
               action="zygoteModalAction"
-              delayTime={500}
+              delayTime={250}
               animate={true}
               {...this.props}
             />

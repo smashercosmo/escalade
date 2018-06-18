@@ -34,9 +34,11 @@ export default Comp => {
     }
 
     componentDidMount() {
-      setTimeout(() => {
-        this.setState({ didMount: true })
-      }, 0)
+      if (this.props.isMounted) {
+        setTimeout(() => {
+          this.setState({ didMount: true })
+        }, 0)
+      }
     }
 
     render() {
