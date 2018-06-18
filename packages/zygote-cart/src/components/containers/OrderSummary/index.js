@@ -20,6 +20,16 @@ class OrderSummary extends Component {
       class: '',
       animate: false
     }
+
+    this.onChange = this.onChange.bind(this)
+  }
+
+  onChange(state) {
+    if (!state.coupon) {
+      if (this.props.animateCoupon) {
+        this.setState({ animate: true })
+      }
+    }
   }
 
   componentDidMount() {
@@ -30,13 +40,7 @@ class OrderSummary extends Component {
       }
     }
     // For checking when coupon is toggled
-    itemState.subscribe(state => {
-      if (!state.coupon) {
-        if (this.props.animateCoupon) {
-          this.setState({ animate: true })
-        }
-      }
-    })
+    itemState.subscribe(this.onChange)
     if (this.props.animate) {
       setTimeout(() => {
         this.setState({ class: 'zygoteAnimMount' })
@@ -45,7 +49,7 @@ class OrderSummary extends Component {
   }
 
   componentWillUnmount() {
-    itemState.unsubscribe()
+    itemState.unsubscribe(this.onChange)
   }
 
   render() {

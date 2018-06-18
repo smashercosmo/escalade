@@ -1,3 +1,4 @@
-import ItemHeader from './ItemHeader';
+import ItemHeader from './ItemHeader'
+import BillingAddress from './BillingAddress'
 
-export { ItemHeader };
+export { ItemHeader, BillingAddress }

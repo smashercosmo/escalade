@@ -12,7 +12,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import FaCreditCardAlt from 'react-icons/lib/fa/credit-card-alt'
 import MaskedInput from 'react-maskedinput'
 import { AutoComplete } from 'react-store-locator'
-
 import { yourPayment } from '../../utils'
 import { userInfo, cartState, cost } from '../../state'
 import {
@@ -24,6 +23,7 @@ import {
 import styles from './styles'
 import { address } from 'ip'
 import AnimateHOC from '../../utils/AnimateHOC'
+import { BillingAddress } from '../../views'
 
 const inLineStyles = {
   cardIcon: {
@@ -33,25 +33,7 @@ const inLineStyles = {
   }
 }
 
-function Comp(props) {
-  return (
-    <div className={`zygoteRow`}>
-      <form action="" className="zygoteForm">
-        {yourPayment.additionalFields.sections.map((section, i) => {
-          return (
-            <div className="zygoteSection" key={i}>
-              <div className="zygoteSectionTitle">{section.title}</div>
-              {section.fields.map((field, i) => {
-                return props.renderField('updateAddress', field, i, props.user)
-              })}
-            </div>
-          )
-        })}
-      </form>
-    </div>
-  )
-}
-const AnimateComp = AnimateHOC(Comp)
+const AnimateComp = AnimateHOC(BillingAddress)
 
 export default class Payment extends Component {
   constructor(props) {
@@ -556,14 +538,16 @@ export default class Payment extends Component {
                       </div>
                     ) : null}
                   </div>
+
                   <AnimateComp
                     isMounted={!this.state.checked}
                     delayTime={500}
-                    animate={true}
                     renderField={this.renderField}
                     user={state}
                     base={'zygoteAnim'}
                     action={'zygoteAnimAction'}
+                    yourPayment={yourPayment}
+                    resetMount={true}
                   />
                 </div>
               )}
