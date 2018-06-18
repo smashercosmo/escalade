@@ -20,6 +20,14 @@ export default class YourCart extends Component {
     this.state = {
       animate: false
     }
+
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange(state) {
+    if (!state.coupon) {
+      this.setState({ animate: true })
+    }
   }
 
   componentDidMount() {
@@ -28,15 +36,11 @@ export default class YourCart extends Component {
       this.setState({ animate: true })
     }
     // For checking when coupon is toggled
-    itemState.subscribe(state => {
-      if (!state.coupon) {
-        this.setState({ animate: true })
-      }
-    })
+    itemState.subscribe(this.onChange)
   }
 
   componentWillUnmount() {
-    itemState.unsubscribe()
+    itemState.unsubscribe(this.onChange)
   }
 
   render() {
