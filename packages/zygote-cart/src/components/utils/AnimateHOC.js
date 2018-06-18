@@ -13,6 +13,8 @@ export default Comp => {
 
     componentWillReceiveProps(nextProps) {
       const { isMounted, delayTime } = this.props
+      console.log(isMounted, nextProps.isMounted)
+
       if (isMounted && !nextProps.isMounted) {
         setTimeout(() => {
           this.setState({ shouldRender: false })
@@ -34,9 +36,11 @@ export default Comp => {
     }
 
     componentDidMount() {
-      setTimeout(() => {
-        this.setState({ didMount: true })
-      }, 0)
+      if (this.props.isMounted) {
+        setTimeout(() => {
+          this.setState({ didMount: true })
+        }, 0)
+      }
     }
 
     render() {
