@@ -158,14 +158,16 @@ export default class ShippingOptions extends Component {
         })
       })
       updated.shippingOptions = shippingRes.shippingOptions
-      Object.keys(updated.shippingOptions).forEach(k => {
-        this.setState({
-          shippingOption: { ...this.state.shippingOption, [k]: 0 }
+      if (updated.shippingOptions) {
+        Object.keys(updated.shippingOptions).forEach(k => {
+          this.setState({
+            shippingOption: { ...this.state.shippingOption, [k]: 0 }
+          })
+          updated.setShip = updated.setShip
+            ? { ...updated.setShip, [k]: 0 }
+            : { [k]: 0 }
         })
-        updated.setShip = updated.setShip
-          ? { ...updated.setShip, [k]: 0 }
-          : { [k]: 0 }
-      })
+      }
 
       updated.success = shippingRes.success
       updated.cartId = shippingRes.cartId
@@ -315,7 +317,9 @@ export default class ShippingOptions extends Component {
                       )
                     })}
                   </div>
-                ) : null}
+                ) : (
+                  <div className="zygoteNoShip">No Shipping Options</div>
+                )}
               </div>
               <style jsx>{styles}</style>
             </div>

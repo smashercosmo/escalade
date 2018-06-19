@@ -26,6 +26,7 @@ class Container extends Component {
               orderCompleteTitle={this.props.orderCompleteTitle}
               orderCompleteBody={this.props.orderCompleteBody}
               googleApiKey={this.props.googleApiKey}
+              ccPhone={this.props.ccPhone}
             />
             <style jsx global>
               {styles}
@@ -79,6 +80,7 @@ class App extends Component {
               orderCompleteTitle={this.props.orderCompleteTitle}
               orderCompleteBody={this.props.orderCompleteBody}
               googleApiKey={this.props.googleApiKey}
+              ccPhone={this.props.ccPhone}
             />
             <style jsx global>
               {styles}

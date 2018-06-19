@@ -71,6 +71,9 @@ export default css`
   }
   .zygoteSelect {
     position: relative;
+    & option {
+      color: blue;
+    }
   }
   .zygoteContainer a {
     text-decoration: none;
@@ -127,6 +130,10 @@ export default css`
     background-color: rgba(255, 0, 0, 0.1);
     color: #f00;
     margin-bottom: 0;
+  }
+  .zygoteShippingAddressContainer input ::placeholder {
+    color: #b7b7b7;
+    font-style: oblique;
   }
   .zygoteInputErr input ::placeholder,
   .zygoteInputErr select ::placeholder {
@@ -235,7 +242,11 @@ export default css`
   }
   .zygoteToggleField {
     display: inline-block;
+    height: 37px;
     font-size: 0.75em;
+  }
+  .zygoteToggleFieldContainer {
+    transform: translateY(25%);
   }
   .zygoteToggleFieldWrapper {
     width: 47.5%;

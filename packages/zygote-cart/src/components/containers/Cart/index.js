@@ -24,6 +24,7 @@ class Cart extends Component {
             <div className="zygoteForm">
               <Content
                 googleApiKey={this.props.googleApiKey}
+                ccPhone={this.props.ccPhone}
                 active={
                   state.tab === tabs.length
                     ? 'Order Placed'
@@ -61,7 +62,7 @@ export default class App extends Component {
               isMounted={state.open}
               base="zygoteModal"
               action="zygoteModalAction"
-              delayTime={500}
+              delayTime={250}
               animate={true}
               {...this.props}
             />

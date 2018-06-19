@@ -34,7 +34,8 @@ export default css`
   }
   .zygoteDetailsInfo {
     font-size: 0.8em;
-    font-weight: 300;
+    font-weight: 600;
+    margin-bottom: 15px;
     & p {
       margin: 0;
     }
@@ -46,5 +47,14 @@ export default css`
   .zygoteStep4 .zygoteOrderSummaryContainer {
     margin-top: 0px;
     border-top: none;
+  }
+  .zygoteContactNumber {
+    margin: 20px auto;
+    text-align: center;
+    font-size: 0.8em;
+    font-weight: 300;
+    & > div {
+      font-weight: 500;
+    }
   }
 `

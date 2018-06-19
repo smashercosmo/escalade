@@ -8,6 +8,15 @@ export default css`
     margin-top: -40px;
     margin-left: 28px;
   }
+  .zygotePreviewAddressBottom {
+    color: #000;
+    font-size: 0.8em;
+    font-weight: 600;
+    margin: 0px 10px 40px 28px;
+    & h3 {
+      margin-bottom: 5px;
+    }
+  }
   .zygoteFinalOrderTitle {
     margin-left: 15px;
     font-size: 1.2em;
@@ -18,12 +27,20 @@ export default css`
     margin: 30px 0 20px 0;
   }
   .zygoteAnim {
-    transform: scaleY(0);
+    transform: translateY(-100%);
     transform-origin: top;
-    transition: all 0.5s linear;
+    transition: all 0.25s linear;
   }
   .zygoteAnimAction {
-    transform: scaleY(1);
+    transform: translateY(0%);
+  }
+  .zygoteBillingInfo {
+    padding: 20px 20px 0px 20px;
+    margin: -20px -20px 0px -20px;
+    overflow-y: hidden;
+    position: absolute;
+    left: 20px;
+    right: 20px;
   }
   .zygoteStep3 .zygoteOrderSummaryContainer {
     margin: 10px auto;
@@ -55,5 +72,14 @@ export default css`
   }
   .zygoteCheckboxContainer {
     clear: both;
+  }
+  .zygoteRowAnim {
+    margin-top: 50px;
+    transform: translateY(0%);
+    transition: all 0.25s ease;
+  }
+  .zygoteRowAnimAction {
+    transform: translateY(55%);
+    margin-bottom: 77%;
   }
 `

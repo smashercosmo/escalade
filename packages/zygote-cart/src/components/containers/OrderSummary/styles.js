@@ -9,11 +9,11 @@ export default css`
     margin: -20px -20px 20px -20px;
   }
   .zygoteAnimate {
-    transform: scaleY(0);
+    transform: translateY(-100%);
     transform-origin: top;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.25s ease-in-out;
   }
   .zygoteAnimMount {
-    transform: scaleY(1);
+    transform: translateY(0%);
   }
 `

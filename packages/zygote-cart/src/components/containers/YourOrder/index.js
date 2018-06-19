@@ -71,6 +71,12 @@ export default class YourOrder extends Component {
               <div className="zygoteRow">
                 <OrderSummary isMounted={true} />
               </div>
+              {this.props.ccPhone ? (
+                <div className="zygoteContactNumber">
+                  <div>Customer Service Number</div>
+                  {this.props.ccPhone}
+                </div>
+              ) : null}
             </div>
             <style jsx>{styles}</style>
           </div>

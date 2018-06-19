@@ -21,7 +21,7 @@ export default class YourCart extends Component {
       animate: false
     }
 
-    this.onChange = this.onChange.bind(this);
+    this.onChange = this.onChange.bind(this)
   }
 
   onChange(state) {
@@ -59,7 +59,7 @@ export default class YourCart extends Component {
                     <Subtotal />
                     <CouponLine
                       isMounted={state.coupon ? true : false}
-                      delayTime={500}
+                      delayTime={250}
                       animate={this.state.animate}
                     />
                     <ShippingCost />

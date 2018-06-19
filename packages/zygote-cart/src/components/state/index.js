@@ -9,7 +9,7 @@ const cartState = new State({
   loading: false,
   site: '',
   mounted: false,
-  animClass: ''
+  animate: false
 })
 
 const cost = new State({
