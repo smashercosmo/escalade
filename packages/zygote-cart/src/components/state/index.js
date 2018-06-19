@@ -2,8 +2,8 @@ import { State } from 'statable'
 import Cookie from 'js-cookie'
 
 const cartState = new State({
-  open: true,
-  tab: 3,
+  open: false,
+  tab: 0,
   errors: null,
   apiErrors: null,
   loading: false,

@@ -1,30 +1,30 @@
-import React, { Component } from 'react';
-import Cookie from 'js-cookie';
-import { Subscribe } from 'statable';
+import React, { Component } from 'react'
+import Cookie from 'js-cookie'
+import { Subscribe } from 'statable'
 
-import { cartState, itemState, cost, userInfo } from '../../state';
-import { Nav } from '../../containers';
-import { closeCart, resetCart } from '../../../injectState';
-import { upperFirst } from '../../utils';
-import styles from './styles.js';
+import { cartState, itemState, cost, userInfo } from '../../state'
+import { Nav } from '../../containers'
+import { closeCart, resetCart } from '../../../injectState'
+import { upperFirst } from '../../utils'
+import styles from './styles.js'
 
 export default class Header extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.checkState = this.checkState.bind(this);
+    this.checkState = this.checkState.bind(this)
   }
 
   checkState() {
-    closeCart();
-    const { tab, loading, apiErrors, errors } = cartState.state;
+    closeCart()
+    const { tab, loading, apiErrors, errors } = cartState.state
 
     if (tab === 3 && loading === false) {
       if (errors || apiErrors) {
-        cartState.setState({ tab: 0 });
-        return;
+        cartState.setState({ tab: 0 })
+        return
       }
-      resetCart();
+      resetCart()
     }
   }
 
@@ -40,7 +40,9 @@ export default class Header extends Component {
               {this.props.brandLogo ? (
                 <img src={this.props.brandLogo} alt="" />
               ) : (
-                <div className="zygoteDefaultBrandLogo">Brand Logo</div>
+                <div className="zygoteDefaultBrandLogo">
+                  Brand Logo (Test Cart)
+                </div>
               )}
             </div>
             {state.tab === 1 ? (
@@ -76,11 +78,11 @@ export default class Header extends Component {
           </div>
         )}
       </Subscribe>
-    );
+    )
   }
 }
 
 Header.defaultProps = {
   addToCartMessage: "You've added to your cart!",
   orderCompleteTitle: 'Yessss!'
-};
+}
