@@ -3,7 +3,7 @@ import Cookie from 'js-cookie'
 
 const cartState = new State({
   open: true,
-  tab: 3,
+  tab: 0,
   errors: null,
   apiErrors: null,
   loading: false,

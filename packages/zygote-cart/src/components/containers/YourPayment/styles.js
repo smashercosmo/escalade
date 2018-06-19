@@ -56,6 +56,9 @@ export default css`
     top: 10px;
     right: 20px;
   }
+  .zygoteSectionTitle > span {
+    float: left;
+  }
   .zygotePaymentLineWrapper {
     float: right;
     margin-top: -10px;

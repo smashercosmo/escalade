@@ -84,7 +84,11 @@ export default class StepButtons extends Component {
             })
           : (errors = { [k]: k => `Please enter a valid ${k}.` })
       }
-      if (k === 'billingSecurity' && !cardValid.cvv(payment[k]).isValid) {
+      if (
+        k === 'billingSecurity' &&
+        !cardValid.cvv(payment[k], paymentType === 'american-express' ? 4 : 3)
+          .isValid
+      ) {
         areErrors = true
         errors
           ? (errors = {

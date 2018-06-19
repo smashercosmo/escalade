@@ -13,6 +13,7 @@ export default Comp => {
 
     componentWillReceiveProps(nextProps) {
       const { isMounted, delayTime } = this.props
+
       if (isMounted && !nextProps.isMounted) {
         setTimeout(() => {
           this.setState({ shouldRender: false })

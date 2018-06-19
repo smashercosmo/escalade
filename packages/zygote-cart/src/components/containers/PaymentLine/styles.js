@@ -7,6 +7,7 @@ export default css`
     margin: 0;
     padding: 0;
   }
+
   .zygotePaymentIcon {
     display: inline-block;
     margin: 0 2px;
