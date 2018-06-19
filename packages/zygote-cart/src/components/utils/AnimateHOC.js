@@ -17,7 +17,7 @@ export default Comp => {
         setTimeout(() => {
           this.setState({ shouldRender: false })
           cartState.setState({ mounted: false })
-        }, this.props.delayTime)
+        }, delayTime)
         this.setState({ didMount: false })
       }
       if (!isMounted && nextProps.isMounted) {
@@ -45,7 +45,11 @@ export default Comp => {
       const { didMount } = this.state
       const { base, action, isMounted } = this.props
       return this.state.shouldRender ? (
-        <div className={`${base} ${didMount && isMounted ? action : ''}`}>
+        <div
+          className={`${base || ''} ${
+            didMount && isMounted ? action || '' : ''
+          }`}
+        >
           <Comp {...this.props} />
         </div>
       ) : null

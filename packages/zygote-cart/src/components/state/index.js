@@ -3,13 +3,13 @@ import Cookie from 'js-cookie'
 
 const cartState = new State({
   open: true,
-  tab: 0,
+  tab: 3,
   errors: null,
   apiErrors: null,
   loading: false,
   site: '',
   mounted: false,
-  animClass: ''
+  animate: false
 })
 
 const cost = new State({

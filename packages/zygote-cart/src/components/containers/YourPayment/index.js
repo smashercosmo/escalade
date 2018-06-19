@@ -41,7 +41,8 @@ export default class Payment extends Component {
     this.state = {
       checked: true,
       inputErrors: {},
-      cardType: null
+      cardType: null,
+      class: ''
     }
     this.renderField = this.renderField.bind(this)
     this.handleCheck = this.handleCheck.bind(this)
@@ -51,7 +52,15 @@ export default class Payment extends Component {
     this.addressSearch = this.addressSearch.bind(this)
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.checked && !this.state.checked) {
+      setTimeout(() => {
+        this.setState({ class: 'zygoteRowAnimAction' })
+      }, 0)
+    }
+    if (!prevState.checked && this.state.checked) {
+      this.setState({ class: '' })
+    }
     let { errors } = cartState.state
     const { paymentAddress } = userInfo.state
     if (this.state.checked) {
@@ -147,9 +156,18 @@ export default class Payment extends Component {
     ) {
       delete updatedErrs[name]
     }
-    if (e.target.name === 'Security' && !cardValid.cvv(value).isValid) {
+    console.log(this.state.cardType)
+    if (
+      e.target.name === 'Security' &&
+      !cardValid.cvv(value, this.state.cardType === 'american-express' ? 4 : 3)
+        .isValid
+    ) {
       updatedErrs[name] = name => `Please enter a valid ${name}`
-    } else if (e.target.name === 'Security' && cardValid.cvv(value).isValid) {
+    } else if (
+      e.target.name === 'Security' &&
+      cardValid.cvv(value, this.state.cardType === 'american-express' ? 4 : 3)
+        .isValid
+    ) {
       delete updatedErrs[name]
     }
 
@@ -350,7 +368,6 @@ export default class Payment extends Component {
           </div>
         )
       default:
-        // NEED TO ADD GOOGLE SEARCH FOR ADDRESS <<<<!!!!!!!!-----!!!!!!!!!>>>>
         return (
           <div
             key={i}
@@ -492,6 +509,13 @@ export default class Payment extends Component {
   }
 
   componentDidMount() {
+    const { billingNumber } = userInfo.state.payment
+    if (billingNumber) {
+      const cardNum = cardValid.number(billingNumber)
+      if (cardNum.isValid && cardNum.card.type) {
+        this.setState({ cardType: cardNum.card.type })
+      }
+    }
     userInfo.setState({
       addressSame: true
     })
@@ -538,37 +562,51 @@ export default class Payment extends Component {
                       </div>
                     ) : null}
                   </div>
-
-                  <AnimateComp
-                    isMounted={!this.state.checked}
-                    delayTime={500}
-                    renderField={this.renderField}
-                    user={state}
-                    base={'zygoteAnim'}
-                    action={'zygoteAnimAction'}
-                    yourPayment={yourPayment}
-                    resetMount={true}
-                  />
+                  <div className="zygoteBillingInfo">
+                    <AnimateComp
+                      isMounted={!this.state.checked}
+                      delayTime={250}
+                      renderField={this.renderField}
+                      user={state}
+                      base={'zygoteAnim'}
+                      action={'zygoteAnimAction'}
+                      yourPayment={yourPayment}
+                      resetMount={true}
+                    />
+                  </div>
                 </div>
               )}
 
-              <div className="zygoteRow">
+              <div className={`zygoteRow zygoteRowAnim  ${this.state.class}`}>
                 <ShippingOptions />
-              </div>
 
-              {cart.apiErrors ? null : (
-                <div>
-                  <div className="zygoteRow">
-                    <Coupon />
-                  </div>
-                  <div className="zygoteRow">
-                    <div className="zygoteFinalOrderTitle">
-                      Final Order Summary
+                {cart.apiErrors ? null : (
+                  <div>
+                    <div className="zygoteRow">
+                      <Coupon />
                     </div>
-                    <OrderSummary animateCoupon={true} isMounted={true} />
+                    <div className="zygoteRow">
+                      <div className="zygoteFinalOrderTitle">
+                        Final Order Summary
+                      </div>
+                      <OrderSummary animateCoupon={true} isMounted={true} />
+                      {!cart.mounted &&
+                      state.shipping.shippingAddress.length > 0 ? (
+                        <div className="zygotePreviewAddressBottom">
+                          <h3>Shipping Address:</h3>
+                          <div>{state.shipping.shippingFullName}</div>
+                          <div>{state.shipping.shippingAddress}</div>
+                          <div>
+                            {state.shipping.shippingCity},{' '}
+                            {state.shipping.shippingState}{' '}
+                            {state.shipping.shippingZip}
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
             <style jsx global>
               {styles}

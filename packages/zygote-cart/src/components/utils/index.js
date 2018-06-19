@@ -1,6 +1,6 @@
-import React from 'react';
-import states from 'datasets-us-states-names-abbr';
-import { userInfo, cartState } from '../state';
+import React from 'react'
+import states from 'datasets-us-states-names-abbr'
+import { userInfo, cartState } from '../state'
 
 const yourPayment = {
   sections: [
@@ -80,7 +80,7 @@ const yourPayment = {
             name: 'State',
             formattedName: 'billingState',
             options: Object.keys(states).map(state => {
-              return { value: states[state], label: state };
+              return { value: states[state], label: state }
             })
           },
           {
@@ -94,7 +94,7 @@ const yourPayment = {
       }
     ]
   }
-};
+}
 
 const yourDetails = {
   sections: [
@@ -124,7 +124,7 @@ const yourDetails = {
           type: 'tel'
         },
         {
-          label: "I'd like to recieve news and special offeres from",
+          label: "I'd like to recieve news and special offers from",
           class: 'zygoteShippingSpecialOffers',
           name: 'Special Offers',
           type: 'checkbox',
@@ -172,7 +172,7 @@ const yourDetails = {
           name: 'State',
           formattedName: 'shippingState',
           options: Object.keys(states).map(state => {
-            return { value: states[state], label: state };
+            return { value: states[state], label: state }
           })
         },
         {
@@ -185,7 +185,7 @@ const yourDetails = {
       ]
     }
   ]
-};
+}
 
 const cartContent = {
   tabs: [
@@ -210,10 +210,10 @@ const cartContent = {
     { title: '1. Your Details', active: 1 },
     { title: '2. Payment', active: 2 }
   ]
-};
+}
 
 const upperFirst = string => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-};
+  return string.charAt(0).toUpperCase() + string.slice(1)
+}
 
-export { yourDetails, yourPayment, cartContent, upperFirst };
+export { yourDetails, yourPayment, cartContent, upperFirst }

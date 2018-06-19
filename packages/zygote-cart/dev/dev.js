@@ -91,6 +91,7 @@ render(
     />
     <ZygoteContainer
       googleApiKey={'AIzaSyD2pAEWs2VMApgeuoNhy3dJoPWDvMOm49Y'}
+      ccPhone={'+1 (812)-999-8888'}
       // brandLogo={brandLogo}
       // addToCartMessage={'Custom Add To Cart MeSsAgE'}
       // cartHeader={'Here is your cart header'}
