@@ -178,10 +178,7 @@ export default class ShippingOptions extends Component {
       cost.setState({
         tax: shippingRes.tax,
         shipping: shippingRes.shipping,
-        shippingOptions:
-          Object.keys(updated.shippingOptions).length > 0
-            ? updated.shippingOptions
-            : null
+        shippingOptions: updated.shippingOptions
       })
       cartState.setState({
         loading: false,

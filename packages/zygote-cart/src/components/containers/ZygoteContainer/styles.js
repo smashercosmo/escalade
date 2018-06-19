@@ -26,6 +26,9 @@ export default css`
   .zygoteContainerAction {
     background-color: rgba(0, 207, 255, 0.7);
   }
+  .zygoteStep1.zygotePaymentLine {
+    margin: 20px 0;
+  }
   .zygoteContainer *,
   .zygoteContainer *:before,
   .zygoteContainer *:after {

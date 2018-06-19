@@ -4,7 +4,7 @@ export default css`
   .zygotePaymentLine {
     width: 100%;
     text-align: center;
-    margin: 20px 0;
+    margin: 0;
     padding: 0;
   }
   .zygotePaymentIcon {

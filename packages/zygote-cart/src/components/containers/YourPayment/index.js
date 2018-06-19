@@ -87,7 +87,6 @@ export default class Payment extends Component {
 
   addressSearch(place) {
     if (typeof place === 'object') {
-      console.log(place)
       userInfo.setState({
         paymentAddress: {
           ...userInfo.state.paymentAddress,
@@ -156,7 +155,6 @@ export default class Payment extends Component {
     ) {
       delete updatedErrs[name]
     }
-    console.log(this.state.cardType)
     if (
       e.target.name === 'Security' &&
       !cardValid.cvv(value, this.state.cardType === 'american-express' ? 4 : 3)
