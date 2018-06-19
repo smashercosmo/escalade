@@ -533,7 +533,7 @@ export default class Payment extends Component {
                         return (
                           <div className="zygoteSection" key={i}>
                             <div className="zygoteSectionTitle">
-                              {section.title}
+                              <span>{section.title}</span>
                               {section.title === '3. Payment' ? (
                                 <div className="zygotePaymentLineWrapper">
                                   <PaymentLine />
