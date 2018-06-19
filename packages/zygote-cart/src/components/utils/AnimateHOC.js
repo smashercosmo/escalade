@@ -13,7 +13,6 @@ export default Comp => {
 
     componentWillReceiveProps(nextProps) {
       const { isMounted, delayTime } = this.props
-      console.log(isMounted, nextProps.isMounted)
 
       if (isMounted && !nextProps.isMounted) {
         setTimeout(() => {

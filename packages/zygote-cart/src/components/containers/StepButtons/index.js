@@ -53,7 +53,16 @@ export default class StepButtons extends Component {
     let areErrors = false
     const { payment, paymentAddress, addressSame } = userInfo.state
     let errors = null
+    let paymentType = null
     Object.keys(payment).forEach(k => {
+      if (k === 'billingNumber') {
+        if (
+          cardValid.number(payment[k]).isValid &&
+          cardValid.number(payment[k]).card.type
+        ) {
+          paymentType = cardValid.number(payment[k]).card.type
+        }
+      }
       if (k === 'billingNumber' && !cardValid.number(payment[k]).isValid) {
         areErrors = true
         errors
@@ -75,7 +84,11 @@ export default class StepButtons extends Component {
             })
           : (errors = { [k]: k => `Please enter a valid ${k}.` })
       }
-      if (k === 'billingSecurity' && !cardValid.cvv(payment[k]).isValid) {
+      if (
+        k === 'billingSecurity' &&
+        !cardValid.cvv(payment[k], paymentType === 'american-express' ? 4 : 3)
+          .isValid
+      ) {
         areErrors = true
         errors
           ? (errors = {
