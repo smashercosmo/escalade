@@ -265,7 +265,7 @@ export default class Shipping extends Component {
               />
             ) : field.name === 'Phone' ? (
               <MaskedInput
-                mask={'111 111 1111'}
+                mask={'(111) 111 - 1111'}
                 placeholderChar=" "
                 type={field.type}
                 className={field.class}

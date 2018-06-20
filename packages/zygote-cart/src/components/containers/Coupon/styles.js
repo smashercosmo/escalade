@@ -15,20 +15,6 @@ export default css`
     display: inline-block;
     color: rgb(0, 207, 255);
   }
-  .zygoteAddCoupon {
-    margin-right: 8px;
-    text-align: center;
-    cursor: pointer;
-    background: rgb(0, 207, 255);
-    color: white;
-    width: 20px;
-    height: 20px;
-    font-weight: 300;
-    font-size: 1.4em;
-    line-height: 17px;
-    border-radius: 100%;
-    display: inline-block;
-  }
   .zygoteEditCoupon {
     cursor: pointer;
     display: inline-block;
@@ -73,8 +59,5 @@ export default css`
     margin-left: 5px;
     cursor: pointer;
     font-size: 1.2em;
-    &:hover {
-      font-size: 1.4em;
-    }
   }
 `

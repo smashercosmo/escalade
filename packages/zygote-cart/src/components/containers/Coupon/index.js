@@ -38,28 +38,12 @@ export default class Coupon extends Component {
                 >
                   Apply
                 </button>
-                <span
-                  className="zygoteRemoveCoupon"
-                  onClick={() => {
-                    itemState.setState({ coupon: '' })
-                    this.setState({ show: false })
-                  }}
-                >
-                  ×
-                </span>
               </div>
             ) : (
               <div>
-                {state.coupon ? (
+                {state.coupon ? null : (
                   <div
-                    className="zygoteEditCoupon"
-                    onClick={() => this.setState({ show: true })}
-                  >
-                    <FaEdit />
-                  </div>
-                ) : (
-                  <div
-                    className="zygoteAddCoupon"
+                    className="zygoteEscaAdd"
                     onClick={() => this.setState({ show: true })}
                   >
                     +
@@ -68,14 +52,30 @@ export default class Coupon extends Component {
 
                 {state.coupon ? (
                   <div style={{ display: 'inline-block' }}>
-                    Coupon:
-                    <div className="zygoteCouponHighlight">
-                      {' '}
-                      {state.coupon} applied!
+                    <div
+                      className="zygoteCouponHighlight"
+                      style={{ display: 'inline-block' }}
+                    >
+                      {state.coupon}
                     </div>
+                    <div style={{ display: 'inline-block' }}>
+                      {' '}
+                      : Coupon Applied!
+                    </div>
+                    <span
+                      className="zygoteRemoveCoupon"
+                      onClick={() => {
+                        itemState.setState({ coupon: '' })
+                        this.setState({ show: false })
+                      }}
+                    >
+                      ×
+                    </span>
                   </div>
                 ) : (
-                  'Apply a Coupon'
+                  <span onClick={() => this.setState({ show: true })}>
+                    Apply a Coupon
+                  </span>
                 )}
               </div>
             )}

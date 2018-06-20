@@ -18,6 +18,7 @@ export default class Header extends Component {
   checkState() {
     closeCart()
     const { tab, loading, apiErrors, errors } = cartState.state
+    cartState.setState({ tab: 0 })
 
     if (tab === 3 && loading === false) {
       if (errors || apiErrors) {
@@ -40,9 +41,7 @@ export default class Header extends Component {
               {this.props.brandLogo ? (
                 <img src={this.props.brandLogo} alt="" />
               ) : (
-                <div className="zygoteDefaultBrandLogo">
-                  Brand Logo (Test Cart)
-                </div>
+                <div className="zygoteDefaultBrandLogo">Brand Logo</div>
               )}
             </div>
             {state.tab === 1 ? (
