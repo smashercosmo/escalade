@@ -237,6 +237,7 @@ export default css`
     color: white;
     width: 15px;
     height: 15px;
+    padding-left: 1.15px;
     font-weight: 300;
     font-size: 1em;
     line-height: 13px;

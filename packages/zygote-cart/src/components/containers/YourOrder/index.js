@@ -73,7 +73,7 @@ export default class YourOrder extends Component {
               </div>
               {this.props.ccPhone ? (
                 <div className="zygoteContactNumber">
-                  <div>Customer Service Number</div>
+                  <div>Customer Service</div>
                   {this.props.ccPhone}
                 </div>
               ) : null}

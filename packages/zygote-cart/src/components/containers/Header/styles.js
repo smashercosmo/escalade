@@ -1,4 +1,4 @@
-import css from 'styled-jsx/css';
+import css from 'styled-jsx/css'
 
 export default css`
   .zygoteClose {
@@ -21,7 +21,7 @@ export default css`
     width: 200px;
   }
   .zygoteBrandLogo {
-    padding-bottom: 15px;
+    margin-bottom: 30px;
   }
   .zygoteDefaultBrandLogo {
     background: #ccc;
@@ -49,4 +49,4 @@ export default css`
     font-size: 1.05em;
     font-weight: 300;
   }
-`;
+`
