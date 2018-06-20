@@ -155,19 +155,6 @@ export default class Payment extends Component {
     ) {
       delete updatedErrs[name]
     }
-    if (
-      e.target.name === 'Security' &&
-      !cardValid.cvv(value, this.state.cardType === 'american-express' ? 4 : 3)
-        .isValid
-    ) {
-      updatedErrs[name] = name => `Please enter a valid ${name}`
-    } else if (
-      e.target.name === 'Security' &&
-      cardValid.cvv(value, this.state.cardType === 'american-express' ? 4 : 3)
-        .isValid
-    ) {
-      delete updatedErrs[name]
-    }
 
     if (Object.keys(updatedErrs).length > 0) {
       cartState.setState({ errors: true })
@@ -186,6 +173,19 @@ export default class Payment extends Component {
     if (value.length === 0) {
       updatedErrs[name] = name => `Please enter a valid ${name}`
     } else if (value.length > 0) {
+      delete updatedErrs[name]
+    }
+    if (
+      e.target.name === 'Security' &&
+      !cardValid.cvv(value, this.state.cardType === 'american-express' ? 4 : 3)
+        .isValid
+    ) {
+      updatedErrs[name] = name => `Please enter a valid ${name}`
+    } else if (
+      e.target.name === 'Security' &&
+      cardValid.cvv(value, this.state.cardType === 'american-express' ? 4 : 3)
+        .isValid
+    ) {
       delete updatedErrs[name]
     }
     if (e.target.name === 'Number') {
@@ -310,17 +310,15 @@ export default class Payment extends Component {
                 ) : null}
               </div>
             ) : (
-              <div className="zygoteToggleFieldContainer">
-                <div
-                  className="zygoteEscaAdd"
-                  onClick={() =>
-                    this.setState({
-                      [field.name]: !this.state[field.name]
-                    })
-                  }
-                >
-                  +
-                </div>
+              <div
+                className="zygoteToggleFieldContainer"
+                onClick={() =>
+                  this.setState({
+                    [field.name]: !this.state[field.name]
+                  })
+                }
+              >
+                <div className="zygoteEscaAdd">+</div>
                 <div className={`zygoteToggleField`}>{field.toggleLabel}</div>
                 <style jsx>{styles}</style>
               </div>
@@ -436,6 +434,11 @@ export default class Payment extends Component {
                 name={field.name}
                 ref={ref => (this[field.name] = ref)}
                 onChange={this[func]}
+                onBlur={e => {
+                  if (field.name === 'Security') {
+                    this.validateCC(e)
+                  }
+                }}
                 value={user[type][field.formattedName]}
                 placeholder={`${field.label} ${field.span ? field.span : ''}`}
               />
@@ -588,8 +591,7 @@ export default class Payment extends Component {
                         Final Order Summary
                       </div>
                       <OrderSummary animateCoupon={true} isMounted={true} />
-                      {!cart.mounted &&
-                      state.shipping.shippingAddress.length > 0 ? (
+                      {state.shipping.shippingAddress.length > 0 ? (
                         <div className="zygotePreviewAddressBottom">
                           <h3>Shipping Address:</h3>
                           <div>{state.shipping.shippingFullName}</div>

@@ -8,7 +8,7 @@ export default css`
     border-bottom: 1px solid #e8e9e9;
   }
   .zygoteShippingOptions {
-    padding: 0px 20px 30px 20px;
+    padding: 0px 20px 0px 20px;
   }
   .zygoteShippingInputs {
     color: #666667;
@@ -20,7 +20,7 @@ export default css`
       padding-bottom: 0px;
     }
   }
-  .zygoteShippingInputs:last-child {
+  .zygoteShippingInputs div:last-child {
     margin-bottom: 0;
   }
 
@@ -30,6 +30,13 @@ export default css`
       content: '';
       clear: both;
       display: block;
+    }
+  }
+  .zygoteShippingSection {
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    &div:last-child {
+      margin-bottom: 0;
     }
   }
   .zygoteCheckboxContainer {
@@ -64,7 +71,8 @@ export default css`
   }
   .zygoteShippingProducts {
     font-size: 0.7em;
-    margin-bottom: 10px;
+    margin-top: -8px;
+    margin-bottom: 20px;
     margin-left: 20px;
     font-weight: 700;
     color: #000;

@@ -144,6 +144,7 @@ export default class StepButtons extends Component {
     if (!addressSame) {
       updated = { ...updated, ...paymentAddress }
     }
+
     const paymentRes = await fetch(zygoteApi.state.api, {
       body: JSON.stringify(updated),
       method: 'POST'
@@ -208,6 +209,9 @@ export default class StepButtons extends Component {
       case 1:
         return (
           <div>
+            {cart.errors || cartState.state.apiErrors ? (
+              <div className="zygoteCheckErrors">Check above for errors</div>
+            ) : null}
             <button
               disabled={
                 cartState.state.apiErrors || cart.errors || this.state.loading
@@ -223,20 +227,21 @@ export default class StepButtons extends Component {
                 this.handleDetails(tab, cart)
               }}
             >
-              {this.props.detailsButtonMessage}
-              {cart.errors ||
-              cartState.state.apiErrors ||
-              this.state.loading ? (
+              {this.state.loading ? (
                 <div className="zygoteButtonLoad">
                   <FoldingCube color="#fff" size={20} />
                 </div>
               ) : null}
+              {this.props.detailsButtonMessage}
             </button>
           </div>
         )
       case 2:
         return (
           <div>
+            {cart.errors || cartState.state.apiErrors ? (
+              <div className="zygoteCheckErrors">Check above for errors</div>
+            ) : null}
             <button
               disabled={
                 cartState.state.apiErrors || cart.errors || this.state.loading
@@ -252,14 +257,12 @@ export default class StepButtons extends Component {
                 this.handlePayment(tab, cart)
               }}
             >
-              {this.props.paymentButtonMessage}
-              {cart.errors ||
-              cartState.state.apiErrors ||
-              this.state.loading ? (
+              {this.state.loading ? (
                 <div className="zygoteButtonLoad">
                   <FoldingCube color="#fff" size={20} />
                 </div>
               ) : null}
+              {this.props.paymentButtonMessage}
             </button>
           </div>
         )

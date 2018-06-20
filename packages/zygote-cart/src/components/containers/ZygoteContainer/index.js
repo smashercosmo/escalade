@@ -49,6 +49,8 @@ class App extends Component {
   checkState() {
     closeCart()
     const { tab, loading, errors, apiErrors } = cartState.state
+    cartState.setState({ tab: 0 })
+
     if (tab === 3 && loading === false) {
       if (errors || apiErrors) {
         cartState.setState({ tab: 0, showNav: true })

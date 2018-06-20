@@ -44,6 +44,13 @@ const yourPayment = {
         title: '3.5 What is your billing address?',
         fields: [
           {
+            label: 'Full Name',
+            class: 'zygoteBillingFullName',
+            name: 'Full Name',
+            formattedName: 'billingFullName',
+            type: 'text'
+          },
+          {
             label: 'Address',
             class: 'zygoteBillingAddress',
             name: 'Address',

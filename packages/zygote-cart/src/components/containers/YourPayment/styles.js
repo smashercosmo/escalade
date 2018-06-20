@@ -32,7 +32,7 @@ export default css`
     transition: all 0.25s linear;
   }
   .zygoteAnimAction {
-    transform: translateY(0%);
+    transform: translateY(-10%);
   }
   .zygoteBillingInfo {
     padding: 20px 20px 0px 20px;
@@ -80,6 +80,6 @@ export default css`
   }
   .zygoteRowAnimAction {
     transform: translateY(55%);
-    margin-bottom: 77%;
+    margin-bottom: 95%;
   }
 `
