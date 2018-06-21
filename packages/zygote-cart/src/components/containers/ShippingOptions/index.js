@@ -135,7 +135,7 @@ export default class ShippingOptions extends Component {
             loading: false
           })
         })
-      // console.log(shippingRes)
+
       shippingRes.products.forEach(product => {
         const regexp = new RegExp(product.id, 'gi')
         const updatedItem = items.find(({ id }) => regexp.test(id))
@@ -158,6 +158,7 @@ export default class ShippingOptions extends Component {
         })
       })
       updated.shippingOptions = shippingRes.shippingOptions
+
       if (updated.shippingOptions) {
         Object.keys(updated.shippingOptions).forEach(k => {
           this.setState({
@@ -195,7 +196,6 @@ export default class ShippingOptions extends Component {
   }
 
   render() {
-    // console.log(this.state.shippingOption)
     return (
       <Subscribe to={[cartState, cost, itemState]}>
         {(cart, cost, itemState) => {
