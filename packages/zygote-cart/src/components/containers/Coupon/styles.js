@@ -60,4 +60,9 @@ export default css`
     cursor: pointer;
     font-size: 1.2em;
   }
+  .zygoteCouponErr {
+    color: #f00;
+    margin: 10px 0;
+    font-size: 0.8em;
+  }
 `

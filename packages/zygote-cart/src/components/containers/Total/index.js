@@ -6,18 +6,20 @@ import styles from './styles'
 
 export default class Total extends Component {
   componentDidMount() {
-    if (
-      cost.state.total !==
-      cost.state.subtotal + cost.state.tax + cost.state.shipping
-    ) {
+    const { total, subtotal, tax, shipping, coupon } = cost.state
+    const sum = parseFloat((subtotal + tax + shipping - coupon).toFixed(2))
+    if (total !== sum) {
       cost.setState({
-        total: cost.state.subtotal + cost.state.tax + cost.state.shipping
+        total: sum
       })
     }
     cost.subscribe(state => {
-      if (cost.state.total !== state.subtotal + state.tax + state.shipping) {
+      const updatedSum = parseFloat(
+        (state.subtotal + state.tax + state.shipping - state.coupon).toFixed(2)
+      )
+      if (state.total !== updatedSum) {
         cost.setState({
-          total: state.subtotal + state.tax + state.shipping
+          total: updatedSum
         })
       }
     })
@@ -34,10 +36,13 @@ export default class Total extends Component {
           <div className="zygoteTotalLine">
             <div className="zygoteTotalHead">Total</div>
             <div className="zygoteTotal">
-              ${state.total.toLocaleString(undefined, {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-              })}
+              ${state.total.toLocaleString(
+                undefined,
+                {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2
+                }
+              )}
             </div>
             <style jsx global>
               {styles}
