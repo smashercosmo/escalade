@@ -30,7 +30,7 @@ class CouponLine extends Component {
               this.state.class} ${this.props.animate && 'zygoteAnimate'}`}
           >
             <div className="zygoteCouponHead">Coupon Code: {state.coupon}</div>
-            <div className="zygoteCouponTotal">-$2.00</div>
+            <div className="zygoteCouponTotal">- ${state.couponValue}</div>
             <style jsx>{styles}</style>
           </div>
         )}
