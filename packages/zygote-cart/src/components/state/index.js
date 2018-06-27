@@ -3,7 +3,7 @@ import Cookie from 'js-cookie'
 
 const cartState = new State({
   open: true,
-  tab: 0,
+  tab: 1,
   errors: null,
   apiErrors: null,
   loading: false,
@@ -36,7 +36,7 @@ const itemState = new State(
             url: 'https://pingpong.comproduct/t1265'
           }
         ],
-        coupon: '',
+        coupon: null,
         couponErr: null,
         couponValue: 0
       }

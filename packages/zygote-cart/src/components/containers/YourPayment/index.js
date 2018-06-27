@@ -21,8 +21,6 @@ import {
   PaymentLine
 } from '../../containers'
 import styles from './styles'
-import { address } from 'ip'
-import AnimateHOC from '../../utils/AnimateHOC'
 import { BillingAddress } from '../../views'
 
 const inLineStyles = {
@@ -33,16 +31,13 @@ const inLineStyles = {
   }
 }
 
-const AnimateComp = AnimateHOC(BillingAddress)
-
 export default class Payment extends Component {
   constructor(props) {
     super(props)
     this.state = {
       checked: true,
       inputErrors: {},
-      cardType: null,
-      class: ''
+      cardType: null
     }
     this.renderField = this.renderField.bind(this)
     this.handleCheck = this.handleCheck.bind(this)
@@ -50,17 +45,11 @@ export default class Payment extends Component {
     this.updateAddress = this.updateAddress.bind(this)
     this.onKeyPress = this.onKeyPress.bind(this)
     this.addressSearch = this.addressSearch.bind(this)
+    this.validate = this.validate.bind(this)
+    this.validateCC = this.validateCC.bind(this)
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.checked && !this.state.checked) {
-      setTimeout(() => {
-        this.setState({ class: 'zygoteRowAnimAction' })
-      }, 0)
-    }
-    if (!prevState.checked && this.state.checked) {
-      this.setState({ class: '' })
-    }
     let { errors } = cartState.state
     const { paymentAddress } = userInfo.state
     if (this.state.checked) {
@@ -112,10 +101,6 @@ export default class Payment extends Component {
 
   update(e) {
     e.preventDefault()
-    const { value } = e.target
-    const { inputErrors } = this.state
-    let updatedErrs = { ...inputErrors }
-    let formattedCard = null
     const name = `billing${e.target.name.replace(/\s/g, '')}`
     userInfo.setState({
       payment: {
@@ -123,6 +108,31 @@ export default class Payment extends Component {
         [name]: e.target.value.replace(/_|\s+/g, '')
       }
     })
+  }
+
+  updateAddress(e) {
+    e.preventDefault()
+    const name = `billing${e.target.name.replace(/\s/g, '')}`
+    userInfo.setState({
+      paymentAddress: {
+        ...userInfo.state.paymentAddress,
+        [name]: e.target.value
+      }
+    })
+  }
+
+  validate(e) {
+    const { value } = e.target
+    const { inputErrors } = this.state
+    let updatedErrs = { ...inputErrors }
+    const name = `billing${e.target.name.replace(/\s/g, '')}`
+    let formattedCard = null
+
+    if (value.length === 0) {
+      updatedErrs[name] = name => `Please enter a valid ${name}`
+    } else if (value.length > 0) {
+      delete updatedErrs[name]
+    }
     if (value.length === 0 && e.target.name !== 'Number') {
       updatedErrs[name] = name => `Please enter a valid ${name}`
     } else if (value.length > 0) {
@@ -155,7 +165,14 @@ export default class Payment extends Component {
     ) {
       delete updatedErrs[name]
     }
-
+    if (e.target.name === 'Zip' && !validator.isPostalCode(value, 'any')) {
+      updatedErrs[name] = name => `Please enter a valid ${name}.`
+    } else if (
+      e.target.name === 'Zip' &&
+      validator.isPostalCode(value, 'any')
+    ) {
+      delete updatedErrs[name]
+    }
     if (Object.keys(updatedErrs).length > 0) {
       cartState.setState({ errors: true })
     } else {
@@ -164,6 +181,7 @@ export default class Payment extends Component {
 
     this.setState({ inputErrors: updatedErrs })
   }
+
   validateCC(e) {
     const { value } = e.target
     const name = `billing${e.target.name.replace(/\s/g, '')}`
@@ -210,39 +228,6 @@ export default class Payment extends Component {
     } else {
       cartState.setState({ errors: null })
     }
-    this.setState({ inputErrors: updatedErrs })
-  }
-  updateAddress(e) {
-    e.preventDefault()
-    const { value } = e.target
-    const { inputErrors } = this.state
-    let updatedErrs = { ...inputErrors }
-    const name = `billing${e.target.name.replace(/\s/g, '')}`
-    userInfo.setState({
-      paymentAddress: {
-        ...userInfo.state.paymentAddress,
-        [name]: e.target.value
-      }
-    })
-    if (value.length === 0) {
-      updatedErrs[name] = name => `Please enter a valid ${name}`
-    } else if (value.length > 0) {
-      delete updatedErrs[name]
-    }
-    if (e.target.name === 'Zip' && !validator.isPostalCode(value, 'any')) {
-      updatedErrs[name] = name => `Please enter a valid ${name}.`
-    } else if (
-      e.target.name === 'Zip' &&
-      validator.isPostalCode(value, 'any')
-    ) {
-      delete updatedErrs[name]
-    }
-    if (Object.keys(updatedErrs).length > 0) {
-      cartState.setState({ errors: true })
-    } else {
-      cartState.setState({ errors: null })
-    }
-
     this.setState({ inputErrors: updatedErrs })
   }
 
@@ -300,6 +285,7 @@ export default class Payment extends Component {
                   value={user[type][field.formattedName]}
                   onChange={this[func]}
                   placeholder={`${field.label} ${field.span ? field.span : ''}`}
+                  autoFocus
                 />
                 {inputErrors ? (
                   inputErrors[field.formattedName] ? (
@@ -379,6 +365,7 @@ export default class Payment extends Component {
               <MaskedInput
                 mask="11/11"
                 type={field.type}
+                inputMode="numeric"
                 className={field.class}
                 name={field.name}
                 ref={ref => (this[field.name] = ref)}
@@ -388,6 +375,7 @@ export default class Payment extends Component {
                 }}
                 onBlur={e => {
                   e.target.placeholder = 'MM/YY'
+                  this.validate(e)
                 }}
                 value={user[type][field.formattedName]}
                 placeholder={`${field.label} ${field.span ? field.span : ''}`}
@@ -399,8 +387,9 @@ export default class Payment extends Component {
                     ? '1111 111111 11111'
                     : '1111 1111 1111 1111'
                 }
-                placeholderChar=" "
+                placeholderChar=" "
                 type={field.type}
+                inputMode="numeric"
                 className={field.class}
                 name={field.name}
                 ref={ref => (this[field.name] = ref)}
@@ -411,6 +400,7 @@ export default class Payment extends Component {
                 onBlur={e => {
                   e.target.placeholder = 'Card Number'
                   this.validateCC(e)
+                  this.validate(e)
                 }}
                 value={user[type][field.formattedName]}
                 placeholder={`${field.label} ${field.span ? field.span : ''}`}
@@ -422,6 +412,7 @@ export default class Payment extends Component {
                 googleApiKey={this.props.googleApiKey || null}
                 getValue={this.addressSearch}
                 name={field.name}
+                onBlur={e => this.validate(e)}
                 value={user[type][field.formattedName]}
                 onKeyPress={field.name === 'Zip' ? this.onKeyPress : null}
                 placeholder={`${field.label} ${field.span ? field.span : ''}`}
@@ -435,6 +426,7 @@ export default class Payment extends Component {
                 ref={ref => (this[field.name] = ref)}
                 onChange={this[func]}
                 onBlur={e => {
+                  this.validate(e)
                   if (field.name === 'Security') {
                     this.validateCC(e)
                   }
@@ -563,22 +555,23 @@ export default class Payment extends Component {
                       </div>
                     ) : null}
                   </div>
-                  <div className="zygoteBillingInfo">
-                    <AnimateComp
-                      isMounted={!this.state.checked}
-                      delayTime={250}
-                      renderField={this.renderField}
-                      user={state}
-                      base={'zygoteAnim'}
-                      action={'zygoteAnimAction'}
-                      yourPayment={yourPayment}
-                      resetMount={true}
-                    />
+                  <div className="overflowWrapper">
+                    <div
+                      className={`zygoteBillingInfo ${
+                        this.state.checked ? '' : 'zygoteAnim'
+                      }`}
+                    >
+                      <BillingAddress
+                        renderField={this.renderField}
+                        user={state}
+                        yourPayment={yourPayment}
+                      />
+                    </div>
                   </div>
                 </div>
               )}
 
-              <div className={`zygoteRow zygoteRowAnim  ${this.state.class}`}>
+              <div className={`zygoteRow `}>
                 <ShippingOptions />
 
                 {cart.apiErrors ? null : (
