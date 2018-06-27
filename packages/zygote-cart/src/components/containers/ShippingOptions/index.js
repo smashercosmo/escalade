@@ -117,7 +117,8 @@ export default class ShippingOptions extends Component {
       cartState.setState({
         loading: true
       })
-      // console.log(updated)
+      console.log(updated)
+      return
       const shippingRes = await fetch(zygoteApi.state.api, {
         body: JSON.stringify(updated),
         method: 'POST'

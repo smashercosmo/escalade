@@ -67,11 +67,17 @@ export default css`
   }
   .zygoteBillingSecurityContainer {
     width: 47.5%;
-    float: right;
+    float: left;
+    margin-bottom: 20px;
+    &.zygoteInputErr {
+      margin-bottom: 0px;
+    }
   }
   .zygoteCheckboxContainer {
+    margin-top: 20px;
     clear: both;
   }
+
   .overflowWrapper {
     overflow: hidden;
   }
