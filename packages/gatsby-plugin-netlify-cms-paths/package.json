@@ -6,7 +6,10 @@
     "plugin",
     "netlify",
     "cms",
-    "paths"
+    "paths",
+    "image",
+    "uploads",
+    "relative"
   ],
   "main": "index.js",
   "author": "Kennedy Rose <krose@escaladesports.com>",
