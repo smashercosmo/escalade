@@ -1,0 +1,11 @@
+[Settings]
+	ID = "zygote-cart"
+
+[build]
+	command = "yarn build:gatsby"
+	publish = "public"
+	functions = "dist-functions"
+
+[[redirects]]
+	from = "/admin"
+	to = "/admin/"
