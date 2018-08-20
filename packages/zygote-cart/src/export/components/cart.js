@@ -69,6 +69,10 @@ const containerStyles = css({
 	fontFamily,
 	textRendering: `optimizeLegibility`,
 	'-webkit-font-smoothing': `antialiased`,
+	userSelect: `none`,
+	'[role="button"]': {
+		cursor: `pointer`,
+	},
 	'&, *, *:before, *:after': {
 		boxSizing: `border-box`,
 	},

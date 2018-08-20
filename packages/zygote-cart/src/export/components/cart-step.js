@@ -1,7 +1,6 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { css } from 'emotion'
-import { Subscribe } from 'statable'
-import productsState, { removeFromCart } from '../state/products'
+import ProductList from './product-list'
 
 export default class CartStep extends React.Component{
 	render() {
@@ -13,38 +12,9 @@ export default class CartStep extends React.Component{
 				{cartMessage && (
 					<div className={cartMessageStyles}>{cartMessage}</div>
 				)}
-				<Subscribe to={productsState}>
-					{({ products }) => (
-						<Fragment>
-							{!!products.length && (
-								<ul>
-									{products.map(({
-										image,
-										title,
-										description,
-										quantity,
-										id,
-										price,
-									}, key) => (
-										<li key={`cartProd${key}`}>
-											<div>
-												<img src={image} />
-											</div>
-											<div>{title}</div>
-											<div>{description}</div>
-											<div>{quantity}</div>
-											<div>${price.toFixed(2)}</div>
-											<div onClick={() => removeFromCart(id)}>×</div>
-										</li>
-									))}
-								</ul>
-							)}
-							{!products.length && (
-								<div>Your cart is empty</div>
-							)}
-						</Fragment>
-					)}
-				</Subscribe>
+				<div className={listStyles}>
+					<ProductList editable />
+				</div>
 			</div>
 		)
 	}
@@ -54,4 +24,10 @@ export default class CartStep extends React.Component{
 const cartMessageStyles = css({
 	textAlign: `center`,
 	fontStyle: `italic`,
+})
+
+const listStyles = css({
+	marginTop: 30,
+	paddingTop: 30,
+	borderTop: `1px solid #333`,
 })

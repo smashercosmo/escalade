@@ -35,6 +35,32 @@ const productsState = new State({
 		for(let i = products.length; i--;){
 			if(products[i].id === id){
 				products.splice(i, 1)
+				break
+			}
+		}
+		this.setState({ products })
+	},
+
+	decreaseQuantity(id, n = 1) {
+		let products = [...this.state.products]
+		for (let i = products.length; i--;) {
+			if (products[i].id === id) {
+				products[i].quantity -= n
+				if (!products[i].quantity){
+					products[i].quantity = 1
+				}
+				break
+			}
+		}
+		this.setState({ products })
+	},
+
+	increaseQuantity(id, n = 1) {
+		let products = [...this.state.products]
+		for (let i = products.length; i--;) {
+			if (products[i].id === id) {
+				products[i].quantity += n
+				break
 			}
 		}
 		this.setState({ products })
