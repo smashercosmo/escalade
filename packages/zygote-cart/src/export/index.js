@@ -5,6 +5,10 @@ import {
 	closeCart,
 	toggleCart,
 } from './state/open'
+import {
+	addToCart,
+	removeFromCart,
+} from './state/products'
 
 export {
 	Cart,
@@ -12,4 +16,6 @@ export {
 	openCart,
 	closeCart,
 	toggleCart,
+	addToCart,
+	removeFromCart,
 }

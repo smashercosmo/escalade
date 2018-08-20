@@ -1,10 +1,11 @@
 import { State } from 'statable'
+import { openCart } from './open'
 
 const productsState = new State({
 	products: [],
 }, {
 
-	addProduct(newProduct){
+	addToCart(newProduct){
 		let products = [...this.state.products]
 		if(!newProduct.qty){
 			newProduct.qty = 1
@@ -23,10 +24,13 @@ const productsState = new State({
 		if(!alreadyInCart){
 			products.push(newProduct)
 		}
+		if(!newProduct.noOpen){
+			openCart()
+		}
 		this.setState({ products })
 	},
 
-	removeProduct(id){
+	removeFromCart(id){
 		let products = [...this.state.products]
 		for(let i = products.length; i--;){
 			if(products[i].id === id){
@@ -36,6 +40,8 @@ const productsState = new State({
 		this.setState({ products })
 	},
 
+}, {
+	localStorage: `zygoteCart`,
 })
 
 export default productsState

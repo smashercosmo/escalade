@@ -1,16 +1,18 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Subscribe } from 'statable'
 import { css, cx } from 'emotion'
 import {
 	overlayColor,
 	backgroundColor,
 	fontFamily,
+	fontColor,
 } from './styles'
 import openState, { closeCart } from './state/open'
+import CartStep from './cart-step'
 
 export default class Cart extends React.Component {
 	static defaultProps = {
-		cartMessage: `Your Cart:`,
+		cartMessage: `You've added to your cart!`,
 	}
 	render() {
 		const {
@@ -20,7 +22,7 @@ export default class Cart extends React.Component {
 		return (
 			<Subscribe to={openState}>
 				{({ open }) => (
-					<Fragment>
+					<div className={containerStyles}>
 						<div
 							className={cx(bgStyles, open ? bgOpenStyles : null)}
 							onClick={closeCart}
@@ -28,19 +30,49 @@ export default class Cart extends React.Component {
 						<div
 							className={cx(cartStyles, open ? cartOpenStyles : null)}
 						>
+							<div
+								role='button'
+								className={closeStyles}
+								onClick={closeCart}
+							>×</div>
+
 							{logo && (
-								<div>{logo}</div>
+								<div className={logoStyles}>{logo}</div>
 							)}
-							{cartMessage && (
-								<div>{cartMessage}</div>
-							)}
+
+							<CartStep cartMessage={cartMessage} />
 						</div>
-					</Fragment>
+					</div>
 				)}
 			</Subscribe>
 		)
 	}
 }
+
+const logoStyles = css({
+	textAlign: `center`,
+	marginBottom: 20,
+})
+
+const closeStyles = css({
+	position: `absolute`,
+	top: 25,
+	right: 25,
+	fontSize: `3em`,
+	lineHeight: `22px`,
+	cursor: `pointer`,
+	fontWeight: 200,
+})
+
+const containerStyles = css({
+	color: fontColor,
+	fontFamily,
+	textRendering: `optimizeLegibility`,
+	'-webkit-font-smoothing': `antialiased`,
+	'&, *, *:before, *:after': {
+		boxSizing: `border-box`,
+	},
+})
 
 const bgStyles = css({
 	position: `fixed`,
@@ -52,7 +84,6 @@ const bgStyles = css({
 	visibility: `hidden`,
 	opacity: 0,
 	transition: `opacity .3s, visibility .3s`,
-	fontFamily,
 })
 const bgOpenStyles = css({
 	visibility: `visible`,
@@ -67,9 +98,11 @@ const cartStyles = css({
 	width: 500,
 	maxWidth: `100%`,
 	backgroundColor,
-	transform: `translateX(100%)`,
+	transform: `translateX(110%)`,
 	transition: `transform .3s`,
-	boxShadow: `-5px 0 10px rgba(0, 0, 0, 0.2)`,
+	boxShadow: `-3px 0 4px rgba(0, 0, 0, 0.2)`,
+	padding: 25,
+	paddingTop: 40,
 })
 const cartOpenStyles = css({
 	transform: `translateX(0%)`,

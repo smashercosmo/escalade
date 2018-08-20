@@ -1,5 +1,5 @@
 const defaultStyles = {
-	fontColor: `#666`,
+	fontColor: `#333`,
 	primaryColor: `#00cfff`,
 	backgroundColor: `#fff`,
 	overlayColor: `rgba(0,207,255,0.7)`,
