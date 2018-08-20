@@ -7,8 +7,8 @@ const productsState = new State({
 
 	addToCart(newProduct){
 		let products = [...this.state.products]
-		if(!newProduct.qty){
-			newProduct.qty = 1
+		if (!newProduct.quantity){
+			newProduct.quantity = 1
 		}
 		let alreadyInCart = false
 		for (let i = products.length; i--;){
@@ -17,7 +17,7 @@ const productsState = new State({
 				alreadyInCart = true
 				products[i] = {
 					...newProduct,
-					qty: products[i].qty + newProduct.qty,
+					quantity: products[i].quantity + newProduct.quantity,
 				}
 			}
 		}

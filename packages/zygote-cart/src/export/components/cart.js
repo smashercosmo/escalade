@@ -6,8 +6,8 @@ import {
 	backgroundColor,
 	fontFamily,
 	fontColor,
-} from './styles'
-import openState, { closeCart } from './state/open'
+} from '../styles'
+import openState, { closeCart } from '../state/open'
 import CartStep from './cart-step'
 
 export default class Cart extends React.Component {

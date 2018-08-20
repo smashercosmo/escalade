@@ -1,5 +1,5 @@
-import Cart from './cart'
-import CartQuantity from './cart-quantity'
+import Cart from './components/cart'
+import CartQuantity from './components/cart-quantity'
 import {
 	openCart,
 	closeCart,
