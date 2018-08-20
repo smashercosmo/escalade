@@ -2,6 +2,7 @@
   "name": "gatsby-plugin-netlify-cms-paths",
   "version": "1.0.1",
   "keywords": [
+    "gatsby-plugin",
     "gatsby",
     "plugin",
     "netlify",
