@@ -69,10 +69,10 @@ const containerStyles = css({
 	fontFamily,
 	textRendering: `optimizeLegibility`,
 	'-webkit-font-smoothing': `antialiased`,
-	userSelect: `none`,
 	fontSize: 16,
 	'[role="button"]': {
 		cursor: `pointer`,
+		userSelect: `none`,
 	},
 	'&, *, *:before, *:after': {
 		boxSizing: `border-box`,
@@ -101,6 +101,7 @@ const cartStyles = css({
 	bottom: 0,
 	right: 0,
 	width: 500,
+	overflowY: `auto`,
 	maxWidth: `100%`,
 	backgroundColor,
 	transform: `translateX(110%)`,

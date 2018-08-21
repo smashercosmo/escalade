@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from 'emotion'
 import ProductList from './product-list'
 import Button from './button'
+import { borderColor } from '../styles'
 
 export default class CartStep extends React.Component{
 	render() {
@@ -31,8 +32,6 @@ const cartMessageStyles = css({
 
 const listStyles = css({
 	marginTop: 30,
-	marginBottom: 30,
 	padding: `20px 0`,
-	borderTop: `1px solid #333`,
-	borderBottom: `1px solid #333`,
+	borderTop: `1px solid ${borderColor}`,
 })

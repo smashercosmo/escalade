@@ -49,6 +49,7 @@ export default class ProductList extends React.Component{
 				<div className={priceStyles}>${price.toFixed(2)}</div>
 				{editable && (
 					<div
+						role='button'
 						className={xStyles}
 						onClick={() => removeFromCart(id)}
 					>×</div>
