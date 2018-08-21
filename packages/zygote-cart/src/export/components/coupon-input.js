@@ -64,7 +64,7 @@ const applyStyles = css({
 	textAlign: `center`,
 	padding: `8px 30px`,
 	maxWidth: `100%`,
-	marginLeft: 20,
+	marginLeft: 10,
 	border: `1px solid ${borderColor}`,
 	color: fontColor,
 })

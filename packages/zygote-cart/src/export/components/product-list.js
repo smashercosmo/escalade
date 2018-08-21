@@ -3,6 +3,7 @@ import { css } from 'emotion'
 import { Subscribe } from 'statable'
 import productsState from '../state/products'
 import Item from './product-list-item'
+import Totals from './totals'
 
 export default class ProductList extends React.Component{
 	render() {
@@ -22,6 +23,7 @@ export default class ProductList extends React.Component{
 										/>
 									))}
 								</ul>
+								<Totals />
 							</Fragment>
 						)}
 						{!products.length && (
