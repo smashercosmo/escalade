@@ -1,15 +1,12 @@
 import React, { Fragment } from 'react'
 import { css } from 'emotion'
 import { Subscribe } from 'statable'
+import SmallButton from './small-button'
 import productsState, {
 	removeFromCart,
 	increaseQuantity,
 	decreaseQuantity,
 } from '../state/products'
-import {
-	borderColor,
-	backgroundColor,
-} from '../styles'
 
 export default class ProductList extends React.Component{
 	render() {
@@ -44,23 +41,17 @@ export default class ProductList extends React.Component{
 											</div>
 											<div className={quantityStyles}>
 												{editable && (
-													<div
-														className={quantityButtonStyles}
-														role='button'
+													<SmallButton
 														onClick={() => decreaseQuantity(id)}
-													>
-														<span>-</span>
-													</div>
+														secondary
+													>-</SmallButton>
 												)}
 												<div className={quantityNumberStyles}>{quantity}</div>
 												{editable && (
-													<div
-														className={quantityButtonStyles}
-														role='button'
+													<SmallButton
 														onClick={() => increaseQuantity(id)}
-													>
-														<span>+</span>
-													</div>
+														secondary
+													>+</SmallButton>
 												)}
 											</div>
 											<div className={priceStyles}>${price.toFixed(2)}</div>
@@ -109,26 +100,6 @@ const quantityNumberStyles = css({
 	position: `relative`,
 })
 
-const quantityButtonStyles = css({
-	display: `inline-block`,
-	position: `relative`,
-	backgroundColor: borderColor,
-	color: backgroundColor,
-	width: 19,
-	height: 19,
-	borderRadius: `100%`,
-	textAlign: `center`,
-	fontWeight: `bold`,
-	fontSize: 22,
-	span:{
-		position: `absolute`,
-		marginTop: -2,
-		top: `50%`,
-		left: `50%`,
-		transform: `translate(-50%, -50%)`,
-	},
-})
-
 const xStyles = css({
 	position: `absolute`,
 	top: 21,
@@ -162,6 +133,15 @@ const productListStyles = css({
 	listStyleType: `none`,
 	margin: 0,
 	padding: 0,
+	'> li': {
+		margin: `10px 0`,
+		':first-of-type': {
+			marginTop: 0,
+		},
+		':last-of-type': {
+			marginBottom: 0,
+		},
+	},
 	':after': {
 		content: `""`,
 		display: `block`,
