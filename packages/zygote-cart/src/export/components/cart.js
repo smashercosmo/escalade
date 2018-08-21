@@ -10,13 +10,14 @@ import {
 import openState from '../state/open'
 import closeCart from '../utils/close-cart'
 import stageState from '../state/stage'
+import addedToCartState from '../state/added-to-cart'
 import CartStep from './cart-step'
 import addTotalModification from '../utils/add-total-modification'
 import calculateTotals from '../utils/calculate-totals'
+import AddedToCartMessage from './added-to-cart-message'
 
 export default class Cart extends React.Component {
 	componentDidMount(){
-		console.log(`componentDidMount`)
 		const { totalModifications } = this.props
 		if (totalModifications){
 			addTotalModification(totalModifications)
@@ -28,10 +29,11 @@ export default class Cart extends React.Component {
 			header,
 			cartHeader,
 			cartFooter,
+			addedToCartMsg,
 		} = this.props
 		return (
-			<Subscribe to={[openState, stageState]}>
-				{({ open }, { stage }) => (
+			<Subscribe to={[openState, stageState, addedToCartState]}>
+				{({ open }, { stage }, { addedToCart }) => (
 					<div className={containerStyles}>
 						<div
 							className={cx(bgStyles, open ? bgOpenStyles : null)}
@@ -54,6 +56,10 @@ export default class Cart extends React.Component {
 								<CartStep
 									cartHeader={cartHeader}
 									cartFooter={cartFooter}
+									addedToCart={addedToCart
+										? addedToCartMsg || <AddedToCartMessage />
+										: false
+									}
 								/>
 							)}
 						</div>

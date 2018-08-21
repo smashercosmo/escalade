@@ -15,6 +15,7 @@ export default class CartStep extends React.Component{
 		const {
 			cartHeader,
 			cartFooter,
+			addedToCart,
 		} = this.props
 		return (
 			<Fragment>
@@ -24,6 +25,9 @@ export default class CartStep extends React.Component{
 				<Subscribe to={productsState}>
 					{({ products }) => (
 						<Fragment>
+							{!!products.length && !!addedToCart && (
+								<div className={headerStyles}>{addedToCart}</div>
+							)}
 							<ProductList editable />
 							{!products.length && (
 								<div className={emptyMessageStyles}>Your cart is empty</div>
