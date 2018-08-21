@@ -11,8 +11,18 @@ import openState from '../state/open'
 import closeCart from '../utils/close-cart'
 import stageState from '../state/stage'
 import CartStep from './cart-step'
+import addTotalModification from '../utils/add-total-modification'
+import calculateTotals from '../utils/calculate-totals'
 
 export default class Cart extends React.Component {
+	componentDidMount(){
+		console.log(`componentDidMount`)
+		const { totalModifications } = this.props
+		if (totalModifications){
+			addTotalModification(totalModifications)
+		}
+		calculateTotals()
+	}
 	render() {
 		const {
 			header,

@@ -29,6 +29,18 @@ export default class HomePage extends React.Component {
 					})}>Add to Cart B</button>
 				</div>
 				<Cart
+					totalModifications={[
+						{
+							id: `shipping`,
+							description: `Shipping`,
+							displayValue: `FREE`,
+						},
+						{
+							id: `tax`,
+							description: `Tax`,
+							displayValue: `-`,
+						},
+					]}
 					header={<img className={logoStyles} src={logo} />}
 					//cartHeader={<div className={headerStyles}>With FREE shipping!</div>}
 					//cartFooter={<div>* Free shipping, except Alaska and Hawaii</div>}

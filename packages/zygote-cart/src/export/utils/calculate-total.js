@@ -6,7 +6,7 @@ export default function calculateTotal() {
 	modifications.forEach(mod => {
 		mod.calculatedValue = typeof mod.alteration === `function`
 			? mod.alteration()
-			: mod.alteration
+			: mod.alteration || 0
 		total += mod.calculatedValue
 	})
 	totalsState.setState({ total })

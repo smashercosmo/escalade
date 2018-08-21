@@ -1,4 +1,5 @@
 import totalsState from '../state/totals'
+import calculateTotal from './calculate-total'
 
 export default function addModification(newModification) {
 	/*
@@ -11,6 +12,7 @@ export default function addModification(newModification) {
 		}
 	}
 	*/
+	console.log(newModification)
 	if (Array.isArray(newModification)) {
 		totalsState.setState({
 			modifications: newModification,
@@ -35,5 +37,5 @@ export default function addModification(newModification) {
 		}
 		totalsState.setState({ modifications })
 	}
-	totalsState.calculateTotal()
+	calculateTotal()
 }
