@@ -10,28 +10,38 @@ import CouponInput from './coupon-input'
 
 export default class CartStep extends React.Component{
 	render() {
+		const { cartHeader } = this.props
 		return (
-			<Subscribe to={productsState}>
-				{({ products }) => (
-					<Fragment>
-						<ProductList editable />
-						{!products.length && (
-							<div className={emptyMessageStyles}>Your cart is empty</div>
-						)}
-						{!!products.length && (
-							<Fragment>
-								<CouponInput />
-								<Totals />
-								<Button>Place Order</Button>
-							</Fragment>
-						)}
-						<Button secondary onClick={closeCart}>Continue Shopping</Button>
-					</Fragment>
+			<Fragment>
+				{!!cartHeader && (
+					<div className={headerStyles}>{cartHeader}</div>
 				)}
-			</Subscribe>
+				<Subscribe to={productsState}>
+					{({ products }) => (
+						<Fragment>
+							<ProductList editable />
+							{!products.length && (
+								<div className={emptyMessageStyles}>Your cart is empty</div>
+							)}
+							{!!products.length && (
+								<Fragment>
+									<CouponInput />
+									<Totals />
+									<Button>Place Order</Button>
+								</Fragment>
+							)}
+							<Button secondary onClick={closeCart}>Continue Shopping</Button>
+						</Fragment>
+					)}
+				</Subscribe>
+			</Fragment>
 		)
 	}
 }
+
+const headerStyles = css({
+	marginBottom: 20,
+})
 
 const emptyMessageStyles = css({
 	textAlign: `center`,

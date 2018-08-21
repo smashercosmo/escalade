@@ -30,6 +30,7 @@ export default class HomePage extends React.Component {
 				</div>
 				<Cart
 					header={<img className={logoStyles} src={logo} />}
+					//cartHeader={<div className={headerStyles}>With FREE shipping!</div>}
 				/>
 			</div>
 		)
@@ -40,3 +41,7 @@ const logoStyles = css({
 	maxWidth: 150,
 	margin: `0 30px`,
 })
+
+// const headerStyles = css({
+// 	textAlign: `center`
+// })

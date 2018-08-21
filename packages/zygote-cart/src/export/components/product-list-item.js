@@ -1,11 +1,9 @@
 import React from 'react'
 import { css } from 'emotion'
 import SmallButton from './small-button'
-import {
-	removeFromCart,
-	increaseQuantity,
-	decreaseQuantity,
-} from '../state/products'
+import removeFromCart from '../utils/remove-from-cart'
+import increaseQuantity from '../utils/increase-quantity'
+import decreaseQuantity from '../utils/decrease-quantity'
 
 export default class ProductList extends React.Component{
 	render() {

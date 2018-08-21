@@ -7,17 +7,20 @@ import {
 	fontFamily,
 	fontColor,
 } from '../styles'
-import openState, { closeCart } from '../state/open'
+import openState from '../state/open'
+import closeCart from '../utils/close-cart'
+import stageState from '../state/stage'
 import CartStep from './cart-step'
 
 export default class Cart extends React.Component {
 	render() {
 		const {
 			header,
+			cartHeader,
 		} = this.props
 		return (
-			<Subscribe to={openState}>
-				{({ open }) => (
+			<Subscribe to={[openState, stageState]}>
+				{({ open }, { stage }) => (
 					<div className={containerStyles}>
 						<div
 							className={cx(bgStyles, open ? bgOpenStyles : null)}
@@ -36,7 +39,9 @@ export default class Cart extends React.Component {
 								<div className={headerStyles}>{header}</div>
 							)}
 
-							<CartStep />
+							{stage === `cart` && (
+								<CartStep cartHeader={cartHeader} />
+							)}
 						</div>
 					</div>
 				)}
