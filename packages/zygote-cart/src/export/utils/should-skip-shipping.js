@@ -1,4 +1,4 @@
-import { productsState } from './products'
+import productsState from '../state/products'
 
 export default function shouldSkipShipping() {
 	let skip = true

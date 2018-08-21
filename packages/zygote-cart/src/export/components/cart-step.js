@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react'
 import { css } from 'emotion'
 import { Subscribe } from 'statable'
-import { closeCart } from '../state/open'
+import closeCart from '../utils/close-cart'
 import ProductList from './product-list'
 import Button from './button'
 import productsState from '../state/products'
 import Totals from './totals'
 import CouponInput from './coupon-input'
+import nextStage from '../utils/next-stage'
 
 export default class CartStep extends React.Component{
 	render() {
@@ -27,7 +28,7 @@ export default class CartStep extends React.Component{
 								<Fragment>
 									<CouponInput />
 									<Totals />
-									<Button>Place Order</Button>
+									<Button onClick={nextStage}>Place Order</Button>
 								</Fragment>
 							)}
 							<Button secondary onClick={closeCart}>Continue Shopping</Button>
