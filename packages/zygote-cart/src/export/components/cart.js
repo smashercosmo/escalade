@@ -70,6 +70,7 @@ const containerStyles = css({
 	textRendering: `optimizeLegibility`,
 	'-webkit-font-smoothing': `antialiased`,
 	userSelect: `none`,
+	fontSize: 16,
 	'[role="button"]': {
 		cursor: `pointer`,
 	},
@@ -105,7 +106,7 @@ const cartStyles = css({
 	transform: `translateX(110%)`,
 	transition: `transform .3s`,
 	boxShadow: `-3px 0 4px rgba(0, 0, 0, 0.2)`,
-	padding: 25,
+	padding: 20,
 	paddingTop: 40,
 })
 const cartOpenStyles = css({

@@ -15,53 +15,55 @@ export default class ProductList extends React.Component{
 				{({ products }) => (
 					<Fragment>
 						{!!products.length && (
-							<ul className={productListStyles}>
-								{products.map(({
-									image,
-									title,
-									description,
-									quantity,
-									id,
-									price,
-								}, key) => (
-									<li
-										key={`cartProd${key}`}
-										className={productItemStyles}
-									>
-										<div className={imageStyles}>
-											<img src={image} />
-										</div>
-										<div className={titleStyles}>
-											{title}
-										</div>
-										<div className={descriptionStyles}>
-											{description}
-										</div>
-										<div className={quantityStyles}>
+							<Fragment>
+								<ul className={productListStyles}>
+									{products.map(({
+										image,
+										title,
+										description,
+										quantity,
+										id,
+										price,
+									}, key) => (
+										<li
+											key={`cartProd${key}`}
+											className={productItemStyles}
+										>
+											<div className={imageStyles}>
+												<img src={image} />
+											</div>
+											<div className={titleStyles}>
+												{title}
+											</div>
+											<div className={descriptionStyles}>
+												{description}
+											</div>
+											<div className={quantityStyles}>
+												{editable && (
+													<div
+														role='button'
+														onClick={() => decreaseQuantity(id)}
+													>-</div>
+												)}
+												<div>{quantity}</div>
+												{editable && (
+													<div
+														role='button'
+														onClick={() => increaseQuantity(id)}
+													>+</div>
+												)}
+											</div>
+											<div className={priceStyles}>${price.toFixed(2)}</div>
 											{editable && (
 												<div
-													role='button'
-													onClick={() => decreaseQuantity(id)}
-												>-</div>
+													className={xStyles}
+													onClick={() => removeFromCart(id)}
+												>×</div>
 											)}
-											<div>{quantity}</div>
-											{editable && (
-												<div
-													role='button'
-													onClick={() => increaseQuantity(id)}
-												>+</div>
-											)}
-										</div>
-										<div className={priceStyles}>${price.toFixed(2)}</div>
-										{editable && (
-											<div
-												className={xStyles}
-												onClick={() => removeFromCart(id)}
-											>×</div>
-										)}
-									</li>
-								))}
-							</ul>
+										</li>
+									))}
+								</ul>
+							</Fragment>
 						)}
 						{!products.length && (
 							<div>Your cart is empty</div>
@@ -102,6 +104,7 @@ const xStyles = css({
 
 const imageStyles = css({
 	width: `100%`,
+	maxWidth: 75,
 	textAlign: `center`,
 })
 
@@ -114,6 +117,8 @@ const titleStyles = css({
 const descriptionStyles = css({
 	width: `100%`,
 	marginBottom: 10,
+	marginTop: 10,
+	fontSize: `.75em`,
 })
 
 const productListStyles = css({

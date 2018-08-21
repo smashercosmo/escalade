@@ -1,6 +1,7 @@
 import React from 'react'
 import { css } from 'emotion'
 import ProductList from './product-list'
+import Button from './button'
 
 export default class CartStep extends React.Component{
 	render() {
@@ -15,6 +16,8 @@ export default class CartStep extends React.Component{
 				<div className={listStyles}>
 					<ProductList editable />
 				</div>
+				<Button>Place Order</Button>
+				<Button secondary>Continue Shopping</Button>
 			</div>
 		)
 	}
@@ -28,6 +31,7 @@ const cartMessageStyles = css({
 
 const listStyles = css({
 	marginTop: 30,
+	marginBottom: 30,
 	paddingTop: 30,
 	borderTop: `1px solid #333`,
 })

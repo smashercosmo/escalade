@@ -3,6 +3,7 @@ import { openCart } from './open'
 
 const productsState = new State({
 	products: [],
+	subtotal: 0,
 }, {
 
 	addToCart(newProduct){
