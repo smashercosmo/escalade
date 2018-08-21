@@ -1,4 +1,5 @@
 import { State } from 'statable'
+import productsState from './products'
 
 const totalsState = new State({
 	subtotal: 0,
@@ -40,12 +41,22 @@ const totalsState = new State({
 			}
 			this.setState({ modifications })
 		}
-		this.calculateTotal()
+		this.calculateTotals()
+	},
+
+	calculateSubtotal(){
+		const { products } = productsState.state
+		let subtotal = 0
+		products.forEach(({ quantity, price }) => {
+			subtotal += quantity * price
+		})
+		this.setState({ subtotal })
 	},
 
 	calculateTotal(){
 		const { subtotal, modifications } = this.state
 		let total = subtotal
+		console.log(total)
 		modifications.forEach(mod => {
 			mod.calculatedValue = typeof mod.alteration === `function`
 				? mod.alteration()
@@ -53,6 +64,11 @@ const totalsState = new State({
 			total += mod.calculatedValue
 		})
 		this.setState({ total })
+	},
+
+	calculateTotals(){
+		this.calculateSubtotal()
+		this.calculateTotal()
 	},
 })
 

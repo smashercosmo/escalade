@@ -2,7 +2,6 @@ import React from 'react'
 import { css } from 'emotion'
 import ProductList from './product-list'
 import Button from './button'
-import CouponInput from './coupon-input'
 
 export default class CartStep extends React.Component{
 	render() {
@@ -16,7 +15,6 @@ export default class CartStep extends React.Component{
 				)}
 				<div className={listStyles}>
 					<ProductList editable />
-					<CouponInput />
 				</div>
 				<Button>Place Order</Button>
 				<Button secondary>Continue Shopping</Button>

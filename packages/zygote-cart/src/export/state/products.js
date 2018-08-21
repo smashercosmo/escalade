@@ -1,9 +1,9 @@
 import { State } from 'statable'
 import { openCart } from './open'
+import { calculateTotals } from './totals'
 
 const productsState = new State({
 	products: [],
-	subtotal: 0,
 }, {
 
 	addToCart(newProduct){
@@ -29,6 +29,7 @@ const productsState = new State({
 			openCart()
 		}
 		this.setState({ products })
+		calculateTotals()
 	},
 
 	removeFromCart(id){
@@ -40,6 +41,7 @@ const productsState = new State({
 			}
 		}
 		this.setState({ products })
+		calculateTotals()
 	},
 
 	decreaseQuantity(id, n = 1) {
@@ -54,6 +56,7 @@ const productsState = new State({
 			}
 		}
 		this.setState({ products })
+		calculateTotals()
 	},
 
 	increaseQuantity(id, n = 1) {
@@ -65,6 +68,7 @@ const productsState = new State({
 			}
 		}
 		this.setState({ products })
+		calculateTotals()
 	},
 
 }, {
