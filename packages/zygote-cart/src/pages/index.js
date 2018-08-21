@@ -1,5 +1,7 @@
 import React from 'react'
+import { css } from 'emotion'
 import { Cart, openCart, addToCart } from '../export'
+import logo from '../img/logo.svg'
 
 export default class HomePage extends React.Component {
 	render() {
@@ -27,9 +29,14 @@ export default class HomePage extends React.Component {
 					})}>Add to Cart B</button>
 				</div>
 				<Cart
-					logo='BRAND LOGO'
+					header={<img className={logoStyles} src={logo} />}
 				/>
 			</div>
 		)
 	}
 }
+
+const logoStyles = css({
+	maxWidth: 150,
+	margin: `0 30px`,
+})

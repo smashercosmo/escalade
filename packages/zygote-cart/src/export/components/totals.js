@@ -40,6 +40,7 @@ const listStyles = css({
 	listStyleType: `none`,
 	margin: 0,
 	marginTop: 30,
+	marginBottom: 30,
 	padding: 0,
 	borderTop: `1px solid ${borderColor}`,
 	li: {

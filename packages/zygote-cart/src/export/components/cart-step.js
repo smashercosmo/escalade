@@ -1,37 +1,40 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { css } from 'emotion'
+import { Subscribe } from 'statable'
+import { closeCart } from '../state/open'
 import ProductList from './product-list'
 import Button from './button'
-import { borderColor } from '../styles'
+import productsState from '../state/products'
+import Totals from './totals'
+import CouponInput from './coupon-input'
 
 export default class CartStep extends React.Component{
 	render() {
-		const {
-			cartMessage,
-		} = this.props
 		return (
-			<div>
-				{cartMessage && (
-					<div className={cartMessageStyles}>{cartMessage}</div>
+			<Subscribe to={productsState}>
+				{({ products }) => (
+					<Fragment>
+						<ProductList editable />
+						{!products.length && (
+							<div className={emptyMessageStyles}>Your cart is empty</div>
+						)}
+						{!!products.length && (
+							<Fragment>
+								<CouponInput />
+								<Totals />
+								<Button>Place Order</Button>
+							</Fragment>
+						)}
+						<Button secondary onClick={closeCart}>Continue Shopping</Button>
+					</Fragment>
 				)}
-				<div className={listStyles}>
-					<ProductList editable />
-				</div>
-				<Button>Place Order</Button>
-				<Button secondary>Continue Shopping</Button>
-			</div>
+			</Subscribe>
 		)
 	}
 }
 
-
-const cartMessageStyles = css({
+const emptyMessageStyles = css({
 	textAlign: `center`,
-	fontStyle: `italic`,
-})
-
-const listStyles = css({
 	marginTop: 30,
-	padding: `20px 0`,
-	borderTop: `1px solid ${borderColor}`,
+	marginBottom: 30,
 })

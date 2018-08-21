@@ -3,8 +3,7 @@ import { css } from 'emotion'
 import { Subscribe } from 'statable'
 import productsState from '../state/products'
 import Item from './product-list-item'
-import Totals from './totals'
-import CouponInput from './coupon-input'
+import { borderColor } from '../styles'
 
 export default class ProductList extends React.Component{
 	render() {
@@ -14,22 +13,15 @@ export default class ProductList extends React.Component{
 				{({ products }) => (
 					<Fragment>
 						{!!products.length && (
-							<Fragment>
-								<ul className={productListStyles}>
-									{products.map((product, key) => (
-										<Item
-											editable={editable}
-											key={`cartProd${key}`}
-											{...product}
-										/>
-									))}
-								</ul>
-								<CouponInput />
-								<Totals />
-							</Fragment>
-						)}
-						{!products.length && (
-							<div>Your cart is empty</div>
+							<ul className={productListStyles}>
+								{products.map((product, key) => (
+									<Item
+										editable={editable}
+										key={`cartProd${key}`}
+										{...product}
+									/>
+								))}
+							</ul>
 						)}
 					</Fragment>
 				)}
@@ -42,6 +34,8 @@ const productListStyles = css({
 	listStyleType: `none`,
 	margin: 0,
 	padding: 0,
+	paddingTop: 20,
+	borderTop: `1px solid ${borderColor}`,
 	'> li': {
 		margin: `10px 0`,
 		':first-of-type': {

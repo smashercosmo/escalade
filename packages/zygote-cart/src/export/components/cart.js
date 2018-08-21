@@ -11,13 +11,9 @@ import openState, { closeCart } from '../state/open'
 import CartStep from './cart-step'
 
 export default class Cart extends React.Component {
-	static defaultProps = {
-		cartMessage: `You've added to your cart!`,
-	}
 	render() {
 		const {
-			logo,
-			cartMessage,
+			header,
 		} = this.props
 		return (
 			<Subscribe to={openState}>
@@ -36,11 +32,11 @@ export default class Cart extends React.Component {
 								onClick={closeCart}
 							>×</div>
 
-							{logo && (
-								<div className={logoStyles}>{logo}</div>
+							{header && (
+								<div className={headerStyles}>{header}</div>
 							)}
 
-							<CartStep cartMessage={cartMessage} />
+							<CartStep />
 						</div>
 					</div>
 				)}
@@ -49,7 +45,7 @@ export default class Cart extends React.Component {
 	}
 }
 
-const logoStyles = css({
+const headerStyles = css({
 	textAlign: `center`,
 	marginBottom: 20,
 })

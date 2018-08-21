@@ -36,7 +36,7 @@ const buttonStyles = css({
 	fontSize: 22,
 	span: {
 		position: `absolute`,
-		marginTop: -2,
+		marginTop: -1,
 		top: `50%`,
 		left: `50%`,
 		transform: `translate(-50%, -50%)`,
