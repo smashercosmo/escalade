@@ -66,6 +66,7 @@ const priceStyles = css({
 })
 
 const quantityStyles = css({
+	userSelect: `none`,
 	position: `absolute`,
 	left: 85,
 	top: 23,

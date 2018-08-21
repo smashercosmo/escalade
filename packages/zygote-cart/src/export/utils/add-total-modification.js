@@ -12,7 +12,6 @@ export default function addModification(newModification) {
 		}
 	}
 	*/
-	console.log(newModification)
 	if (Array.isArray(newModification)) {
 		totalsState.setState({
 			modifications: newModification,
