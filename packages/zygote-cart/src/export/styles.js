@@ -1,6 +1,6 @@
 const defaultStyles = {
 	fontColor: `#333`,
-	borderColor: `#999`,
+	borderColor: `#C0BFBF`,
 	primaryColor: `#00cfff`,
 	backgroundColor: `#fff`,
 	overlayColor: `rgba(0,207,255,0.7)`,

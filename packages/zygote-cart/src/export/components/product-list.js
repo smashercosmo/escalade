@@ -6,6 +6,10 @@ import productsState, {
 	increaseQuantity,
 	decreaseQuantity,
 } from '../state/products'
+import {
+	borderColor,
+	backgroundColor,
+} from '../styles'
 
 export default class ProductList extends React.Component{
 	render() {
@@ -41,16 +45,22 @@ export default class ProductList extends React.Component{
 											<div className={quantityStyles}>
 												{editable && (
 													<div
+														className={quantityButtonStyles}
 														role='button'
 														onClick={() => decreaseQuantity(id)}
-													>-</div>
+													>
+														<span>-</span>
+													</div>
 												)}
-												<div>{quantity}</div>
+												<div className={quantityNumberStyles}>{quantity}</div>
 												{editable && (
 													<div
+														className={quantityButtonStyles}
 														role='button'
 														onClick={() => increaseQuantity(id)}
-													>+</div>
+													>
+														<span>+</span>
+													</div>
 												)}
 											</div>
 											<div className={priceStyles}>${price.toFixed(2)}</div>
@@ -78,23 +88,50 @@ export default class ProductList extends React.Component{
 const priceStyles = css({
 	width: `50%`,
 	textAlign: `right`,
+	position: `absolute`,
+	top: 23,
+	right: 35,
 })
 
 const quantityStyles = css({
-	width: `50%`,
-	div: {
-		display: `inline-block`,
-		':nth-of-type(2)': {
-			padding: `0 5px`,
-			textAlign: `center`,
-			minWidth: 40,
-		},
+	position: `absolute`,
+	left: 85,
+	top: 23,
+	zIndex: 2,
+})
+
+const quantityNumberStyles = css({
+	padding: `0 5px`,
+	textAlign: `center`,
+	minWidth: 30,
+	display: `inline-block`,
+	top: -3,
+	position: `relative`,
+})
+
+const quantityButtonStyles = css({
+	display: `inline-block`,
+	position: `relative`,
+	backgroundColor: borderColor,
+	color: backgroundColor,
+	width: 19,
+	height: 19,
+	borderRadius: `100%`,
+	textAlign: `center`,
+	fontWeight: `bold`,
+	fontSize: 22,
+	span:{
+		position: `absolute`,
+		marginTop: -2,
+		top: `50%`,
+		left: `50%`,
+		transform: `translate(-50%, -50%)`,
 	},
 })
 
 const xStyles = css({
 	position: `absolute`,
-	top: 0,
+	top: 21,
 	right: 0,
 	fontSize: `2em`,
 	lineHeight: `16px`,
@@ -104,12 +141,12 @@ const xStyles = css({
 
 const imageStyles = css({
 	width: `100%`,
-	maxWidth: 75,
+	maxWidth: 65,
 	textAlign: `center`,
 })
 
 const titleStyles = css({
-	marginTop: 10,
+	marginTop: 5,
 	fontWeight: `bold`,
 	width: `100%`,
 })
@@ -117,7 +154,7 @@ const titleStyles = css({
 const descriptionStyles = css({
 	width: `100%`,
 	marginBottom: 10,
-	marginTop: 10,
+	marginTop: 5,
 	fontSize: `.75em`,
 })
 

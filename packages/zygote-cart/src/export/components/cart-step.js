@@ -32,6 +32,7 @@ const cartMessageStyles = css({
 const listStyles = css({
 	marginTop: 30,
 	marginBottom: 30,
-	paddingTop: 30,
+	padding: `20px 0`,
 	borderTop: `1px solid #333`,
+	borderBottom: `1px solid #333`,
 })
