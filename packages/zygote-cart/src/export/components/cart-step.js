@@ -8,6 +8,7 @@ import productsState from '../state/products'
 import Totals from './totals'
 import CouponInput from './coupon-input'
 import nextStage from '../utils/next-stage'
+import CardList from './card-list'
 
 export default class CartStep extends React.Component{
 	render() {
@@ -28,6 +29,7 @@ export default class CartStep extends React.Component{
 								<Fragment>
 									<CouponInput />
 									<Totals />
+									<CardList />
 									<Button onClick={nextStage}>Place Order</Button>
 								</Fragment>
 							)}
