@@ -17,6 +17,7 @@ export default class Cart extends React.Component {
 		const {
 			header,
 			cartHeader,
+			cartFooter,
 		} = this.props
 		return (
 			<Subscribe to={[openState, stageState]}>
@@ -40,7 +41,10 @@ export default class Cart extends React.Component {
 							)}
 
 							{stage === `cart` && (
-								<CartStep cartHeader={cartHeader} />
+								<CartStep
+									cartHeader={cartHeader}
+									cartFooter={cartFooter}
+								/>
 							)}
 						</div>
 					</div>

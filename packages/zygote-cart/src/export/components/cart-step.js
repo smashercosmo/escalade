@@ -12,7 +12,10 @@ import CardList from './card-list'
 
 export default class CartStep extends React.Component{
 	render() {
-		const { cartHeader } = this.props
+		const {
+			cartHeader,
+			cartFooter,
+		} = this.props
 		return (
 			<Fragment>
 				{!!cartHeader && (
@@ -37,6 +40,9 @@ export default class CartStep extends React.Component{
 						</Fragment>
 					)}
 				</Subscribe>
+				{!!cartFooter && (
+					<div className={footerStyles}>{cartFooter}</div>
+				)}
 			</Fragment>
 		)
 	}
@@ -44,6 +50,10 @@ export default class CartStep extends React.Component{
 
 const headerStyles = css({
 	marginBottom: 20,
+})
+
+const footerStyles = css({
+	marginTop: 20,
 })
 
 const emptyMessageStyles = css({

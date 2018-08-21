@@ -31,6 +31,7 @@ export default class HomePage extends React.Component {
 				<Cart
 					header={<img className={logoStyles} src={logo} />}
 					//cartHeader={<div className={headerStyles}>With FREE shipping!</div>}
+					//cartFooter={<div>* Free shipping, except Alaska and Hawaii</div>}
 				/>
 			</div>
 		)
