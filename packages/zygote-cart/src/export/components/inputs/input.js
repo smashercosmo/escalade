@@ -149,14 +149,13 @@ const errorMsgStyles = css({
 
 const labelStyles = css({
 	position: `absolute`,
-	top: -20,
+	top: -18,
 	left: 0,
-	fontSize: `.8em`,
+	fontSize: `.85em`,
 	display: `block`,
 	opacity: .75,
 	transition: `transform .2s`,
-	transform: `translate(7px, 32px)`,
-	marginBottom: 5,
+	transform: `translate(7px, 30px)`,
 })
 
 const movedLabelStyles = css({

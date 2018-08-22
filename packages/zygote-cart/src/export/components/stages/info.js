@@ -8,8 +8,11 @@ import Address2Input from '../inputs/address-2'
 import CompanyName from '../inputs/company-name'
 import City from '../inputs/city'
 import State from '../inputs/state'
+import Zip from '../inputs/zip'
 import StagesHeader from '../stages-header'
 import Header from '../header'
+import nextStage from '../../utils/next-stage'
+import Button from '../button'
 
 export default class InfoStage extends React.Component{
 	render() {
@@ -40,6 +43,10 @@ export default class InfoStage extends React.Component{
 						<div>
 							<State autoComplete='shipping region' />
 						</div>
+					</div>
+					<Zip autoComplete='shipping postal-code' />
+					<div className={buttonContainerStyles}>
+						<Button onClick={nextStage}>Next Step</Button>
 					</div>
 				</div>
 			</form>
@@ -82,4 +89,8 @@ const cityStateStyles = css({
 			},
 		},
 	},
+})
+
+const buttonContainerStyles = css({
+	marginTop: 30,
 })
