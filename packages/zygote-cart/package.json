@@ -35,7 +35,10 @@
     ]
   },
   "dependencies": {
-    "babel-runtime": "^6.26.0"
+    "babel-runtime": "^6.26.0",
+    "is-email": "^1.0.0",
+    "is-phone": "^2.0.0",
+    "react-input-mask": "^2.0.3"
   },
   "main": "dist/index.js",
   "devDependencies": {

@@ -7969,6 +7969,10 @@ is-dotfile@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/is-dotfile/-/is-dotfile-1.0.3.tgz#a6a2f32ffd2dfb04f5ca25ecd0f6b83cf798a1e1"
 
+is-email@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/is-email/-/is-email-1.0.0.tgz#6e02d4145dd6246fa05eea16bfe0b2b843ac2802"
+
 is-empty@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/is-empty/-/is-empty-1.2.0.tgz#de9bb5b278738a05a0b09a57e1fb4d4a341a9f6b"
@@ -8125,6 +8129,12 @@ is-path-inside@^1.0.0:
   resolved "https://registry.yarnpkg.com/is-path-inside/-/is-path-inside-1.0.1.tgz#8ef5b7de50437a3fdca6b4e865ef7aa55cb48036"
   dependencies:
     path-is-inside "^1.0.1"
+
+is-phone@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/is-phone/-/is-phone-2.0.0.tgz#c9f80d61a48197f9a19db0e4f08cdc22be0ad2ea"
+  dependencies:
+    phone-regex "^2.0.0"
 
 is-plain-obj@^1.0.0, is-plain-obj@^1.1.0:
   version "1.1.0"
@@ -11323,6 +11333,10 @@ phantomjs-prebuilt@^2.1.10:
     request-progress "^2.0.1"
     which "^1.2.10"
 
+phone-regex@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/phone-regex/-/phone-regex-2.1.0.tgz#255f9f8518f0196094ce21ba1dfe732277d20c0d"
+
 pify@^2.0.0, pify@^2.2.0, pify@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
@@ -12969,6 +12983,13 @@ react-hot-loader@^4.0.0:
 react-immutable-proptypes@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/react-immutable-proptypes/-/react-immutable-proptypes-2.1.0.tgz#023d6f39bb15c97c071e9e60d00d136eac5fa0b4"
+
+react-input-mask@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/react-input-mask/-/react-input-mask-2.0.3.tgz#bbc84c14d745dc49134ba47a4c8e97e7470ceb1e"
+  dependencies:
+    invariant "^2.2.4"
+    warning "^3.0.0"
 
 react-is@16.3.1:
   version "16.3.1"

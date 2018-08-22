@@ -11,12 +11,20 @@ import openState from '../state/open'
 import closeCart from '../utils/close-cart'
 import stageState from '../state/stage'
 import addedToCartState from '../state/added-to-cart'
-import CartStep from './cart-step'
+import settingsState from '../state/settings'
+import CartStage from './stages/cart'
+import InfoStage from './stages/info'
+import PaymentStage from './stages/payment'
+import SuccessStage from './stages/success'
 import addTotalModification from '../utils/add-total-modification'
 import calculateTotals from '../utils/calculate-totals'
 import AddedToCartMessage from './added-to-cart-message'
 
 export default class Cart extends React.Component {
+	constructor(props){
+		super(props)
+		settingsState.setState(props)
+	}
 	componentDidMount(){
 		const { totalModifications } = this.props
 		if (totalModifications){
@@ -53,7 +61,7 @@ export default class Cart extends React.Component {
 							)}
 
 							{stage === `cart` && (
-								<CartStep
+								<CartStage
 									cartHeader={cartHeader}
 									cartFooter={cartFooter}
 									addedToCart={addedToCart
@@ -61,6 +69,15 @@ export default class Cart extends React.Component {
 										: false
 									}
 								/>
+							)}
+							{stage === `info` && (
+								<InfoStage />
+							)}
+							{stage === `payment` && (
+								<PaymentStage />
+							)}
+							{stage === `success` && (
+								<SuccessStage />
 							)}
 						</div>
 					</div>
@@ -97,6 +114,21 @@ const containerStyles = css({
 	},
 	'&, *, *:before, *:after': {
 		boxSizing: `border-box`,
+	},
+	'label, input': {
+		width: `100%`,
+		display: `block`,
+	},
+	input: {
+		background: `#F8F8F8`,
+		border: `1px solid #EFF0F0`,
+		borderRadius: 4,
+		padding: 10,
+		fontSize: `.9em`,
+		':focus': {
+			outline: `none`,
+			border: `1px solid #666`,
+		},
 	},
 })
 

@@ -1,16 +1,16 @@
 import React, { Fragment } from 'react'
 import { css } from 'emotion'
 import { Subscribe } from 'statable'
-import closeCart from '../utils/close-cart'
-import ProductList from './product-list'
-import Button from './button'
-import productsState from '../state/products'
-import Totals from './totals'
-import CouponInput from './coupon-input'
-import nextStage from '../utils/next-stage'
-import CardList from './card-list'
+import closeCart from '../../utils/close-cart'
+import ProductList from '../product-list'
+import Button from '../button'
+import productsState from '../../state/products'
+import Totals from '../totals'
+import CouponInput from '../inputs/coupon'
+import nextStage from '../../utils/next-stage'
+import CardList from '../card-list'
 
-export default class CartStep extends React.Component{
+export default class CartStage extends React.Component{
 	render() {
 		const {
 			cartHeader,

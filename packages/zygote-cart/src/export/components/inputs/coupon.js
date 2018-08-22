@@ -1,11 +1,11 @@
 import React from 'react'
 import { css } from 'emotion'
-import SmallButton from './small-button'
+import SmallButton from '../small-button'
 import Input from './input'
 import {
 	borderColor,
 	fontColor,
-} from '../styles'
+} from '../../styles'
 
 export default class CouponInput extends React.Component {
 	constructor(props){

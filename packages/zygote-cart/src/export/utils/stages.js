@@ -1,9 +1,8 @@
 const stages = [
 	`cart`,
-	`billing`,
-	`shipping`,
-	`verification`,
-	`confirmation`,
+	`info`,
+	`payment`,
+	`complete`,
 ]
 
 export default stages
