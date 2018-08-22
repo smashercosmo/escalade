@@ -1,10 +1,10 @@
 import React from 'react'
 import Input from './input'
 
-export default class NameInput extends React.Component {
+export default class CityInput extends React.Component {
 	static defaultProps = {
-		label: `Address`,
-		autoComplete: `address-line1`,
+		label: `City`,
+		autoComplete: `locality`,
 		required: true,
 	}
 	render() {

@@ -1,5 +1,4 @@
 import React from 'react'
-import InputMask from 'react-input-mask'
 import { css, cx } from 'emotion'
 
 export default class Input extends React.Component{
@@ -52,15 +51,16 @@ export default class Input extends React.Component{
 		} = this.state
 		const {
 			label,
-			mask,
 			type,
 			autoComplete,
+			children,
+			inputRef,
 		} = this.props
 		return (
 			<label className={cx(
 				containerStyles,
-				focus ? focusStyles : null,
 				error ? errorStyles : null,
+				focus ? focusStyles : null,
 			)}>
 				<span
 					className={cx(
@@ -70,37 +70,19 @@ export default class Input extends React.Component{
 				>
 					{label}
 				</span>
-				{mask && (
-					<InputMask
-						mask={mask}
-						onChange={this.handleChange}
-						onFocus={this.handleFocus}
-						onBlur={this.handleBlur}
-						value={value}
-					>
-						{(inputProps) => (
-							<input
-								type={type || `text`}
-								autoComplete={autoComplete}
-								ref={this.props.inputRef}
-								className={inputStyles}
-								{...inputProps}
-							/>
-						)}
-					</InputMask>
-				)}
-				{!mask && (
-					<input
-						type={type || `text`}
-						autoComplete={autoComplete}
-						ref={this.props.inputRef}
-						value={value}
-						onChange={this.handleChange}
-						onFocus={this.handleFocus}
-						onBlur={this.handleBlur}
-						className={inputStyles}
-					/>
-				)}
+				<select
+					type={type || `text`}
+					autoComplete={autoComplete}
+					ref={inputRef}
+					value={value}
+					onChange={this.handleChange}
+					onFocus={this.handleFocus}
+					onBlur={this.handleBlur}
+					className={selectStyles}
+				>
+					<option disabled value='' />
+					{children}
+				</select>
 				{error && (
 					<span className={errorMsgStyles}>{error}</span>
 				)}
@@ -119,24 +101,25 @@ const containerStyles = css({
 	borderRadius: 4,
 })
 
-const errorStyles = css({
-	color: `#f00`,
-	border: `1px solid #f00`,
+const selectStyles = css({
+	background: `transparent`,
+	height: 39,
+	position: `relative`,
+	zIndex: 2,
+	display: `block`,
+	width: `100%`,
+	fontSize: `.9em`,
+	border: 0,
+	outline: `none`,
 })
 
 const focusStyles = css({
 	border: `1px solid #666`,
 })
 
-const inputStyles = css({
-	width: `100%`,
-	display: `block`,
-	background: `transparent`,
-	border: 0,
-	borderRadius: 4,
-	fontSize: `.9em`,
-	padding: 10,
-	outline: `none`,
+const errorStyles = css({
+	color: `#f00`,
+	border: `1px solid #f00`,
 })
 
 const errorMsgStyles = css({

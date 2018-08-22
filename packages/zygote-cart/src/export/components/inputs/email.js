@@ -6,6 +6,7 @@ export default class EmailInput extends React.Component {
 	static defaultProps = {
 		label: `Email`,
 		required: true,
+		autoComplete: `email`,
 	}
 	validate(val){
 		if(!isEmail(val)){
@@ -16,11 +17,12 @@ export default class EmailInput extends React.Component {
 		const {
 			label,
 			required,
+			autoComplete,
 		} = this.props
 		return (
 			<Input
 				type='email'
-				autoComplete='email'
+				autoComplete={autoComplete}
 				label={label}
 				required={required}
 				validators={[this.validate]}

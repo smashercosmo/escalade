@@ -4,8 +4,10 @@ import Input from './input'
 
 export default class PhoneInput extends React.Component {
 	static defaultProps = {
+		autoComplete: `tel`,
 		label: `Phone`,
 		required: true,
+		mask: `(999) 999-9999`,
 	}
 	validate(val){
 		if (!isPhone(val)){
@@ -14,16 +16,18 @@ export default class PhoneInput extends React.Component {
 	}
 	render() {
 		const {
+			autoComplete,
 			required,
 			label,
+			mask,
 		} = this.props
 		return (
 			<Input
 				type='tel'
-				autoComplete='tel'
+				autoComplete={autoComplete}
 				label={label}
 				required={required}
-				mask='(999) 999-9999'
+				mask={mask}
 				validators={[this.validate]}
 			/>
 		)

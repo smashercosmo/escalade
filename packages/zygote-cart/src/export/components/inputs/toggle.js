@@ -14,8 +14,9 @@ export default class Toggle extends React.Component {
 
 const msgStyles = css({
 	position: `relative`,
-	marginLeft: 7,
+	marginLeft: 5,
 	top: -4,
+	fontSize: `.85em`,
 })
 
 const buttonStyles = css({

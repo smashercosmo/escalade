@@ -8,6 +8,10 @@ import {
 } from '../../styles'
 
 export default class CompanyNameInput extends React.Component {
+	static defaultProps = {
+		toggleText: `Apply a Coupon`,
+		label: `Coupon Code`,
+	}
 	constructor(props) {
 		super(props)
 		this.state = { open: false }
@@ -21,10 +25,16 @@ export default class CompanyNameInput extends React.Component {
 	}
 	render() {
 		const { open } = this.state
+		const {
+			toggleText,
+			label,
+		} = this.props
 		return (
 			<Fragment>
 				<div style={{ display: open ? `none` : `block` }}>
-					<Toggle onClick={this.open}>Apply a Coupon</Toggle>
+					<Toggle onClick={this.open}>
+						{toggleText}
+					</Toggle>
 				</div>
 				<div
 					style={{ display: open ? `block` : `none` }}
@@ -33,7 +43,7 @@ export default class CompanyNameInput extends React.Component {
 					<div>
 						<Input
 							inputRef={el => this.input = el}
-							label='Coupon Code'
+							label={label}
 						/>
 					</div>
 					<div role='button' className={applyStyles}>Apply</div>

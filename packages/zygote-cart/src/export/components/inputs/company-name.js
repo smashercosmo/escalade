@@ -3,6 +3,12 @@ import Input from './input'
 import Toggle from './toggle'
 
 export default class CompanyNameInput extends React.Component {
+	static defaultProps = {
+		toggleText: `Add an Company Name`,
+		label: `Company Name`,
+		autoComplete: `org`,
+		required: false,
+	}
 	constructor(props){
 		super(props)
 		this.state = { open: false }
@@ -16,16 +22,25 @@ export default class CompanyNameInput extends React.Component {
 	}
 	render() {
 		const { open } = this.state
+		const {
+			label,
+			autoComplete,
+			toggleText,
+			required,
+		} = this.props
 		return (
 			<Fragment>
 				<div style={{ display: open ? `none` : `block` }}>
-					<Toggle onClick={this.open}>Add an Company Name</Toggle>
+					<Toggle onClick={this.open}>
+						{toggleText}
+					</Toggle>
 				</div>
 				<div style={{ display: open ? `block` : `none` }}>
 					<Input
 						inputRef={el => this.input = el}
-						label='Company Name'
-						autoComplete='shipping org'
+						label={label}
+						autoComplete={autoComplete}
+						required={required}
 					/>
 				</div>
 			</Fragment>

@@ -3,6 +3,12 @@ import Input from './input'
 import Toggle from './toggle'
 
 export default class Address2Input extends React.Component {
+	static defaultProps = {
+		toggleText: `Add an Apt/Suite #`,
+		label: `Apt/Suite #`,
+		autoComplete: `address-line2`,
+		required: false,
+	}
 	constructor(props){
 		super(props)
 		this.state = { open: false }
@@ -16,16 +22,25 @@ export default class Address2Input extends React.Component {
 	}
 	render() {
 		const { open } = this.state
+		const {
+			toggleText,
+			label,
+			autoComplete,
+			required,
+		} = this.props
 		return (
 			<Fragment>
 				<div style={{ display: open ? `none` : `block` }}>
-					<Toggle onClick={this.open}>Add an Apt/Suite #</Toggle>
+					<Toggle onClick={this.open}>
+						{toggleText}
+					</Toggle>
 				</div>
 				<div style={{ display: open ? `block` : `none` }}>
 					<Input
 						inputRef={el => this.input = el}
-						label='Apt/Suite #'
-						autoComplete='shipping address-line2'
+						label={label}
+						autoComplete={autoComplete}
+						required={required}
 					/>
 				</div>
 			</Fragment>

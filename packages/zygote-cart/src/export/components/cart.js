@@ -115,21 +115,6 @@ const containerStyles = css({
 	'&, *, *:before, *:after': {
 		boxSizing: `border-box`,
 	},
-	'label, input': {
-		width: `100%`,
-		display: `block`,
-	},
-	input: {
-		background: `#F8F8F8`,
-		border: `1px solid #EFF0F0`,
-		borderRadius: 4,
-		padding: 10,
-		fontSize: `.9em`,
-		':focus': {
-			outline: `none`,
-			border: `1px solid #666`,
-		},
-	},
 })
 
 const bgStyles = css({
