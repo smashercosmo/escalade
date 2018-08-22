@@ -14,6 +14,9 @@ export default class Input extends React.Component{
 		this.handleBlur = this.handleBlur.bind(this)
 	}
 	handleChange(e){
+		if(this.props.handleChange){
+			this.props.handleChange(e)
+		}
 		this.setState({ value: e.target.value })
 	}
 	handleFocus() {
@@ -78,6 +81,7 @@ export default class Input extends React.Component{
 							<input
 								type={type || `text`}
 								autoComplete={autoComplete}
+								ref={this.props.inputRef}
 								{...inputProps}
 							/>
 						)}
@@ -87,6 +91,7 @@ export default class Input extends React.Component{
 					<input
 						type={type || `text`}
 						autoComplete={autoComplete}
+						ref={this.props.inputRef}
 						value={value}
 						onChange={this.handleChange}
 						onFocus={this.handleFocus}

@@ -5096,9 +5096,9 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-escalade-sports@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-escalade-sports/-/eslint-config-escalade-sports-1.0.1.tgz#ee4a88e24498ddcaf89b47a44ca7965b69c36867"
+eslint-config-escalade-sports@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/eslint-config-escalade-sports/-/eslint-config-escalade-sports-1.0.2.tgz#b71b202acae2d7c5be9c9fe1eef8934e0e43ac7e"
   dependencies:
     babel-eslint "^8.2.6"
     eslint-plugin-jest "^21.18.0"

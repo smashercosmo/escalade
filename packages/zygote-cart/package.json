@@ -57,7 +57,7 @@
     "emotion": "^9.2.6",
     "emotion-server": "^9.2.6",
     "eslint": "^5.2.0",
-    "eslint-config-escalade-sports": "^1.0.1",
+    "eslint-config-escalade-sports": "^1.0.2",
     "fs-extra": "^7.0.0",
     "gatsby": "^1.9.247",
     "gatsby-image": "^1.0.51",

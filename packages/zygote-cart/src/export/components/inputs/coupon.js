@@ -1,59 +1,53 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { css } from 'emotion'
-import SmallButton from '../small-button'
 import Input from './input'
+import Toggle from './toggle'
 import {
 	borderColor,
 	fontColor,
 } from '../../styles'
 
-export default class CouponInput extends React.Component {
-	constructor(props){
+export default class CompanyNameInput extends React.Component {
+	constructor(props) {
 		super(props)
-		this.state = {
-			open: false,
-		}
+		this.state = { open: false }
 		this.open = this.open.bind(this)
 	}
-	open(){
+	open() {
 		this.setState({ open: true })
+		setTimeout(() => {
+			this.input.focus()
+		}, 1)
 	}
 	render() {
 		const { open } = this.state
 		return (
-			<div
-				className={containerStyles}
-				onClick={this.open}
-			>
-				{!open && (
-					<div className={buttonStyles}>
-						<SmallButton>+</SmallButton> <span className={applyMsg}>Apply a Coupon</span>
-					</div>
-				)}
-				{open && (
+			<Fragment>
+				<div style={{ display: open ? `none` : `block` }}>
+					<Toggle onClick={this.open}>Apply a Coupon</Toggle>
+				</div>
+				<div
+					style={{ display: open ? `block` : `none` }}
+					className={gridStyles}
+				>
 					<div>
-						<Input label='Coupon Code' />
-						<div role='button' className={applyStyles}>Apply</div>
+						<Input
+							inputRef={el => this.input = el}
+							label='Coupon Code'
+						/>
 					</div>
-				)}
-			</div>
+					<div role='button' className={applyStyles}>Apply</div>
+				</div>
+			</Fragment>
 		)
 	}
 }
 
-const containerStyles = css({
-	marginTop: 5,
-})
-
-const applyMsg = css({
-	position: `relative`,
-	marginLeft: 7,
-	top: -4,
-})
-
-const buttonStyles = css({
-	marginTop: 35,
-	cursor: `pointer`,
+const gridStyles = css({
+	display: `flex`,
+	'> div': {
+		display: `inline-block`,
+	},
 })
 
 const applyStyles = css({
