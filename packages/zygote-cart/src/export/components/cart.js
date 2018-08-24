@@ -19,6 +19,7 @@ import SuccessStage from './stages/success'
 import addTotalModification from '../utils/add-total-modification'
 import calculateTotals from '../utils/calculate-totals'
 import AddedToCartMessage from './added-to-cart-message'
+import Processing from './processing'
 
 export default class Cart extends React.Component {
 	constructor(props){
@@ -41,7 +42,7 @@ export default class Cart extends React.Component {
 		} = this.props
 		return (
 			<Subscribe to={[openState, stageState, addedToCartState]}>
-				{({ open }, { stage }, { addedToCart }) => (
+				{({ open }, { stage, processing }, { addedToCart }) => (
 					<div className={containerStyles}>
 						<div
 							className={cx(bgStyles, open ? bgOpenStyles : null)}
@@ -60,7 +61,10 @@ export default class Cart extends React.Component {
 								<div className={headerStyles}>{header}</div>
 							)}
 
-							{stage === `cart` && (
+							<div className={cx(
+								stageStyles,
+								stage === `cart` && !processing && activeStageStyles,
+							)}>
 								<CartStage
 									cartHeader={cartHeader}
 									cartFooter={cartFooter}
@@ -69,25 +73,28 @@ export default class Cart extends React.Component {
 										: false
 									}
 								/>
-							)}
+							</div>
 							<div className={cx(
 								stageStyles,
-								stage === `info` && activeStageStyles,
+								stage === `info` && !processing && activeStageStyles,
 							)}>
 								<InfoStage />
 							</div>
 							<div className={cx(
 								stageStyles,
-								stage === `payment` && activeStageStyles,
+								stage === `payment` && !processing && activeStageStyles,
 							)}>
 								<PaymentStage />
 							</div>
 							<div className={cx(
 								stageStyles,
-								stage === `success` && activeStageStyles,
+								stage === `success` && !processing && activeStageStyles,
 							)}>
 								<SuccessStage />
 							</div>
+							{!!processing && (
+								<Processing>{processing}</Processing>
+							)}
 						</div>
 					</div>
 				)}

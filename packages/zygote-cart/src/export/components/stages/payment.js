@@ -4,6 +4,8 @@ import StagesHeader from '../stages-header'
 import Header from '../header'
 import CardList from '../card-list'
 import StripePayment from '../stripe'
+import Button from '../button'
+import nextStage from '../../utils/next-stage'
 
 export default class PaymentStage extends React.Component{
 	render() {
@@ -20,6 +22,9 @@ export default class PaymentStage extends React.Component{
 						</div>
 					</div>
 					<StripePayment />
+				</div>
+				<div className={buttonContainerStyles}>
+					<Button onClick={nextStage}>Place Order</Button>
 				</div>
 			</form>
 		)
@@ -44,4 +49,8 @@ const headerRowStyles = css({
 			},
 		},
 	},
+})
+
+const buttonContainerStyles = css({
+	marginTop: 30,
 })

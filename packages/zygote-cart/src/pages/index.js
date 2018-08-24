@@ -24,28 +24,33 @@ export default class HomePage extends React.Component {
 						id: `PRODUCT125`,
 						title: `Raptor Table Tennis Racket`,
 						image: `https://images.salsify.com/image/upload/s--7evRfexQ--/w_75,h_75,c_pad/qdppgggttnkespgpupdz.jpg`,
-						description: `The STIGA Raptor is a perfect blend of cutting-edge technologies and advanced materials. The Raptor will allow you to experience the extreme power and...`,
+						description: `A short description.`,
 						price: 109.99,
 					})}>Add to Cart B</button>
 				</div>
+
+
 				<Cart
-					totalModifications={[
-						{
-							id: `shipping`,
-							description: `Shipping`,
-							displayValue: `FREE`,
-						},
-						{
-							id: `tax`,
-							description: `Tax`,
-							displayValue: `-`,
-						},
-					]}
-					header={<img className={logoStyles} src={logo} />}
 					stripeApiKey='pk_test_0EMVTB6nEzmrjGA0Fc0kyVOR'
-					//cartHeader={<div className={headerStyles}>With FREE shipping!</div>}
-					//cartFooter={<div>* Free shipping, except Alaska and Hawaii</div>}
+					orderEndpoint='/.netlify/functions/place-order'
+					header={<img className={logoStyles} src={logo} />}
+					// totalModifications={[
+					// 	{
+					// 		id: `shipping`,
+					// 		description: `Shipping`,
+					// 		displayValue: `FREE`,
+					// 	},
+					// 	{
+					// 		id: `tax`,
+					// 		description: `Tax`,
+					// 		displayValue: `-`,
+					// 	},
+					// ]}
+					// cartHeader={<div className={headerStyles}>With FREE shipping!</div>}
+					// cartFooter={<div>* Free shipping, except Alaska and Hawaii</div>}
 				/>
+
+
 			</div>
 		)
 	}
