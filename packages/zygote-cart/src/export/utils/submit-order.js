@@ -1,3 +1,4 @@
+import fetch from 'isomorphic-fetch'
 import stageState from '../state/stage'
 import settingsState from '../state/settings'
 import errorCheck from './error-check'
@@ -18,13 +19,22 @@ export default async function submitOrder() {
 			.createToken({ name: `Name` })
 		vals.payment = token
 	}
-	console.log(vals)
+
+	try {
+		let data = await fetch(settingsState.state.orderEndpoint, {
+			method: `post`,
+			body: JSON.stringify(vals),
+		})
+		data = await data.json()
+		console.log(data)
+	}
+	catch(err){
+		console.error(err)
+	}
 }
 
 function tick(){
 	return new Promise((resolve) => {
-		setTimeout(() => {
-			resolve()
-		}, 1)
+		setTimeout(resolve, 1)
 	})
 }
