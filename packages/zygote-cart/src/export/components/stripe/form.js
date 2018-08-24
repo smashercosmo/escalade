@@ -1,8 +1,9 @@
 import React from 'react'
 import {
-	CardNumberElement,
 	injectStripe,
+	CardExpiryElement,
 } from 'react-stripe-elements'
+import CardNumber from './card-number'
 
 class StripePayment extends React.Component {
 	constructor(props) {
@@ -14,7 +15,8 @@ class StripePayment extends React.Component {
 	render() {
 		return (
 			<div>
-				<CardNumberElement onChange={this.onChange} />
+				<CardNumber />
+				<CardExpiryElement onChange={this.onChange} />
 			</div>
 		)
 	}
