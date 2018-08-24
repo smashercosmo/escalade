@@ -7,6 +7,7 @@ import { triggerValidators } from './validators'
 import displayError from '../utils/display-error'
 import displayInfo from '../utils/display-info'
 import clearMessages from './clear-messages'
+import messagesState from '../state/status-messages'
 
 export default async function submitOrder() {
 	clearMessages()
@@ -41,6 +42,9 @@ export default async function submitOrder() {
 		if (data.messages){
 			displayError(data.messages.error)
 			displayInfo(data.messages.info)
+		}
+		if (!messagesState.state.errors.length){
+			displayError(`Server error. Your order was not placed. Please try again later.`)
 		}
 		if(data.returnTo){
 			stageState.setState({ stage: data.returnTo })
