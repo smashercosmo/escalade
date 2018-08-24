@@ -36,7 +36,9 @@ export default class CartStage extends React.Component{
 								<Fragment>
 									<CouponInput />
 									<Totals />
-									<CardList />
+									<div className={cardListStyles}>
+										<CardList />
+									</div>
 									<Button onClick={nextStage}>Place Order</Button>
 								</Fragment>
 							)}
@@ -64,4 +66,8 @@ const emptyMessageStyles = css({
 	textAlign: `center`,
 	marginTop: 30,
 	marginBottom: 30,
+})
+
+const cardListStyles = css({
+	textAlign: `center`,
 })

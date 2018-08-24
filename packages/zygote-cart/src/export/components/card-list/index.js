@@ -31,7 +31,6 @@ export default class CardList extends React.Component {
 }
 
 const cardListStyles = css({
-	textAlign: `center`,
 	marginBottom: 20,
 	div: {
 		width: 33,

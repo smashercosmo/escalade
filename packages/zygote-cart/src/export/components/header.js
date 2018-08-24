@@ -10,5 +10,5 @@ export default class CartQuantity extends React.Component {
 }
 
 const headerStyles = css({
-	fontSize: `1em`,
+	fontSize: `1.2em`,
 })
