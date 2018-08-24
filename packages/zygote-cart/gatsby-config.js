@@ -1,5 +1,6 @@
 require(`dotenv`).config({ silent: true })
 const config = require(`./site-config`)
+const proxy = require(`http-proxy-middleware`)
 
 module.exports = {
 	plugins: [
@@ -151,4 +152,15 @@ module.exports = {
 		},
 	],
 	siteMetadata: config,
+	developMiddleware: app => {
+		app.use(
+			`/.netlify/functions/`,
+			proxy({
+				target: `http://localhost:9000`,
+				pathRewrite: {
+					'/.netlify/functions/': ``,
+				},
+			})
+		)
+	},
 }
