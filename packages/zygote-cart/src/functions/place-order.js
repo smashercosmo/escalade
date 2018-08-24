@@ -7,10 +7,11 @@ export async function handler({ body }, __, callback){
 	body = JSON.parse(body)
 
 	// Validate product prices & stock here
+	console.log(body)
 
 	// Charge card
 	let { status } = await stripe.charges.create({
-		amount: 100,
+		amount: body.totals.total,
 		currency: `usd`,
 		description: `An example charge`,
 		source: body.payment.id,

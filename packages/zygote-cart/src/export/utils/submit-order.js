@@ -1,6 +1,8 @@
 import fetch from 'isomorphic-fetch'
 import stageState from '../state/stage'
 import settingsState from '../state/settings'
+import productsState from '../state/products'
+import totalsState from '../state/totals'
 import errorCheck from './error-check'
 import getFormValues from './get-form-values'
 import { triggerValidators } from './validators'
@@ -25,6 +27,9 @@ export default async function submitOrder() {
 		vals.payment = token
 	}
 
+	vals.products = productsState.products
+	vals.totals = totalsState.totals
+
 	let data
 	try {
 		data = await fetch(settingsState.state.orderEndpoint, {
@@ -44,7 +49,7 @@ export default async function submitOrder() {
 			displayInfo(data.messages.info)
 		}
 		if (!messagesState.state.errors.length){
-			displayError(`Server error. Your order was not placed. Please try again later.`)
+			displayError(`We're sorry! There was an error with the server. Your order was not placed. Please try again later.`)
 		}
 		if(data.returnTo){
 			stageState.setState({ stage: data.returnTo })
