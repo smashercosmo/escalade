@@ -1,14 +1,30 @@
 import stageState from '../state/stage'
+import settingsState from '../state/settings'
 import errorCheck from './error-check'
 import getFormValues from './get-form-values'
 import { triggerValidators } from './validators'
 
-export default function submitOrder() {
+export default async function submitOrder() {
 	triggerValidators()
-	setTimeout(() => {
-		const vals = getFormValues()
-		console.log(vals)
-		if (errorCheck()) return
-		stageState.setState({ processing: true })
-	}, 1)
+	await tick()
+
+	// Check for required fields
+	if (errorCheck()) return
+	stageState.setState({ processing: true })
+
+	const vals = getFormValues()
+	if (settingsState.state.stripeApiKey){
+		let { token } = await window.zygoteStripeInstance
+			.createToken({ name: `Name` })
+		vals.payment = token
+	}
+	console.log(vals)
+}
+
+function tick(){
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			resolve()
+		}, 1)
+	})
 }

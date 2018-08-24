@@ -8,6 +8,5 @@ export default function getFormValues(){
 		if(!formName) return
 		obj[formName] = formToObj(form)
 	})
-	console.log(obj)
 	return obj
 }

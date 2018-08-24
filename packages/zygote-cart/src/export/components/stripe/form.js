@@ -10,8 +10,10 @@ class StripePayment extends React.Component {
 	constructor(props) {
 		super(props)
 	}
-	onChange(e){
-		console.log(e)
+	UNSAFE_componentWillReceiveProps({ stripe }) {
+		if (stripe) {
+			global.zygoteStripeInstance = stripe
+		}
 	}
 	render() {
 		return (

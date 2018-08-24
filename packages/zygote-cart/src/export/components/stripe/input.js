@@ -35,7 +35,6 @@ export default class StripeInput extends React.Component {
 		})
 	}
 	validate(){
-		console.log(`valudate!`)
 		const {
 			value,
 			error,
