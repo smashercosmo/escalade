@@ -43,7 +43,7 @@ export default class Cart extends React.Component {
 		return (
 			<Subscribe to={[openState, stageState, addedToCartState]}>
 				{({ open }, { stage, processing }, { addedToCart }) => (
-					<div className={containerStyles}>
+					<div className={cx(containerStyles, `zygoteCart`)}>
 						<div
 							className={cx(bgStyles, open ? bgOpenStyles : null)}
 							onClick={closeCart}

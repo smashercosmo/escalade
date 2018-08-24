@@ -8,6 +8,7 @@ export default class Address2Input extends React.Component {
 		label: `Apt/Suite #`,
 		autoComplete: `address-line2`,
 		required: false,
+		name: `addressLine2`,
 	}
 	constructor(props){
 		super(props)
@@ -27,6 +28,7 @@ export default class Address2Input extends React.Component {
 			label,
 			autoComplete,
 			required,
+			name,
 		} = this.props
 		return (
 			<Fragment>
@@ -41,6 +43,7 @@ export default class Address2Input extends React.Component {
 						label={label}
 						autoComplete={autoComplete}
 						required={required}
+						name={name}
 					/>
 				</div>
 			</Fragment>

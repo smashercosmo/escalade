@@ -75,7 +75,7 @@ export default class StripeInput extends React.Component {
 					</div>
 				)}
 				{error && (
-					<span className={errorMsgStyles}>{error}</span>
+					<span className={errorMsgStyles} data-error>{error}</span>
 				)}
 			</label>
 		)

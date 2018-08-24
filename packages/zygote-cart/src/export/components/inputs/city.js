@@ -6,18 +6,21 @@ export default class CityInput extends React.Component {
 		label: `City`,
 		autoComplete: `locality`,
 		required: true,
+		name: `city`,
 	}
 	render() {
 		const {
 			label,
 			autoComplete,
 			required,
+			name,
 		} = this.props
 		return (
 			<Input
 				label={label}
 				autoComplete={autoComplete}
 				required={required}
+				name={name}
 			/>
 		)
 	}

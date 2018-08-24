@@ -5,12 +5,12 @@ import Header from '../header'
 import CardList from '../card-list'
 import StripePayment from '../stripe'
 import Button from '../button'
-import nextStage from '../../utils/next-stage'
+import submitOrder from '../../utils/submit-order'
 
 export default class PaymentStage extends React.Component{
 	render() {
 		return (
-			<form autoComplete='on'>
+			<form autoComplete='on' data-form='payment'>
 				<StagesHeader stage='payment' />
 				<div className={sectionStyles}>
 					<div className={headerRowStyles}>
@@ -24,7 +24,7 @@ export default class PaymentStage extends React.Component{
 					<StripePayment />
 				</div>
 				<div className={buttonContainerStyles}>
-					<Button onClick={nextStage}>Place Order</Button>
+					<Button onClick={submitOrder}>Place Order</Button>
 				</div>
 			</form>
 		)

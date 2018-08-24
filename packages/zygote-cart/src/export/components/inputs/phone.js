@@ -8,6 +8,7 @@ export default class PhoneInput extends React.Component {
 		label: `Phone`,
 		required: true,
 		mask: `(999) 999-9999`,
+		name: `phone`,
 	}
 	validate(val){
 		if (!isPhone(val)){
@@ -20,6 +21,7 @@ export default class PhoneInput extends React.Component {
 			required,
 			label,
 			mask,
+			name,
 		} = this.props
 		return (
 			<Input
@@ -29,6 +31,7 @@ export default class PhoneInput extends React.Component {
 				required={required}
 				mask={mask}
 				validators={[this.validate]}
+				name={name}
 			/>
 		)
 	}

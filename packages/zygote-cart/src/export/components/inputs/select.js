@@ -55,6 +55,7 @@ export default class Input extends React.Component{
 			autoComplete,
 			children,
 			inputRef,
+			name,
 		} = this.props
 		return (
 			<label className={cx(
@@ -79,12 +80,13 @@ export default class Input extends React.Component{
 					onFocus={this.handleFocus}
 					onBlur={this.handleBlur}
 					className={selectStyles}
+					name={name}
 				>
 					<option disabled value='' />
 					{children}
 				</select>
 				{error && (
-					<span className={errorMsgStyles}>{error}</span>
+					<span className={errorMsgStyles} data-error>{error}</span>
 				)}
 			</label>
 		)

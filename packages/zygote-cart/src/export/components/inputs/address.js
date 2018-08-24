@@ -6,18 +6,21 @@ export default class NameInput extends React.Component {
 		label: `Address`,
 		autoComplete: `address-line1`,
 		required: true,
+		name: `addressLine1`,
 	}
 	render() {
 		const {
 			label,
 			autoComplete,
 			required,
+			name,
 		} = this.props
 		return (
 			<Input
 				label={label}
 				autoComplete={autoComplete}
 				required={required}
+				name={name}
 			/>
 		)
 	}

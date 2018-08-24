@@ -55,6 +55,7 @@ export default class Input extends React.Component{
 			mask,
 			type,
 			autoComplete,
+			name,
 		} = this.props
 		return (
 			<label className={cx(
@@ -84,6 +85,7 @@ export default class Input extends React.Component{
 								autoComplete={autoComplete}
 								ref={this.props.inputRef}
 								className={inputStyles}
+								name={name}
 								{...inputProps}
 							/>
 						)}
@@ -98,11 +100,12 @@ export default class Input extends React.Component{
 						onChange={this.handleChange}
 						onFocus={this.handleFocus}
 						onBlur={this.handleBlur}
+						name={name}
 						className={inputStyles}
 					/>
 				)}
 				{error && (
-					<span className={errorMsgStyles}>{error}</span>
+					<span className={errorMsgStyles} data-error>{error}</span>
 				)}
 			</label>
 		)

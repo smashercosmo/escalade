@@ -17,7 +17,7 @@ import Button from '../button'
 export default class InfoStage extends React.Component{
 	render() {
 		return (
-			<form autoComplete='on'>
+			<form autoComplete='on' data-form='info'>
 				<StagesHeader stage='info' />
 				<div className={sectionStyles}>
 					<Header>Let's get started</Header>

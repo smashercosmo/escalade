@@ -7,18 +7,21 @@ export default class NameInput extends React.Component {
 		label: `State`,
 		autoComplete: `region`,
 		required: true,
+		name: `state`,
 	}
 	render() {
 		const {
 			label,
 			autoComplete,
 			required,
+			name,
 		} = this.props
 		return (
 			<Select
 				label={label}
 				required={required}
 				autoComplete={autoComplete}
+				name={name}
 			>
 				{states.map((state, index) => (
 					<option

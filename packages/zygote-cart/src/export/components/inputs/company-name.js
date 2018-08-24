@@ -8,6 +8,7 @@ export default class CompanyNameInput extends React.Component {
 		label: `Company Name`,
 		autoComplete: `org`,
 		required: false,
+		name: `companyName`,
 	}
 	constructor(props){
 		super(props)
@@ -27,6 +28,7 @@ export default class CompanyNameInput extends React.Component {
 			autoComplete,
 			toggleText,
 			required,
+			name,
 		} = this.props
 		return (
 			<Fragment>
@@ -41,6 +43,7 @@ export default class CompanyNameInput extends React.Component {
 						label={label}
 						autoComplete={autoComplete}
 						required={required}
+						name={name}
 					/>
 				</div>
 			</Fragment>

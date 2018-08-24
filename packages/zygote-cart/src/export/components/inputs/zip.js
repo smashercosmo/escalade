@@ -7,6 +7,7 @@ export default class EmailInput extends React.Component {
 		label: `Zip Code`,
 		required: true,
 		autoComplete: `postal-code`,
+		name: `postalCode`,
 	}
 	validate(val){
 		if (!isZip(val)){
@@ -18,6 +19,7 @@ export default class EmailInput extends React.Component {
 			label,
 			required,
 			autoComplete,
+			name,
 		} = this.props
 		return (
 			<Input
@@ -25,6 +27,7 @@ export default class EmailInput extends React.Component {
 				label={label}
 				required={required}
 				validators={[this.validate]}
+				name={name}
 			/>
 		)
 	}

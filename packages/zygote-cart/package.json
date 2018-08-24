@@ -38,6 +38,7 @@
     "babel-runtime": "^6.26.0",
     "better-react-spinkit": "^2.0.4",
     "datasets-us-states-names": "^1.0.0",
+    "form-to-object": "^5.1.0",
     "is-email": "^1.0.0",
     "is-phone": "^2.0.0",
     "is-valid-zip": "^0.0.3",
