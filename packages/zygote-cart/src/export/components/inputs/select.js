@@ -1,5 +1,6 @@
 import React from 'react'
 import { css, cx } from 'emotion'
+import { addValidator, removeValidator } from '../../utils/validators'
 
 export default class Input extends React.Component{
 	constructor(props){
@@ -10,7 +11,7 @@ export default class Input extends React.Component{
 		}
 		this.handleChange = this.handleChange.bind(this)
 		this.handleFocus = this.handleFocus.bind(this)
-		this.handleBlur = this.handleBlur.bind(this)
+		this.validate = this.validate.bind(this)
 	}
 	handleChange(e){
 		if(this.props.handleChange){
@@ -21,9 +22,9 @@ export default class Input extends React.Component{
 	handleFocus() {
 		this.setState({ focus: true })
 	}
-	handleBlur(e){
+	validate(){
 		this.setState({ focus: false })
-		const { value } = e.target
+		const { value } = this.select
 
 		// Required message
 		if (this.props.required && !value){
@@ -42,6 +43,12 @@ export default class Input extends React.Component{
 		}
 
 		this.setState({ error: false })
+	}
+	componentDidMount() {
+		addValidator(this.validate)
+	}
+	componentWillUnmount() {
+		removeValidator(this.validate)
 	}
 	render(){
 		const {
@@ -74,11 +81,14 @@ export default class Input extends React.Component{
 				<select
 					type={type || `text`}
 					autoComplete={autoComplete}
-					ref={inputRef}
+					ref={el => {
+						this.select = el
+						if(inputRef) inputRef(el)
+					}}
 					value={value}
 					onChange={this.handleChange}
 					onFocus={this.handleFocus}
-					onBlur={this.handleBlur}
+					onBlur={this.validate}
 					className={selectStyles}
 					name={name}
 				>

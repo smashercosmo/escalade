@@ -1,8 +1,12 @@
 import React from 'react'
 import InputMask from 'react-input-mask'
 import { css, cx } from 'emotion'
+import { addValidator, removeValidator } from '../../utils/validators'
 
 export default class Input extends React.Component{
+	static defaultProps = {
+		inputRef: () => {},
+	}
 	constructor(props){
 		super(props)
 		this.state = {
@@ -11,7 +15,7 @@ export default class Input extends React.Component{
 		}
 		this.handleChange = this.handleChange.bind(this)
 		this.handleFocus = this.handleFocus.bind(this)
-		this.handleBlur = this.handleBlur.bind(this)
+		this.validate = this.validate.bind(this)
 	}
 	handleChange(e){
 		if(this.props.handleChange){
@@ -22,9 +26,9 @@ export default class Input extends React.Component{
 	handleFocus() {
 		this.setState({ focus: true })
 	}
-	handleBlur(e){
+	validate(){
 		this.setState({ focus: false })
-		const { value } = e.target
+		const { value } = this.input
 
 		// Required message
 		if (this.props.required && !value){
@@ -44,6 +48,12 @@ export default class Input extends React.Component{
 
 		this.setState({ error: false })
 	}
+	componentDidMount(){
+		addValidator(this.validate)
+	}
+	componentWillUnmount(){
+		removeValidator(this.validate)
+	}
 	render(){
 		const {
 			value,
@@ -56,6 +66,7 @@ export default class Input extends React.Component{
 			type,
 			autoComplete,
 			name,
+			inputRef,
 		} = this.props
 		return (
 			<label className={cx(
@@ -76,14 +87,17 @@ export default class Input extends React.Component{
 						mask={mask}
 						onChange={this.handleChange}
 						onFocus={this.handleFocus}
-						onBlur={this.handleBlur}
+						onBlur={this.validate}
 						value={value}
 					>
 						{(inputProps) => (
 							<input
 								type={type || `text`}
 								autoComplete={autoComplete}
-								ref={this.props.inputRef}
+								ref={input => {
+									this.input = input
+									inputRef(input)
+								}}
 								className={inputStyles}
 								name={name}
 								{...inputProps}
@@ -95,11 +109,14 @@ export default class Input extends React.Component{
 					<input
 						type={type || `text`}
 						autoComplete={autoComplete}
-						ref={this.props.inputRef}
+						ref={input => {
+							this.input = input
+							inputRef(input)
+						}}
 						value={value}
 						onChange={this.handleChange}
 						onFocus={this.handleFocus}
-						onBlur={this.handleBlur}
+						onBlur={this.validate}
 						name={name}
 						className={inputStyles}
 					/>

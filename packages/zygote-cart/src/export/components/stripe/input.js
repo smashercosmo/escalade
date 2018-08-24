@@ -4,7 +4,7 @@ import Visa from '../card-list/visa'
 import Mastercard from '../card-list/mastercard'
 import AmericanExpress from '../card-list/american-express'
 import Discover from '../card-list/discover'
-
+import { addValidator, removeValidator } from '../../utils/validators'
 
 export default class StripeInput extends React.Component {
 	constructor(props) {
@@ -16,6 +16,7 @@ export default class StripeInput extends React.Component {
 		this.handleFocus = this.handleFocus.bind(this)
 		this.handleBlur = this.handleBlur.bind(this)
 		this.handleChange = this.handleChange.bind(this)
+		this.validate = this.validate.bind(this)
 	}
 	handleFocus() {
 		this.setState({ focus: true })
@@ -27,12 +28,32 @@ export default class StripeInput extends React.Component {
 		this.setState({ error: msg })
 	}
 	handleChange(e){
-		console.log(e)
 		this.setState({
 			value: !e.empty,
 			error: e.error && e.error.message ? e.error.message : false,
 			brand: e.brand,
 		})
+	}
+	validate(){
+		console.log(`valudate!`)
+		const {
+			value,
+			error,
+		} = this.state
+		if(!value){
+			this.setState({
+				error: `This field is required`,
+			})
+			return false
+		}
+		if(!error) return false
+		return true
+	}
+	componentDidMount() {
+		addValidator(this.validate)
+	}
+	componentWillUnmount() {
+		removeValidator(this.validate)
 	}
 	render() {
 		const {
