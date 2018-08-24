@@ -27,8 +27,19 @@ export default async function submitOrder() {
 		vals.payment = token
 	}
 
-	vals.products = productsState.products
-	vals.totals = totalsState.totals
+	vals.products = productsState.state.products
+	const {
+		subtotal,
+		modifications,
+		total,
+	} = totalsState.state
+	vals.totals = {
+		subtotal,
+		modifications,
+		total,
+	}
+
+	console.log(`Sending to API:`, vals)
 
 	let data
 	try {
@@ -43,11 +54,14 @@ export default async function submitOrder() {
 		console.error(err)
 	}
 
+	console.log(`Received from API:`, data)
+
+
+	if (data.messages) {
+		displayError(data.messages.error)
+		displayInfo(data.messages.info)
+	}
 	if (!data.success) {
-		if (data.messages){
-			displayError(data.messages.error)
-			displayInfo(data.messages.info)
-		}
 		if (!messagesState.state.errors.length){
 			displayError(`We're sorry! There was an error with the server. Your order was not placed. Please try again later.`)
 		}
@@ -55,12 +69,14 @@ export default async function submitOrder() {
 			stageState.setState({ stage: data.returnTo })
 		}
 		else {
-			stageState.setState({ stage: `billing` })
+			stageState.setState({ stage: `payment` })
 		}
-		return
+	}
+	else {
+		stageState.setState({ stage: `success` })
 	}
 
-	stageState.setState({ stage: `success` })
+	stageState.setState({ processing: false })
 }
 
 function tick(){

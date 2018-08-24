@@ -11,7 +11,7 @@ export async function handler({ body }, __, callback){
 
 	// Charge card
 	let { status } = await stripe.charges.create({
-		amount: body.totals.total,
+		amount: body.totals.total * 100,
 		currency: `usd`,
 		description: `An example charge`,
 		source: body.payment.id,
