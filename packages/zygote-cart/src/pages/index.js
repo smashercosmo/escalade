@@ -42,6 +42,7 @@ export default class HomePage extends React.Component {
 						},
 					]}
 					header={<img className={logoStyles} src={logo} />}
+					stripeApiKey='pk_test_0EMVTB6nEzmrjGA0Fc0kyVOR'
 					//cartHeader={<div className={headerStyles}>With FREE shipping!</div>}
 					//cartFooter={<div>* Free shipping, except Alaska and Hawaii</div>}
 				/>

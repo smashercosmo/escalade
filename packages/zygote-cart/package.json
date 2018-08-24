@@ -40,7 +40,8 @@
     "is-email": "^1.0.0",
     "is-phone": "^2.0.0",
     "is-valid-zip": "^0.0.3",
-    "react-input-mask": "^2.0.3"
+    "react-input-mask": "^2.0.3",
+    "react-stripe-elements": "^2.0.1"
   },
   "main": "dist/index.js",
   "devDependencies": {

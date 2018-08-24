@@ -70,15 +70,24 @@ export default class Cart extends React.Component {
 									}
 								/>
 							)}
-							{stage === `info` && (
+							<div className={cx(
+								stageStyles,
+								stage === `info` && activeStageStyles,
+							)}>
 								<InfoStage />
-							)}
-							{stage === `payment` && (
+							</div>
+							<div className={cx(
+								stageStyles,
+								stage === `payment` && activeStageStyles,
+							)}>
 								<PaymentStage />
-							)}
-							{stage === `success` && (
+							</div>
+							<div className={cx(
+								stageStyles,
+								stage === `success` && activeStageStyles,
+							)}>
 								<SuccessStage />
-							)}
+							</div>
 						</div>
 					</div>
 				)}
@@ -86,6 +95,13 @@ export default class Cart extends React.Component {
 		)
 	}
 }
+
+const stageStyles = css({
+	display: `none`,
+})
+const activeStageStyles = css({
+	display: `block`,
+})
 
 const headerStyles = css({
 	textAlign: `center`,

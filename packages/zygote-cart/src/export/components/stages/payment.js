@@ -3,6 +3,7 @@ import { css } from 'emotion'
 import StagesHeader from '../stages-header'
 import Header from '../header'
 import CardList from '../card-list'
+import StripePayment from '../stripe'
 
 export default class PaymentStage extends React.Component{
 	render() {
@@ -18,6 +19,7 @@ export default class PaymentStage extends React.Component{
 							<CardList />
 						</div>
 					</div>
+					<StripePayment />
 				</div>
 			</form>
 		)
@@ -38,6 +40,7 @@ const headerRowStyles = css({
 			':last-of-type': {
 				width: `60%`,
 				textAlign: `right`,
+				marginTop: 5,
 			},
 		},
 	},
