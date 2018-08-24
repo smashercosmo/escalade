@@ -4,8 +4,12 @@ import settingsState from '../state/settings'
 import errorCheck from './error-check'
 import getFormValues from './get-form-values'
 import { triggerValidators } from './validators'
+import displayError from '../utils/display-error'
+import displayInfo from '../utils/display-info'
+import clearMessages from './clear-messages'
 
 export default async function submitOrder() {
+	clearMessages()
 	triggerValidators()
 	await tick()
 
@@ -20,8 +24,9 @@ export default async function submitOrder() {
 		vals.payment = token
 	}
 
+	let data
 	try {
-		let data = await fetch(settingsState.state.orderEndpoint, {
+		data = await fetch(settingsState.state.orderEndpoint, {
 			method: `post`,
 			body: JSON.stringify(vals),
 		})
@@ -31,6 +36,22 @@ export default async function submitOrder() {
 	catch(err){
 		console.error(err)
 	}
+
+	if (!data.success) {
+		if (data.messages){
+			displayError(data.messages.error)
+			displayInfo(data.messages.info)
+		}
+		if(data.returnTo){
+			stageState.setState({ stage: data.returnTo })
+		}
+		else {
+			stageState.setState({ stage: `billing` })
+		}
+		return
+	}
+
+	stageState.setState({ stage: `success` })
 }
 
 function tick(){

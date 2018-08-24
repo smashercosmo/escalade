@@ -6,6 +6,9 @@ const stripe = Stripe(process.env.STRIPE_API_SECRET)
 export async function handler({ body }, __, callback){
 	body = JSON.parse(body)
 
+	// Validate product prices & stock here
+
+	// Charge card
 	let { status } = await stripe.charges.create({
 		amount: 100,
 		currency: `usd`,
@@ -13,6 +16,7 @@ export async function handler({ body }, __, callback){
 		source: body.payment.id,
 	})
 
+	// Response
 	callback(null, {
 		statusCode: 200,
 		body: JSON.stringify({

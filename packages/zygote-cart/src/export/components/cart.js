@@ -20,6 +20,8 @@ import addTotalModification from '../utils/add-total-modification'
 import calculateTotals from '../utils/calculate-totals'
 import AddedToCartMessage from './added-to-cart-message'
 import Processing from './processing'
+import Errors from './errors'
+import Info from './info'
 
 export default class Cart extends React.Component {
 	constructor(props){
@@ -60,6 +62,9 @@ export default class Cart extends React.Component {
 							{header && (
 								<div className={headerStyles}>{header}</div>
 							)}
+
+							<Errors />
+							<Info />
 
 							<div className={cx(
 								stageStyles,
