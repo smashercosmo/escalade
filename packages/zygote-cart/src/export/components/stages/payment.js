@@ -8,6 +8,7 @@ import Button from '../button'
 import submitOrder from '../../utils/submit-order'
 import ProductList from '../product-list'
 import Totals from '../totals'
+import ShippingMethods from '../shipping-methods'
 
 export default class PaymentStage extends React.Component{
 	render() {
@@ -25,6 +26,7 @@ export default class PaymentStage extends React.Component{
 					</div>
 					<StripePayment />
 				</div>
+				<ShippingMethods />
 				<div className={sectionStyles}>
 					<h2>Final Order Summary</h2>
 					<ProductList editable={false} />

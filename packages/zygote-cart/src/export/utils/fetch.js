@@ -1,7 +1,9 @@
 import fetch from 'isomorphic-fetch'
 import metaState from '../state/meta'
+import shippingState from '../state/shipping'
 import displayError from './display-error'
 import displayInfo from './display-info'
+import addTotalModification from './add-total-modification'
 
 export default async function fetchWebhook(path, body) {
 	let data
@@ -23,7 +25,16 @@ export default async function fetchWebhook(path, body) {
 		console.error(err)
 		data = {}
 	}
-	const { meta, messages } = data
+	const {
+		meta,
+		messages,
+		shippingMethods,
+		selectedShippingMethod = typeof shippingState.state.selected === `number`
+			? shippingState.state.selected
+			: 0,
+	} = data
+
+	addTotalModification(data.modifications)
 	if (typeof meta === `object`){
 		metaState.setState({ meta })
 	}
@@ -31,5 +42,12 @@ export default async function fetchWebhook(path, body) {
 		displayError(messages.error)
 		displayInfo(messages.info)
 	}
+	if (shippingMethods){
+		shippingState.setState({
+			methods: shippingMethods,
+			selected: selectedShippingMethod,
+		})
+	}
+
 	return data
 }

@@ -1,10 +1,9 @@
 import React, { Fragment } from 'react'
 import { Subscribe } from 'statable'
 import { css } from 'emotion'
-import { ThreeBounce } from 'better-react-spinkit'
 import totalsState from '../state/totals'
 import { borderColor } from '../styles'
-import { primaryColor } from '../styles'
+import LoadingAnimation from './loading-animation'
 
 export default class Totals extends React.Component{
 	render(){
@@ -19,9 +18,7 @@ export default class Totals extends React.Component{
 							</li>
 							{loading && (
 								<li>
-									<span className={loadingStyles}>
-										<ThreeBounce size={10} color={primaryColor} />
-									</span>
+									<LoadingAnimation />
 								</li>
 							)}
 							{!loading && (
@@ -78,12 +75,12 @@ const listStyles = css({
 			display: `block`,
 			clear: `both`,
 		},
-	},
-	div: {
-		width: `50%`,
-		float: `left`,
-		':last-of-type': {
-			textAlign: `right`,
+		'> div': {
+			width: `50%`,
+			float: `left`,
+			':last-of-type': {
+				textAlign: `right`,
+			},
 		},
 	},
 })
@@ -92,10 +89,4 @@ const totalStyles = css({
 	fontWeight: `bold`,
 	paddingTop: 20,
 	borderTop: `1px solid ${borderColor}`,
-})
-
-const loadingStyles = css({
-	display: `block`,
-	width: 34,
-	margin: `auto`,
 })
