@@ -5,15 +5,16 @@ import productsState from '../state/products'
 import totalsState from '../state/totals'
 import errorCheck from './error-check'
 import getFormValues from './get-form-values'
-import { triggerValidators } from './validators'
-import displayError from '../utils/display-error'
-import displayInfo from '../utils/display-info'
+//import { triggerValidators } from './validators'
+import displayError from './display-error'
+import displayInfo from './display-info'
 import clearMessages from './clear-messages'
 import messagesState from '../state/status-messages'
+import validateAllInput from './validate-all-input'
 
 export default async function submitOrder() {
 	clearMessages()
-	triggerValidators()
+	validateAllInput()
 	await tick()
 
 	// Check for required fields

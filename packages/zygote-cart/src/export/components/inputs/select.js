@@ -1,6 +1,7 @@
 import React from 'react'
 import { css, cx } from 'emotion'
-import { addValidator, removeValidator } from '../../utils/validators'
+import registerInput from '../../utils/register-input'
+import unregisterInput from '../../utils/unregister-input'
 
 export default class Input extends React.Component{
 	constructor(props){
@@ -45,10 +46,10 @@ export default class Input extends React.Component{
 		this.setState({ error: false })
 	}
 	componentDidMount() {
-		addValidator(this.validate)
+		registerInput(this)
 	}
 	componentWillUnmount() {
-		removeValidator(this.validate)
+		unregisterInput(this)
 	}
 	render(){
 		const {

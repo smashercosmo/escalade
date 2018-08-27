@@ -4,7 +4,8 @@ import Visa from '../card-list/visa'
 import Mastercard from '../card-list/mastercard'
 import AmericanExpress from '../card-list/american-express'
 import Discover from '../card-list/discover'
-import { addValidator, removeValidator } from '../../utils/validators'
+import registerInput from '../../utils/register-input'
+import unregisterInput from '../../utils/unregister-input'
 
 export default class StripeInput extends React.Component {
 	constructor(props) {
@@ -49,10 +50,10 @@ export default class StripeInput extends React.Component {
 		return true
 	}
 	componentDidMount() {
-		addValidator(this.validate)
+		registerInput(this)
 	}
 	componentWillUnmount() {
-		removeValidator(this.validate)
+		unregisterInput(this)
 	}
 	render() {
 		const {
