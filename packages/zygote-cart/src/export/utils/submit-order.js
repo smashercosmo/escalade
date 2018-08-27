@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch'
+import fetch from './fetch'
 import stageState from '../state/stage'
 import settingsState from '../state/settings'
 import productsState from '../state/products'
@@ -43,11 +43,7 @@ export default async function submitOrder() {
 
 	let data
 	try {
-		data = await fetch(settingsState.state.orderEndpoint, {
-			method: `post`,
-			body: JSON.stringify(vals),
-		})
-		data = await data.json()
+		data = await fetch(settingsState.state.orderEndpoint, vals)
 		console.log(data)
 	}
 	catch(err){
@@ -55,7 +51,9 @@ export default async function submitOrder() {
 	}
 
 	console.log(`Received from API:`, data)
-
+	if(!data){
+		data = {}
+	}
 
 	if (data.messages) {
 		displayError(data.messages.error)

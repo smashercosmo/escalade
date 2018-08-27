@@ -3,7 +3,8 @@ import Stripe from 'stripe'
 dotenv.config({ silent: true })
 const stripe = Stripe(process.env.STRIPE_API_SECRET)
 
-export async function handler({ body }, __, callback){
+export async function handler({ body }, __, callback) {
+
 	body = JSON.parse(body)
 
 	// Validate product prices & stock here
