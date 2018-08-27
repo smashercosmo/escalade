@@ -1,6 +1,6 @@
 import React from 'react'
 import { css, cx } from 'emotion'
-import stageState from '../state/stage'
+import changeStage from '../utils/change-stage'
 import { primaryColor } from '../styles'
 
 export default class StagesHeader extends React.Component {
@@ -14,7 +14,7 @@ export default class StagesHeader extends React.Component {
 						listStyles,
 						stage === `info` ? activeStyles : null
 					)}
-					onClick={() => stageState.setState({ stage: `info` })}
+					onClick={() => changeStage(`info`)}
 				>
 					1. Your Details
 				</li>
@@ -24,7 +24,7 @@ export default class StagesHeader extends React.Component {
 						listStyles,
 						stage === `payment` ? activeStyles : null
 					)}
-					onClick={() => stageState.setState({ stage: `payment` })}
+					onClick={() => changeStage(`payment`)}
 				>
 					2. Payment
 				</li>

@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import { Subscribe } from 'statable'
+import { css } from 'emotion'
 import shippingState from '../state/shipping'
 import LoadingAnimation from './loading-animation'
 
@@ -24,10 +25,10 @@ export default class ShippingMethods extends React.Component {
 								<LoadingAnimation />
 							)}
 							{!loading && (
-								<ul>
+								<ul className={listStyles}>
 									{methods.map(({ id, description }) => (
 										<li key={`shipping${id}`}>
-											<label>
+											<label className={labelStyles}>
 												<input
 													type='radio'
 													name='zygoteShipping'
@@ -48,3 +49,14 @@ export default class ShippingMethods extends React.Component {
 		)
 	}
 }
+
+const listStyles = css({
+	listStyleType: `none`,
+	margin: 0,
+	padding: 0,
+})
+
+const labelStyles = css({
+	display: `block`,
+	cursor: `pointer`,
+})
