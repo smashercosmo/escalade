@@ -1,12 +1,11 @@
-import formToObj from 'form-to-object'
+import inputs from './inputs'
 
 export default function getFormValues(){
 	let obj = {}
-	const forms = document.querySelectorAll(`.zygoteCart form`)
-	forms.forEach(form => {
-		const formName = form.getAttribute(`data-form`)
-		if(!formName) return
-		obj[formName] = formToObj(form)
+	inputs.forEach(input => {
+		if (!input.props.name) return
+		obj[input.props.name] = input.state.value
 	})
+	console.log(`getFormValues`, obj)
 	return obj
 }

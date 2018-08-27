@@ -21,30 +21,30 @@ export default class InfoStage extends React.Component{
 				<StagesHeader stage='info' />
 				<div className={sectionStyles}>
 					<Header>Let's get started</Header>
-					<NameInput autoComplete='shipping name' />
-					<EmailInput autoComplete='shipping email' />
-					<PhoneInput autoComplete='shipping tel' />
+					<NameInput name='shippingName' autoComplete='shipping name' />
+					<EmailInput name='shippingEmail' autoComplete='shipping email' />
+					<PhoneInput name='shippingPhone' autoComplete='shipping tel' />
 				</div>
 				<div className={sectionStyles}>
 					<Header>Where should we deliver?</Header>
-					<AddressInput autoComplete='shipping address-line1' />
+					<AddressInput name='shippingAddress1' autoComplete='shipping address-line1' />
 					<div className={extraStyles}>
 						<div>
-							<Address2Input autoComplete='shipping address-line2' />
+							<Address2Input name='shippingAddress2' autoComplete='shipping address-line2' />
 						</div>
 						<div>
-							<CompanyName autoComplete='shipping org' />
+							<CompanyName name='shippingCompany' autoComplete='shipping org' />
 						</div>
 					</div>
 					<div className={cityStateStyles}>
 						<div>
-							<City autoComplete='shipping locality' />
+							<City name='shippingCity' autoComplete='shipping locality' />
 						</div>
 						<div>
-							<State autoComplete='shipping region' />
+							<State name='shippingState' autoComplete='shipping region' />
 						</div>
 					</div>
-					<Zip autoComplete='shipping postal-code' />
+					<Zip name='shippingZip' autoComplete='shipping postal-code' />
 					<div className={buttonContainerStyles}>
 						<Button onClick={nextStage}>Next Step</Button>
 					</div>
