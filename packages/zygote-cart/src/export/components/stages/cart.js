@@ -6,7 +6,6 @@ import ProductList from '../product-list'
 import Button from '../button'
 import productsState from '../../state/products'
 import Totals from '../totals'
-// import CouponInput from '../inputs/coupon'
 import nextStage from '../../utils/next-stage'
 import CardList from '../card-list'
 
@@ -34,7 +33,6 @@ export default class CartStage extends React.Component{
 							)}
 							{!!products.length && (
 								<Fragment>
-									{/* <CouponInput /> */}
 									<Totals />
 									<div className={cardListStyles}>
 										<CardList />

@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from 'emotion'
-import { CubeGrid } from 'better-react-spinkit'
+import { ThreeBounce } from 'better-react-spinkit'
 import { primaryColor } from '../styles'
 
 export default class Processing extends React.Component {
@@ -8,7 +8,7 @@ export default class Processing extends React.Component {
 		return (
 			<div className={containerStyles}>
 				<div className={animationStyles}>
-					<CubeGrid size={50} color={primaryColor} />
+					<ThreeBounce size={50} color={primaryColor} />
 				</div>
 				{this.props.message || (
 					<div>Processing your order.<br />Please do not close this page.</div>

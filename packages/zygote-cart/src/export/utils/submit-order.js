@@ -6,11 +6,10 @@ import totalsState from '../state/totals'
 import errorCheck from './error-check'
 import getFormValues from './get-form-values'
 //import { triggerValidators } from './validators'
-import displayError from './display-error'
-import displayInfo from './display-info'
 import clearMessages from './clear-messages'
 import messagesState from '../state/status-messages'
 import validateAllInput from './validate-all-input'
+import displayError from './display-error'
 
 export default async function submitOrder() {
 	clearMessages()
@@ -39,6 +38,7 @@ export default async function submitOrder() {
 		modifications,
 		total,
 	}
+	vals.event = `submit-order`
 
 	console.log(`Sending to API:`, vals)
 
@@ -51,15 +51,6 @@ export default async function submitOrder() {
 		console.error(err)
 	}
 
-	console.log(`Received from API:`, data)
-	if(!data){
-		data = {}
-	}
-
-	if (data.messages) {
-		displayError(data.messages.error)
-		displayInfo(data.messages.info)
-	}
 	if (!data.success) {
 		if (!messagesState.state.errors.length){
 			displayError(`We're sorry! There was an error with the server. Your order was not placed. Please try again later.`)

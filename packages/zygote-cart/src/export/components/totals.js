@@ -1,39 +1,67 @@
 import React, { Fragment } from 'react'
 import { Subscribe } from 'statable'
 import { css } from 'emotion'
+import { ThreeBounce } from 'better-react-spinkit'
 import totalsState from '../state/totals'
 import { borderColor } from '../styles'
+import { primaryColor } from '../styles'
 
 export default class Totals extends React.Component{
 	render(){
 		return (
 			<ul className={listStyles}>
 				<Subscribe to={totalsState}>
-					{({ subtotal, modifications, total }) => (
+					{({ subtotal, modifications, total, loading }) => (
 						<Fragment>
 							<li>
 								<div>Subtotal</div>
 								<div>${subtotal.toFixed(2)}</div>
 							</li>
-							{modifications.map(({
-								description,
-								displayValue,
-							}, index) => (
-								<li key={`mod${index}`}>
-									<div>{description}</div>
-									<div>{displayValue}</div>
+							{loading && (
+								<li>
+									<span className={loadingStyles}>
+										<ThreeBounce size={10} color={primaryColor} />
+									</span>
 								</li>
-							))}
-							<li className={totalStyles}>
-								<div>Total</div>
-								<div>${total.toFixed(2)}</div>
-							</li>
+							)}
+							{!loading && (
+								<Fragment>
+									{modifications.map(({
+										description,
+										displayValue,
+										alteration,
+									}, index) => (
+										<li key={`mod${index}`}>
+											<div>{description}</div>
+											<div>{displayValue || formatUSD(alteration)}</div>
+										</li>
+									))}
+									<li className={totalStyles}>
+										<div>Total</div>
+										<div>${total.toFixed(2)}</div>
+									</li>
+								</Fragment>
+							)}
 						</Fragment>
 					)}
 				</Subscribe>
 			</ul>
 		)
 	}
+}
+
+function formatUSD(n){
+	if(typeof n !== `number`){
+		return `$0.00`
+	}
+	n = n.toFixed(2)
+	if(n.charAt(0) === `-`){
+		n = n.replace(`-`, `-$`)
+	}
+	else{
+		n = `$${n}`
+	}
+	return n
 }
 
 const listStyles = css({
@@ -64,4 +92,10 @@ const totalStyles = css({
 	fontWeight: `bold`,
 	paddingTop: 20,
 	borderTop: `1px solid ${borderColor}`,
+})
+
+const loadingStyles = css({
+	display: `block`,
+	width: 34,
+	margin: `auto`,
 })
