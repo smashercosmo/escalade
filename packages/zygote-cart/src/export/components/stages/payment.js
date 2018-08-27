@@ -6,6 +6,8 @@ import CardList from '../card-list'
 import StripePayment from '../stripe'
 import Button from '../button'
 import submitOrder from '../../utils/submit-order'
+import ProductList from '../product-list'
+import Totals from '../totals'
 
 export default class PaymentStage extends React.Component{
 	render() {
@@ -22,6 +24,11 @@ export default class PaymentStage extends React.Component{
 						</div>
 					</div>
 					<StripePayment />
+				</div>
+				<div className={sectionStyles}>
+					<h2>Final Order Summary</h2>
+					<ProductList editable={false} />
+					<Totals />
 				</div>
 				<div className={buttonContainerStyles}>
 					<Button onClick={submitOrder}>Place Order</Button>
