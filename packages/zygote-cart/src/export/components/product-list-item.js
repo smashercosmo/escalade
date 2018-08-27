@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from 'emotion'
+import { css, cx } from 'emotion'
 import SmallButton from './small-button'
 import removeFromCart from '../utils/remove-from-cart'
 import increaseQuantity from '../utils/increase-quantity'
@@ -44,7 +44,14 @@ export default class ProductList extends React.Component{
 						>+</SmallButton>
 					)}
 				</div>
-				<div className={priceStyles}>${price.toFixed(2)}</div>
+				<div
+					className={cx(
+						priceStyles,
+						editable ? editablePriceStyles : null,
+					)}
+				>
+					${price.toFixed(2)
+					}</div>
 				{editable && (
 					<div
 						role='button'
@@ -62,6 +69,9 @@ const priceStyles = css({
 	textAlign: `right`,
 	position: `absolute`,
 	top: 23,
+	right: 0,
+})
+const editablePriceStyles = css({
 	right: 35,
 })
 
