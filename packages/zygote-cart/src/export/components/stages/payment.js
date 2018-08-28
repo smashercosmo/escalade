@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { css } from 'emotion'
+import { Subscribe } from 'statable'
+import stageState from '../../state/stage'
 import StagesHeader from '../stages-header'
 import Header from '../header'
 import CardList from '../card-list'
@@ -13,29 +15,38 @@ import ShippingMethods from '../shipping-methods'
 export default class PaymentStage extends React.Component{
 	render() {
 		return (
-			<form autoComplete='on' data-form='payment'>
-				<StagesHeader stage='payment' />
-				<div className={sectionStyles}>
-					<div className={headerRowStyles}>
-						<div>
-							<Header>Payment</Header>
-						</div>
-						<div>
-							<CardList />
-						</div>
-					</div>
-					<StripePayment />
-				</div>
-				<ShippingMethods />
-				<div className={sectionStyles}>
-					<h2>Final Order Summary</h2>
-					<ProductList editable={false} />
-					<Totals />
-				</div>
-				<div className={buttonContainerStyles}>
-					<Button onClick={submitOrder}>Place Order</Button>
-				</div>
-			</form>
+			<Subscribe to={stageState}>
+				{({ stage }) => (
+					<Fragment>
+						{(stage === `info` || stage === `payment`) && (
+							<form>
+								<StagesHeader stage='payment' />
+								<div className={sectionStyles}>
+									<div className={headerRowStyles}>
+										<div>
+											<Header>Payment</Header>
+										</div>
+										<div>
+											<CardList />
+										</div>
+									</div>
+									<StripePayment />
+								</div>
+								<ShippingMethods />
+								<div className={sectionStyles}>
+									<h2>Final Order Summary</h2>
+									<ProductList editable={false} />
+									<Totals />
+								</div>
+								<div className={buttonContainerStyles}>
+									<Button onClick={submitOrder}>Place Order</Button>
+								</div>
+							</form>
+						)}
+					</Fragment>
+				)}
+			</Subscribe>
+
 		)
 	}
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { injectStripe } from 'react-stripe-elements'
 import { css } from 'emotion'
 import CardNumber from './card-number'
@@ -17,7 +17,7 @@ class StripePayment extends React.Component {
 	}
 	render() {
 		return (
-			<div>
+			<Fragment>
 				<CardNumber />
 				<div className={rowStyles}>
 					<div>
@@ -28,7 +28,7 @@ class StripePayment extends React.Component {
 					</div>
 				</div>
 				<ZipCode />
-			</div>
+			</Fragment>
 		)
 	}
 }

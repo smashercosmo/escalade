@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { css } from 'emotion'
+import { Subscribe } from 'statable'
+import stageState from '../../state/stage'
 import NameInput from '../inputs/name'
 import EmailInput from '../inputs/email'
 import PhoneInput from '../inputs/phone'
@@ -17,39 +19,47 @@ import Button from '../button'
 export default class InfoStage extends React.Component{
 	render() {
 		return (
-			<form autoComplete='on' data-form='info'>
-				<StagesHeader stage='info' />
-				<div className={sectionStyles}>
-					<Header>Let's get started</Header>
-					<NameInput name='shippingName' autoComplete='shipping name' />
-					<EmailInput name='shippingEmail' autoComplete='shipping email' />
-					<PhoneInput name='shippingPhone' autoComplete='shipping tel' />
-				</div>
-				<div className={sectionStyles}>
-					<Header>Where should we deliver?</Header>
-					<AddressInput name='shippingAddress1' autoComplete='shipping address-line1' />
-					<div className={extraStyles}>
-						<div>
-							<Address2Input name='shippingAddress2' autoComplete='shipping address-line2' />
-						</div>
-						<div>
-							<CompanyName name='shippingCompany' autoComplete='shipping org' />
-						</div>
-					</div>
-					<div className={cityStateStyles}>
-						<div>
-							<City name='shippingCity' autoComplete='shipping locality' />
-						</div>
-						<div>
-							<State name='shippingState' autoComplete='shipping region' />
-						</div>
-					</div>
-					<Zip name='shippingZip' autoComplete='shipping postal-code' />
-					<div className={buttonContainerStyles}>
-						<Button onClick={nextStage}>Next Step</Button>
-					</div>
-				</div>
-			</form>
+			<Subscribe to={stageState}>
+				{({ stage }) => (
+					<Fragment>
+						{(stage === `info` || stage === `payment`) && (
+							<form>
+								<StagesHeader stage='info' />
+								<div className={sectionStyles}>
+									<Header>Let's get started</Header>
+									<NameInput name='shippingName' autoComplete='shipping name' />
+									<EmailInput name='shippingEmail' autoComplete='shipping email' />
+									<PhoneInput name='shippingPhone' autoComplete='shipping tel' />
+								</div>
+								<div className={sectionStyles}>
+									<Header>Where should we deliver?</Header>
+									<AddressInput name='shippingAddress1' autoComplete='shipping address-line1' />
+									<div className={extraStyles}>
+										<div>
+											<Address2Input name='shippingAddress2' autoComplete='shipping address-line2' />
+										</div>
+										<div>
+											<CompanyName name='shippingCompany' autoComplete='shipping org' />
+										</div>
+									</div>
+									<div className={cityStateStyles}>
+										<div>
+											<City name='shippingCity' autoComplete='shipping locality' />
+										</div>
+										<div>
+											<State name='shippingState' autoComplete='shipping region' />
+										</div>
+									</div>
+									<Zip name='shippingZip' autoComplete='shipping postal-code' />
+									<div className={buttonContainerStyles}>
+										<Button onClick={nextStage}>Next Step</Button>
+									</div>
+								</div>
+							</form>
+						)}
+					</Fragment>
+				)}
+			</Subscribe>
 		)
 	}
 }
