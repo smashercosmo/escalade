@@ -4,6 +4,7 @@ import { css } from 'emotion'
 import totalsState from '../state/totals'
 import { borderColor } from '../styles'
 import LoadingAnimation from './loading-animation'
+import formatUsd from '../utils/format-usd'
 
 export default class Totals extends React.Component{
 	render(){
@@ -30,7 +31,7 @@ export default class Totals extends React.Component{
 									}, index) => (
 										<li key={`mod${index}`}>
 											<div>{description}</div>
-											<div>{displayValue || formatUSD(alteration)}</div>
+											<div>{displayValue || formatUsd(alteration)}</div>
 										</li>
 									))}
 									<li className={totalStyles}>
@@ -45,20 +46,6 @@ export default class Totals extends React.Component{
 			</ul>
 		)
 	}
-}
-
-function formatUSD(n){
-	if(typeof n !== `number`){
-		return `$0.00`
-	}
-	n = n.toFixed(2)
-	if(n.charAt(0) === `-`){
-		n = n.replace(`-`, `-$`)
-	}
-	else{
-		n = `$${n}`
-	}
-	return n
 }
 
 const listStyles = css({

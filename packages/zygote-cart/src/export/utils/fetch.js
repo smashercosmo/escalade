@@ -4,6 +4,7 @@ import shippingState from '../state/shipping'
 import displayError from './display-error'
 import displayInfo from './display-info'
 import addTotalModification from './add-total-modification'
+import setShipping from './set-shipping'
 
 export default async function fetchWebhook(path, body) {
 	let data
@@ -47,6 +48,7 @@ export default async function fetchWebhook(path, body) {
 			methods: shippingMethods,
 			selected: selectedShippingMethod,
 		})
+		setShipping(selectedShippingMethod)
 	}
 
 	return data
