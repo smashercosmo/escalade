@@ -35,8 +35,17 @@ export async function handler({ body }, __, callback) {
 
 
 	console.log(order)
-
-
+	let tax
+	for(let i = order.items.length; i--;){
+		const item = order.items[i]
+		if(item.type === `tax`){
+			tax = {
+				id: `tax`,
+				value: item.amount / 100,
+				description: item.description,
+			}
+		}
+	}
 
 
 
@@ -44,6 +53,7 @@ export async function handler({ body }, __, callback) {
 	callback(null, {
 		statusCode: 200,
 		body: JSON.stringify({
+			modifications: [tax],
 			selectedShippingMethod: order.selected_shipping_method,
 			shippingMethods: order.shipping_methods.map(({ id, amount, description }) => {
 				return {
