@@ -10,19 +10,31 @@ export async function handler({ body }, __, callback) {
 	// Validate product prices & stock here
 	console.log(`Received from client:`, body)
 
-	// Charge card
-	let { status } = await stripe.charges.create({
-		amount: body.totals.total * 100,
-		currency: `usd`,
-		description: `An example charge`,
+	const { stripeOrderId } = body.meta
+
+	// Update shipping method
+	if(body.selectedShippingMethod){
+		const res = await stripe.orders.update(stripeOrderId, {
+			selected_shipping_method: body.selectedShippingMethod,
+		})
+		console.log(`Received from Stripe after updated shipping:`, res)
+	}
+
+	// Pay for order
+	const res = await stripe.orders.pay(stripeOrderId, {
 		source: body.payment.id,
 	})
+
+	console.log(`Received from Stripe after order placement:`, res)
 
 	// Response
 	callback(null, {
 		statusCode: 200,
 		body: JSON.stringify({
-			success: status === `succeeded` ? true : false,
+			success: res.status === `paid`,
+			meta: {
+				orderId: stripeOrderId,
+			},
 		}),
 	})
 }

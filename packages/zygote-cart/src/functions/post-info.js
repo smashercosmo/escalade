@@ -33,6 +33,7 @@ export async function handler({ body }, __, callback) {
 		},
 	})
 
+	console.log(`Received from Stripe:`, order)
 
 	// Get tax
 	let tax
@@ -65,6 +66,9 @@ export async function handler({ body }, __, callback) {
 			modifications: [tax],
 			selectedShippingMethod: order.selected_shipping_method,
 			shippingMethods,
+			meta: {
+				stripeOrderId: order.id,
+			},
 		}),
 	})
 }

@@ -38,9 +38,7 @@ export default class HomePage extends React.Component {
 					// cartFooter={<div>* Free shipping, except Alaska and Hawaii</div>}
 
 					postInfoEndpoint='/.netlify/functions/post-info'
-					orderEndpoint='/.netlify/functions/place-order-mock'
-
-					// orderEndpoint='/.netlify/functions/place-order'
+					orderEndpoint='/.netlify/functions/place-order'
 
 					// totalModifications={[
 					// 	{
