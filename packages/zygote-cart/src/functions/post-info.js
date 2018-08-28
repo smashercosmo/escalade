@@ -10,7 +10,7 @@ export async function handler({ body }, __, callback) {
 	// Validate product prices & stock here
 	console.log(`Received from client:`, body)
 
-	// Charge card
+	// Create stripe order
 	let order = await stripe.orders.create({
 		currency: `usd`,
 		email: body.shippingEmail,
@@ -34,19 +34,28 @@ export async function handler({ body }, __, callback) {
 	})
 
 
-	console.log(order)
+	// Get tax
 	let tax
 	for(let i = order.items.length; i--;){
 		const item = order.items[i]
 		if(item.type === `tax`){
 			tax = {
 				id: `tax`,
-				value: item.amount / 100,
+				alteration: item.amount / 100,
 				description: item.description,
 			}
 		}
 	}
 
+
+	// Get shipping
+	const shippingMethods = order.shipping_methods.map(({ id, amount, description }) => {
+		return {
+			id,
+			value: amount / 100,
+			description,
+		}
+	})
 
 
 	// Response
@@ -55,13 +64,7 @@ export async function handler({ body }, __, callback) {
 		body: JSON.stringify({
 			modifications: [tax],
 			selectedShippingMethod: order.selected_shipping_method,
-			shippingMethods: order.shipping_methods.map(({ id, amount, description }) => {
-				return {
-					id,
-					value: amount / 100,
-					description,
-				}
-			}),
+			shippingMethods,
 		}),
 	})
 }
