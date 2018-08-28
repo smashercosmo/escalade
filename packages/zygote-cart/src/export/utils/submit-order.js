@@ -65,15 +65,10 @@ export default async function submitOrder() {
 		}
 	}
 	else {
-		const { subtotal, modifications, total } = totalsState.state
 		successState.setState({
-			totals: {
-				subtotal,
-				modifications,
-				total,
-			},
-			products: productsState.state.products,
-			meta: metaState.state.meta,
+			totals: {...totalsState.state},
+			products: [...productsState.state.products],
+			meta: {...metaState.state.meta},
 		})
 		stageState.setState({ stage: `success` })
 		totalsState.reset()
