@@ -1,6 +1,8 @@
 import fetch from 'isomorphic-fetch'
 import metaState from '../state/meta'
 import shippingState from '../state/shipping'
+import productsState from '../state/products'
+import totalsState from '../state/totals'
 import displayError from './display-error'
 import displayInfo from './display-info'
 import addTotalModification from './add-total-modification'
@@ -11,7 +13,9 @@ export default async function fetchWebhook(path, body) {
 	try {
 		const jsonBody = JSON.stringify({
 			...body,
+			products: productsState.state.products,
 			selectedShippingMethod: shippingState.state.selected,
+			totals: totalsState.state,
 			meta: metaState.state.meta,
 		})
 		console.log(`Sending to API:`, jsonBody)

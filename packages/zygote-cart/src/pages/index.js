@@ -12,11 +12,11 @@ export default class HomePage extends React.Component {
 				</div>
 				<div>
 					<button onClick={() => addToCart({
-						id: `PRODUCT123`,
+						id: `TESTA`,
 						title: `7.5' Covington Billiard Table`,
 						image: `https://images.salsify.com/image/upload/s--5scl3VX0--/w_75,h_75,c_pad/g8gkpmmhuhqzrqxu6boh.jpg`,
 						description: `Beautiful and refined, the 8' Minnesota Fats Covington Pool Table with Dur-A-Bond play bed will make a stunning centerpiece for your game room. Carved...`,
-						price: 1399,
+						price: 9.99,
 					})}>Add to Cart A</button>
 				</div>
 				<div>
@@ -37,8 +37,8 @@ export default class HomePage extends React.Component {
 					// cartHeader={<div className={headerStyles}>With FREE shipping!</div>}
 					// cartFooter={<div>* Free shipping, except Alaska and Hawaii</div>}
 
+					postInfoEndpoint='/.netlify/functions/post-info'
 					orderEndpoint='/.netlify/functions/place-order-mock'
-					postInfoEndpoint='/.netlify/functions/post-info-mock'
 
 					// orderEndpoint='/.netlify/functions/place-order'
 
