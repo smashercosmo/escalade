@@ -1,8 +1,14 @@
 import { State } from 'statable'
 
-const productsState = new State({
+const defaults = {
 	products: [],
-}, null, {
+}
+
+const productsState = new State({...defaults}, {
+	reset(){
+		this.setState({...defaults})
+	},
+}, {
 	localStorage: `zygoteCart`,
 })
 

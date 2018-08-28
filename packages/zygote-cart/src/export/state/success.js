@@ -1,13 +1,15 @@
 import { State } from 'statable'
 
 const defaults = {
+	products: {},
+	totals: [],
 	meta: {},
 }
 
-const openState = new State({...defaults}, {
+const successState = new State({...defaults}, {
 	reset(){
 		this.setState({...defaults})
 	},
 })
 
-export default openState
+export default successState

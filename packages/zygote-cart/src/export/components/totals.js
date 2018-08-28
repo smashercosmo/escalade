@@ -6,43 +6,59 @@ import { borderColor } from '../styles'
 import LoadingAnimation from './loading-animation'
 import formatUsd from '../utils/format-usd'
 
+class TotalsList extends React.Component{
+	render(){
+		const { subtotal, modifications, total, loading } = this.props.totals
+		if(!total) return null
+		return (
+			<Fragment>
+				<li>
+					<div>Subtotal</div>
+					<div>${subtotal.toFixed(2)}</div>
+				</li>
+				{loading && (
+					<li>
+						<LoadingAnimation />
+					</li>
+				)}
+				{!loading && (
+					<Fragment>
+						{modifications.map(({
+							description,
+							displayValue,
+							alteration,
+						}, index) => (
+							<li key={`mod${index}`}>
+								<div>{description}</div>
+								<div>{displayValue || formatUsd(alteration)}</div>
+							</li>
+						))}
+						<li className={totalStyles}>
+							<div>Total</div>
+							<div>${total.toFixed(2)}</div>
+						</li>
+					</Fragment>
+				)}
+			</Fragment>
+		)
+	}
+}
+
 export default class Totals extends React.Component{
 	render(){
+		const { totals } = this.props
 		return (
 			<ul className={listStyles}>
-				<Subscribe to={totalsState}>
-					{({ subtotal, modifications, total, loading }) => (
-						<Fragment>
-							<li>
-								<div>Subtotal</div>
-								<div>${subtotal.toFixed(2)}</div>
-							</li>
-							{loading && (
-								<li>
-									<LoadingAnimation />
-								</li>
-							)}
-							{!loading && (
-								<Fragment>
-									{modifications.map(({
-										description,
-										displayValue,
-										alteration,
-									}, index) => (
-										<li key={`mod${index}`}>
-											<div>{description}</div>
-											<div>{displayValue || formatUsd(alteration)}</div>
-										</li>
-									))}
-									<li className={totalStyles}>
-										<div>Total</div>
-										<div>${total.toFixed(2)}</div>
-									</li>
-								</Fragment>
-							)}
-						</Fragment>
-					)}
-				</Subscribe>
+				{totals && (
+					<TotalsList totals={totals} />
+				)}
+				{!totals && (
+					<Subscribe to={totalsState}>
+						{totals => (
+							<TotalsList totals={totals} />
+						)}
+					</Subscribe>
+				)}
 			</ul>
 		)
 	}

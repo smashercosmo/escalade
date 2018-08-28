@@ -5,27 +5,43 @@ import productsState from '../state/products'
 import Item from './product-list-item'
 import { borderColor } from '../styles'
 
+class ProductsUl extends React.Component{
+	render(){
+		const { products, editable } = this.props
+		return (
+			<Fragment>
+				{!!products.length && (
+					<ul className={productListStyles}>
+						{products.map((product, key) => (
+							<Item
+								editable={editable}
+								key={`cartProd${key}`}
+								{...product}
+							/>
+						))}
+					</ul>
+				)}
+			</Fragment>
+		)
+	}
+}
+
 export default class ProductList extends React.Component{
 	render() {
-		const { editable } = this.props
+		const { products, editable } = this.props
 		return (
-			<Subscribe to={productsState}>
-				{({ products }) => (
-					<Fragment>
-						{!!products.length && (
-							<ul className={productListStyles}>
-								{products.map((product, key) => (
-									<Item
-										editable={editable}
-										key={`cartProd${key}`}
-										{...product}
-									/>
-								))}
-							</ul>
-						)}
-					</Fragment>
+			<Fragment>
+				{products && (
+					<ProductsUl products={products} editable={editable} />
 				)}
-			</Subscribe>
+				{!products && (
+					<Subscribe to={productsState}>
+						{({ products }) => (
+							<ProductsUl products={products} editable={editable} />
+						)}
+					</Subscribe>
+				)}
+			</Fragment>
 		)
 	}
 }

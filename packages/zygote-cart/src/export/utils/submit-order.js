@@ -5,49 +5,51 @@ import productsState from '../state/products'
 import totalsState from '../state/totals'
 import errorCheck from './error-check'
 import getFormValues from './get-form-values'
-//import { triggerValidators } from './validators'
 import clearMessages from './clear-messages'
 import messagesState from '../state/status-messages'
 import validateAllInput from './validate-all-input'
 import displayError from './display-error'
+import metaState from '../state/meta'
+import shippingState from '../state/shipping'
+import successState from '../state/success'
 
 export default async function submitOrder() {
 	clearMessages()
 	validateAllInput()
-	await tick()
 
 	// Check for required fields
 	if (errorCheck()) return
 	stageState.setState({ processing: true })
 
-	const vals = getFormValues()
+	const body = getFormValues()
 	if (settingsState.state.stripeApiKey){
 		let { token } = await window.zygoteStripeInstance
 			.createToken({ name: `Name` })
-		vals.payment = token
+		body.payment = token
 	}
 
-	vals.products = productsState.state.products
+	body.products = productsState.state.products
 	const {
 		subtotal,
 		modifications,
 		total,
 	} = totalsState.state
-	vals.totals = {
+	body.totals = {
 		subtotal,
 		modifications,
 		total,
 	}
-	vals.event = `submit-order`
+	body.event = `submit-order`
 
-	console.log(`Sending to API:`, vals)
+	console.log(`Sending to API:`, body)
 
 	let data
 	try {
-		data = await fetch(settingsState.state.orderEndpoint, vals)
-		console.log(data)
+		data = await fetch(settingsState.state.orderEndpoint, body)
+		console.log(`Received from API:`, data)
 	}
 	catch(err){
+		data = {}
 		console.error(err)
 	}
 
@@ -63,14 +65,22 @@ export default async function submitOrder() {
 		}
 	}
 	else {
+		const { subtotal, modifications, total } = totalsState.state
+		successState.setState({
+			totals: {
+				subtotal,
+				modifications,
+				total,
+			},
+			products: productsState.state.products,
+			meta: metaState.state.meta,
+		})
 		stageState.setState({ stage: `success` })
+		totalsState.reset()
+		productsState.reset()
+		metaState.reset()
+		shippingState.reset()
 	}
 
 	stageState.setState({ processing: false })
-}
-
-function tick(){
-	return new Promise((resolve) => {
-		setTimeout(resolve, 1)
-	})
 }

@@ -3,7 +3,7 @@ import { css } from 'emotion'
 import { Subscribe } from 'statable'
 import ProductList from '../product-list'
 import Totals from '../totals'
-import metaState from '../../state/meta'
+import successState from '../../state/success'
 
 export default class SuccessStage extends React.Component{
 	render() {
@@ -11,8 +11,8 @@ export default class SuccessStage extends React.Component{
 			<div>
 				<h1 className={headerStyles}>Your order is in!</h1>
 				<div className={messageStyles}>You will soon receive an email confirmation with your order details.</div>
-				<Subscribe to={metaState}>
-					{({ meta }) => (
+				<Subscribe to={successState}>
+					{({ products, totals, meta }) => (
 						<Fragment>
 							<h2>Detailed Order Receipt</h2>
 							<div className={metaStyles}>
@@ -23,8 +23,8 @@ export default class SuccessStage extends React.Component{
 									<div>Order Date: {meta.orderDate}</div>
 								)}
 							</div>
-							<ProductList editable={false} />
-							<Totals />
+							<ProductList products={products} editable={false} />
+							<Totals totals={totals} />
 						</Fragment>
 					)}
 				</Subscribe>
