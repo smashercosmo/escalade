@@ -11,6 +11,7 @@ export default async function fetchWebhook(path, body) {
 	try {
 		const jsonBody = JSON.stringify({
 			...body,
+			selectedShippingMethod: shippingState.state.selected,
 			meta: metaState.state.meta,
 		})
 		console.log(`Sending to API:`, jsonBody)

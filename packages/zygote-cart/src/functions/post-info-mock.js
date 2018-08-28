@@ -1,6 +1,12 @@
-export async function handler(_, __, callback) {
+export async function handler({ body }, __, callback) {
+
+	body = JSON.parse(body)
+
+	// Validate product prices & stock here
+	console.log(`Received from client:`, body)
+
 	await tick()
-	const body = JSON.stringify({
+	const res = JSON.stringify({
 		success: true,
 		modifications: [
 			{
@@ -9,7 +15,7 @@ export async function handler(_, __, callback) {
 				alteration: 10,
 			},
 		],
-		selectedShippingMethod: `rate_d3a94b44b02b48668a1d228a8c4982e6`,
+		selectedShippingMethod: body.selectedShippingMethod || `rate_d3a94b44b02b48668a1d228a8c4982e6`,
 		shippingMethods: [
 			{
 				id: `rate_d3a94b44b02b48668a1d228a8c4982e6`,
@@ -32,7 +38,7 @@ export async function handler(_, __, callback) {
 	// Response
 	callback(null, {
 		statusCode: 200,
-		body,
+		body: res,
 	})
 }
 
