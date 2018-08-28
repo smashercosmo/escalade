@@ -17,6 +17,7 @@ export default class HomePage extends React.Component {
 						image: `https://images.salsify.com/image/upload/s--5scl3VX0--/w_75,h_75,c_pad/g8gkpmmhuhqzrqxu6boh.jpg`,
 						description: `Beautiful and refined, the 8' Minnesota Fats Covington Pool Table with Dur-A-Bond play bed will make a stunning centerpiece for your game room. Carved...`,
 						price: 9.99,
+						stock: 2,
 					})}>Add to Cart A</button>
 				</div>
 				<div>
