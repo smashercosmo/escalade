@@ -10,31 +10,62 @@ export async function handler({ body }, __, callback) {
 	// Validate product prices & stock here
 	console.log(`Received from client:`, body)
 
-	const { stripeOrderId } = body.meta
+	const res = {
+		messages: {
+			error: [],
+		},
+		meta: body.meta,
+	}
 
 	// Update shipping method
 	if(body.selectedShippingMethod){
-		const res = await stripe.orders.update(stripeOrderId, {
-			selected_shipping_method: body.selectedShippingMethod,
-		})
-		console.log(`Received from Stripe after updated shipping:`, res)
+		try {
+			const req = await stripe.orders.update(res.meta.orderId, {
+				selected_shipping_method: body.selectedShippingMethod,
+			})
+			res.success = true
+			console.log(`Received from Stripe after updated shipping:`, req)
+		}
+		catch (err) {
+			console.error(err)
+			if (err.code === `out_of_inventory` || err.code === `resource_missing`) {
+				res.messages.error.push(`Sorry! One or more items in your cart have gone out of stock. Please remove these products or try again later.`)
+			}
+			else if(err.message){
+				res.messages.error.push(err.message)
+			}
+			res.success = false
+		}
 	}
 
 	// Pay for order
-	const res = await stripe.orders.pay(stripeOrderId, {
-		source: body.payment.id,
-	})
+	if (res.success) {
+		let req
+		try {
+			req = await stripe.orders.pay(res.meta.orderId, {
+				source: body.payment.id,
+			})
+			res.success = req.status === `paid`
+			console.log(`Received from Stripe after order placement:`, req)
+		}
+		catch (err) {
+			console.error(err)
+			if (err.code === `out_of_inventory` || err.code === `resource_missing`) {
+				res.messages.error.push(`Sorry! One or more items in your cart have gone out of stock. Please remove these products or try again later.`)
+			}
+			else if (err.message) {
+				res.messages.error.push(err.message)
+			}
+			res.success = false
+		}
 
-	console.log(`Received from Stripe after order placement:`, res)
+	}
+
+	console.log(`Sending back to client:`, res)
 
 	// Response
 	callback(null, {
 		statusCode: 200,
-		body: JSON.stringify({
-			success: res.status === `paid`,
-			meta: {
-				orderId: stripeOrderId,
-			},
-		}),
+		body: JSON.stringify(res),
 	})
 }

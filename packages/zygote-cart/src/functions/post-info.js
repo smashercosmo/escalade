@@ -55,6 +55,9 @@ export async function handler({ body }, __, callback) {
 				res.messages.error.push(`Sorry! "${body.products[item].title}" is out of stock. Please lower the quantity or remove this product from your cart.`)
 			}
 		}
+		else if (err.message) {
+			res.messages.error.push(err.message)
+		}
 	}
 
 	console.log(`Received from Stripe:`, order)
@@ -90,7 +93,7 @@ export async function handler({ body }, __, callback) {
 		res.selectedShippingMethod = order.selected_shipping_method
 	}
 	if (order.id) {
-		res.meta.stripeOrderId = order.id
+		res.meta.orderId = order.id
 	}
 
 	console.log(`Sending to client:`, res)
