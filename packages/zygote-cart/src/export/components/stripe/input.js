@@ -103,6 +103,19 @@ export default class StripeInput extends React.Component {
 	}
 }
 
+const containerStyles = css({
+	position: `relative`,
+	display: `block`,
+	marginTop: 30,
+	fontSize: `.9em`,
+	background: `#F8F8F8`,
+	border: `1px solid #EFF0F0`,
+	borderRadius: 4,
+	input: {
+		background: `red`,
+	},
+})
+
 const cardStyles = css({
 	position: `absolute`,
 	width: 35,
@@ -112,17 +125,7 @@ const cardStyles = css({
 
 const inputStyles = css({
 	display: `block`,
-	paddingLeft: 10,
-})
-
-const containerStyles = css({
-	position: `relative`,
-	display: `block`,
-	marginTop: 30,
-	fontSize: `.9em`,
-	background: `#F8F8F8`,
-	border: `1px solid #EFF0F0`,
-	borderRadius: 4,
+	//paddingLeft: 10,
 })
 
 const errorStyles = css({

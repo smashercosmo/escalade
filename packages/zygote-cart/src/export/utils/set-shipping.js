@@ -5,7 +5,6 @@ export default function setShipping(selected) {
 	const method = findShippingMethod(selected)
 	if(!method) return
 	shippingState.setState({ selected })
-	console.log(method)
 	addTotalModification({
 		id: `shipping`,
 		description: method.description,

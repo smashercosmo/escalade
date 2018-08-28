@@ -19,7 +19,7 @@ export default class StripeExpiration extends React.Component {
 						onChange={handleChange}
 						onFocus={handleFocus}
 						onBlur={handleBlur}
-						style={inputStyles}
+						classes={inputStyles}
 					/>
 				)}
 			</Input>

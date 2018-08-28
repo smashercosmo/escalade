@@ -1,7 +1,10 @@
+import { css } from 'emotion'
+
 const stripeInputStyles = {
-	base: {
-		lineHeight: `36px`,
-	},
+	base: css({
+		borderRadius: 4,
+		padding: 10,
+	}),
 }
 
 export default stripeInputStyles
