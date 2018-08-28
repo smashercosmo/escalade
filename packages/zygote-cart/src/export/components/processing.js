@@ -8,7 +8,7 @@ export default class Processing extends React.Component {
 		return (
 			<div className={containerStyles}>
 				<div className={animationStyles}>
-					<ThreeBounce size={50} color={primaryColor} />
+					<ThreeBounce size={22} color={primaryColor} />
 				</div>
 				{this.props.message || (
 					<div>Processing your order.<br />Please do not close this page.</div>
@@ -23,6 +23,5 @@ const containerStyles = css({
 })
 
 const animationStyles = css({
-	width: 50,
 	margin: `100px auto 30px auto`,
 })
