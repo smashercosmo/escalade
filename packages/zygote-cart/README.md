@@ -68,12 +68,52 @@ There are two endpoints that can be passed as props to send the cart information
 - `orderEndpoint`: Required. Product, payment, and shipping information will be sent to this endpoint once the order has been completed.
 - `shippingEndpoint`: Not required. Product and shipping information will be sent to this endpoing once the first section checkout has been completed. Useful for returning tax and shipping methods with this endpoint.
 
-Example request:
+Example `shippingEndpoint` request:
 
 ```json
+{
+  "infoName": "John Doe",
+  "infoEmail": "johndoe@gmail.com",
+  "infoPhone": "555-555-1234",
+  "shippingAddress1": "123 Some Street",
+  "shippingAddress2": "Apt. 5F",
+  "city": "Kansas City",
+  "state": "Missouri",
+  "zip": "64030",
+  "products": [
+    {
+      "id": "TESTID",
+      "title": "Billiard Table",
+      "image": "https://via.placeholder.com/75x75",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+      "price": 299.99
+    }
+  ]
+}
 ```
 
 Example response:
 
 ```json
+{
+  "success": true,
+  "modifications": [
+    {
+      "id": "january-sale",
+      "description": "January Sale",
+      "alteration": -20
+    },
+    {
+      "id": "tax",
+      "description": "Sales Tax",
+      "alteration": 8.99
+    },
+    {
+      "id": "shipping",
+      "description": "Shipping",
+      "alteration": 0,
+      "displayValue": "FREE!"
+    }
+  ]
+}
 ```
