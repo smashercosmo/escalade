@@ -1,15 +1,13 @@
-import React from 'react'
+import {
+	ReviewDisplay,
+	ReviewList,
+	ReviewSnapshot,
+	ReviewSnippet,
+} from "../components/power-reviews"
 
-export default class ExampleComponent extends React.Component {
-	static defaultProps = {
-		name: `Component`,
-	}
-	render() {
-		const props = Object.assign({}, this.props)
-		return (
-			<div className='ExampleComponent'>
-				Example {props.name}
-			</div>
-		)
-	}
+module.exports = {
+	ReviewDisplay,
+	ReviewList,
+	ReviewSnapshot,
+	ReviewSnippet,
 }
