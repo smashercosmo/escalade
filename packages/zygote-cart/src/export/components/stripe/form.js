@@ -4,7 +4,6 @@ import { css } from 'emotion'
 import CardNumber from './card-number'
 import Expiration from './expiration'
 import Cvc from './cvc'
-import ZipCode from '../inputs/zip'
 
 class StripePayment extends React.Component {
 	constructor(props) {
@@ -27,7 +26,6 @@ class StripePayment extends React.Component {
 						<Cvc />
 					</div>
 				</div>
-				<ZipCode name='billingZip' />
 			</Fragment>
 		)
 	}

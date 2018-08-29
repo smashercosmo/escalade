@@ -1,7 +1,7 @@
 import React from 'react'
 import { css, cx } from 'emotion'
 
-export default class Radio extends React.Component {
+export default class Checkbox extends React.Component {
 	render() {
 		const {
 			name,
@@ -11,11 +11,11 @@ export default class Radio extends React.Component {
 		} = this.props
 		return (
 			<div className={cx(
-				radioStyles,
+				checkboxStyles,
 				checked ? checkedStyles : null
 			)}>
 				<input
-					type='radio'
+					type='checkbox'
 					name={name}
 					value={value}
 					checked={checked}
@@ -31,7 +31,7 @@ export default class Radio extends React.Component {
 
 const size = 20
 
-const radioStyles = css({
+const checkboxStyles = css({
 	width: size,
 	height: size,
 	border: `1px solid #666`,
