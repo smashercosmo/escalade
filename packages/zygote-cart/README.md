@@ -63,6 +63,32 @@ Removing styles:
 <Cart style={false} />
 ```
 
+## Custom Components
+
+Some areas can contain custom components like header and footer areas.
+
+Example:
+
+```jsx
+<Cart
+  cartHeader={<img src='/your-logo.svg' />}
+  infoFooter={<small>Free shipping, except Alaska and Hawaii</small>}
+/>
+```
+
+Custom component properties:
+
+- `header`: Appears at the top of all stages of the cart
+- `footer`: Appears at the bottom of all stages of the cart
+- `cartHeader`: Appears at the top of the initial cart stage
+- `cartFooter`: Appears at the bottom of the initial cart stage
+- `infoHeader`: Appears at the top of the info stage
+- `infoFooter`: Appears at the bottom of the info stage
+- `paymentHeader`: Appears at the top of the payment stage
+- `paymentFooter`: Appears at the bottom of the payment stage
+- `successHeader`: Appears at the top of the success stage
+- `successFooter`: Appears at the bottom of the success stage
+
 ## Endpoints
 
 There are two endpoints that can be passed as props to send the cart information to your server:

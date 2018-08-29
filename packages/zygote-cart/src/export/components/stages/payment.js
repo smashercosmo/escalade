@@ -27,7 +27,6 @@ export default class PaymentStage extends React.Component{
 		this.toggleBilling = this.toggleBilling.bind(this)
 	}
 	toggleBilling(){
-		console.log(`toggleBilling`)
 		this.setState({ sameBilling: !this.state.sameBilling })
 	}
 	render() {
