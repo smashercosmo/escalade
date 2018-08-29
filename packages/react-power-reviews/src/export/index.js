@@ -3,7 +3,7 @@ import {
 	ReviewList,
 	ReviewSnapshot,
 	ReviewSnippet,
-} from "../components/power-reviews"
+} from "./power-reviews"
 
 module.exports = {
 	ReviewDisplay,

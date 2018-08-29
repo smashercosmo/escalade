@@ -2,12 +2,12 @@ import React from "react"
 import Img from "gatsby-image"
 import { css } from "emotion"
 
-import {
-	ReviewSnippet,
-	ReviewDisplay,
-	ReviewSnapshot,
-	ReviewList,
-} from "../components/power-reviews"
+// import {
+// 	ReviewSnippet,
+// 	ReviewDisplay,
+// 	ReviewSnapshot,
+// 	ReviewList,
+// } from "../components/power-reviews"
 import buttonStyles from "../styles/mixins/button"
 import Layout from "../components/layouts/default"
 import Meta from "../components/meta"
@@ -38,34 +38,7 @@ export default class HomePage extends React.Component {
 				>
 					Test
 				</button>
-				<ReviewSnippet
-					apiKey={`736c8245-31c3-4d28-918c-00c67e4b1d76`}
-					merchantGroupId={`78902`}
-					merchantId={`362623`}
-					pageId={`b6101w`}
-					wrapperUrl={`https://goalrilla.com/write-review/`}
-				/>
-				<ReviewDisplay
-					apiKey={`736c8245-31c3-4d28-918c-00c67e4b1d76`}
-					merchantGroupId={`78902`}
-					merchantId={`362623`}
-					pageId={`b6101w`}
-					wrapperUrl={`https://goalrilla.com/write-review/`}
-				/>
-				<ReviewSnapshot
-					apiKey={`736c8245-31c3-4d28-918c-00c67e4b1d76`}
-					merchantGroupId={`78902`}
-					merchantId={`362623`}
-					pageId={`b6101w`}
-					wrapperUrl={`https://goalrilla.com/write-review/`}
-				/>
-				<ReviewList
-					apiKey={`736c8245-31c3-4d28-918c-00c67e4b1d76`}
-					merchantGroupId={`78902`}
-					merchantId={`362623`}
-					pageId={`b6101w`}
-					wrapperUrl={`https://goalrilla.com/write-review/`}
-				/>
+
 				<Modal
 					open={this.state.open}
 					onClose={() => this.setState({ open: false })}
