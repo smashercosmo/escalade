@@ -1,7 +1,3 @@
-# New Project Boilerplate
-
-A simple starter for new web applications, Gatsby plugins, react components, or JavaScript modules.
-
 ## Installation
 
 ```bash
