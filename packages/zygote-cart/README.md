@@ -1,24 +1,40 @@
-# New Project Boilerplate
+# Zygote
 
-A simple starter for new web applications, Gatsby plugins, react components, or JavaScript modules.
+Zygote is a drop-in ecommerce system built in React. It takes a "bring your own backend" approach so it can work with any payment processor or order fulfillment system. Out of the box it works very well with Stripe.
+
+**Note:** At the moment Zygote only works with React. However there will be a universal option in the future.
 
 ## Installation
 
+With npm:
+
 ```bash
-git clone git@github.com:escaladesports/gatsby-boilerplate.git your-website
-cd your-website
-yarn
-yarn reset
+npm install --save zygote-cart
+```
+
+Or with Yarn:
+
+```bash
+yarn add zygote-cart
 ```
 
 ## Usage
 
-- `yarn dev`: Starts up live development server
-- `yarn build`: Builds site for production
-- `yarn reset`: Changes the project name in `package.json` to match the directory, resets the version number, and resets the git history.
-- `yarn env`: Pulls Netlify environment variables into a local `.env` file. (Only works if you have logged into [netlifyctl](https://github.com/netlify/netlifyctl#command-line-login) at least once and have permissions to the Netlify site)
+```jsx
+import { Cart, addToCart } from 'zygote-cart'
 
-## Preparing boilerplate to create Gatsby plugins
+<button onClick={() => addToCart({
+  id: `TESTID`,
+  title: `Billiard Table`,
+  image: `https://via.placeholder.com/75x75`,
+  description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit...`,
+  price: 299.99,
+})}>
+  Add to Cart!
+</button>
 
-- Develop plugin in `./plugins/export` directory
-- Change `build` script to `npm run build:plugin`
+<Cart
+	stripeApiKey='pk_test_12345'
+	orderEndpoint='/api/place-order'
+/>
+```
