@@ -129,19 +129,31 @@ Example response:
     {
       "id": "january-sale",
       "description": "January Sale",
-      "alteration": -20
+      "value": -20
     },
     {
       "id": "tax",
       "description": "Sales Tax",
-      "alteration": 8.99
+      "value": 8.99
+    },
+  ],
+  "shippingMethods": [
+    {
+      "id": "ship-0",
+      "description": "Standard Shipping",
+      "value": 0
     },
     {
-      "id": "shipping",
-      "description": "Shipping",
-      "alteration": 0,
-      "displayValue": "FREE!"
+      "id": "ship-1",
+      "description": "Express Shipping",
+      "value": 11.5
+    },
+    {
+      "id": "ship-2",
+      "description": "Overnight Shipping",
+      "value": 49.99
     }
-  ]
+  ],
+  "selectedShippingMethod": "ship-0"
 }
 ```

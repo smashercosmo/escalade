@@ -7,7 +7,7 @@ export default function addModification(newModification) {
 		id: `10OFF`,
 		description: `10% off discount`,
 		displayValue: `-10%`,
-		alteration: () => {
+		value: () => {
 			return totalsState.state.subtotal * -.1
 		}
 	}

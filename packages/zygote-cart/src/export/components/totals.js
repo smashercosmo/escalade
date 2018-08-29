@@ -26,11 +26,11 @@ class TotalsList extends React.Component{
 						{modifications.map(({
 							description,
 							displayValue,
-							alteration,
+							value,
 						}, index) => (
 							<li key={`mod${index}`}>
 								<div>{description}</div>
-								<div>{displayValue || formatUsd(alteration)}</div>
+								<div>{displayValue || formatUsd(value)}</div>
 							</li>
 						))}
 						<li className={totalStyles}>

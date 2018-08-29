@@ -73,7 +73,7 @@ export async function handler({ body }, __, callback) {
 			if (item.type === `tax`) {
 				res.modifications.push({
 					id: `tax`,
-					alteration: item.amount / 100,
+					value: item.amount / 100,
 					description: item.description,
 				})
 			}
