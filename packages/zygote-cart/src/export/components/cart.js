@@ -40,6 +40,12 @@ export default class Cart extends React.Component {
 			header,
 			cartHeader,
 			cartFooter,
+			infoHeader,
+			infoFooter,
+			paymentHeader,
+			paymentFooter,
+			successHeader,
+			successFooter,
 			addedToCartMsg,
 		} = this.props
 		return (
@@ -83,19 +89,28 @@ export default class Cart extends React.Component {
 								stageStyles,
 								stage === `info` && !processing && activeStageStyles,
 							)}>
-								<InfoStage />
+								<InfoStage
+									infoHeader={infoHeader}
+									infoFooter={infoFooter}
+								/>
 							</div>
 							<div className={cx(
 								stageStyles,
 								stage === `payment` && !processing && activeStageStyles,
 							)}>
-								<PaymentStage />
+								<PaymentStage
+									paymentHeader={paymentHeader}
+									paymentFooter={paymentFooter}
+								/>
 							</div>
 							<div className={cx(
 								stageStyles,
 								stage === `success` && !processing && activeStageStyles,
 							)}>
-								<SuccessStage />
+								<SuccessStage
+									successHeader={successHeader}
+									successFooter={successFooter}
+								/>
 							</div>
 							{!!processing && (
 								<Processing>{processing}</Processing>

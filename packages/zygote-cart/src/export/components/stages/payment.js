@@ -31,12 +31,19 @@ export default class PaymentStage extends React.Component{
 		this.setState({ sameBilling: !this.state.sameBilling })
 	}
 	render() {
+		const {
+			paymentHeader,
+			paymentFooter,
+		} = this.props
 		return (
 			<Subscribe to={stageState}>
 				{({ stage }) => (
 					<Fragment>
 						{(stage === `info` || stage === `payment`) && (
 							<form>
+								{!!paymentHeader && (
+									<div>{paymentHeader}</div>
+								)}
 								<StagesHeader stage='payment' />
 								<div className={sectionStyles}>
 									<div className={headerRowStyles}>
@@ -102,6 +109,9 @@ export default class PaymentStage extends React.Component{
 								<div className={buttonContainerStyles}>
 									<Button onClick={submitOrder}>Place Order</Button>
 								</div>
+								{!!paymentFooter && (
+									<div>{paymentFooter}</div>
+								)}
 							</form>
 						)}
 					</Fragment>

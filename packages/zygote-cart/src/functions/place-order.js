@@ -13,6 +13,7 @@ export async function handler({ body }, __, callback) {
 	// Validate product prices & stock here
 	console.log(`Received from client:`, body)
 
+	// Create empty result object to be sent later
 	const res = {
 		messages: {
 			error: [],

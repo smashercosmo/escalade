@@ -10,6 +10,7 @@ export async function handler({ body }, __, callback) {
 	// Validate product prices & stock here
 	console.log(`Received from client:`, body)
 
+	// Create empty result object to be sent later
 	const res = {
 		messages: {
 			error: [],
@@ -42,10 +43,14 @@ export async function handler({ body }, __, callback) {
 				},
 			},
 		})
+		console.log(`Received from Stripe:`, order)
 	}
 	catch(err){
 		order = {}
-		console.error(err)
+		console.error(`Received from Stripe:`, err)
+
+		// Error messages
+		// Create more consumer friendly inventory error message
 		if (err.code === `out_of_inventory` || err.code === `resource_missing`){
 			let item = Number(err.param
 				.replace(`items[`, ``)
@@ -60,7 +65,6 @@ export async function handler({ body }, __, callback) {
 		}
 	}
 
-	console.log(`Received from Stripe:`, order)
 
 	// Get tax
 	if (order.items) {

@@ -1,8 +1,10 @@
+
+
 # Zygote
 
 Zygote is a drop-in ecommerce front end built in React. It takes a "bring your own backend" approach so it can work with any payment processor or order fulfillment system. Out of the box it works very well with Stripe.
 
-**Note:** At the moment Zygote only works with React. However there will be a universal option in the future.
+**Notes:** At the moment Zygote only works with React. However there will be a universal option in the future.
 
 ## Installation
 

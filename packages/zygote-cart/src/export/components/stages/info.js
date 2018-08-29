@@ -18,12 +18,19 @@ import Button from '../button'
 
 export default class InfoStage extends React.Component{
 	render() {
+		const {
+			infoHeader,
+			infoFooter,
+		} = this.props
 		return (
 			<Subscribe to={stageState}>
 				{({ stage }) => (
 					<Fragment>
 						{(stage === `info` || stage === `payment`) && (
 							<form>
+								{!!infoHeader && (
+									<div>{infoHeader}</div>
+								)}
 								<StagesHeader stage='info' />
 								<div className={sectionStyles}>
 									<Header>Let's get started</Header>
@@ -55,6 +62,9 @@ export default class InfoStage extends React.Component{
 										<Button onClick={nextStage}>Next Step</Button>
 									</div>
 								</div>
+								{!!infoFooter && (
+									<div>{infoFooter}</div>
+								)}
 							</form>
 						)}
 					</Fragment>

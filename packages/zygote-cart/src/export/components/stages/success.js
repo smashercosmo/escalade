@@ -9,9 +9,18 @@ import closeCart from '../../utils/close-cart'
 
 export default class SuccessStage extends React.Component{
 	render() {
+		const {
+			successHeader,
+			successFooter,
+		} = this.props
 		return (
-			<div>
-				<h1 className={headerStyles}>Order Received!</h1>
+			<Fragment>
+				{!!successHeader && (
+					<div>{successHeader}</div>
+				)}
+				{!successHeader && (
+					<h1 className={headerStyles}>Order Received!</h1>
+				)}
 				<Subscribe to={successState}>
 					{({ products, totals, meta }) => (
 						<Fragment>
@@ -32,7 +41,10 @@ export default class SuccessStage extends React.Component{
 				<div className={buttonContainerStyles}>
 					<Button onClick={closeCart}>Close Cart</Button>
 				</div>
-			</div>
+				{!!successFooter && (
+					<div>{successFooter}</div>
+				)}
+			</Fragment>
 		)
 	}
 }
