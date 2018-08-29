@@ -1,6 +1,6 @@
 {
-  "name": "project-boilerplate",
-  "version": "1.0.0",
+  "name": "react-power-reviews",
+  "version": "0.0.1",
   "author": "Kennedy Rose <krose@escaladesports.com>",
   "scripts": {
     "build": "npm run build:lambda && npm run build:gatsby",
