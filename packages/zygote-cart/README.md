@@ -1,6 +1,6 @@
 # Zygote
 
-Zygote is a drop-in ecommerce system built in React. It takes a "bring your own backend" approach so it can work with any payment processor or order fulfillment system. Out of the box it works very well with Stripe.
+Zygote is a drop-in ecommerce front end built in React. It takes a "bring your own backend" approach so it can work with any payment processor or order fulfillment system. Out of the box it works very well with Stripe.
 
 **Note:** At the moment Zygote only works with React. However there will be a universal option in the future.
 
@@ -37,4 +37,43 @@ import { Cart, addToCart } from 'zygote-cart'
 	stripeApiKey='pk_test_12345'
 	orderEndpoint='/api/place-order'
 />
+```
+
+## Styling
+
+There's two options for styling. You can either add in a color, background color, and font color as props. Or you can turn off the auto styling and supply your own by targeting the classes in the cart.
+
+Editable style variables:
+
+```jsx
+<Cart
+  style={{
+    color: `#0f0`,
+    backgroundColor: `#fff`,
+    fontColor: `#333`,
+  }}
+/>
+```
+
+Removing styles:
+
+```jsx
+<Cart style={false} />
+```
+
+## Endpoints
+
+There are two endpoints that can be passed as props to send the cart information to your server:
+
+- `orderEndpoint`: Required. Product, payment, and shipping information will be sent to this endpoint once the order has been completed.
+- `shippingEndpoint`: Not required. Product and shipping information will be sent to this endpoing once the first section checkout has been completed. Useful for returning tax and shipping methods with this endpoint.
+
+Example request:
+
+```json
+```
+
+Example response:
+
+```json
 ```
