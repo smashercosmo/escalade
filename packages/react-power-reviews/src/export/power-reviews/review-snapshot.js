@@ -16,7 +16,7 @@ export default class ReviewSnapshot extends Component {
 				// success
 				this.setState({ loading: false })
 			})
-			.catch(err => this.setState({ err: err }))
+			.catch(err => this.setState({ err: JSON.stringify(err), loading: false }))
 	}
 
 	render() {

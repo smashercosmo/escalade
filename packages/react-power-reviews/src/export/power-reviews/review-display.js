@@ -11,12 +11,15 @@ export default class ReviewDisplay extends Component {
 	}
 
 	componentDidMount() {
+		if (window.POWERREVIEWS) {
+			this.setState({ loading: false })
+		}
 		initPowerReviews(this.props, { ReviewDisplay: `pr-reviewDisplay` })
 			.then(() => {
 				// success
 				this.setState({ loading: false })
 			})
-			.catch(err => this.setState({ err: err }))
+			.catch(err => this.setState({ err: JSON.stringify(err), loading: false }))
 	}
 
 	render() {

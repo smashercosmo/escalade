@@ -29,6 +29,7 @@ export default (props, components) => {
 					reject(`Something went wrong while loading the script: ${err}`)
 				})
 		} else {
+			console.log(props)
 			window.POWERREVIEWS.display.render({
 				api_key: props.apiKey,
 				locale: props.locale || `en_US`,
