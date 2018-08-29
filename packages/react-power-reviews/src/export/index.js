@@ -3,6 +3,7 @@ import {
 	ReviewList,
 	ReviewSnapshot,
 	ReviewSnippet,
+	WriteReview,
 } from "./power-reviews"
 
 module.exports = {
@@ -10,4 +11,5 @@ module.exports = {
 	ReviewList,
 	ReviewSnapshot,
 	ReviewSnippet,
+	WriteReview,
 }

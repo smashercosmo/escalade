@@ -7,22 +7,18 @@ export default class ReviewSnippet extends Component {
 	constructor(props) {
 		super(props)
 
-		this.state = { err: null, loading: true }
+		this.state = { err: null }
 	}
 
 	componentDidMount() {
 		initPowerReviews(this.props, { ReviewSnippet: `pr-reviewSnippet` })
 			.then(() => {
 				// success
-				this.setState({ loading: false })
 			})
-			.catch(err => this.setState({ err: JSON.stringify(err), loading: false }))
+			.catch(err => this.setState({ err: JSON.stringify(err) }))
 	}
 
 	render() {
-		if (this.state.loading) {
-			return <div className={loading}>Loading...</div>
-		}
 		if (this.state.err) {
 			return <div className={err}>{this.state.err}</div>
 		}
@@ -31,4 +27,3 @@ export default class ReviewSnippet extends Component {
 }
 
 const err = css({ color: `red` })
-const loading = css({ color: `green` })

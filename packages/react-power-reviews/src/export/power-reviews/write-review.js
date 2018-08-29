@@ -3,7 +3,7 @@ import { css } from "emotion"
 
 import initPowerReviews from "../utils/init-powerreviews"
 
-export default class ReviewList extends Component {
+export default class WriteReview extends Component {
 	constructor(props) {
 		super(props)
 
@@ -11,7 +11,7 @@ export default class ReviewList extends Component {
 	}
 
 	componentDidMount() {
-		initPowerReviews(this.props, { ReviewList: `pr-reviewList` })
+		initPowerReviews(this.props, { Write: `pr-write` })
 			.then(() => {
 				// success
 			})
@@ -22,7 +22,7 @@ export default class ReviewList extends Component {
 		if (this.state.err) {
 			return <div className={err}>{this.state.err}</div>
 		}
-		return <div id={`pr-reviewList`} />
+		return <div id={`pr-write`} />
 	}
 }
 
