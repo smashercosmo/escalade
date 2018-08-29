@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Subscribe } from 'statable'
 import { css, cx } from 'emotion'
 import {
@@ -50,73 +50,77 @@ export default class Cart extends React.Component {
 		} = this.props
 		return (
 			<Subscribe to={[openState, stageState, addedToCartState]}>
-				{({ open }, { stage, processing }, { addedToCart }) => (
-					<div className={cx(containerStyles, `zygoteCart`)}>
-						<div
-							className={cx(bgStyles, open ? bgOpenStyles : null)}
-							onClick={closeCart}
-						/>
-						<div
-							className={cx(cartStyles, open ? cartOpenStyles : null)}
-						>
-							<div
-								role='button'
-								className={closeStyles}
-								onClick={closeCart}
-							>×</div>
+				{({ open, init }, { stage, processing }, { addedToCart }) => (
+					<Fragment>
+						{init && (
+							<div className={cx(containerStyles, `zygoteCart`)}>
+								<div
+									className={cx(bgStyles, open ? bgOpenStyles : null)}
+									onClick={closeCart}
+								/>
+								<div
+									className={cx(cartStyles, open ? cartOpenStyles : null)}
+								>
+									<div
+										role='button'
+										className={closeStyles}
+										onClick={closeCart}
+									>×</div>
 
-							{header && (
-								<div className={headerStyles}>{header}</div>
-							)}
+									{header && (
+										<div className={headerStyles}>{header}</div>
+									)}
 
-							<Errors />
-							<Info />
+									<Errors />
+									<Info />
 
-							<div className={cx(
-								stageStyles,
-								stage === `cart` && !processing && activeStageStyles,
-							)}>
-								<CartStage
-									cartHeader={cartHeader}
-									cartFooter={cartFooter}
-									addedToCart={addedToCart
-										? addedToCartMsg || <AddedToCartMessage />
-										: false
-									}
-								/>
+									<div className={cx(
+										stageStyles,
+										stage === `cart` && !processing && activeStageStyles,
+									)}>
+										<CartStage
+											cartHeader={cartHeader}
+											cartFooter={cartFooter}
+											addedToCart={addedToCart
+												? addedToCartMsg || <AddedToCartMessage />
+												: false
+											}
+										/>
+									</div>
+									<div className={cx(
+										stageStyles,
+										stage === `info` && !processing && activeStageStyles,
+									)}>
+										<InfoStage
+											infoHeader={infoHeader}
+											infoFooter={infoFooter}
+										/>
+									</div>
+									<div className={cx(
+										stageStyles,
+										stage === `payment` && !processing && activeStageStyles,
+									)}>
+										<PaymentStage
+											paymentHeader={paymentHeader}
+											paymentFooter={paymentFooter}
+										/>
+									</div>
+									<div className={cx(
+										stageStyles,
+										stage === `success` && !processing && activeStageStyles,
+									)}>
+										<SuccessStage
+											successHeader={successHeader}
+											successFooter={successFooter}
+										/>
+									</div>
+									{!!processing && (
+										<Processing>{processing}</Processing>
+									)}
+								</div>
 							</div>
-							<div className={cx(
-								stageStyles,
-								stage === `info` && !processing && activeStageStyles,
-							)}>
-								<InfoStage
-									infoHeader={infoHeader}
-									infoFooter={infoFooter}
-								/>
-							</div>
-							<div className={cx(
-								stageStyles,
-								stage === `payment` && !processing && activeStageStyles,
-							)}>
-								<PaymentStage
-									paymentHeader={paymentHeader}
-									paymentFooter={paymentFooter}
-								/>
-							</div>
-							<div className={cx(
-								stageStyles,
-								stage === `success` && !processing && activeStageStyles,
-							)}>
-								<SuccessStage
-									successHeader={successHeader}
-									successFooter={successFooter}
-								/>
-							</div>
-							{!!processing && (
-								<Processing>{processing}</Processing>
-							)}
-						</div>
-					</div>
+						)}
+					</Fragment>
 				)}
 			</Subscribe>
 		)

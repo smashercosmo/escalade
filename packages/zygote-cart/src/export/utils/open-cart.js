@@ -5,7 +5,13 @@ import clearMessages from './clear-messages'
 
 export default function openCart(product){
 	clearMessages()
-	openState.setState({ open: true })
+	if(!openState.state.init){
+		openState.setState({ init: true })
+		setTimeout(() => openState.setState({ open: true }), 1)
+	}
+	else{
+		openState.setState({ open: true })
+	}
 	stageState.setState({ stage: `cart` })
 	if(product === true){
 		addedToCartState.setState({ addedToCart: true })
