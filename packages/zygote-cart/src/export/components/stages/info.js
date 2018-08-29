@@ -27,9 +27,9 @@ export default class InfoStage extends React.Component{
 								<StagesHeader stage='info' />
 								<div className={sectionStyles}>
 									<Header>Let's get started</Header>
-									<NameInput name='shippingName' autoComplete='shipping name' />
-									<EmailInput name='shippingEmail' autoComplete='shipping email' />
-									<PhoneInput name='shippingPhone' autoComplete='shipping tel' />
+									<NameInput name='infoName' />
+									<EmailInput name='infoEmail' />
+									<PhoneInput name='infoPhone' />
 								</div>
 								<div className={sectionStyles}>
 									<Header>Where should we deliver?</Header>

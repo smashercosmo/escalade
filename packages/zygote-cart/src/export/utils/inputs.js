@@ -1,2 +1,2 @@
-const inputs = []
+const inputs = {}
 export default inputs

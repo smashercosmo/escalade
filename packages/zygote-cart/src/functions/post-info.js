@@ -23,7 +23,7 @@ export async function handler({ body }, __, callback) {
 	try {
 		order = await stripe.orders.create({
 			currency: `usd`,
-			email: body.shippingEmail,
+			email: body.infoEmail,
 			items: body.products.map(({ id, quantity }) => {
 				return {
 					type: `sku`,
@@ -32,7 +32,7 @@ export async function handler({ body }, __, callback) {
 				}
 			}),
 			shipping: {
-				name: body.shippingName,
+				name: body.infoName,
 				address: {
 					line1: body.shippingAddress1,
 					line2: body.shippingAddress2,

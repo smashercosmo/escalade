@@ -24,7 +24,15 @@ export default async function submitOrder() {
 	const body = getFormValues()
 	if (settingsState.state.stripeApiKey){
 		let { token } = await window.zygoteStripeInstance
-			.createToken({ name: `Name` })
+			// .createToken({ name: body.infoName })
+			.createToken({
+				name: body.billingName,
+				address_line1: body.billingAddress1,
+				address_line2: body.billingAddress2,
+				address_city: body.billingCity,
+				address_state: body.billingState,
+				address_zip: body.billingZip,
+			})
 		body.payment = token
 	}
 

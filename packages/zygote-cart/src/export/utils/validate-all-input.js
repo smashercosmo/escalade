@@ -1,7 +1,7 @@
 import inputs from './inputs'
 
 export default function validateAllInputs(){
-	for(let i = 0; i < inputs.length; i++){
+	for (let i in inputs) {
 		if (inputs[i].validate) {
 			inputs[i].validate()
 		}

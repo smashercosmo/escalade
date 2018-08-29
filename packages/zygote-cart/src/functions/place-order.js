@@ -43,6 +43,7 @@ export async function handler({ body }, __, callback) {
 		let req
 		try {
 			req = await stripe.orders.pay(res.meta.orderId, {
+				email: body.infoEmail,
 				source: body.payment.id,
 			})
 			res.success = req.status === `paid`
