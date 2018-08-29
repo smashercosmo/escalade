@@ -19,34 +19,34 @@ import PowerReviews from 'react-power-reviews' // You can also destructure each 
 
 export default class Index extends Component {
  render() {
-  	<PowerReviews.ReviewSnippet
-					apiKey={`Your Api Key`}
-					merchantGroupId={`Your Merchant Group Id`}
-					merchantId={`Your Merchant`}
-					pageId={`Your Page Id (usually product sku)`}
-					wrapperUrl={`Page which you write reviews on`}
-				/>
-				<PowerReviews.ReviewDisplay
-				apiKey={`Your Api Key`}
-					merchantGroupId={`Your Merchant Group Id`}
-					merchantId={`Your Merchant`}
-					pageId={`Your Page Id (usually product sku)`}
-					wrapperUrl={`Page which you write reviews on`}
-				/>
-				<PowerReviews.ReviewSnapshot
-				apiKey={`Your Api Key`}
-					merchantGroupId={`Your Merchant Group Id`}
-					merchantId={`Your Merchant`}
-					pageId={`Your Page Id (usually product sku)`}
-					wrapperUrl={`Page which you write reviews on`}
-				/>
-				<PowerReviews.ReviewList
-				apiKey={`Your Api Key`}
-					merchantGroupId={`Your Merchant Group Id`}
-					merchantId={`Your Merchant`}
-					pageId={`Your Page Id (usually product sku)`}
-					wrapperUrl={`Page which you write reviews on`}
-				/>
+	<PowerReviews.ReviewSnippet
+	apiKey={`Your Api Key`}
+	merchantGroupId={`Your Merchant Group Id`}
+	merchantId={`Your Merchant`}
+	pageId={`Your Page Id (usually product sku)`}
+	wrapperUrl={`Page which you write reviews on`}
+	/>
+	<PowerReviews.ReviewDisplay
+	apiKey={`Your Api Key`}
+	merchantGroupId={`Your Merchant Group Id`}
+	merchantId={`Your Merchant`}
+	pageId={`Your Page Id (usually product sku)`}
+	wrapperUrl={`Page which you write reviews on`}
+	/>
+	<PowerReviews.ReviewSnapshot
+	apiKey={`Your Api Key`}
+	merchantGroupId={`Your Merchant Group Id`}
+	merchantId={`Your Merchant`}
+	pageId={`Your Page Id (usually product sku)`}
+	wrapperUrl={`Page which you write reviews on`}
+	/>
+	<PowerReviews.ReviewList
+	apiKey={`Your Api Key`}
+	merchantGroupId={`Your Merchant Group Id`}
+	merchantId={`Your Merchant`}
+	pageId={`Your Page Id (usually product sku)`}
+	wrapperUrl={`Page which you write reviews on`}
+	/>
  }
 }
 ```
