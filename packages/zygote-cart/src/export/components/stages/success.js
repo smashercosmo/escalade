@@ -11,7 +11,7 @@ export default class SuccessStage extends React.Component{
 	render() {
 		return (
 			<div>
-				<h1 className={headerStyles}>Your order has been received!</h1>
+				<h1 className={headerStyles}>Order Received!</h1>
 				<Subscribe to={successState}>
 					{({ products, totals, meta }) => (
 						<Fragment>

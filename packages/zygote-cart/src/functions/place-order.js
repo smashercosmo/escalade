@@ -1,7 +1,10 @@
 import dotenv from 'dotenv'
 import Stripe from 'stripe'
+import SparkPost from 'sparkpost'
+import Handlebars from 'handlebars'
 dotenv.config({ silent: true })
 const stripe = Stripe(process.env.STRIPE_API_SECRET)
+const emailClient = new SparkPost(process.env.SPARKPOST_API_KEY)
 
 export async function handler({ body }, __, callback) {
 
@@ -60,6 +63,28 @@ export async function handler({ body }, __, callback) {
 			res.success = false
 		}
 
+	}
+
+	// Send email confirmation
+	if(res.success){
+		const template = Handlebars.compile(`<html><body><p>{{infoName}}, we've received your order and we're excited to send it to you. When your order ships, we'll send you another email with your tracking info.</p></body></html>`)
+		const html = template(body)
+		console.log(`Sending ${html} to ${body.infoEmail}`)
+		try {
+			await emailClient.transmissions.send({
+				content: {
+					from: `noreply@escaladeinc.com`,
+					subject: `Order Confirmation`,
+					html,
+				},
+				recipients: [
+					{ address: body.infoEmail },
+				],
+			})
+		}
+		catch(err){
+			console.error(err)
+		}
 	}
 
 	console.log(`Sending back to client:`, res)
