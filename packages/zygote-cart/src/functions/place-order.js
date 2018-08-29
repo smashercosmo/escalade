@@ -73,7 +73,10 @@ export async function handler({ body }, __, callback) {
 		try {
 			await emailClient.transmissions.send({
 				content: {
-					from: `noreply@escaladeinc.com`,
+					from: {
+						name: `Escalade Sports`,
+						email: `noreply@escaladeinc.com`,
+					},
 					subject: `Order Confirmation`,
 					html,
 				},
