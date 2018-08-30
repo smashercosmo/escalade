@@ -2,6 +2,7 @@ import productState from '../state/products'
 import addedToCartState from '../state/products'
 import openCart from './open-cart'
 import calculateTotals from './calculate-totals'
+import onAddProduct from '../events/on-add-product'
 
 export default function addToCart(newProduct){
 	let products = [...productState.state.products]
@@ -28,4 +29,5 @@ export default function addToCart(newProduct){
 	productState.setState({ products })
 	calculateTotals()
 	addedToCartState.setState({ addedToCart: true })
+	onAddProduct(newProduct)
 }

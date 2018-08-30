@@ -1,12 +1,15 @@
 import productState from '../state/products'
 import calculateTotals from './calculate-totals'
+import onAddProduct from '../events/on-add-product'
 
-export default function increaseQuantity(id, n = 1) {
+export default function increaseQuantity(id, quantity = 1) {
 	let products = [...productState.state.products]
+	let modifiedProduct
 	for (let i = products.length; i--;) {
 		const product = products[i]
 		if (product.id === id) {
-			product.quantity += n
+			modifiedProduct = product
+			product.quantity += quantity
 			if(typeof product.stock === `number`){
 				if(product.quantity > product.stock){
 					product.quantity = product.stock
@@ -17,4 +20,10 @@ export default function increaseQuantity(id, n = 1) {
 	}
 	productState.setState({ products })
 	calculateTotals()
+	if(modifiedProduct){
+		onAddProduct({
+			...modifiedProduct,
+			quantity,
+		})
+	}
 }

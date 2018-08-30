@@ -41,6 +41,14 @@ export default class HomePage extends React.Component {
 					infoEndpoint='/.netlify/functions/info'
 					orderEndpoint='/.netlify/functions/order'
 
+					onOpen={() => console.log(`Cart opened`)}
+					onClose={() => console.log(`Cart closed`)}
+					onAddProduct={product => console.log(`Added product`, product)}
+					onRemoveProduct={product => console.log(`Removed product`, product)}
+					onInfo={info => console.log(`Info submit`, info)}
+					onOrder={order => console.log(`Order submit`, order)}
+					onError={err => console.log(`Error caught`, err)}
+
 					// totalModifications={[
 					// 	{
 					// 		id: `shipping`,

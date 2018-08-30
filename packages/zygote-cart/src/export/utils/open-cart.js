@@ -2,6 +2,7 @@ import openState from '../state/open'
 import stageState from '../state/stage'
 import addedToCartState from '../state/added-to-cart'
 import clearMessages from './clear-messages'
+import onOpen from '../events/on-open'
 
 export default function openCart(product){
 	if(openState.state.open) return
@@ -20,4 +21,5 @@ export default function openCart(product){
 	else{
 		addedToCartState.setState({ addedToCart: false })
 	}
+	onOpen()
 }

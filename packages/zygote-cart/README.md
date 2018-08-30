@@ -94,7 +94,7 @@ Custom component properties:
 There are two endpoints that can be passed as props to send the cart information to your server:
 
 - `orderEndpoint`: Required. Product, payment, and shipping information will be sent to this endpoint once the order has been completed.
-- `shippingEndpoint`: Not required. Product and shipping information will be sent to this endpoing once the first section checkout has been completed. Useful for returning tax and shipping methods with this endpoint.
+- `infoEndpoint`: Not required. Product and shipping information will be sent to this endpoing once the first section checkout has been completed. Useful for returning tax and shipping methods with this endpoint.
 
 Example `shippingEndpoint` request:
 
