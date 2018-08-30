@@ -15,13 +15,12 @@ export default class Button extends React.Component {
 			secondary,
 		} = this.props
 		return (
-			<div
+			<button
 				className={cx(buttonStyles, secondary ? secondaryButtonStyles : primaryButtonStyles)}
-				role='button'
 				onClick={onClick}
 			>
 				{children}
-			</div>
+			</button>
 		)
 	}
 }
@@ -34,6 +33,14 @@ const buttonStyles = css({
 	width: 250,
 	fontWeight: `bold`,
 	margin: `10px auto`,
+	display: `block`,
+	fontSize: `1em`,
+	outline: `none`,
+	border: 0,
+	cursor: `pointer`,
+	':hover, :focus': {
+		opacity: .75,
+	},
 })
 
 const primaryButtonStyles = css({
