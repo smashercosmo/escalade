@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react'
 import { Subscribe } from 'statable'
-import { css } from 'emotion'
 import totalsState from '../state/totals'
-import { borderColor } from '../styles/settings'
 import LoadingAnimation from './loading-animation'
 import formatUsd from '../utils/format-usd'
 
@@ -33,7 +31,7 @@ class TotalsList extends React.Component{
 								<div>{displayValue || formatUsd(value)}</div>
 							</li>
 						))}
-						<li className={totalStyles}>
+						<li className='zygoteGrandTotal'>
 							<div>Total</div>
 							<div>${total.toFixed(2)}</div>
 						</li>
@@ -48,7 +46,7 @@ export default class Totals extends React.Component{
 	render(){
 		const { totals } = this.props
 		return (
-			<ul className={listStyles}>
+			<ul className='zygoteTotals'>
 				{totals && (
 					<TotalsList totals={totals} />
 				)}
@@ -63,33 +61,3 @@ export default class Totals extends React.Component{
 		)
 	}
 }
-
-const listStyles = css({
-	listStyleType: `none`,
-	margin: 0,
-	marginTop: 30,
-	marginBottom: 30,
-	padding: 0,
-	borderTop: `1px solid ${borderColor}`,
-	li: {
-		margin: `10px 0`,
-		':after': {
-			content: `""`,
-			display: `block`,
-			clear: `both`,
-		},
-		'> div': {
-			width: `50%`,
-			float: `left`,
-			':last-of-type': {
-				textAlign: `right`,
-			},
-		},
-	},
-})
-
-const totalStyles = css({
-	fontWeight: `bold`,
-	paddingTop: 20,
-	borderTop: `1px solid ${borderColor}`,
-})

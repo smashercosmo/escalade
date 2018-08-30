@@ -1,14 +1,9 @@
 import React from 'react'
-import { css } from 'emotion'
 
-export default class CartQuantity extends React.Component {
+export default class SectionHeader extends React.Component {
 	render() {
 		return (
-			<h2 className={headerStyles}>{this.props.children}</h2>
+			<h2 className='zygoteSectionHeader'>{this.props.children}</h2>
 		)
 	}
 }
-
-const headerStyles = css({
-	fontSize: `1.2em`,
-})

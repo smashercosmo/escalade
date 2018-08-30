@@ -1,13 +1,12 @@
 import React from 'react'
-import { css } from 'emotion'
 import { ThreeBounce } from 'better-react-spinkit'
 import { primaryColor } from '../styles/settings'
 
 export default class Processing extends React.Component {
 	render() {
 		return (
-			<div className={containerStyles}>
-				<div className={animationStyles}>
+			<div className='zygoteProcessing'>
+				<div>
 					<ThreeBounce size={22} color={primaryColor} />
 				</div>
 				{this.props.message || (
@@ -17,11 +16,3 @@ export default class Processing extends React.Component {
 		)
 	}
 }
-
-const containerStyles = css({
-	textAlign: `center`,
-})
-
-const animationStyles = css({
-	margin: `100px auto 30px auto`,
-})

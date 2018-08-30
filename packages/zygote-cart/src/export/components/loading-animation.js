@@ -1,5 +1,4 @@
 import React from 'react'
-import { css } from 'emotion'
 import { ThreeBounce } from 'better-react-spinkit'
 import { primaryColor } from '../styles/settings'
 
@@ -9,13 +8,9 @@ export default class LoadingAnimation extends React.Component {
 	}
 	render() {
 		return (
-			<div className={loadingAnimation}>
+			<div className='zygoteLoading'>
 				<ThreeBounce color={primaryColor} size={this.props.size} />
 			</div>
 		)
 	}
 }
-
-const loadingAnimation = css({
-	textAlign: `center`,
-})

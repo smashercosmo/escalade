@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import { Subscribe } from 'statable'
-import { css } from 'emotion'
 import shippingState from '../state/shipping'
 import LoadingAnimation from './loading-animation'
 import setShipping from '../utils/set-shipping'
@@ -26,10 +25,10 @@ export default class ShippingMethods extends React.Component {
 								<LoadingAnimation />
 							)}
 							{!loading && (
-								<ul className={listStyles}>
+								<ul className='zygoteShipList'>
 									{methods.map(({ id, description, value }) => (
 										<li key={`shipping${id}`}>
-											<label className={labelStyles}>
+											<label className='zygoteShipLabel'>
 												<div>
 													<Radio
 														type='radio'
@@ -53,31 +52,3 @@ export default class ShippingMethods extends React.Component {
 		)
 	}
 }
-
-const listStyles = css({
-	listStyleType: `none`,
-	margin: 0,
-	padding: 0,
-	userSelect: `none`,
-	li: {
-		marginTop: 10,
-	},
-})
-
-const labelStyles = css({
-	display: `flex`,
-	cursor: `pointer`,
-	position: `relative`,
-	'> div': {
-		':first-of-type': {
-			width: `10%`,
-		},
-		':nth-of-type(2)': {
-			width: `70%`,
-		},
-		':last-of-type': {
-			width: `20%`,
-			textAlign: `right`,
-		},
-	},
-})

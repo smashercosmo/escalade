@@ -1,5 +1,4 @@
 import React from 'react'
-import { css, cx } from 'emotion'
 import SmallButton from './small-button'
 import removeFromCart from '../utils/remove-from-cart'
 import increaseQuantity from '../utils/increase-quantity'
@@ -17,26 +16,24 @@ export default class ProductList extends React.Component{
 			quantity,
 		} = this.props
 		return (
-			<li
-				className={productItemStyles}
-			>
-				<div className={imageStyles}>
+			<li className={`zygoteProdItem${editable ? ` zygoteProdItemEditable` : ``}`}>
+				<div className='zygoteProdImage'>
 					<img src={image} />
 				</div>
-				<div className={titleStyles}>
+				<div className='zygoteProdTitle'>
 					{title}
 				</div>
-				<div className={descriptionStyles}>
+				<div className='zygoteProdDesc'>
 					{description}
 				</div>
-				<div className={quantityStyles}>
+				<div className='zygoteProdQty'>
 					{editable && (
 						<SmallButton
 							onClick={() => decreaseQuantity(id)}
 							secondary
 						>-</SmallButton>
 					)}
-					<div className={quantityNumberStyles}>{quantity}</div>
+					<div className='zygoteProdQtyNum'>{quantity}</div>
 					{editable && (
 						<SmallButton
 							onClick={() => increaseQuantity(id)}
@@ -44,18 +41,13 @@ export default class ProductList extends React.Component{
 						>+</SmallButton>
 					)}
 				</div>
-				<div
-					className={cx(
-						priceStyles,
-						editable ? editablePriceStyles : null,
-					)}
-				>
-					${price.toFixed(2)
-					}</div>
+				<div className='zygoteProdPrice'>
+					${price.toFixed(2)}
+				</div>
 				{editable && (
 					<div
 						role='button'
-						className={xStyles}
+						className='zygoteProdX'
 						onClick={() => removeFromCart(id)}
 					>×</div>
 				)}
@@ -63,72 +55,3 @@ export default class ProductList extends React.Component{
 		)
 	}
 }
-
-const priceStyles = css({
-	width: `50%`,
-	textAlign: `right`,
-	position: `absolute`,
-	top: 23,
-	right: 0,
-})
-const editablePriceStyles = css({
-	right: 35,
-})
-
-const quantityStyles = css({
-	userSelect: `none`,
-	position: `absolute`,
-	left: 85,
-	top: 23,
-	zIndex: 2,
-})
-
-const quantityNumberStyles = css({
-	padding: `0 5px`,
-	textAlign: `center`,
-	minWidth: 30,
-	display: `inline-block`,
-	top: -3,
-	position: `relative`,
-})
-
-const xStyles = css({
-	position: `absolute`,
-	top: 21,
-	right: 0,
-	fontSize: `2em`,
-	lineHeight: `16px`,
-	fontWeight: 200,
-	cursor: `pointer`,
-})
-
-const imageStyles = css({
-	width: `100%`,
-	maxWidth: 65,
-	textAlign: `center`,
-})
-
-const titleStyles = css({
-	marginTop: 5,
-	fontWeight: `bold`,
-	width: `100%`,
-})
-
-const descriptionStyles = css({
-	width: `100%`,
-	marginBottom: 10,
-	marginTop: 5,
-	fontSize: `.75em`,
-})
-
-const productItemStyles = css({
-	position: `relative`,
-	':after': {
-		content: `""`,
-		display: `block`,
-		clear: `both`,
-	},
-	'> div': {
-		float: `left`,
-	},
-})
