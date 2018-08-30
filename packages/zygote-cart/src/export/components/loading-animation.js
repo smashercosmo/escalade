@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from 'emotion'
 import { ThreeBounce } from 'better-react-spinkit'
-import { primaryColor } from '../styles'
+import { primaryColor } from '../styles/settings'
 
 export default class LoadingAnimation extends React.Component {
 	static defaultProps = {

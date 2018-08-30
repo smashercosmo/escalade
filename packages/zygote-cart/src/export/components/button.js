@@ -5,7 +5,7 @@ import {
 	primaryColor,
 	fontColor,
 	borderColor,
-} from '../styles'
+} from '../styles/settings'
 
 export default class Button extends React.Component {
 	render() {

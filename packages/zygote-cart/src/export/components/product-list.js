@@ -3,7 +3,7 @@ import { css } from 'emotion'
 import { Subscribe } from 'statable'
 import productsState from '../state/products'
 import Item from './product-list-item'
-import { borderColor } from '../styles'
+import { borderColor } from '../styles/settings'
 
 class ProductsUl extends React.Component{
 	render(){

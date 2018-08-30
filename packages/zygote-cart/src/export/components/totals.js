@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Subscribe } from 'statable'
 import { css } from 'emotion'
 import totalsState from '../state/totals'
-import { borderColor } from '../styles'
+import { borderColor } from '../styles/settings'
 import LoadingAnimation from './loading-animation'
 import formatUsd from '../utils/format-usd'
 

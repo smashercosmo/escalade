@@ -4,7 +4,7 @@ import {
 	primaryColor,
 	borderColor,
 	backgroundColor,
-} from '../styles'
+} from '../styles/settings'
 
 export default class SmallButton extends React.Component {
 	render() {

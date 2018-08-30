@@ -2,7 +2,7 @@ import React from 'react'
 import { css, cx } from 'emotion'
 import changeStage from '../utils/change-stage'
 import submitInfo from '../utils/attempt-submit-info'
-import { primaryColor } from '../styles'
+import { primaryColor } from '../styles/settings'
 
 export default class StagesHeader extends React.Component {
 	render() {

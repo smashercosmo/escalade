@@ -1,5 +1,6 @@
 import settingsState from '../state/settings'
+import capitalize from './capitalize'
 
 export default function eventTrigger(type, data){
-	settingsState.state[`on${type.charAt(0).toUpperCase()}${type.substr(1)}`](data)
+	settingsState.state[`on${capitalize(type)}`](data)
 }

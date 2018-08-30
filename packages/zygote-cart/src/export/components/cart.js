@@ -1,12 +1,5 @@
 import React, { Fragment } from 'react'
 import { Subscribe } from 'statable'
-import { css, cx } from 'emotion'
-import {
-	overlayColor,
-	backgroundColor,
-	fontFamily,
-	fontColor,
-} from '../styles'
 import openState from '../state/open'
 import closeCart from '../utils/close-cart'
 import stageState from '../state/stage'
@@ -22,6 +15,8 @@ import AddedToCartMessage from './added-to-cart-message'
 import Processing from './processing'
 import Errors from './errors'
 import Info from './info'
+import containerStyles from '../styles'
+import capitalize from '../utils/capitalize'
 
 export default class Cart extends React.Component {
 	constructor(props){
@@ -53,70 +48,55 @@ export default class Cart extends React.Component {
 				{({ open, init }, { stage, processing }, { addedToCart }) => (
 					<Fragment>
 						{init && (
-							<div className={cx(containerStyles, `zygoteCart`)}>
-								<div
-									className={cx(bgStyles, open ? bgOpenStyles : null)}
-									onClick={closeCart}
-								/>
-								<div
-									className={cx(cartStyles, open ? cartOpenStyles : null)}
-								>
-									<div
-										role='button'
-										className={closeStyles}
-										onClick={closeCart}
-									>×</div>
+							<div className={containerStyles}>
+								<div className={`zygote zygoteOn${processing ? `Processing` : `${capitalize(stage)}Step`}${open ? ` zygoteOpen` : ``}`}>
+									<div className='zygoteBg' onClick={closeCart} />
+									<div className='zygoteCart'>
+										<div
+											role='button'
+											className='zygoteCloseButton'
+											onClick={closeCart}
+										>×</div>
 
-									{header && (
-										<div className={headerStyles}>{header}</div>
-									)}
+										{header && (
+											<div className='zygoteHeader'>{header}</div>
+										)}
 
-									<Errors />
-									<Info />
+										<Errors />
+										<Info />
 
-									<div className={cx(
-										stageStyles,
-										stage === `cart` && !processing && activeStageStyles,
-									)}>
-										<CartStage
-											cartHeader={cartHeader}
-											cartFooter={cartFooter}
-											addedToCart={addedToCart
-												? addedToCartMsg || <AddedToCartMessage />
-												: false
-											}
-										/>
+										<div className='zygoteStep zygoteCartStep'>
+											<CartStage
+												cartHeader={cartHeader}
+												cartFooter={cartFooter}
+												addedToCart={addedToCart
+													? addedToCartMsg || <AddedToCartMessage />
+													: false
+												}
+											/>
+										</div>
+										<div className='zygoteStep zygoteInfoStep'>
+											<InfoStage
+												infoHeader={infoHeader}
+												infoFooter={infoFooter}
+											/>
+										</div>
+										<div className='zygoteStep zygotePaymentStep'>
+											<PaymentStage
+												paymentHeader={paymentHeader}
+												paymentFooter={paymentFooter}
+											/>
+										</div>
+										<div className='zygoteStep zygoteSuccessStep'>
+											<SuccessStage
+												successHeader={successHeader}
+												successFooter={successFooter}
+											/>
+										</div>
+										{!!processing && (
+											<Processing>{processing}</Processing>
+										)}
 									</div>
-									<div className={cx(
-										stageStyles,
-										stage === `info` && !processing && activeStageStyles,
-									)}>
-										<InfoStage
-											infoHeader={infoHeader}
-											infoFooter={infoFooter}
-										/>
-									</div>
-									<div className={cx(
-										stageStyles,
-										stage === `payment` && !processing && activeStageStyles,
-									)}>
-										<PaymentStage
-											paymentHeader={paymentHeader}
-											paymentFooter={paymentFooter}
-										/>
-									</div>
-									<div className={cx(
-										stageStyles,
-										stage === `success` && !processing && activeStageStyles,
-									)}>
-										<SuccessStage
-											successHeader={successHeader}
-											successFooter={successFooter}
-										/>
-									</div>
-									{!!processing && (
-										<Processing>{processing}</Processing>
-									)}
 								</div>
 							</div>
 						)}
@@ -126,75 +106,3 @@ export default class Cart extends React.Component {
 		)
 	}
 }
-
-const stageStyles = css({
-	display: `none`,
-})
-const activeStageStyles = css({
-	display: `block`,
-})
-
-const headerStyles = css({
-	textAlign: `center`,
-	marginBottom: 20,
-})
-
-const closeStyles = css({
-	position: `absolute`,
-	top: 25,
-	right: 25,
-	fontSize: `3em`,
-	lineHeight: `22px`,
-	cursor: `pointer`,
-	fontWeight: 200,
-})
-
-const containerStyles = css({
-	color: fontColor,
-	fontFamily,
-	textRendering: `optimizeLegibility`,
-	'-webkit-font-smoothing': `antialiased`,
-	fontSize: 16,
-	'[role="button"]': {
-		cursor: `pointer`,
-		userSelect: `none`,
-	},
-	'&, *, *:before, *:after': {
-		boxSizing: `border-box`,
-	},
-})
-
-const bgStyles = css({
-	position: `fixed`,
-	top: 0,
-	right: 0,
-	bottom: 0,
-	left: 0,
-	background: overlayColor,
-	visibility: `hidden`,
-	opacity: 0,
-	transition: `opacity .3s, visibility .3s`,
-})
-const bgOpenStyles = css({
-	visibility: `visible`,
-	opacity: 1,
-})
-
-const cartStyles = css({
-	position: `fixed`,
-	top: 0,
-	bottom: 0,
-	right: 0,
-	width: 500,
-	overflowY: `auto`,
-	maxWidth: `100%`,
-	backgroundColor,
-	transform: `translateX(110%)`,
-	transition: `transform .3s`,
-	boxShadow: `-3px 0 4px rgba(0, 0, 0, 0.2)`,
-	padding: 20,
-	paddingTop: 40,
-})
-const cartOpenStyles = css({
-	transform: `translateX(0%)`,
-})
