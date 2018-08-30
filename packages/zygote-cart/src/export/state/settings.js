@@ -8,9 +8,9 @@ const settingsState = new State({
 	stripeApiKey: ``,
 	onOpen: noop,
 	onClose: noop,
-
 	onAddProduct: noop,
 	onRemoveProduct: noop,
+
 	onInfo: noop,
 	onOrder: noop,
 	onError: noop,

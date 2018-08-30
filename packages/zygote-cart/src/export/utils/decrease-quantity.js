@@ -1,12 +1,15 @@
 import productState from '../state/products'
 import calculateTotals from './calculate-totals'
+import onRemoveProduct from '../events/on-remove-product'
 
-export default function decreaseQuantity(id, n = 1) {
+export default function decreaseQuantity(id, quantity = 1) {
 	let products = [...productState.state.products]
+	let removedProduct
 	for (let i = products.length; i--;) {
 		const product = products[i]
 		if (product.id === id) {
-			product.quantity -= n
+			removedProduct = product
+			product.quantity -= quantity
 			if (!product.quantity) {
 				product.quantity = 1
 			}
@@ -20,4 +23,10 @@ export default function decreaseQuantity(id, n = 1) {
 	}
 	productState.setState({ products })
 	calculateTotals()
+	if (removedProduct){
+		onRemoveProduct({
+			...removedProduct,
+			quantity,
+		})
+	}
 }
