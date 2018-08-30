@@ -4,6 +4,7 @@ import addedToCartState from '../state/added-to-cart'
 import clearMessages from './clear-messages'
 
 export default function openCart(product){
+	if(openState.state.open) return
 	clearMessages()
 	if(!openState.state.init){
 		openState.setState({ init: true })
