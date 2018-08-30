@@ -10,7 +10,6 @@ const settingsState = new State({
 	onClose: noop,
 	onAddProduct: noop,
 	onRemoveProduct: noop,
-
 	onInfoAttempt: noop,
 	onInfo: noop,
 	onOrderAttempt: noop,

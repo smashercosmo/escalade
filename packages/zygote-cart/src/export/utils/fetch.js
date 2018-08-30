@@ -29,10 +29,17 @@ export default async function fetchWebhook(path, body) {
 		})
 		data = await data.json()
 
+		if (body.event) {
+			triggerEvent(`${body.event}`, {
+				...body,
+				...data,
+			})
+		}
 		console.log(`Received from API:`, data)
 	}
 	catch(err){
 		console.error(err)
+		triggerEvent(`error`, err)
 		data = {}
 	}
 	const {
@@ -58,12 +65,6 @@ export default async function fetchWebhook(path, body) {
 			selected: selectedShippingMethod,
 		})
 		setShipping(selectedShippingMethod)
-	}
-	if (body.event) {
-		triggerEvent(`${body.event}`, {
-			...body,
-			...data,
-		})
 	}
 
 	return data

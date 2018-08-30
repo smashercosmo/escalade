@@ -47,7 +47,7 @@ export default async function submitOrder() {
 		modifications,
 		total,
 	}
-	body.event = `submit-order`
+	body.event = `order`
 
 	console.log(`Sending to API:`, body)
 
