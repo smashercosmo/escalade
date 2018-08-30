@@ -13,7 +13,7 @@
   "license": "MIT",
   "description": "React module for Power Reviews",
   "scripts": {
-    "build": "npm run build:lambda && npm run build:gatsby",
+    "build": "npm run build:lambda && npm run build:gatsby && npm run build:module",
     "build:lambda": "netlify-lambda build src/functions",
     "build:gatsby": "npm run patch && NODE_ENV=production gatsby build && node utils/gatsby-post-process",
     "build:module": "rm -rf dist && mkdir dist && babel src/export --out-dir dist",
@@ -80,7 +80,9 @@
     ]
   },
   "dependencies": {
-    "babel-runtime": "^6.26.0"
+    "babel-runtime": "^6.26.0",
+    "emotion": "^9.2.8",
+    "emotion-server": "^9.2.8"
   },
   "main": "dist/index.js",
   "devDependencies": {
@@ -96,8 +98,6 @@
     "color": "^3.0.0",
     "dotenv": "^6.0.0",
     "download": "^7.1.0",
-    "emotion": "^9.2.6",
-    "emotion-server": "^9.2.6",
     "enzyme": "^3.5.0",
     "enzyme-adapter-react-16": "^1.3.0",
     "eslint": "^5.2.0",
