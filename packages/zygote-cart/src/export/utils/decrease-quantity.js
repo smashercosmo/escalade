@@ -1,6 +1,6 @@
 import productState from '../state/products'
 import calculateTotals from './calculate-totals'
-import onRemoveProduct from '../events/on-remove-product'
+import triggerEvent from './trigger-event'
 
 export default function decreaseQuantity(id, quantity = 1) {
 	let products = [...productState.state.products]
@@ -24,7 +24,7 @@ export default function decreaseQuantity(id, quantity = 1) {
 	productState.setState({ products })
 	calculateTotals()
 	if (removedProduct){
-		onRemoveProduct({
+		triggerEvent(`removeProduct`, {
 			...removedProduct,
 			quantity,
 		})

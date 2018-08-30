@@ -11,7 +11,9 @@ const settingsState = new State({
 	onAddProduct: noop,
 	onRemoveProduct: noop,
 
+	onInfoAttempt: noop,
 	onInfo: noop,
+	onOrderAttempt: noop,
 	onOrder: noop,
 	onError: noop,
 })

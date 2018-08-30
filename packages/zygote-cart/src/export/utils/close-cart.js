@@ -1,7 +1,7 @@
 import openState from '../state/open'
-import onClose from '../events/on-close'
+import triggerEvent from './trigger-event'
 
 export default function closeCart(){
 	openState.setState({ open: false })
-	onClose()
+	triggerEvent(`close`)
 }

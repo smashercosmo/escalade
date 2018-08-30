@@ -1,6 +1,6 @@
 import productState from '../state/products'
 import calculateTotals from './calculate-totals'
-import onRemoveProduct from '../events/on-remove-product'
+import triggerEvent from './trigger-event'
 
 export default function removeFromCart(id){
 	let products = [...productState.state.products]
@@ -15,6 +15,6 @@ export default function removeFromCart(id){
 	productState.setState({ products })
 	calculateTotals()
 	if (removedProduct){
-		onRemoveProduct(removedProduct)
+		triggerEvent(`removeProduct`, removedProduct)
 	}
 }

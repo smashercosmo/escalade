@@ -1,6 +1,6 @@
 import productState from '../state/products'
 import calculateTotals from './calculate-totals'
-import onAddProduct from '../events/on-add-product'
+import triggerEvent from './trigger-event'
 
 export default function increaseQuantity(id, quantity = 1) {
 	let products = [...productState.state.products]
@@ -21,7 +21,7 @@ export default function increaseQuantity(id, quantity = 1) {
 	productState.setState({ products })
 	calculateTotals()
 	if(modifiedProduct){
-		onAddProduct({
+		triggerEvent(`addProduct`, {
 			...modifiedProduct,
 			quantity,
 		})
