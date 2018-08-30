@@ -10,7 +10,7 @@ export default async function submitInfo() {
 		totalsState.setState({ loading: true })
 		shippingState.setState({ loading: true })
 		const vals = getFormValues()
-		vals.event = `information`
+		vals.event = `info`
 		await fetch(infoEndpoint, vals)
 		totalsState.setState({ loading: false })
 		shippingState.setState({ loading: false })

@@ -45,7 +45,9 @@ export default class HomePage extends React.Component {
 					onClose={() => console.log(`Cart closed`)}
 					onAddProduct={product => console.log(`Added product`, product)}
 					onRemoveProduct={product => console.log(`Removed product`, product)}
+					onInfoAttempt={info => console.log(`Info attempt`, info)}
 					onInfo={info => console.log(`Info submit`, info)}
+					onOrderAttempt={order => console.log(`Order attempt`, order)}
 					onOrder={order => console.log(`Order submit`, order)}
 					onError={err => console.log(`Error caught`, err)}
 

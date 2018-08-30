@@ -7,8 +7,12 @@ import displayError from './display-error'
 import displayInfo from './display-info'
 import addTotalModification from './add-total-modification'
 import setShipping from './set-shipping'
+import triggerEvent from './trigger-event'
 
 export default async function fetchWebhook(path, body) {
+	if(body.event){
+		triggerEvent(`${body.event}Attempt`, body)
+	}
 	let data
 	try {
 		const jsonBody = JSON.stringify({
@@ -54,6 +58,12 @@ export default async function fetchWebhook(path, body) {
 			selected: selectedShippingMethod,
 		})
 		setShipping(selectedShippingMethod)
+	}
+	if (body.event) {
+		triggerEvent(`${body.event}`, {
+			...body,
+			...data,
+		})
 	}
 
 	return data
