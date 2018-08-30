@@ -29,6 +29,7 @@ export default class CompanyNameInput extends React.Component {
 			toggleText,
 			required,
 			name,
+			stage,
 		} = this.props
 		return (
 			<Fragment>
@@ -44,6 +45,7 @@ export default class CompanyNameInput extends React.Component {
 						autoComplete={autoComplete}
 						required={required}
 						name={name}
+						stage={stage}
 					/>
 				</div>
 			</Fragment>

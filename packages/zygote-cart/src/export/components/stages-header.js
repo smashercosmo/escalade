@@ -1,6 +1,7 @@
 import React from 'react'
 import { css, cx } from 'emotion'
 import changeStage from '../utils/change-stage'
+import submitInfo from '../utils/submit-info'
 import { primaryColor } from '../styles'
 
 export default class StagesHeader extends React.Component {
@@ -14,7 +15,7 @@ export default class StagesHeader extends React.Component {
 						listStyles,
 						stage === `info` ? activeStyles : null
 					)}
-					onClick={() => changeStage(`info`)}
+					onClick={stage === `info` ? null : () => changeStage(`info`)}
 				>
 					1. Your Details
 				</li>
@@ -24,7 +25,7 @@ export default class StagesHeader extends React.Component {
 						listStyles,
 						stage === `payment` ? activeStyles : null
 					)}
-					onClick={() => changeStage(`payment`)}
+					onClick={stage === `payment` ? null : submitInfo}
 				>
 					2. Payment
 				</li>
@@ -54,4 +55,5 @@ const listStyles = css({
 const activeStyles = css({
 	color: primaryColor,
 	borderBottom: `${borderWidth}px solid ${primaryColor}`,
+	cursor: `default !important`,
 })

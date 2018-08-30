@@ -13,8 +13,8 @@ import State from '../inputs/state'
 import Zip from '../inputs/zip'
 import StagesHeader from '../stages-header'
 import Header from '../header'
-import nextStage from '../../utils/next-stage'
 import Button from '../button'
+import submitInfo from '../../utils/submit-info'
 
 export default class InfoStage extends React.Component{
 	render() {
@@ -27,39 +27,74 @@ export default class InfoStage extends React.Component{
 				{({ stage }) => (
 					<Fragment>
 						{(stage === `info` || stage === `payment`) && (
-							<form>
+							<form data-form='info'>
 								{!!infoHeader && (
 									<div>{infoHeader}</div>
 								)}
 								<StagesHeader stage='info' />
 								<div className={sectionStyles}>
 									<Header>Let's get started</Header>
-									<NameInput name='infoName' />
-									<EmailInput name='infoEmail' />
-									<PhoneInput name='infoPhone' />
+									<NameInput
+										name='infoName'
+										stage='info'
+									/>
+									<EmailInput
+										name='infoEmail'
+										stage='info'
+									/>
+									<PhoneInput
+										name='infoPhone'
+										stage='info'
+									/>
 								</div>
 								<div className={sectionStyles}>
 									<Header>Where should we deliver?</Header>
-									<AddressInput name='shippingAddress1' autoComplete='shipping address-line1' />
+									<AddressInput
+										name='shippingAddress1'
+										autoComplete='shipping address-line1'
+										stage='info'
+									/>
 									<div className={extraStyles}>
 										<div>
-											<Address2Input name='shippingAddress2' autoComplete='shipping address-line2' />
+											<Address2Input
+												name='shippingAddress2'
+												autoComplete='shipping address-line2'
+												stage='info'
+											/>
 										</div>
 										<div>
-											<CompanyName name='shippingCompany' autoComplete='shipping org' />
+											<CompanyName
+												name='shippingCompany'
+												autoComplete='shipping org'
+												stage='info'
+											/>
 										</div>
 									</div>
 									<div className={cityStateStyles}>
 										<div>
-											<City name='shippingCity' autoComplete='shipping locality' />
+											<City
+												name='shippingCity'
+												autoComplete='shipping locality'
+												stage='info'
+											/>
 										</div>
 										<div>
-											<State name='shippingState' autoComplete='shipping region' />
+											<State
+												name='shippingState'
+												autoComplete='shipping region'
+												stage='info'
+											/>
 										</div>
 									</div>
-									<Zip name='shippingZip' autoComplete='shipping postal-code' />
+									<Zip
+										name='shippingZip'
+										autoComplete='shipping postal-code'
+										stage='info'
+									/>
 									<div className={buttonContainerStyles}>
-										<Button onClick={nextStage}>Next Step</Button>
+										<Button onClick={submitInfo}>
+											Next Step
+										</Button>
 									</div>
 								</div>
 								{!!infoFooter && (

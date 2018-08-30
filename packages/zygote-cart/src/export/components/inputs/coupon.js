@@ -28,6 +28,7 @@ export default class CompanyNameInput extends React.Component {
 		const {
 			toggleText,
 			label,
+			stage,
 		} = this.props
 		return (
 			<Fragment>
@@ -44,6 +45,7 @@ export default class CompanyNameInput extends React.Component {
 						<Input
 							inputRef={el => this.input = el}
 							label={label}
+							stage={stage}
 						/>
 					</div>
 					<div role='button' className={applyStyles}>Apply</div>

@@ -39,7 +39,7 @@ export default class PaymentStage extends React.Component{
 				{({ stage }) => (
 					<Fragment>
 						{(stage === `info` || stage === `payment`) && (
-							<form>
+							<form data-form='payment'>
 								{!!paymentHeader && (
 									<div>{paymentHeader}</div>
 								)}

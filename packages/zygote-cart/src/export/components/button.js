@@ -13,11 +13,14 @@ export default class Button extends React.Component {
 			onClick,
 			children,
 			secondary,
+			disabled,
 		} = this.props
 		return (
 			<button
 				className={cx(buttonStyles, secondary ? secondaryButtonStyles : primaryButtonStyles)}
 				onClick={onClick}
+				disabled={disabled}
+				type='button'
 			>
 				{children}
 			</button>
@@ -40,6 +43,14 @@ const buttonStyles = css({
 	cursor: `pointer`,
 	':hover, :focus': {
 		opacity: .75,
+	},
+	':disabled': {
+		backgroundColor: `#ccc`,
+		cursor: `default`,
+		color: `#fff`,
+		':hover': {
+			opacity: 1,
+		},
 	},
 })
 
