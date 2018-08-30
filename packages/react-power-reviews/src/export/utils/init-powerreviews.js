@@ -17,10 +17,25 @@ export default (props, components) => {
 		merchant_id: props.merchantId,
 		page_id: props.pageId,
 		review_wrapper_url: props.wrapperUrl,
+		on_render: (config, data) => {
+			if (props.init) {
+				props.init(config, data)
+			}
+		},
+		on_submit: (config, data) => {
+			if (props.submitted) {
+				props.submitted(config, data)
+			}
+		},
 		components: components,
 	}
 	if (props.product) {
 		content.product = props.product
+	}
+	if (props.config) {
+		Object.keys(props.config).forEach(key => {
+			content[key] = props.config[key]
+		})
 	}
 	return new Promise((resolve, reject) => {
 		if (!window.POWERREVIEWS) {
