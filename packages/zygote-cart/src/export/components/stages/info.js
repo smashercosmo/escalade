@@ -14,7 +14,7 @@ import Zip from '../inputs/zip'
 import StagesHeader from '../stages-header'
 import Header from '../header'
 import Button from '../button'
-import submitInfo from '../../utils/submit-info'
+import submitInfo from '../../utils/attempt-submit-info'
 
 export default class InfoStage extends React.Component{
 	render() {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { css, cx } from 'emotion'
 import changeStage from '../utils/change-stage'
-import submitInfo from '../utils/submit-info'
+import submitInfo from '../utils/attempt-submit-info'
 import { primaryColor } from '../styles'
 
 export default class StagesHeader extends React.Component {

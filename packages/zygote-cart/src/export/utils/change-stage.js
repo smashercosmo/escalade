@@ -1,11 +1,11 @@
 import stageState from '../state/stage'
 import clearMessages from './clear-messages'
-import postInfoEvent from './post-info-event'
+import submitInfo from './submit-info'
 
 export default function changeStage(stage) {
 	stageState.setState({ stage })
 	clearMessages()
 	if (stage === `payment`) {
-		postInfoEvent()
+		submitInfo()
 	}
 }
