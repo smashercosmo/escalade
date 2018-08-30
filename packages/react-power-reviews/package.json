@@ -2,6 +2,16 @@
   "name": "react-power-reviews",
   "version": "0.0.7",
   "author": "Kennedy Rose <krose@escaladesports.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/escaladesports/react-power-reviews.git"
+  },
+  "keywords": [
+    "react",
+    "power-reviews"
+  ],
+  "license": "MIT",
+  "description": "React module for Power Reviews",
   "scripts": {
     "build": "npm run build:lambda && npm run build:gatsby",
     "build:lambda": "netlify-lambda build src/functions",
