@@ -62,7 +62,7 @@ export default class Index extends Component {
 }
 ```
 
-##Callbacks
+## Callbacks
 
 Feel free to attach a callback function of `init` or `submitted`. `init` will be called after render and `submitted` once submission has occured. Two params will be passed through automatically to the callbacks.
 
@@ -82,7 +82,7 @@ Feel free to attach a callback function of `init` or `submitted`. `init` will be
 />
 ```
 
-##Manual Config
+## Manual Config
 
 If you would like to read on what options you have to pass to the Power Reviews Object Model you can read here: [Reference](http://help.powerreviews.com/Content/Platform/JavaScript%20Reference%20Guide.htm)
 
