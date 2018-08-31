@@ -14,6 +14,7 @@ import StepsHeader from '../steps-header'
 import Header from '../header'
 import Button from '../button'
 import submitInfo from '../../utils/attempt-submit-info'
+import productsState from '../../state/products'
 
 export default class InfoStep extends React.Component{
 	render() {
@@ -49,56 +50,58 @@ export default class InfoStep extends React.Component{
 										step='info'
 									/>
 								</div>
-								<div className='zygoteInfoSection'>
-									<Header>Where should we deliver?</Header>
-									<AddressInput
-										name='shippingAddress1'
-										autoComplete='shipping address-line1'
-										step='info'
-									/>
-									<div className='zygoteInfoExtra'>
-										<div>
-											<Address2Input
-												name='shippingAddress2'
-												autoComplete='shipping address-line2'
-												step='info'
-											/>
+								{showShipping() && (
+									<div className='zygoteInfoSection'>
+										<Header>Where should we deliver?</Header>
+										<AddressInput
+											name='shippingAddress1'
+											autoComplete='shipping address-line1'
+											step='info'
+										/>
+										<div className='zygoteInfoExtra'>
+											<div>
+												<Address2Input
+													name='shippingAddress2'
+													autoComplete='shipping address-line2'
+													step='info'
+												/>
+											</div>
+											<div>
+												<CompanyName
+													name='shippingCompany'
+													autoComplete='shipping org'
+													step='info'
+												/>
+											</div>
 										</div>
-										<div>
-											<CompanyName
-												name='shippingCompany'
-												autoComplete='shipping org'
-												step='info'
-											/>
+										<div className='zygoteInfoCityState'>
+											<div>
+												<City
+													name='shippingCity'
+													autoComplete='shipping locality'
+													step='info'
+												/>
+											</div>
+											<div>
+												<State
+													name='shippingState'
+													autoComplete='shipping region'
+													step='info'
+												/>
+											</div>
+										</div>
+										<Zip
+											name='shippingZip'
+											autoComplete='shipping postal-code'
+											step='info'
+										/>
+										<div className='zygoteInfoBtn'>
+											<Button onClick={submitInfo}>
+												Next Step
+											</Button>
 										</div>
 									</div>
-									<div className='zygoteInfoCityState'>
-										<div>
-											<City
-												name='shippingCity'
-												autoComplete='shipping locality'
-												step='info'
-											/>
-										</div>
-										<div>
-											<State
-												name='shippingState'
-												autoComplete='shipping region'
-												step='info'
-											/>
-										</div>
-									</div>
-									<Zip
-										name='shippingZip'
-										autoComplete='shipping postal-code'
-										step='info'
-									/>
-									<div className='zygoteInfoBtn'>
-										<Button onClick={submitInfo}>
-											Next Step
-										</Button>
-									</div>
-								</div>
+								)}
 								{!!infoFooter && (
 									<div>{infoFooter}</div>
 								)}
@@ -148,4 +151,15 @@ export default class InfoStep extends React.Component{
 			marginTop: 30,
 		},
 	})
+}
+
+function showShipping(){
+	const { products } = productsState.state
+	for(let i = products.length; i--;){
+		const product = products[i]
+		if(!product.noShip){
+			return true
+		}
+	}
+	return false
 }

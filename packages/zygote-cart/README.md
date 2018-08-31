@@ -216,3 +216,21 @@ To disable this, set the `googleTagManager` property to `false`:
 ```jsx
 <Cart googleTagManager={false} />
 ```
+
+## Optional Shipping
+
+For items like digital goods or services that don't require shipping, you can pass a `noShip` property. If all the items in the cart have the `noShip` property, then shipping will not be required during checkout.
+
+Example:
+
+```jsx
+import { addToCart } from 'zygote-cart'
+
+<button onClick={addToCart({
+  id: `DIS82`,
+  name: `EBook`,
+  image: `https://via.placeholder.com/75x75`,
+  price: 10.5,
+  noShip: true,
+})}>Add to Cart</button>
+```
