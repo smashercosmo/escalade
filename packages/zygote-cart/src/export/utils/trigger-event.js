@@ -31,7 +31,7 @@ export default function eventTrigger(type, data){
 			ga(`ecommerce:clear`)
 		}
 	}
-	if (settingsState.googleTagManager && dataLayer){
+	if (settingsState.state.googleTagManager && dataLayer){
 		dataLayer.push({
 			event: `zygote${capType}`,
 			...data,
