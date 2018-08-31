@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThreeBounce } from 'better-react-spinkit'
-import { primaryColor } from '../styles/settings'
+//import { primaryColor } from '../styles/settings'
 
 export default class LoadingAnimation extends React.Component {
 	static defaultProps = {
@@ -9,13 +9,16 @@ export default class LoadingAnimation extends React.Component {
 	render() {
 		return (
 			<div className='zygoteLoading'>
-				<ThreeBounce color={primaryColor} size={this.props.size} />
+				<ThreeBounce size={this.props.size} />
 			</div>
 		)
 	}
-	static styles = () => ({
+	static styles = ({ primaryColor }) => ({
 		'.zygoteLoading': {
 			textAlign: `center`,
+			div: {
+				backgroundColor: `${primaryColor} !important`,
+			},
 		},
 	})
 }

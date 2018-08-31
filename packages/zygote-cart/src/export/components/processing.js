@@ -1,13 +1,12 @@
 import React from 'react'
-import { ThreeBounce } from 'better-react-spinkit'
-import { primaryColor } from '../styles/settings'
+import LoadingAnimiation from './loading-animation'
 
 export default class Processing extends React.Component {
 	render() {
 		return (
 			<div className='zygoteProcessing'>
 				<div>
-					<ThreeBounce size={22} color={primaryColor} />
+					<LoadingAnimiation size={22} />
 				</div>
 				{this.props.message || (
 					<div>Processing your order.<br />Please do not close this page.</div>
