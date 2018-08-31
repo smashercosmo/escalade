@@ -18,6 +18,7 @@ export default class Input extends React.Component{
 		this.validate = this.validate.bind(this)
 	}
 	handleChange(e){
+		console.log(`${this.props.name} changed to ${e.target.value}`)
 		if(this.props.handleChange){
 			this.props.handleChange(e)
 		}
