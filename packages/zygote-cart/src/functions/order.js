@@ -33,6 +33,7 @@ export async function handler({ body }, __, callback) {
 		catch (err) {
 			console.error(err)
 			if (err.code === `out_of_inventory` || err.code === `resource_missing`) {
+				res.step = `cart`
 				res.messages.error.push(`Sorry! One or more items in your cart have gone out of stock. Please remove these products or try again later.`)
 			}
 			else if(err.message){
@@ -56,6 +57,7 @@ export async function handler({ body }, __, callback) {
 		catch (err) {
 			console.error(err)
 			if (err.code === `out_of_inventory` || err.code === `resource_missing`) {
+				res.step = `cart`
 				res.messages.error.push(`Sorry! One or more items in your cart have gone out of stock. Please remove these products or try again later.`)
 			}
 			else if (err.message) {

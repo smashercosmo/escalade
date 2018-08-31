@@ -57,6 +57,7 @@ export async function handler({ body }, __, callback) {
 				.replace(`]`, ``))
 			console.log(item)
 			if(body.products[item]){
+				res.step = `cart`
 				res.messages.error.push(`Sorry! "${body.products[item].title}" is out of stock. Please lower the quantity or remove this product from your cart.`)
 			}
 		}
@@ -101,7 +102,6 @@ export async function handler({ body }, __, callback) {
 	}
 
 	console.log(`Sending to client:`, res)
-
 
 	// Response
 	callback(null, {

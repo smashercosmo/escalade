@@ -160,3 +160,13 @@ Example response:
   "selectedShippingMethod": "ship-0"
 }
 ```
+
+Example of the API returning an error and moving back to the "info" step:
+
+```json
+{
+  "success": false,
+  "error": "Your shipping address is incorrect.",
+  "step": "info"
+}
+```
