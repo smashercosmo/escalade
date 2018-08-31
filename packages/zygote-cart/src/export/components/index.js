@@ -13,6 +13,9 @@ export default class Zygote extends React.Component {
 	constructor(props) {
 		super(props)
 		settingsState.setState(props)
+		if (!props.orderEndpoint){
+			console.warn(`No order endpoint supplied`)
+		}
 	}
 	componentDidMount() {
 		const { totalModifications } = this.props
