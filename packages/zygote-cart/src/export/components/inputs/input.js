@@ -18,11 +18,10 @@ export default class Input extends React.Component{
 		this.validate = this.validate.bind(this)
 	}
 	handleChange(e){
-		console.log(`${this.props.name} changed to ${e.target.value}`)
 		if(this.props.handleChange){
 			this.props.handleChange(e)
 		}
-		this.setState({ value: e.target.value })
+		this.setState({ value: this.input.value })
 	}
 	handleFocus() {
 		this.setState({ focus: true })
