@@ -35,14 +35,17 @@ export default class InfoStep extends React.Component{
 									<Header>Let's get started</Header>
 									<NameInput
 										name='infoName'
+										autoComplete='shipping name'
 										step='info'
 									/>
 									<EmailInput
 										name='infoEmail'
+										autoComplete='shipping email'
 										step='info'
 									/>
 									<PhoneInput
 										name='infoPhone'
+										autoComplete='shipping tel'
 										step='info'
 									/>
 								</div>
