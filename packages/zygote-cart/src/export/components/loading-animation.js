@@ -13,4 +13,9 @@ export default class LoadingAnimation extends React.Component {
 			</div>
 		)
 	}
+	static styles = {
+		'.zygoteLoading': {
+			textAlign: `center`,
+		},
+	}
 }

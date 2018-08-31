@@ -1,6 +1,5 @@
 import React from 'react'
 import InputMask from 'react-input-mask'
-import { css, cx } from 'emotion'
 import registerInput from '../../utils/register-input'
 import unregisterInput from '../../utils/unregister-input'
 
@@ -72,17 +71,8 @@ export default class Input extends React.Component{
 			inputRef,
 		} = this.props
 		return (
-			<label className={cx(
-				containerStyles,
-				focus ? focusStyles : null,
-				error ? errorStyles : null,
-			)}>
-				<span
-					className={cx(
-						labelStyles,
-						(value || focus) ? movedLabelStyles : null,
-					)}
-				>
+			<label className={`zygoteInputWrapper${focus ? ` zygoteInputFocus` : ``}${error ? ` zygoteInputErr` : ``}`}>
+				<span className={`zygoteInputLabel${(value || focus) ? ` zygoteInputLabelMoved` : ``}`}>
 					{label}
 				</span>
 				{mask && (
@@ -101,7 +91,7 @@ export default class Input extends React.Component{
 									this.input = input
 									inputRef(input)
 								}}
-								className={inputStyles}
+								className='zygoteInput'
 								name={name}
 								{...inputProps}
 							/>
@@ -121,66 +111,62 @@ export default class Input extends React.Component{
 						onFocus={this.handleFocus}
 						onBlur={this.validate}
 						name={name}
-						className={inputStyles}
+						className='zygoteInput'
 					/>
 				)}
 				{error && (
-					<span className={errorMsgStyles} data-error>{error}</span>
+					<span className='zygoteInputErrMsg' data-error>{error}</span>
 				)}
 			</label>
 		)
 	}
+	static styles = {
+		'.zygoteInputWrapper': {
+			position: `relative`,
+			display: `block`,
+			marginTop: 30,
+			fontSize: `.9em`,
+			background: `#F8F8F8`,
+			border: `1px solid #EFF0F0`,
+			borderRadius: 4,
+		},
+		'.zygoteInputFocus': {
+			border: `1px solid #666`,
+		},
+		'.zygoteInputErr': {
+			color: `#f00`,
+			border: `1px solid #f00`,
+		},
+		'.zygoteInputLabel': {
+			position: `absolute`,
+			top: -18,
+			left: 0,
+			fontSize: `.85em`,
+			display: `block`,
+			opacity: .75,
+			transition: `transform .2s`,
+			transform: `translate(7px, 30px)`,
+		},
+		'.zygoteInputLabelMoved': {
+			transform: `translate(0px, 0px)`,
+		},
+		'.zygoteInput': {
+			width: `100%`,
+			display: `block`,
+			background: `transparent`,
+			border: 0,
+			borderRadius: 4,
+			fontSize: `.9em`,
+			padding: `0 10px`,
+			height: 36,
+			outline: `none`,
+		},
+		'.zygoteInputErrMsg': {
+			position: `absolute`,
+			display: `inline-block`,
+			fontSize: `.75em`,
+			right: 0,
+			bottom: -18,
+		},
+	}
 }
-
-const containerStyles = css({
-	position: `relative`,
-	display: `block`,
-	marginTop: 30,
-	fontSize: `.9em`,
-	background: `#F8F8F8`,
-	border: `1px solid #EFF0F0`,
-	borderRadius: 4,
-})
-
-const errorStyles = css({
-	color: `#f00`,
-	border: `1px solid #f00`,
-})
-
-const focusStyles = css({
-	border: `1px solid #666`,
-})
-
-const inputStyles = css({
-	width: `100%`,
-	display: `block`,
-	background: `transparent`,
-	border: 0,
-	borderRadius: 4,
-	fontSize: `.9em`,
-	padding: 10,
-	outline: `none`,
-})
-
-const errorMsgStyles = css({
-	position: `absolute`,
-	display: `inline-block`,
-	fontSize: `.75em`,
-	right: 0,
-	bottom: -18,
-})
-
-const labelStyles = css({
-	position: `absolute`,
-	top: -18,
-	left: 0,
-	fontSize: `.85em`,
-	display: `block`,
-	opacity: .75,
-	transition: `transform .2s`,
-	transform: `translate(7px, 30px)`,
-})
-
-const movedLabelStyles = css({
-	transform: `translate(0px, 0px)`,
-})

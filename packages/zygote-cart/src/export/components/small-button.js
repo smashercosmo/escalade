@@ -1,4 +1,9 @@
 import React from 'react'
+import {
+	primaryColor,
+	backgroundColor,
+	borderColor,
+} from '../styles/settings'
 
 export default class SmallButton extends React.Component {
 	render() {
@@ -16,5 +21,32 @@ export default class SmallButton extends React.Component {
 				<span>{children}</span>
 			</div>
 		)
+	}
+	static styles = {
+		'.zygoteSmBtn': {
+			display: `inline-block`,
+			position: `relative`,
+			width: 19,
+			height: 19,
+			borderRadius: `100%`,
+			textAlign: `center`,
+			fontWeight: `bold`,
+			fontSize: 22,
+			span: {
+				position: `absolute`,
+				marginTop: -1,
+				top: `50%`,
+				left: `50%`,
+				transform: `translate(-50%, -50%)`,
+			},
+		},
+		'.zygotePrimarySmBtn': {
+			backgroundColor: primaryColor,
+			color: backgroundColor,
+		},
+		'.zygoteSecondarySmBtn': {
+			backgroundColor: borderColor,
+			color: backgroundColor,
+		},
 	}
 }

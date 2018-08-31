@@ -1,9 +1,8 @@
 import React from 'react'
-import { css, cx } from 'emotion'
 import registerInput from '../../utils/register-input'
 import unregisterInput from '../../utils/unregister-input'
 
-export default class Input extends React.Component{
+export default class Select extends React.Component{
 	constructor(props){
 		super(props)
 		this.state = {
@@ -66,16 +65,9 @@ export default class Input extends React.Component{
 			name,
 		} = this.props
 		return (
-			<label className={cx(
-				containerStyles,
-				error ? errorStyles : null,
-				focus ? focusStyles : null,
-			)}>
+			<label className={`zygoteSelectWrapper${error ? ` zygoteSelectErr` : ``}${focus ? ` zygoteSelectFocus` : ``}`}>
 				<span
-					className={cx(
-						labelStyles,
-						(value || focus) ? movedLabelStyles : null,
-					)}
+					className={`zygoteSelectLabel${(value || focus) ? ` zygoteSelectLabelMoved` : ``}`}
 				>
 					{label}
 				</span>
@@ -90,71 +82,66 @@ export default class Input extends React.Component{
 					onChange={this.handleChange}
 					onFocus={this.handleFocus}
 					onBlur={this.validate}
-					className={selectStyles}
+					className='zygoteSelect'
 					name={name}
 				>
 					<option disabled value='' />
 					{children}
 				</select>
 				{error && (
-					<span className={errorMsgStyles} data-error>{error}</span>
+					<span className='zygoteSelectErrMsg' data-error>{error}</span>
 				)}
 			</label>
 		)
 	}
+	static styles = {
+		'.zygoteSelectWrapper': {
+			position: `relative`,
+			display: `block`,
+			marginTop: 30,
+			fontSize: `.9em`,
+			background: `#F8F8F8`,
+			border: `1px solid #EFF0F0`,
+			borderRadius: 4,
+		},
+		'.zygoteSelect': {
+			background: `transparent`,
+			height: 36,
+			position: `relative`,
+			zIndex: 2,
+			display: `block`,
+			width: `100%`,
+			fontSize: `.9em`,
+			border: 0,
+			outline: `none`,
+		},
+		'.zygoteSelectFocus': {
+			border: `1px solid #666`,
+		},
+		'.zygoteSelectErr': {
+			color: `#f00`,
+			border: `1px solid #f00`,
+		},
+		'.zygoteSelectErrMsg': {
+			position: `absolute`,
+			display: `inline-block`,
+			fontSize: `.75em`,
+			right: 0,
+			bottom: -18,
+		},
+		'.zygoteSelectLabel': {
+			position: `absolute`,
+			top: -20,
+			left: 0,
+			fontSize: `.8em`,
+			display: `block`,
+			opacity: .75,
+			transition: `transform .2s`,
+			transform: `translate(7px, 32px)`,
+			marginBottom: 5,
+		},
+		'.zygoteSelectLabelMoved': {
+			transform: `translate(0px, 0px)`,
+		},
+	}
 }
-
-const containerStyles = css({
-	position: `relative`,
-	display: `block`,
-	marginTop: 30,
-	fontSize: `.9em`,
-	background: `#F8F8F8`,
-	border: `1px solid #EFF0F0`,
-	borderRadius: 4,
-})
-
-const selectStyles = css({
-	background: `transparent`,
-	height: 39,
-	position: `relative`,
-	zIndex: 2,
-	display: `block`,
-	width: `100%`,
-	fontSize: `.9em`,
-	border: 0,
-	outline: `none`,
-})
-
-const focusStyles = css({
-	border: `1px solid #666`,
-})
-
-const errorStyles = css({
-	color: `#f00`,
-	border: `1px solid #f00`,
-})
-
-const errorMsgStyles = css({
-	position: `absolute`,
-	display: `inline-block`,
-	fontSize: `.75em`,
-	right: 0,
-	bottom: -18,
-})
-
-const labelStyles = css({
-	position: `absolute`,
-	top: -20,
-	left: 0,
-	fontSize: `.8em`,
-	display: `block`,
-	opacity: .75,
-	transition: `transform .2s`,
-	transform: `translate(7px, 32px)`,
-	marginBottom: 5,
-})
-
-const movedLabelStyles = css({
-	transform: `translate(0px, 0px)`,
-})

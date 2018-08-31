@@ -15,4 +15,12 @@ export default class Processing extends React.Component {
 			</div>
 		)
 	}
+	static styles = {
+		'.zygoteProcessing': {
+			textAlign: `center`,
+			'> div:first-of-type': {
+				margin: `100px auto 30px auto`,
+			},
+		},
+	}
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import changeStage from '../utils/change-stage'
 import submitInfo from '../utils/attempt-submit-info'
+import { primaryColor } from '../styles/settings'
 
 export default class StagesHeader extends React.Component {
 	render() {
@@ -23,5 +24,26 @@ export default class StagesHeader extends React.Component {
 				</li>
 			</ul>
 		)
+	}
+	static styles = {
+		'.zygoteStepsHeader': {
+			listStyleType: `none`,
+			padding: 0,
+			margin: 0,
+			fontWeight: `bold`,
+			textAlign: `center`,
+			color: `#C0BFBF`,
+		},
+		'.zygoteStepLink': {
+			display: `inline-block`,
+			padding: 10,
+			width: 140,
+			borderBottom: `3px solid #C0BFBF`,
+		},
+		'.zygoteActiveStepLink': {
+			color: primaryColor,
+			borderBottom: `3px solid ${primaryColor}`,
+			cursor: `default !important`,
+		},
 	}
 }

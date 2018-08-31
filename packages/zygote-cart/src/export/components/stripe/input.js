@@ -1,5 +1,4 @@
 import React from 'react'
-import { css, cx } from 'emotion'
 import Visa from '../card-list/visa'
 import Mastercard from '../card-list/mastercard'
 import AmericanExpress from '../card-list/american-express'
@@ -66,20 +65,15 @@ export default class StripeInput extends React.Component {
 			label,
 		} = this.props
 		return (
-			<label className={cx(
-				containerStyles,
-				focus ? focusStyles : null,
-				error ? errorStyles : null,
-			)}>
+			<label
+				className={`zygoteStripeInputWrapper${focus ? ` zygoteStripeFocus` : ``}${error ? ` zygoteStripeErr` : ``}`}
+			>
 				<span
-					className={cx(
-						labelStyles,
-						(value || focus) ? movedLabelStyles : null,
-					)}
+					className={`zygoteStripeLabel${(value || focus) ? ` zygoteStripeMoved` : ``}`}
 				>
 					{label}
 				</span>
-				<span className={inputStyles}>
+				<span className='zygoteStripeSpan'>
 					{this.props.children({
 						handleFocus: this.handleFocus,
 						handleBlur: this.handleBlur,
@@ -88,7 +82,7 @@ export default class StripeInput extends React.Component {
 					})}
 				</span>
 				{!!brand && (
-					<div className={cardStyles}>
+					<div className='zygoteStripeCard'>
 						{brand === `visa` && <Visa />}
 						{brand === `mastercard` && <Mastercard />}
 						{brand === `amex` && <AmericanExpress />}
@@ -96,66 +90,56 @@ export default class StripeInput extends React.Component {
 					</div>
 				)}
 				{error && (
-					<span className={errorMsgStyles} data-error>{error}</span>
+					<span className='zygoteStripeErrMsg' data-error>{error}</span>
 				)}
 			</label>
 		)
 	}
+	static styles = {
+		'.zygoteStripeInputWrapper': {
+			position: `relative`,
+			display: `block`,
+			marginTop: 30,
+			fontSize: `.9em`,
+			background: `#F8F8F8`,
+			border: `1px solid #EFF0F0`,
+			borderRadius: 4,
+		},
+		'.zygoteStripeCard': {
+			position: `absolute`,
+			width: 35,
+			right: 7,
+			top: 7,
+		},
+		'.zygoteStripeSpan': {
+			display: `block`,
+		},
+		'.zygoteStripeErr': {
+			color: `#f00`,
+			border: `1px solid #f00`,
+		},
+		'.zygoteStripeFocus': {
+			border: `1px solid #666`,
+		},
+		'.zygoteStripeErrMsg': {
+			position: `absolute`,
+			display: `inline-block`,
+			fontSize: `.75em`,
+			right: 0,
+			bottom: -18,
+		},
+		'.zygoteStripeLabel': {
+			position: `absolute`,
+			top: -18,
+			left: 0,
+			fontSize: `.85em`,
+			display: `block`,
+			opacity: .75,
+			transition: `transform .2s`,
+			transform: `translate(7px, 30px)`,
+		},
+		'.zygoteStripeMoved': {
+			transform: `translate(0px, 0px)`,
+		},
+	}
 }
-
-const containerStyles = css({
-	position: `relative`,
-	display: `block`,
-	marginTop: 30,
-	fontSize: `.9em`,
-	background: `#F8F8F8`,
-	border: `1px solid #EFF0F0`,
-	borderRadius: 4,
-	input: {
-		background: `red`,
-	},
-})
-
-const cardStyles = css({
-	position: `absolute`,
-	width: 35,
-	right: 7,
-	top: 7,
-})
-
-const inputStyles = css({
-	display: `block`,
-	//paddingLeft: 10,
-})
-
-const errorStyles = css({
-	color: `#f00`,
-	border: `1px solid #f00`,
-})
-
-const focusStyles = css({
-	border: `1px solid #666`,
-})
-
-const errorMsgStyles = css({
-	position: `absolute`,
-	display: `inline-block`,
-	fontSize: `.75em`,
-	right: 0,
-	bottom: -18,
-})
-
-const labelStyles = css({
-	position: `absolute`,
-	top: -18,
-	left: 0,
-	fontSize: `.85em`,
-	display: `block`,
-	opacity: .75,
-	transition: `transform .2s`,
-	transform: `translate(7px, 30px)`,
-})
-
-const movedLabelStyles = css({
-	transform: `translate(0px, 0px)`,
-})

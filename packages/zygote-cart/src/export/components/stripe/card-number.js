@@ -1,7 +1,6 @@
 import React from 'react'
 import { CardNumberElement } from 'react-stripe-elements'
 import Input from './input'
-import inputStyles from './input-styles'
 
 export default class StripeCardNumber extends React.Component {
 	render() {
@@ -19,7 +18,7 @@ export default class StripeCardNumber extends React.Component {
 						onChange={handleChange}
 						onFocus={handleFocus}
 						onBlur={handleBlur}
-						classes={inputStyles}
+						classes={{ base: `zygoteStripeInput` }}
 					/>
 				)}
 			</Input>

@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react'
-import { css } from 'emotion'
 import Input from './input'
 import Toggle from './toggle'
 import {
-	borderColor,
 	fontColor,
-} from '../../styles'
+	borderColor,
+} from '../../styles/settings'
 
 export default class CompanyNameInput extends React.Component {
 	static defaultProps = {
@@ -39,7 +38,7 @@ export default class CompanyNameInput extends React.Component {
 				</div>
 				<div
 					style={{ display: open ? `block` : `none` }}
-					className={gridStyles}
+					className='zygoteCoupon'
 				>
 					<div>
 						<Input
@@ -48,29 +47,29 @@ export default class CompanyNameInput extends React.Component {
 							stage={stage}
 						/>
 					</div>
-					<div role='button' className={applyStyles}>Apply</div>
+					<div role='button' className='zygoteCouponApply'>Apply</div>
 				</div>
 			</Fragment>
 		)
 	}
+	static styles = {
+		'.zygoteCoupon': {
+			display: `flex`,
+			'> div': {
+				display: `inline-block`,
+			},
+		},
+		'.zygoteCouponApply': {
+			position: `relative`,
+			top: 2,
+			display: `inline-block`,
+			borderRadius: 20,
+			textAlign: `center`,
+			padding: `8px 30px`,
+			maxWidth: `100%`,
+			marginLeft: 10,
+			border: `1px solid ${borderColor}`,
+			color: fontColor,
+		},
+	}
 }
-
-const gridStyles = css({
-	display: `flex`,
-	'> div': {
-		display: `inline-block`,
-	},
-})
-
-const applyStyles = css({
-	position: `relative`,
-	top: 2,
-	display: `inline-block`,
-	borderRadius: 20,
-	textAlign: `center`,
-	padding: `8px 30px`,
-	maxWidth: `100%`,
-	marginLeft: 10,
-	border: `1px solid ${borderColor}`,
-	color: fontColor,
-})

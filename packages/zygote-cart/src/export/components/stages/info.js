@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import { css } from 'emotion'
 import { Subscribe } from 'statable'
 import stageState from '../../state/stage'
 import NameInput from '../inputs/name'
@@ -32,7 +31,7 @@ export default class InfoStage extends React.Component{
 									<div>{infoHeader}</div>
 								)}
 								<StagesHeader stage='info' />
-								<div className={sectionStyles}>
+								<div className='zygoteInfoSection'>
 									<Header>Let's get started</Header>
 									<NameInput
 										name='infoName'
@@ -47,14 +46,14 @@ export default class InfoStage extends React.Component{
 										stage='info'
 									/>
 								</div>
-								<div className={sectionStyles}>
+								<div className='zygoteInfoSection'>
 									<Header>Where should we deliver?</Header>
 									<AddressInput
 										name='shippingAddress1'
 										autoComplete='shipping address-line1'
 										stage='info'
 									/>
-									<div className={extraStyles}>
+									<div className='zygoteInfoExtra'>
 										<div>
 											<Address2Input
 												name='shippingAddress2'
@@ -70,7 +69,7 @@ export default class InfoStage extends React.Component{
 											/>
 										</div>
 									</div>
-									<div className={cityStateStyles}>
+									<div className='zygoteInfoCityState'>
 										<div>
 											<City
 												name='shippingCity'
@@ -91,7 +90,7 @@ export default class InfoStage extends React.Component{
 										autoComplete='shipping postal-code'
 										stage='info'
 									/>
-									<div className={buttonContainerStyles}>
+									<div className='zygoteInfoBtn'>
 										<Button onClick={submitInfo}>
 											Next Step
 										</Button>
@@ -107,45 +106,43 @@ export default class InfoStage extends React.Component{
 			</Subscribe>
 		)
 	}
+	static styles = {
+		'.zygoteInfoSection': {
+			marginTop: 40,
+		},
+		'.zygoteInfoExtra': {
+			'@media(min-width: 450px)': {
+				display: `flex`,
+				'> div': {
+					width: `50%`,
+					padding: `0 10px`,
+					':first-of-type': {
+						paddingLeft: 0,
+					},
+					':last-of-type': {
+						paddingRight: 0,
+					},
+				},
+			},
+		},
+		'.zygoteInfoCityState': {
+			'@media(min-width: 450px)': {
+				display: `flex`,
+				'> div': {
+					padding: `0 10px`,
+					':first-of-type': {
+						width: `60%`,
+						paddingLeft: 0,
+					},
+					':last-of-type': {
+						width: `40%`,
+						paddingRight: 0,
+					},
+				},
+			},
+		},
+		'.zygoteInfoBtn': {
+			marginTop: 30,
+		},
+	}
 }
-
-const sectionStyles = css({
-	marginTop: 40,
-})
-
-const extraStyles = css({
-	'@media(min-width: 450px)': {
-		display: `flex`,
-		'> div': {
-			width: `50%`,
-			padding: `0 10px`,
-			':first-of-type': {
-				paddingLeft: 0,
-			},
-			':last-of-type': {
-				paddingRight: 0,
-			},
-		},
-	},
-})
-
-const cityStateStyles = css({
-	'@media(min-width: 450px)': {
-		display: `flex`,
-		'> div': {
-			padding: `0 10px`,
-			':first-of-type': {
-				width: `60%`,
-				paddingLeft: 0,
-			},
-			':last-of-type': {
-				width: `40%`,
-				paddingRight: 0,
-			},
-		},
-	},
-})
-
-const buttonContainerStyles = css({
-	marginTop: 30,
-})

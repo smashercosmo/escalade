@@ -35,4 +35,23 @@ export default class StripeWrapper extends React.Component {
 			</StripeProvider>
 		)
 	}
+	static styles = {
+		'.zygoteStripeInput': {
+			borderRadius: 4,
+			padding: 10,
+		},
+		'.zygoteStripeRow': {
+			display: `flex`,
+			'> div': {
+				width: `50%`,
+				padding: `0 10px`,
+				':first-of-type': {
+					paddingLeft: 0,
+				},
+				':last-of-type': {
+					paddingRight: 0,
+				},
+			},
+		},
+	}
 }

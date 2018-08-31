@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import { css } from 'emotion'
 import { Subscribe } from 'statable'
 import stageState from '../../state/stage'
 import StagesHeader from '../stages-header'
@@ -44,8 +43,8 @@ export default class PaymentStage extends React.Component{
 									<div>{paymentHeader}</div>
 								)}
 								<StagesHeader stage='payment' />
-								<div className={sectionStyles}>
-									<div className={headerRowStyles}>
+								<div className='zygotePaymentSection'>
+									<div className='zygotePaymentHeader'>
 										<div>
 											<Header>Payment</Header>
 										</div>
@@ -55,7 +54,7 @@ export default class PaymentStage extends React.Component{
 									</div>
 									<StripePayment />
 
-									<label className={sameBillingStyles}>
+									<label className='zygotePaymentSame'>
 										<Checkbox
 											name='sameBilling'
 											checked={this.state.sameBilling}
@@ -65,7 +64,7 @@ export default class PaymentStage extends React.Component{
 									</label>
 
 									{this.state.sameBilling && (
-										<div className={billingAddressStyles}>
+										<div className='zygotePaymentAddress'>
 											<div>{value(`infoName`)}</div>
 											<div>{value(`shippingAddress1`)}</div>
 											<div>{value(`shippingAddress2`)}</div>
@@ -73,10 +72,10 @@ export default class PaymentStage extends React.Component{
 										</div>
 									)}
 									{!this.state.sameBilling && (
-										<div className={sectionStyles}>
+										<div className='zygotePaymentSection'>
 											<Header>What is your billing address?</Header>
 											<AddressInput name='billingAddress1' autoComplete='billing address-line1' />
-											<div className={extraStyles}>
+											<div className='zygotePaymentExtra'>
 												<div>
 													<Address2Input name='billingAddress2' autoComplete='billing address-line2' />
 												</div>
@@ -84,7 +83,7 @@ export default class PaymentStage extends React.Component{
 													<CompanyName name='billingCompany' autoComplete='billing org' />
 												</div>
 											</div>
-											<div className={cityStateStyles}>
+											<div className='zygotePaymentCityState'>
 												<div>
 													<City name='billingCity' autoComplete='billing locality' />
 												</div>
@@ -97,15 +96,15 @@ export default class PaymentStage extends React.Component{
 									)}
 
 								</div>
-								<div className={sectionStyles}>
+								<div className='zygotePaymentSection'>
 									<ShippingMethods />
 								</div>
-								<div className={sectionStyles}>
+								<div className='zygotePaymentSection'>
 									<h2>Final Order Summary</h2>
 									<ProductList editable={false} />
 									<Totals />
 								</div>
-								<div className={buttonContainerStyles}>
+								<div className='zygotePaymentBtn'>
 									<Button onClick={submitOrder}>Place Order</Button>
 								</div>
 								{!!paymentFooter && (
@@ -119,6 +118,75 @@ export default class PaymentStage extends React.Component{
 
 		)
 	}
+	static styles = {
+		'.zygotePaymentAddress': {
+			fontWeight: `bold`,
+			marginTop: 10,
+			marginLeft: 30,
+		},
+		'.zygotePaymentSection': {
+			marginTop: 40,
+		},
+		'.zygotePaymentHeader': {
+			'@media(min-width: 500px)': {
+				display: `flex`,
+				'> div': {
+					':first-of-type': {
+						width: `40%`,
+					},
+					':last-of-type': {
+						width: `60%`,
+						textAlign: `right`,
+						marginTop: 5,
+					},
+				},
+			},
+		},
+		'.zygotePaymentSame': {
+			cursor: `pointer`,
+			display: `flex`,
+			marginTop: 30,
+			'> *': {
+				':first-of-type': {
+					marginRight: 10,
+				},
+			},
+		},
+		'.zygotePaymentExtra': {
+			'@media(min-width: 450px)': {
+				display: `flex`,
+				'> div': {
+					width: `50%`,
+					padding: `0 10px`,
+					':first-of-type': {
+						paddingLeft: 0,
+					},
+					':last-of-type': {
+						paddingRight: 0,
+					},
+				},
+			},
+		},
+		'.zygotePaymentCityState': {
+			'@media(min-width: 450px)': {
+				display: `flex`,
+				'> div': {
+					padding: `0 10px`,
+					':first-of-type': {
+						width: `60%`,
+						paddingLeft: 0,
+					},
+					':last-of-type': {
+						width: `40%`,
+						paddingRight: 0,
+					},
+				},
+			},
+		},
+		'.zygotePaymentBtn': {
+			marginTop: 30,
+		},
+	}
 }
 
 function value(name){
@@ -126,79 +194,3 @@ function value(name){
 		return inputs[name].state.value
 	}
 }
-
-const billingAddressStyles = css({
-	fontWeight: `bold`,
-	marginTop: 10,
-	marginLeft: 30,
-})
-
-const sectionStyles = css({
-	marginTop: 40,
-})
-
-const headerRowStyles = css({
-	'@media(min-width: 500px)': {
-		display: `flex`,
-		'> div': {
-			':first-of-type': {
-				width: `40%`,
-			},
-			':last-of-type': {
-				width: `60%`,
-				textAlign: `right`,
-				marginTop: 5,
-			},
-		},
-	},
-})
-
-const sameBillingStyles = css({
-	cursor: `pointer`,
-	display: `flex`,
-	marginTop: 30,
-	'> *': {
-		':first-of-type': {
-			marginRight: 10,
-		},
-	},
-})
-
-
-
-const extraStyles = css({
-	'@media(min-width: 450px)': {
-		display: `flex`,
-		'> div': {
-			width: `50%`,
-			padding: `0 10px`,
-			':first-of-type': {
-				paddingLeft: 0,
-			},
-			':last-of-type': {
-				paddingRight: 0,
-			},
-		},
-	},
-})
-
-const cityStateStyles = css({
-	'@media(min-width: 450px)': {
-		display: `flex`,
-		'> div': {
-			padding: `0 10px`,
-			':first-of-type': {
-				width: `60%`,
-				paddingLeft: 0,
-			},
-			':last-of-type': {
-				width: `40%`,
-				paddingRight: 0,
-			},
-		},
-	},
-})
-
-const buttonContainerStyles = css({
-	marginTop: 30,
-})

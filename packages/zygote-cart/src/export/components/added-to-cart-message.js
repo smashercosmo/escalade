@@ -8,4 +8,11 @@ export default class AddedToCartMessage extends React.Component {
 			</div>
 		)
 	}
+	static styles = {
+		'.zygoteAddMsg': {
+			fontSize: `1.3em`,
+			textAlign: `center`,
+			fontStyle: `italic`,
+		},
+	}
 }

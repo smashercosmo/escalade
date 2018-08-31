@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import { css } from 'emotion'
 import { Subscribe } from 'statable'
 import ProductList from '../product-list'
 import Totals from '../totals'
@@ -19,13 +18,13 @@ export default class SuccessStage extends React.Component{
 					<div>{successHeader}</div>
 				)}
 				{!successHeader && (
-					<h1 className={headerStyles}>Order Received!</h1>
+					<h1 className='zygoteSuccessHeader'>Order Received!</h1>
 				)}
 				<Subscribe to={successState}>
 					{({ products, totals, meta }) => (
 						<Fragment>
 							<h2>Detailed Order Receipt</h2>
-							<div className={metaStyles}>
+							<div className='zygoteSuccessMeta'>
 								{meta.orderNumber && (
 									<div>Order Number: {meta.orderNumber}</div>
 								)}
@@ -38,7 +37,7 @@ export default class SuccessStage extends React.Component{
 						</Fragment>
 					)}
 				</Subscribe>
-				<div className={buttonContainerStyles}>
+				<div className='zygoteSuccessBtn'>
 					<Button onClick={closeCart}>Close Cart</Button>
 				</div>
 				{!!successFooter && (
@@ -47,17 +46,16 @@ export default class SuccessStage extends React.Component{
 			</Fragment>
 		)
 	}
+	static styles = {
+		'.zygoteSuccessHeader': {
+			textAlign: `center`,
+		},
+		'.zygoteSuccessMeta': {
+			marginBottom: 20,
+			fontSize: `.9em`,
+		},
+		'.zygoteSuccessBtn': {
+			marginTop: 30,
+		},
+	}
 }
-
-const headerStyles = css({
-	textAlign: `center`,
-})
-
-const metaStyles = css({
-	marginBottom: 20,
-	fontSize: `.9em`,
-})
-
-const buttonContainerStyles = css({
-	marginTop: 30,
-})

@@ -51,4 +51,32 @@ export default class ShippingMethods extends React.Component {
 			</div>
 		)
 	}
+	static styles = {
+		'.zygoteShipList': {
+			listStyleType: `none`,
+			margin: 0,
+			padding: 0,
+			userSelect: `none`,
+			li: {
+				marginTop: 10,
+			},
+		},
+		'.zygoteShipLabel': {
+			display: `flex`,
+			cursor: `pointer`,
+			position: `relative`,
+			'> div': {
+				':first-of-type': {
+					width: `10%`,
+				},
+				':nth-of-type(2)': {
+					width: `70%`,
+				},
+				':last-of-type': {
+					width: `20%`,
+					textAlign: `right`,
+				},
+			},
+		},
+	}
 }

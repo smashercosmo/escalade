@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import { css } from 'emotion'
 import { Subscribe } from 'statable'
 import closeCart from '../../utils/close-cart'
 import ProductList from '../product-list'
@@ -19,22 +18,22 @@ export default class CartStage extends React.Component{
 		return (
 			<Fragment>
 				{!!cartHeader && (
-					<div className={headerStyles}>{cartHeader}</div>
+					<div className='zygoteCartHeader'>{cartHeader}</div>
 				)}
 				<Subscribe to={productsState}>
 					{({ products }) => (
 						<Fragment>
 							{!!products.length && !!addedToCart && (
-								<div className={headerStyles}>{addedToCart}</div>
+								<div className='zygoteCartHeader'>{addedToCart}</div>
 							)}
 							<ProductList editable />
 							{!products.length && (
-								<div className={emptyMessageStyles}>Your cart is empty</div>
+								<div className='zygoteEmptyMsg'>Your cart is empty</div>
 							)}
 							{!!products.length && (
 								<Fragment>
 									<Totals />
-									<div className={cardListStyles}>
+									<div className='zygoteCardListWrapper'>
 										<CardList />
 									</div>
 									<Button onClick={nextStage}>Place Order</Button>
@@ -45,27 +44,25 @@ export default class CartStage extends React.Component{
 					)}
 				</Subscribe>
 				{!!cartFooter && (
-					<div className={footerStyles}>{cartFooter}</div>
+					<div className='zygoteCartFooter'>{cartFooter}</div>
 				)}
 			</Fragment>
 		)
 	}
+	static styles = {
+		'.zygoteCartHeader': {
+			marginBottom: 20,
+		},
+		'.zygoteCartFooter': {
+			marginTop: 20,
+		},
+		'.zygoteEmptyMsg': {
+			textAlign: `center`,
+			marginTop: 30,
+			marginBottom: 30,
+		},
+		'.zygoteCardListWrapper': {
+			textAlign: `center`,
+		},
+	}
 }
-
-const headerStyles = css({
-	marginBottom: 20,
-})
-
-const footerStyles = css({
-	marginTop: 20,
-})
-
-const emptyMessageStyles = css({
-	textAlign: `center`,
-	marginTop: 30,
-	marginBottom: 30,
-})
-
-const cardListStyles = css({
-	textAlign: `center`,
-})

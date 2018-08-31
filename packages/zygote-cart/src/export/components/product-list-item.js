@@ -54,4 +54,69 @@ export default class ProductList extends React.Component{
 			</li>
 		)
 	}
+	static styles = {
+		'.zygoteProdItem': {
+			position: `relative`,
+			':after': {
+				content: `""`,
+				display: `block`,
+				clear: `both`,
+			},
+			'> div': {
+				float: `left`,
+			},
+		},
+		'.zygoteProdImage': {
+			width: `100%`,
+			maxWidth: 65,
+			textAlign: `center`,
+		},
+		'.zygoteProdTitle': {
+			marginTop: 5,
+			fontWeight: `bold`,
+			width: `100%`,
+		},
+		'.zygoteProdDesc': {
+			width: `100%`,
+			marginBottom: 10,
+			marginTop: 5,
+			fontSize: `.75em`,
+		},
+		'.zygoteProdQty': {
+			userSelect: `none`,
+			position: `absolute`,
+			left: 85,
+			top: 23,
+			zIndex: 2,
+		},
+		'.zygoteProdQtyNum': {
+			padding: `0 5px`,
+			textAlign: `center`,
+			minWidth: 30,
+			display: `inline-block`,
+			top: -3,
+			position: `relative`,
+		},
+		'.zygoteProdPrice': {
+			width: `50%`,
+			textAlign: `right`,
+			position: `absolute`,
+			top: 23,
+			right: 0,
+		},
+		'.zygoteProdX': {
+			position: `absolute`,
+			top: 21,
+			right: 0,
+			fontSize: `2em`,
+			lineHeight: `16px`,
+			fontWeight: 200,
+			cursor: `pointer`,
+		},
+		'.zygoteProdItemEditable': {
+			'.zygoteProdPrice': {
+				right: 35,
+			},
+		},
+	}
 }

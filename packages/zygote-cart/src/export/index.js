@@ -1,4 +1,4 @@
-import Cart from './components/cart'
+import Cart from './components'
 import CartQuantity from './components/cart-quantity'
 import openCart from './utils/open-cart'
 import closeCart from './utils/close-cart'

@@ -1,5 +1,4 @@
 import React from 'react'
-import { css } from 'emotion'
 import Security from './security'
 import Visa from './visa'
 import Mastercard from './mastercard'
@@ -9,7 +8,7 @@ import Discover from './discover'
 export default class CardList extends React.Component {
 	render() {
 		return (
-			<div className={cardListStyles}>
+			<div className='zygoteCardList'>
 				<div>
 					<Security />
 				</div>
@@ -28,16 +27,17 @@ export default class CardList extends React.Component {
 			</div>
 		)
 	}
-}
-
-const cardListStyles = css({
-	marginBottom: 20,
-	div: {
-		width: 33,
-		display: `inline-block`,
-		margin: `0 3px`,
-		':first-of-type': {
-			width: 35,
+	static styles = {
+		'.zygoteCardList': {
+			marginBottom: 20,
+			div: {
+				width: 33,
+				display: `inline-block`,
+				margin: `0 3px`,
+				':first-of-type': {
+					width: 35,
+				},
+			},
 		},
-	},
-})
+	}
+}
