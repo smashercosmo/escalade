@@ -16,15 +16,15 @@ export default class ShippingMethods extends React.Component {
 	}
 	render() {
 		return (
-			<div>
-				<h2>Shipping Options</h2>
-				<Subscribe to={shippingState}>
-					{({ loading, selected, methods }) => (
-						<Fragment>
-							{loading && (
-								<LoadingAnimation />
-							)}
-							{!loading && (
+			<Subscribe to={shippingState}>
+				{({ loading, selected, methods }) => (
+					<Fragment>
+						{loading && (
+							<LoadingAnimation />
+						)}
+						{!loading && !!methods.length && (
+							<Fragment>
+								<h2>Shipping Options</h2>
 								<ul className='zygoteShipList'>
 									{methods.map(({ id, description, value }) => (
 										<li key={`shipping${id}`}>
@@ -44,11 +44,11 @@ export default class ShippingMethods extends React.Component {
 										</li>
 									))}
 								</ul>
-							)}
-						</Fragment>
-					)}
-				</Subscribe>
-			</div>
+							</Fragment>
+						)}
+					</Fragment>
+				)}
+			</Subscribe>
 		)
 	}
 	static styles = () => ({
