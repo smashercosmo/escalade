@@ -3,8 +3,9 @@ import capitalize from './capitalize'
 import successState from '../state/success'
 
 export default function eventTrigger(type, data){
-	settingsState.state[`on${capitalize(type)}`](data)
-	const { ga } = global
+	const capType = capitalize(type)
+	settingsState.state[`on${capType}`](data)
+	const { ga, dataLayer } = global
 	if (settingsState.state.googleAnalytics && ga){
 		ga(`send`, {
 			hitType: `event`,
@@ -29,6 +30,12 @@ export default function eventTrigger(type, data){
 			ga(`ecommerce:send`)
 			ga(`ecommerce:clear`)
 		}
+	}
+	if (settingsState.googleTagManager && dataLayer){
+		dataLayer.push({
+			event: `zygote${capType}`,
+			...data,
+		})
 	}
 }
 

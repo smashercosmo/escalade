@@ -170,3 +170,49 @@ Example of the API returning an error and moving back to the "info" step:
   "step": "info"
 }
 ```
+
+## Event Hooks
+
+If you need to run client side code when something happens, Zygote comes with a set of event hooks you can use:
+
+```jsx
+<Cart
+  onOpen={() => console.log(`Cart opened`)}
+  onClose={() => console.log(`Cart closed`)}
+  onAddProduct={product => console.log(`Added product`, product)}
+  onRemoveProduct={product => console.log(`Removed product`, product)}
+  onError={err => console.log(`Error caught`, err)}
+  onInfoAttempt={info => console.log(`Info attempt`, info)}
+  onInfo={info => console.log(`Info submit`, info)}
+  onOrderAttempt={order => console.log(`Order attempt`, order)}
+  onOrder={order => console.log(`Order submit`, order)}
+/>
+```
+
+## Google Analytics Integration
+
+By default, Zygote will send cart events to Analytics if Analytics are found on the site. It will also send ecommerce order information. To disable this, set the `googleAnalytics` prop to `false`:
+
+```jsx
+<Cart googleAnalytics={false} />
+```
+
+## Google Tag Manager Integration
+
+By default, Zygote will send cart data and events to Google Tag Manager if GTM is found on the site. The event IDs that will be sent:
+
+- zygoteOpen
+- zygoteClose
+- zygoteAdd
+- zygoteRemove
+- zygoteError
+- zygoteAttemptInfo
+- zygoteInfo
+- zygoteAttemptOrder
+- zygoteOrder
+
+To disable this, set the `googleTagManager` prop to `false`:
+
+```jsx
+<Cart googleTagManager={false} />
+```
