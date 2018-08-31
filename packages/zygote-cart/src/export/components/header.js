@@ -6,9 +6,9 @@ export default class SectionHeader extends React.Component {
 			<h2 className='zygoteSectionHeader'>{this.props.children}</h2>
 		)
 	}
-	static styles = {
+	static styles = () => ({
 		'.zygoteSectionHeader': {
 			fontSize: `1.2em`,
 		},
-	}
+	})
 }

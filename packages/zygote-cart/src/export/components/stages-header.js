@@ -1,7 +1,6 @@
 import React from 'react'
 import changeStage from '../utils/change-stage'
 import submitInfo from '../utils/attempt-submit-info'
-import { primaryColor } from '../styles/settings'
 
 export default class StagesHeader extends React.Component {
 	render() {
@@ -25,7 +24,7 @@ export default class StagesHeader extends React.Component {
 			</ul>
 		)
 	}
-	static styles = {
+	static styles = ({ primaryColor }) => ({
 		'.zygoteStepsHeader': {
 			listStyleType: `none`,
 			padding: 0,
@@ -45,5 +44,5 @@ export default class StagesHeader extends React.Component {
 			borderBottom: `3px solid ${primaryColor}`,
 			cursor: `default !important`,
 		},
-	}
+	})
 }

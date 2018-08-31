@@ -23,7 +23,7 @@ export default class Checkbox extends React.Component {
 			</div>
 		)
 	}
-	static styles = {
+	static styles = () => ({
 		'.zygoteCheckbox, .zygoteRadio': {
 			width: 20,
 			height: 20,
@@ -44,5 +44,5 @@ export default class Checkbox extends React.Component {
 			top: `50%`,
 			transform: `translate(-50%, -50%)`,
 		},
-	}
+	})
 }

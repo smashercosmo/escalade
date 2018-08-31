@@ -2,7 +2,6 @@ import React, { Fragment } from 'react'
 import { Subscribe } from 'statable'
 import productsState from '../state/products'
 import Item from './product-list-item'
-import { borderColor } from '../styles/settings'
 
 class ProductsUl extends React.Component{
 	render(){
@@ -43,7 +42,7 @@ export default class ProductList extends React.Component{
 			</Fragment>
 		)
 	}
-	static styles = {
+	static styles = ({ borderColor }) => ({
 		'.zygoteProdList': {
 			listStyleType: `none`,
 			margin: 0,
@@ -65,5 +64,5 @@ export default class ProductList extends React.Component{
 				clear: `both`,
 			},
 		},
-	}
+	})
 }

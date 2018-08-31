@@ -106,7 +106,7 @@ export default class InfoStage extends React.Component{
 			</Subscribe>
 		)
 	}
-	static styles = {
+	static styles = () => ({
 		'.zygoteInfoSection': {
 			marginTop: 40,
 		},
@@ -144,5 +144,5 @@ export default class InfoStage extends React.Component{
 		'.zygoteInfoBtn': {
 			marginTop: 30,
 		},
-	}
+	})
 }

@@ -49,7 +49,7 @@ export default class CartStage extends React.Component{
 			</Fragment>
 		)
 	}
-	static styles = {
+	static styles = () => ({
 		'.zygoteCartHeader': {
 			marginBottom: 20,
 		},
@@ -64,5 +64,5 @@ export default class CartStage extends React.Component{
 		'.zygoteCardListWrapper': {
 			textAlign: `center`,
 		},
-	}
+	})
 }

@@ -9,7 +9,7 @@ export default class Toggle extends React.Component {
 			</div>
 		)
 	}
-	static styles = {
+	static styles = () => ({
 		'.zygoteToggle': {
 			marginTop: 35,
 			cursor: `pointer`,
@@ -20,5 +20,5 @@ export default class Toggle extends React.Component {
 			top: -4,
 			fontSize: `.85em`,
 		},
-	}
+	})
 }

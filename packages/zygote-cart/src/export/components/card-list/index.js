@@ -27,7 +27,7 @@ export default class CardList extends React.Component {
 			</div>
 		)
 	}
-	static styles = {
+	static styles = () => ({
 		'.zygoteCardList': {
 			marginBottom: 20,
 			div: {
@@ -39,5 +39,5 @@ export default class CardList extends React.Component {
 				},
 			},
 		},
-	}
+	})
 }

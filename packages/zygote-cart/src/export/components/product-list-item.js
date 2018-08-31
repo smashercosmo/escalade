@@ -54,7 +54,7 @@ export default class ProductList extends React.Component{
 			</li>
 		)
 	}
-	static styles = {
+	static styles = () => ({
 		'.zygoteProdItem': {
 			position: `relative`,
 			':after': {
@@ -118,5 +118,5 @@ export default class ProductList extends React.Component{
 				right: 35,
 			},
 		},
-	}
+	})
 }

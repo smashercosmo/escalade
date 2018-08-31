@@ -14,12 +14,6 @@ import Processing from './processing'
 import Errors from './errors'
 import Info from './info'
 import capitalize from '../utils/capitalize'
-import {
-	fontFamily,
-	fontColor,
-	overlayColor,
-	backgroundColor,
-} from '../styles/settings'
 
 export default class Cart extends React.Component {
 	render() {
@@ -104,7 +98,7 @@ export default class Cart extends React.Component {
 			</Subscribe>
 		)
 	}
-	static styles = {
+	static styles = ({ fontColor, fontFamily, overlayColor, backgroundColor }) => ({
 		'[role="button"]': {
 			cursor: `pointer`,
 			userSelect: `none`,
@@ -190,5 +184,5 @@ export default class Cart extends React.Component {
 				transform: `translateX(0%)`,
 			},
 		},
-	}
+	})
 }

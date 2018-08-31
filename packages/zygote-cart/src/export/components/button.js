@@ -1,10 +1,4 @@
 import React from 'react'
-import {
-	fontColor,
-	primaryColor,
-	backgroundColor,
-	borderColor,
-} from '../styles/settings'
 
 export default class Button extends React.Component {
 	render() {
@@ -25,7 +19,7 @@ export default class Button extends React.Component {
 			</button>
 		)
 	}
-	static styles = {
+	static styles = ({ borderColor, backgroundColor, primaryColor, fontColor }) => ({
 		'.zygoteBtn': {
 			borderRadius: 20,
 			textAlign: `center`,
@@ -43,9 +37,9 @@ export default class Button extends React.Component {
 				opacity: .75,
 			},
 			':disabled': {
-				backgroundColor: `#ccc`,
+				backgroundColor: borderColor,
 				cursor: `default`,
-				color: `#fff`,
+				color: backgroundColor,
 				':hover': {
 					opacity: 1,
 				},
@@ -59,5 +53,5 @@ export default class Button extends React.Component {
 			border: `1px solid ${borderColor}`,
 			color: fontColor,
 		},
-	}
+	})
 }

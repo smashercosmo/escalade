@@ -51,7 +51,7 @@ export default class ShippingMethods extends React.Component {
 			</div>
 		)
 	}
-	static styles = {
+	static styles = () => ({
 		'.zygoteShipList': {
 			listStyleType: `none`,
 			margin: 0,
@@ -78,5 +78,5 @@ export default class ShippingMethods extends React.Component {
 				},
 			},
 		},
-	}
+	})
 }

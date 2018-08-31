@@ -1,10 +1,6 @@
 import React, { Fragment } from 'react'
 import Input from './input'
 import Toggle from './toggle'
-import {
-	fontColor,
-	borderColor,
-} from '../../styles/settings'
 
 export default class CompanyNameInput extends React.Component {
 	static defaultProps = {
@@ -52,7 +48,7 @@ export default class CompanyNameInput extends React.Component {
 			</Fragment>
 		)
 	}
-	static styles = {
+	static styles = ({ borderColor, fontColor }) => ({
 		'.zygoteCoupon': {
 			display: `flex`,
 			'> div': {
@@ -71,5 +67,5 @@ export default class CompanyNameInput extends React.Component {
 			border: `1px solid ${borderColor}`,
 			color: fontColor,
 		},
-	}
+	})
 }

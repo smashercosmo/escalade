@@ -118,7 +118,7 @@ export default class PaymentStage extends React.Component{
 
 		)
 	}
-	static styles = {
+	static styles = () => ({
 		'.zygotePaymentAddress': {
 			fontWeight: `bold`,
 			marginTop: 10,
@@ -186,7 +186,7 @@ export default class PaymentStage extends React.Component{
 		'.zygotePaymentBtn': {
 			marginTop: 30,
 		},
-	}
+	})
 }
 
 function value(name){

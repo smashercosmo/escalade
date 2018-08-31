@@ -20,7 +20,7 @@ export default class ErrorMessages extends React.Component {
 			</Subscribe>
 		)
 	}
-	static styles = {
+	static styles = () => ({
 		'.zygoteErrors': {
 			listStyleType: `none`,
 			margin: 0,
@@ -32,5 +32,5 @@ export default class ErrorMessages extends React.Component {
 				border: `1px solid rgba(255, 0, 0, .3)`,
 			},
 		},
-	}
+	})
 }

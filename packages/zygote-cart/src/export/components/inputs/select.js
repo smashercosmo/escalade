@@ -94,7 +94,7 @@ export default class Select extends React.Component{
 			</label>
 		)
 	}
-	static styles = {
+	static styles = () => ({
 		'.zygoteSelectWrapper': {
 			position: `relative`,
 			display: `block`,
@@ -143,5 +143,5 @@ export default class Select extends React.Component{
 		'.zygoteSelectLabelMoved': {
 			transform: `translate(0px, 0px)`,
 		},
-	}
+	})
 }

@@ -95,7 +95,7 @@ export default class StripeInput extends React.Component {
 			</label>
 		)
 	}
-	static styles = {
+	static styles = () => ({
 		'.zygoteStripeInputWrapper': {
 			position: `relative`,
 			display: `block`,
@@ -141,5 +141,5 @@ export default class StripeInput extends React.Component {
 		'.zygoteStripeMoved': {
 			transform: `translate(0px, 0px)`,
 		},
-	}
+	})
 }

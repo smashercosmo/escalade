@@ -46,7 +46,7 @@ export default class SuccessStage extends React.Component{
 			</Fragment>
 		)
 	}
-	static styles = {
+	static styles = () => ({
 		'.zygoteSuccessHeader': {
 			textAlign: `center`,
 		},
@@ -57,5 +57,5 @@ export default class SuccessStage extends React.Component{
 		'.zygoteSuccessBtn': {
 			marginTop: 30,
 		},
-	}
+	})
 }

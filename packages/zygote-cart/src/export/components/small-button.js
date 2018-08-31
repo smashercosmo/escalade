@@ -1,9 +1,4 @@
 import React from 'react'
-import {
-	primaryColor,
-	backgroundColor,
-	borderColor,
-} from '../styles/settings'
 
 export default class SmallButton extends React.Component {
 	render() {
@@ -22,7 +17,7 @@ export default class SmallButton extends React.Component {
 			</div>
 		)
 	}
-	static styles = {
+	static styles = ({ primaryColor, backgroundColor, borderColor }) => ({
 		'.zygoteSmBtn': {
 			display: `inline-block`,
 			position: `relative`,
@@ -48,5 +43,5 @@ export default class SmallButton extends React.Component {
 			backgroundColor: borderColor,
 			color: backgroundColor,
 		},
-	}
+	})
 }

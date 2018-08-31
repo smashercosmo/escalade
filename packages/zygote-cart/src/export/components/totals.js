@@ -3,7 +3,6 @@ import { Subscribe } from 'statable'
 import totalsState from '../state/totals'
 import LoadingAnimation from './loading-animation'
 import formatUsd from '../utils/format-usd'
-import { borderColor } from '../styles/settings'
 
 class TotalsList extends React.Component{
 	render(){
@@ -61,7 +60,7 @@ export default class Totals extends React.Component{
 			</ul>
 		)
 	}
-	static styles = {
+	static styles = ({ borderColor }) => ({
 		'.zygoteTotals': {
 			listStyleType: `none`,
 			margin: 0,
@@ -90,5 +89,5 @@ export default class Totals extends React.Component{
 			paddingTop: 20,
 			borderTop: `1px solid ${borderColor}`,
 		},
-	}
+	})
 }

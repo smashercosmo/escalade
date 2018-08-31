@@ -120,7 +120,7 @@ export default class Input extends React.Component{
 			</label>
 		)
 	}
-	static styles = {
+	static styles = () => ({
 		'.zygoteInputWrapper': {
 			position: `relative`,
 			display: `block`,
@@ -168,5 +168,5 @@ export default class Input extends React.Component{
 			right: 0,
 			bottom: -18,
 		},
-	}
+	})
 }

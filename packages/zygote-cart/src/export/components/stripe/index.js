@@ -35,7 +35,7 @@ export default class StripeWrapper extends React.Component {
 			</StripeProvider>
 		)
 	}
-	static styles = {
+	static styles = () => ({
 		'.zygoteStripeInput': {
 			borderRadius: 4,
 			padding: 10,
@@ -53,5 +53,5 @@ export default class StripeWrapper extends React.Component {
 				},
 			},
 		},
-	}
+	})
 }

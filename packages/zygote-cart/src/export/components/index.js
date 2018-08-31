@@ -4,10 +4,11 @@ import styles from '../styles'
 import settingsState from '../state/settings'
 import addTotalModification from '../utils/add-total-modification'
 import calculateTotals from '../utils/calculate-totals'
+import defaultStyles from '../styles/settings'
 
 export default class Zygote extends React.Component {
 	static defaultProps = {
-		styles: true,
+		styles: defaultStyles,
 	}
 	constructor(props) {
 		super(props)
@@ -22,7 +23,7 @@ export default class Zygote extends React.Component {
 	}
 	render(){
 		return (
-			<div className={this.props.styles === true ? styles : ``}>
+			<div className={this.props.styles ? styles(this.props.styles) : ``}>
 				<Cart />
 			</div>
 		)
