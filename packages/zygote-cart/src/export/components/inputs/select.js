@@ -111,7 +111,7 @@ export default class Select extends React.Component{
 			zIndex: 2,
 			display: `block`,
 			width: `100%`,
-			fontSize: `.9em`,
+			fontSize: `16px`,
 			border: 0,
 			outline: `none`,
 		},

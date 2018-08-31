@@ -80,7 +80,12 @@ export default class Input extends React.Component{
 						mask={mask}
 						onChange={this.handleChange}
 						onFocus={this.handleFocus}
-						onBlur={this.validate}
+						onBlur={e => {
+							// Hack for iOS
+							// https://github.com/facebook/react/issues/1159
+							this.handleChange(e)
+							this.validate(e)
+						}}
 						value={value}
 					>
 						{(inputProps) => (
