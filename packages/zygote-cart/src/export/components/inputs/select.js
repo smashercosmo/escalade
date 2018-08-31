@@ -81,12 +81,7 @@ export default class Select extends React.Component{
 					value={value}
 					onChange={this.handleChange}
 					onFocus={this.handleFocus}
-					onBlur={e => {
-						// Hack for iOS
-						// https://github.com/facebook/react/issues/1159
-						this.handleChange(e)
-						this.validate(e)
-					}}
+					onBlur={this.validate}
 					className='zygoteSelect'
 					name={name}
 				>
