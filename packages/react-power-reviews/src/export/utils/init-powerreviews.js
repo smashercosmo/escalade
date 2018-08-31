@@ -1,3 +1,5 @@
+import { state } from "../state"
+
 function loadScript(src) {
 	return new Promise((resolve, reject) => {
 		let s
@@ -9,14 +11,16 @@ function loadScript(src) {
 	})
 }
 
-export default (props, components) => {
+export default props => {
 	let content = {
 		api_key: props.apiKey,
 		locale: props.locale || `en_US`,
 		merchant_group_id: props.merchantGroupId,
 		merchant_id: props.merchantId,
 		page_id: props.pageId,
-		review_wrapper_url: props.wrapperUrl,
+		review_wrapper_url:
+			props.wrapperUrl || `/write-review?page_id=${props.pageId}`,
+		components: props.components || null,
 		on_render: (config, data) => {
 			if (props.init) {
 				props.init(config, data)
@@ -27,7 +31,6 @@ export default (props, components) => {
 				props.submitted(config, data)
 			}
 		},
-		components: components,
 	}
 	if (props.product) {
 		content.product = props.product
@@ -37,17 +40,16 @@ export default (props, components) => {
 			content[key] = props.config[key]
 		})
 	}
-	return new Promise((resolve, reject) => {
+	return new Promise(async (resolve, reject) => {
 		if (!window.POWERREVIEWS) {
-			loadScript(`//ui.powerreviews.com/stable/4.0/ui.js`)
-				.then(() => {
-					window.POWERREVIEWS.display.render(content)
-					resolve()
-				})
-				.catch(err => {
-					reject(`Something went wrong while loading the script: ${err}`)
-				})
-		} else {
+			await loadScript(`//ui.powerreviews.com/stable/4.0/ui.js`).catch(err => {
+				reject(`Something went wrong while loading the script: ${err}`)
+			})
+			content.components = content.components || state.state.components
+			window.POWERREVIEWS.display.render(content)
+			resolve()
+		} else if (window.POWERREVIEWS) {
+			content.components = content.components || state.state.components
 			window.POWERREVIEWS.display.render(content)
 			resolve()
 		}

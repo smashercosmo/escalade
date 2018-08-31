@@ -1,29 +1,18 @@
 import React, { Component } from "react"
-import { css } from "emotion"
 
-import initPowerReviews from "../utils/init-powerreviews"
+import { state } from "../state"
 
 export default class ReviewSnippet extends Component {
-	constructor(props) {
-		super(props)
-
-		this.state = { err: null }
-	}
-
 	componentDidMount() {
-		initPowerReviews(this.props, { ReviewSnippet: `pr-reviewSnippet` })
-			.then(() => {
-				// success
-			})
-			.catch(err => this.setState({ err: JSON.stringify(err) }))
+		state.setState({
+			components: {
+				...state.state.components,
+				ReviewSnippet: `pr-reviewSnippet`,
+			},
+		})
 	}
 
 	render() {
-		if (this.state.err) {
-			return <div className={err}>{this.state.err}</div>
-		}
 		return <div id={`pr-reviewSnippet`} />
 	}
 }
-
-const err = css({ color: `red` })
