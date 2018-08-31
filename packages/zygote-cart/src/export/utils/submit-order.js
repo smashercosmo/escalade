@@ -1,5 +1,5 @@
 import fetch from './fetch'
-import stageState from '../state/stage'
+import stepState from '../state/step'
 import settingsState from '../state/settings'
 import productsState from '../state/products'
 import totalsState from '../state/totals'
@@ -19,7 +19,7 @@ export default async function submitOrder() {
 
 	// Check for required fields
 	if (errorCheck()) return
-	stageState.setState({ processing: true })
+	stepState.setState({ processing: true })
 
 	const body = getFormValues()
 	if (settingsState.state.stripeApiKey){
@@ -66,10 +66,10 @@ export default async function submitOrder() {
 			displayError(`We're sorry! There was an error with the server. Your order was not placed. Please try again later.`)
 		}
 		if(data.returnTo){
-			stageState.setState({ stage: data.returnTo })
+			stepState.setState({ stage: data.returnTo })
 		}
 		else {
-			stageState.setState({ stage: `payment` })
+			stepState.setState({ stage: `payment` })
 		}
 	}
 	else {
@@ -78,12 +78,12 @@ export default async function submitOrder() {
 			products: [...productsState.state.products],
 			meta: {...metaState.state.meta},
 		})
-		stageState.setState({ stage: `success` })
+		stepState.setState({ stage: `success` })
 		totalsState.reset()
 		productsState.reset()
 		metaState.reset()
 		shippingState.reset()
 	}
 
-	stageState.setState({ processing: false })
+	stepState.setState({ processing: false })
 }

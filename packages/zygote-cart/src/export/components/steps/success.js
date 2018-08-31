@@ -6,7 +6,7 @@ import successState from '../../state/success'
 import Button from '../button'
 import closeCart from '../../utils/close-cart'
 
-export default class SuccessStage extends React.Component{
+export default class SuccessStep extends React.Component{
 	render() {
 		const {
 			successHeader,

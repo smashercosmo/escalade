@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
 import { Subscribe } from 'statable'
-import stageState from '../../state/stage'
+import stepState from '../../state/step'
 import shippingState from '../../state/shipping'
-import StagesHeader from '../stages-header'
+import StepsHeader from '../steps-header'
 import Header from '../header'
 import CardList from '../card-list'
 import StripePayment from '../stripe'
@@ -20,7 +20,7 @@ import City from '../inputs/city'
 import State from '../inputs/state'
 import Zip from '../inputs/zip'
 
-export default class PaymentStage extends React.Component{
+export default class PaymentStep extends React.Component{
 	constructor(props){
 		super(props)
 		this.state = { sameBilling: true }
@@ -35,15 +35,15 @@ export default class PaymentStage extends React.Component{
 			paymentFooter,
 		} = this.props
 		return (
-			<Subscribe to={[stageState, shippingState]}>
-				{({ stage }, { loading }) => (
+			<Subscribe to={[stepState, shippingState]}>
+				{({ step }, { loading }) => (
 					<Fragment>
-						{(stage === `info` || stage === `payment`) && (
+						{(step === `info` || step === `payment`) && (
 							<form data-form='payment'>
 								{!!paymentHeader && (
 									<div>{paymentHeader}</div>
 								)}
-								<StagesHeader stage='payment' />
+								<StepsHeader step='payment' />
 								<div className='zygotePaymentSection'>
 									<div className='zygotePaymentHeader'>
 										<div>

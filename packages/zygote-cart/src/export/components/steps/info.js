@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Subscribe } from 'statable'
-import stageState from '../../state/stage'
+import stepState from '../../state/step'
 import NameInput from '../inputs/name'
 import EmailInput from '../inputs/email'
 import PhoneInput from '../inputs/phone'
@@ -10,40 +10,40 @@ import CompanyName from '../inputs/company-name'
 import City from '../inputs/city'
 import State from '../inputs/state'
 import Zip from '../inputs/zip'
-import StagesHeader from '../stages-header'
+import StepsHeader from '../steps-header'
 import Header from '../header'
 import Button from '../button'
 import submitInfo from '../../utils/attempt-submit-info'
 
-export default class InfoStage extends React.Component{
+export default class InfoStep extends React.Component{
 	render() {
 		const {
 			infoHeader,
 			infoFooter,
 		} = this.props
 		return (
-			<Subscribe to={stageState}>
-				{({ stage }) => (
+			<Subscribe to={stepState}>
+				{({ step }) => (
 					<Fragment>
-						{(stage === `info` || stage === `payment`) && (
+						{(step === `info` || step === `payment`) && (
 							<form data-form='info'>
 								{!!infoHeader && (
 									<div>{infoHeader}</div>
 								)}
-								<StagesHeader stage='info' />
+								<StepsHeader step='info' />
 								<div className='zygoteInfoSection'>
 									<Header>Let's get started</Header>
 									<NameInput
 										name='infoName'
-										stage='info'
+										step='info'
 									/>
 									<EmailInput
 										name='infoEmail'
-										stage='info'
+										step='info'
 									/>
 									<PhoneInput
 										name='infoPhone'
-										stage='info'
+										step='info'
 									/>
 								</div>
 								<div className='zygoteInfoSection'>
@@ -51,21 +51,21 @@ export default class InfoStage extends React.Component{
 									<AddressInput
 										name='shippingAddress1'
 										autoComplete='shipping address-line1'
-										stage='info'
+										step='info'
 									/>
 									<div className='zygoteInfoExtra'>
 										<div>
 											<Address2Input
 												name='shippingAddress2'
 												autoComplete='shipping address-line2'
-												stage='info'
+												step='info'
 											/>
 										</div>
 										<div>
 											<CompanyName
 												name='shippingCompany'
 												autoComplete='shipping org'
-												stage='info'
+												step='info'
 											/>
 										</div>
 									</div>
@@ -74,21 +74,21 @@ export default class InfoStage extends React.Component{
 											<City
 												name='shippingCity'
 												autoComplete='shipping locality'
-												stage='info'
+												step='info'
 											/>
 										</div>
 										<div>
 											<State
 												name='shippingState'
 												autoComplete='shipping region'
-												stage='info'
+												step='info'
 											/>
 										</div>
 									</div>
 									<Zip
 										name='shippingZip'
 										autoComplete='shipping postal-code'
-										stage='info'
+										step='info'
 									/>
 									<div className='zygoteInfoBtn'>
 										<Button onClick={submitInfo}>

@@ -11,7 +11,7 @@ import { styles as prodItem } from '../components/product-list-item'
 import { styles as prodList } from '../components/product-list'
 import { styles as shippingMethods } from '../components/shipping-methods'
 import { styles as smallButton } from '../components/small-button'
-import { styles as stagesHeader } from '../components/stages-header'
+import { styles as stepsHeader } from '../components/steps-header'
 import { styles as totals } from '../components/totals'
 import { styles as cardList } from '../components/card-list'
 import { styles as securityIcon } from '../components/card-list/security'
@@ -21,10 +21,10 @@ import { styles as coupon } from '../components/inputs/coupon'
 import { styles as input } from '../components/inputs/input'
 import { styles as select } from '../components/inputs/select'
 import { styles as toggle } from '../components/inputs/toggle'
-import { styles as cartStep } from '../components/stages/cart'
-import { styles as infoStep } from '../components/stages/info'
-import { styles as paymentStep } from '../components/stages/payment'
-import { styles as successStep } from '../components/stages/success'
+import { styles as cartStep } from '../components/steps/cart'
+import { styles as infoStep } from '../components/steps/info'
+import { styles as paymentStep } from '../components/steps/payment'
+import { styles as successStep } from '../components/steps/success'
 import { styles as stripe } from '../components/stripe'
 import { styles as stripeInput } from '../components/stripe/input'
 
@@ -42,7 +42,7 @@ export default function styles(opts){
 		...prodList(opts),
 		...shippingMethods(opts),
 		...smallButton(opts),
-		...stagesHeader(opts),
+		...stepsHeader(opts),
 		...totals(opts),
 		...cardList(opts),
 		...securityIcon(opts),

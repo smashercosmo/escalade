@@ -20,7 +20,7 @@ export default class EmailInput extends React.Component {
 			required,
 			autoComplete,
 			name,
-			stage,
+			step,
 		} = this.props
 		return (
 			<Input
@@ -29,7 +29,7 @@ export default class EmailInput extends React.Component {
 				required={required}
 				validators={[this.validate]}
 				name={name}
-				stage={stage}
+				step={step}
 			/>
 		)
 	}

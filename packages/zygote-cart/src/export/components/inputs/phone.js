@@ -22,7 +22,7 @@ export default class PhoneInput extends React.Component {
 			label,
 			mask,
 			name,
-			stage,
+			step,
 		} = this.props
 		return (
 			<Input
@@ -33,7 +33,7 @@ export default class PhoneInput extends React.Component {
 				mask={mask}
 				validators={[this.validate]}
 				name={name}
-				stage={stage}
+				step={step}
 			/>
 		)
 	}

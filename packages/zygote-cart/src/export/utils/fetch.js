@@ -8,6 +8,7 @@ import displayInfo from './display-info'
 import addTotalModification from './add-total-modification'
 import setShipping from './set-shipping'
 import triggerEvent from './trigger-event'
+import stepState from '../state/step'
 
 export default async function fetchWebhook(path, body) {
 	if(body.event){
@@ -49,6 +50,7 @@ export default async function fetchWebhook(path, body) {
 		selectedShippingMethod = typeof shippingState.state.selected === `number`
 			? shippingState.state.selected
 			: 0,
+		step,
 	} = data
 
 	addTotalModification(data.modifications)
@@ -65,6 +67,9 @@ export default async function fetchWebhook(path, body) {
 			selected: selectedShippingMethod,
 		})
 		setShipping(selectedShippingMethod)
+	}
+	if (step){
+		stepState.setState({ step })
 	}
 
 	return data

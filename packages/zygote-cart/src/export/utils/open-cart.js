@@ -1,5 +1,5 @@
 import openState from '../state/open'
-import stageState from '../state/stage'
+import stepState from '../state/step'
 import addedToCartState from '../state/added-to-cart'
 import clearMessages from './clear-messages'
 import triggerEvent from './trigger-event'
@@ -14,7 +14,7 @@ export default function openCart(product){
 	else{
 		openState.setState({ open: true })
 	}
-	stageState.setState({ stage: `cart` })
+	stepState.setState({ step: `cart` })
 	if(product === true){
 		addedToCartState.setState({ addedToCart: true })
 	}

@@ -5,10 +5,10 @@ import ProductList from '../product-list'
 import Button from '../button'
 import productsState from '../../state/products'
 import Totals from '../totals'
-import nextStage from '../../utils/next-stage'
+import nextStep from '../../utils/next-step'
 import CardList from '../card-list'
 
-export default class CartStage extends React.Component{
+export default class CartStep extends React.Component{
 	render() {
 		const {
 			cartHeader,
@@ -36,7 +36,7 @@ export default class CartStage extends React.Component{
 									<div className='zygoteCardListWrapper'>
 										<CardList />
 									</div>
-									<Button onClick={nextStage}>Place Order</Button>
+									<Button onClick={nextStep}>Place Order</Button>
 								</Fragment>
 							)}
 							<Button secondary onClick={closeCart}>Continue Shopping</Button>

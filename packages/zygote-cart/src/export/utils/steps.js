@@ -1,8 +1,8 @@
-const stages = [
+const steps = [
 	`cart`,
 	`info`,
 	`payment`,
 	`complete`,
 ]
 
-export default stages
+export default steps

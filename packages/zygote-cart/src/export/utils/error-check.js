@@ -1,4 +1,4 @@
-import stageState from '../state/stage'
+import stepState from '../state/step'
 
 export default function errorCheck(){
 	const cart = document.querySelector(`.zygoteCart`)
@@ -6,7 +6,7 @@ export default function errorCheck(){
 	const forms = cart.querySelectorAll(`[data-form="info"], [data-form="payment"]`)
 	for(let i = 0; i < forms.length; i++){
 		if(forms[i].querySelector(`[data-error]`)){
-			stageState.setState({ stage: forms[i].getAttribute(`data-form`) })
+			stepState.setState({ step: forms[i].getAttribute(`data-form`) })
 			return true
 		}
 	}

@@ -1,23 +1,23 @@
 import React from 'react'
-import changeStage from '../utils/change-stage'
+import changeStep from '../utils/change-step'
 import submitInfo from '../utils/attempt-submit-info'
 
-export default class StagesHeader extends React.Component {
+export default class StepsHeader extends React.Component {
 	render() {
-		const { stage } = this.props
+		const { step } = this.props
 		return (
 			<ul className='zygoteStepsHeader'>
 				<li
 					role='button'
-					className={`zygoteStepLink${stage === `info` ? ` zygoteActiveStepLink` : ``}`}
-					onClick={stage === `info` ? null : () => changeStage(`info`)}
+					className={`zygoteStepLink${step === `info` ? ` zygoteActiveStepLink` : ``}`}
+					onClick={step === `info` ? null : () => changeStep(`info`)}
 				>
 					1. Your Details
 				</li>
 				<li
 					role='button'
-					className={`zygoteStepLink${stage === `payment` ? ` zygoteActiveStepLink` : ``}`}
-					onClick={stage === `payment` ? null : submitInfo}
+					className={`zygoteStepLink${step === `payment` ? ` zygoteActiveStepLink` : ``}`}
+					onClick={step === `payment` ? null : submitInfo}
 				>
 					2. Payment
 				</li>

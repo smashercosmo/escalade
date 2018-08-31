@@ -1,8 +1,8 @@
 import inputs from './inputs'
 
-export default function validateAllInputs(stage){
+export default function validateAllInputs(step){
 	for (let i in inputs) {
-		if(stage && inputs[i].props.stage !== stage){
+		if (step && inputs[i].props.step !== step){
 			continue
 		}
 		if (inputs[i].validate) {

@@ -23,7 +23,7 @@ export default class CompanyNameInput extends React.Component {
 		const {
 			toggleText,
 			label,
-			stage,
+			step,
 		} = this.props
 		return (
 			<Fragment>
@@ -40,7 +40,7 @@ export default class CompanyNameInput extends React.Component {
 						<Input
 							inputRef={el => this.input = el}
 							label={label}
-							stage={stage}
+							step={step}
 						/>
 					</div>
 					<div role='button' className='zygoteCouponApply'>Apply</div>
