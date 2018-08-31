@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run build:module",
     "build:lambda": "netlify-lambda build src/functions",
-    "build:gatsby": "npm run patch && build:lambda && NODE_ENV=production gatsby build && node utils/gatsby-post-process",
+    "build:gatsby": "npm run patch && npm run build:lambda && NODE_ENV=production gatsby build",
     "build:module": "rm -rf dist && mkdir dist && babel src/export --out-dir dist",
     "build:plugin": "babel plugins/export --out-dir ./",
     "clean": "run-p clean:cache clean:public clean:functions",
@@ -18,7 +18,7 @@
     "dev:functions": "netlify-lambda serve src/functions",
     "env": "node utils/env",
     "lint": "eslint ./",
-    "live": "opn https://zygote-cart.netlify.com/",
+    "live": "opn https://zygote-v2.netlify.com/",
     "netlify": "opn https://app.netlify.com/sites/zygote-cart/deploys",
     "patch": "node utils/patch",
     "precommit": "lint-staged",
