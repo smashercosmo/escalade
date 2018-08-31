@@ -48,9 +48,7 @@ export default class InfoStep extends React.Component{
 										autoComplete='shipping tel'
 										step='info'
 									/>
-								</div>
-								<div className='zygoteInfoSection'>
-									<Header>Where should we deliver?</Header>
+
 									<AddressInput
 										name='shippingAddress1'
 										autoComplete='shipping address-line1'
