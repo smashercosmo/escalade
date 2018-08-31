@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { Subscribe } from 'statable'
 import stageState from '../../state/stage'
+import shippingState from '../../state/shipping'
 import StagesHeader from '../stages-header'
 import Header from '../header'
 import CardList from '../card-list'
@@ -34,8 +35,8 @@ export default class PaymentStage extends React.Component{
 			paymentFooter,
 		} = this.props
 		return (
-			<Subscribe to={stageState}>
-				{({ stage }) => (
+			<Subscribe to={[stageState, shippingState]}>
+				{({ stage }, { loading }) => (
 					<Fragment>
 						{(stage === `info` || stage === `payment`) && (
 							<form data-form='payment'>
@@ -105,7 +106,7 @@ export default class PaymentStage extends React.Component{
 									<Totals />
 								</div>
 								<div className='zygotePaymentBtn'>
-									<Button onClick={submitOrder}>Place Order</Button>
+									<Button onClick={submitOrder} disabled={loading ? true : false}>Place Order</Button>
 								</div>
 								{!!paymentFooter && (
 									<div>{paymentFooter}</div>
