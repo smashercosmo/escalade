@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 import { Subscribe } from 'statable'
 import stepState from '../../state/step'
-import NameInput from '../inputs/name'
-import EmailInput from '../inputs/email'
-import PhoneInput from '../inputs/phone'
+// import NameInput from '../inputs/name'
+// import EmailInput from '../inputs/email'
+// import PhoneInput from '../inputs/phone'
 import AddressInput from '../inputs/address'
 import Address2Input from '../inputs/address-2'
 import CompanyName from '../inputs/company-name'
@@ -31,24 +31,6 @@ export default class InfoStep extends React.Component{
 									<div>{infoHeader}</div>
 								)}
 								<StepsHeader step='info' />
-								<div className='zygoteInfoSection'>
-									<Header>Let's get started</Header>
-									<NameInput
-										name='infoName'
-										autoComplete='shipping name'
-										step='info'
-									/>
-									<EmailInput
-										name='infoEmail'
-										autoComplete='shipping email'
-										step='info'
-									/>
-									<PhoneInput
-										name='infoPhone'
-										autoComplete='shipping tel'
-										step='info'
-									/>
-								</div>
 								<div className='zygoteInfoSection'>
 									<Header>Where should we deliver?</Header>
 									<AddressInput
