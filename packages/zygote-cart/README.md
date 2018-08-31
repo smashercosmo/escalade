@@ -43,16 +43,19 @@ import { Cart, addToCart } from 'zygote-cart'
 
 ## Styling
 
-There's two options for styling. You can either add in a color, background color, and font color as props. Or you can turn off the auto styling and supply your own by targeting the classes in the cart.
+There's two options for styling. You can either add in  colors and fonts as props. Or you can turn off the auto styling and supply your own by targeting the classes in the cart.
 
 Editable style variables:
 
 ```jsx
 <Cart
   style={{
-    color: `#0f0`,
-    backgroundColor: `#fff`,
     fontColor: `#333`,
+    borderColor: `#c0bfbf`,
+    primaryColor: `#00cfff`,
+    backgroundColor: `#fff`,
+    overlayColor: `rgba(0,207,255,0.7)`,
+    fontFamily: `Roboto`,
   }}
 />
 ```
