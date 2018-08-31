@@ -130,7 +130,7 @@ module.exports = {
 		{
 			resolve: `google-analytics`,
 			options: {
-				trackingId: `UA-2411855-10`,
+				trackingId: `UA-2411855-12`,
 				// anonymize: true,
 				// respectDNT: true,
 			},
