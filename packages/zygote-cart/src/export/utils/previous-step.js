@@ -1,11 +1,11 @@
-import stageState from '../state/stage'
-import stages from './stages'
-import changeStage from './change-stage'
+import stepState from '../state/step'
+import steps from './steps'
+import changeStep from './change-step'
 
-export default function previousStage() {
-	let index = stages.indexOf(stageState.state.stage) - 1
-	let stage = stages[index]
-	if (stage) {
-		changeStage(stage)
+export default function previousStep() {
+	let index = steps.indexOf(stepState.state.step) - 1
+	let step = steps[index]
+	if (step) {
+		changeStep(step)
 	}
 }

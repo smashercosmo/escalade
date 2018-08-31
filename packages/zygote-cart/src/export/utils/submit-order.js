@@ -66,10 +66,10 @@ export default async function submitOrder() {
 			displayError(`We're sorry! There was an error with the server. Your order was not placed. Please try again later.`)
 		}
 		if(data.returnTo){
-			stepState.setState({ stage: data.returnTo })
+			stepState.setState({ step: data.returnTo })
 		}
 		else {
-			stepState.setState({ stage: `payment` })
+			stepState.setState({ step: `payment` })
 		}
 	}
 	else {
@@ -78,7 +78,7 @@ export default async function submitOrder() {
 			products: [...productsState.state.products],
 			meta: {...metaState.state.meta},
 		})
-		stepState.setState({ stage: `success` })
+		stepState.setState({ step: `success` })
 		totalsState.reset()
 		productsState.reset()
 		metaState.reset()

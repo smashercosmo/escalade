@@ -1,8 +1,8 @@
 import { State } from 'statable'
 
 const defaults = {
-	products: {},
-	totals: [],
+	totals: {},
+	products: [],
 	meta: {},
 }
 

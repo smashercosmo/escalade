@@ -31,10 +31,16 @@ export default async function fetchWebhook(path, body) {
 		data = await data.json()
 
 		if (body.event) {
-			triggerEvent(`${body.event}`, {
+			const eventData = {
 				...body,
 				...data,
-			})
+			}
+			if (data.success === true){
+				triggerEvent(`${body.event}`, eventData)
+			}
+			else {
+				triggerEvent(`error`, eventData)
+			}
 		}
 		console.log(`Received from API:`, data)
 	}

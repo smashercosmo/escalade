@@ -5,6 +5,8 @@ const settingsState = new State({
 	shipping: true,
 	tax: true,
 	coupons: true,
+	googleAnalytics: true,
+	googleTagManager: true,
 	stripeApiKey: ``,
 	onOpen: noop,
 	onClose: noop,

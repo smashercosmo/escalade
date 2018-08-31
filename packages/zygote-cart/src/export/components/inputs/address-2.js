@@ -29,7 +29,7 @@ export default class Address2Input extends React.Component {
 			autoComplete,
 			required,
 			name,
-			stage,
+			step,
 		} = this.props
 		return (
 			<Fragment>
@@ -45,7 +45,7 @@ export default class Address2Input extends React.Component {
 						autoComplete={autoComplete}
 						required={required}
 						name={name}
-						stage={stage}
+						step={step}
 					/>
 				</div>
 			</Fragment>
