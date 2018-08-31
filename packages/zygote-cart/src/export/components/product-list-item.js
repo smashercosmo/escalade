@@ -8,7 +8,7 @@ export default class ProductList extends React.Component{
 	render() {
 		const {
 			image,
-			title,
+			name,
 			description,
 			editable,
 			price,
@@ -21,7 +21,7 @@ export default class ProductList extends React.Component{
 					<img src={image} />
 				</div>
 				<div className='zygoteProdTitle'>
-					{title}
+					{name}
 				</div>
 				<div className='zygoteProdDesc'>
 					{description}

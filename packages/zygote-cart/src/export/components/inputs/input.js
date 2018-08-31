@@ -17,10 +17,7 @@ export default class Input extends React.Component{
 		this.handleFocus = this.handleFocus.bind(this)
 		this.validate = this.validate.bind(this)
 	}
-	handleChange(e){
-		if(this.props.handleChange){
-			this.props.handleChange(e)
-		}
+	handleChange(){
 		this.setState({ value: this.input.value })
 	}
 	handleFocus() {
@@ -71,7 +68,10 @@ export default class Input extends React.Component{
 			inputRef,
 		} = this.props
 		return (
-			<label className={`zygoteInputWrapper${focus ? ` zygoteInputFocus` : ``}${error ? ` zygoteInputErr` : ``}`}>
+			<label
+				className={`zygoteInputWrapper${focus ? ` zygoteInputFocus` : ``}${error ? ` zygoteInputErr` : ``}`}
+				ref={el => this.wrapper = el}
+			>
 				<span className={`zygoteInputLabel${(value || focus) ? ` zygoteInputLabelMoved` : ``}`}>
 					{label}
 				</span>

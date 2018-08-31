@@ -27,7 +27,7 @@ import { Cart, addToCart } from 'zygote-cart'
 
 <button onClick={() => addToCart({
   id: `TESTID`,
-  title: `Billiard Table`,
+  name: `Billiard Table`,
   image: `https://via.placeholder.com/75x75`,
   description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit...`,
   price: 299.99,
@@ -114,7 +114,7 @@ Example `shippingEndpoint` request:
   "products": [
     {
       "id": "TESTID",
-      "title": "Billiard Table",
+      "name": "Billiard Table",
       "image": "https://via.placeholder.com/75x75",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
       "price": 299.99
