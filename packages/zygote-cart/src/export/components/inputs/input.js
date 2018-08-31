@@ -156,7 +156,7 @@ export default class Input extends React.Component{
 			background: `transparent`,
 			border: 0,
 			borderRadius: 4,
-			fontSize: `.9em`,
+			fontSize: `16px`,
 			padding: `0 10px`,
 			height: 36,
 			outline: `none`,
