@@ -30,18 +30,6 @@ export default async function fetchWebhook(path, body) {
 		})
 		data = await data.json()
 
-		if (body.event) {
-			const eventData = {
-				...body,
-				...data,
-			}
-			if (data.success === true){
-				triggerEvent(`${body.event}`, eventData)
-			}
-			else {
-				triggerEvent(`error`, eventData)
-			}
-		}
 		console.log(`Received from API:`, data)
 	}
 	catch(err){
@@ -49,33 +37,51 @@ export default async function fetchWebhook(path, body) {
 		triggerEvent(`error`, err)
 		data = {}
 	}
-	const {
-		meta,
-		messages,
-		shippingMethods,
-		selectedShippingMethod = typeof shippingState.state.selected === `number`
-			? shippingState.state.selected
-			: 0,
-		step,
-	} = data
+	try {
+		if (body.event) {
+			const eventData = {
+				...body,
+				...data,
+			}
+			if (data.success === true) {
+				triggerEvent(`${body.event}`, eventData)
+			}
+			else {
+				triggerEvent(`error`, eventData)
+			}
+		}
 
-	addTotalModification(data.modifications)
-	if (typeof meta === `object`){
-		metaState.setState({ meta })
+		const {
+			meta,
+			messages,
+			shippingMethods,
+			selectedShippingMethod = typeof shippingState.state.selected === `number`
+				? shippingState.state.selected
+				: 0,
+			step,
+		} = data
+
+		addTotalModification(data.modifications)
+		if (typeof meta === `object`) {
+			metaState.setState({ meta })
+		}
+		if (messages) {
+			displayError(messages.error)
+			displayInfo(messages.info)
+		}
+		if (shippingMethods) {
+			shippingState.setState({
+				methods: shippingMethods,
+				selected: selectedShippingMethod,
+			})
+			setShipping(selectedShippingMethod)
+		}
+		if (step) {
+			stepState.setState({ step })
+		}
 	}
-	if (messages) {
-		displayError(messages.error)
-		displayInfo(messages.info)
-	}
-	if (shippingMethods){
-		shippingState.setState({
-			methods: shippingMethods,
-			selected: selectedShippingMethod,
-		})
-		setShipping(selectedShippingMethod)
-	}
-	if (step){
-		stepState.setState({ step })
+	catch(err){
+		console.error(err)
 	}
 
 	return data

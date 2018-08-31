@@ -1,6 +1,8 @@
 import settingsState from '../state/settings'
 import capitalize from './capitalize'
-import successState from '../state/success'
+import productsState from '../state/products'
+import totalsState from '../state/totals'
+import metaState from '../state/meta'
 
 export default function eventTrigger(type, data){
 	const capType = capitalize(type)
@@ -13,18 +15,17 @@ export default function eventTrigger(type, data){
 			eventAction: type,
 		})
 		if(type === `order`){
-			const {
-				meta,
-				totals,
-			} = successState.state
+			const { products } = productsState.state
+			const { total } = totalsState.state
+			const { meta } = metaState.state
 			ga(`require`, `ecommerce`)
 			ga(`ecommerce:addTransaction`, {
 				id: meta.orderId || `${Date.now()}`,
-				revenue: totals.total,
+				revenue: total,
 				shipping: getValue(`shipping`),
 				tax: getValue(`tax`),
 			})
-			successState.state.products.forEach(prod => {
+			products.forEach(prod => {
 				ga(`ecommerce:addItem`, prod)
 			})
 			ga(`ecommerce:send`)
@@ -40,7 +41,7 @@ export default function eventTrigger(type, data){
 }
 
 function getValue(id){
-	const { modifications } = successState.state.totals
+	const { modifications } = totalsState.state
 	for (let i = modifications.length; i--;){
 		if(modifications[i].id === id){
 			return modifications[i].value
