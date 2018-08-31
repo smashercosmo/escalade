@@ -4,15 +4,26 @@ import SmallButton from '../small-button'
 export default class Toggle extends React.Component {
 	render() {
 		return (
-			<div className='zygoteToggle' onClick={this.props.onClick}>
+			<button
+				className='zygoteToggle'
+				onClick={this.props.onClick}
+				type='button'
+			>
 				<SmallButton>+</SmallButton> <span className='zygoteToggleMsg'>{this.props.children}</span>
-			</div>
+			</button>
 		)
 	}
 	static styles = () => ({
 		'.zygoteToggle': {
 			marginTop: 35,
 			cursor: `pointer`,
+			background: `transparent`,
+			outline: `none`,
+			border: 0,
+			fontSize: `1em`,
+			':focus': {
+				opacity: .6,
+			},
 		},
 		'.zygoteToggleMsg': {
 			position: `relative`,

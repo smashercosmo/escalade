@@ -43,7 +43,7 @@ import { Cart, addToCart } from 'zygote-cart'
 
 ## Styling
 
-There's two options for styling. You can either add in  colors and fonts as props. Or you can turn off the auto styling and supply your own by targeting the classes in the cart.
+There's two options for styling. You can either add in  colors and fonts as a property. Or you can turn off the auto styling and supply your own by targeting the classes in the cart.
 
 Editable style variables:
 
@@ -94,7 +94,7 @@ Custom component properties:
 
 ## Endpoints
 
-There are two endpoints that can be passed as props to send the cart information to your server:
+There are two endpoints that can be passed as properties to send the cart information to your server:
 
 - `orderEndpoint`: Required. Product, payment, and shipping information will be sent to this endpoint once the order has been completed.
 - `infoEndpoint`: Not required. Product and shipping information will be sent to this endpoing once the first section checkout has been completed. Useful for returning tax and shipping methods with this endpoint.
@@ -191,7 +191,7 @@ If you need to run client side code when something happens, Zygote comes with a 
 
 ## Google Analytics Integration
 
-By default, Zygote will send cart events to Analytics if Analytics are found on the site. It will also send ecommerce order information. To disable this, set the `googleAnalytics` prop to `false`:
+By default, Zygote will send cart events to Analytics if Analytics are found on the site. It will also send ecommerce order information. To disable this, set the `googleAnalytics` property to `false`:
 
 ```jsx
 <Cart googleAnalytics={false} />
@@ -211,7 +211,7 @@ By default, Zygote will send cart data and events to Google Tag Manager if GTM i
 - zygoteAttemptOrder
 - zygoteOrder
 
-To disable this, set the `googleTagManager` prop to `false`:
+To disable this, set the `googleTagManager` property to `false`:
 
 ```jsx
 <Cart googleTagManager={false} />

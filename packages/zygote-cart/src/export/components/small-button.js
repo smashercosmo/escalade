@@ -10,7 +10,6 @@ export default class SmallButton extends React.Component {
 		return (
 			<div
 				className={`zygoteSmBtn ${!secondary ? `zygotePrimarySmBtn` : `zygoteSecondarySmBtn`}`}
-				role='button'
 				onClick={onClick}
 			>
 				<span>{children}</span>
