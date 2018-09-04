@@ -28,17 +28,27 @@ export default class ProductList extends React.Component{
 				</div>
 				<div className='zygoteProdQty'>
 					{editable && (
-						<SmallButton
+						<button
+							type='button'
 							onClick={() => decreaseQuantity(id)}
-							secondary
-						>-</SmallButton>
+							className='zygoteProdQtyBtn'
+							ref={el => this.decrease = el}
+							onMouseUp={() => this.decrease.blur()}
+						>
+							<SmallButton secondary>-</SmallButton>
+						</button>
 					)}
 					<div className='zygoteProdQtyNum'>{quantity}</div>
 					{editable && (
-						<SmallButton
+						<button
+							type='button'
 							onClick={() => increaseQuantity(id)}
-							secondary
-						>+</SmallButton>
+							className='zygoteProdQtyBtn'
+							ref={el => this.increase = el}
+							onMouseUp={() => this.increase.blur()}
+						>
+							<SmallButton secondary>+</SmallButton>
+						</button>
 					)}
 				</div>
 				<div className='zygoteProdPrice'>
@@ -100,6 +110,15 @@ export default class ProductList extends React.Component{
 			display: `inline-block`,
 			top: -3,
 			position: `relative`,
+		},
+		'.zygoteProdQtyBtn': {
+			background: `transparent`,
+			outline: `none`,
+			border: 0,
+			cursor: `pointer`,
+			':hover, :focus': {
+				opacity: .6,
+			},
 		},
 		'.zygoteProdPrice': {
 			width: `50%`,

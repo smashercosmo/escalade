@@ -34,7 +34,7 @@ export default class Button extends React.Component {
 			border: 0,
 			cursor: `pointer`,
 			':hover, :focus': {
-				opacity: .75,
+				opacity: .7,
 			},
 			':disabled': {
 				backgroundColor: borderColor,

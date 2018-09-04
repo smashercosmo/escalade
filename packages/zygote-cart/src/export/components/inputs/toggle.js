@@ -21,7 +21,7 @@ export default class Toggle extends React.Component {
 			outline: `none`,
 			border: 0,
 			fontSize: `1em`,
-			':focus': {
+			':hover, :focus': {
 				opacity: .6,
 			},
 		},
