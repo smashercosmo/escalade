@@ -6,6 +6,7 @@ import logo from '../img/logo.svg'
 export default class HomePage extends React.Component {
 	render() {
 		let products = this.props.data.allStripeSku.edges.map(edge => edge.node)
+		console.log(products)
 		return (
 			<div>
 				<div>
@@ -18,6 +19,9 @@ export default class HomePage extends React.Component {
 						image: `https://images.salsify.com/image/upload/s--5scl3VX0--/w_75,h_75,c_pad/g8gkpmmhuhqzrqxu6boh.jpg`,
 						description: `Beautiful and refined, the 8' Minnesota Fats Covington Pool Table with Dur-A-Bond play bed will make a stunning centerpiece for your game room. Carved...`,
 						price: products[0].price / 100,
+						stock: typeof products[0].inventory.quantity === `number`
+							? products[0].inventory.quantity
+							: null,
 					})}>Add to Cart A</button>
 				</div>
 				<div>
@@ -27,6 +31,9 @@ export default class HomePage extends React.Component {
 						image: `https://images.salsify.com/image/upload/s--7evRfexQ--/w_75,h_75,c_pad/qdppgggttnkespgpupdz.jpg`,
 						description: `A short description.`,
 						price: products[1].price / 100,
+						stock: typeof products[0].inventory.quantity === `number`
+							? products[0].inventory.quantity
+							: null,
 					})}>Add to Cart B</button>
 				</div>
 
@@ -89,6 +96,7 @@ export const query = graphql`
 					id
 					inventory{
 						type
+						quantity
 					}
 					price
 				}
