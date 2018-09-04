@@ -45,11 +45,13 @@ export default class Cart extends React.Component {
 								<div className={`zygote zygoteOn${processing ? `Processing` : `${capitalize(step)}Step`}${open ? ` zygoteOpen` : ``}`}>
 									<div className='zygoteBg' onClick={closeCart} />
 									<div className='zygoteCart'>
-										<div
+										<button
 											role='button'
 											className='zygoteCloseButton'
 											onClick={closeCart}
-										>×</div>
+											ref={el => this.closeBtn = el}
+											onMouseUp={() => this.closeBtn.blur()}
+										>×</button>
 
 										{header && (
 											<div className='zygoteHeader'>{header}</div>
@@ -140,6 +142,9 @@ export default class Cart extends React.Component {
 			paddingTop: 40,
 		},
 		'.zygoteCloseButton': {
+			background: `transparent`,
+			border: 0,
+			outline: `none`,
 			position: `absolute`,
 			top: 25,
 			right: 25,
@@ -147,6 +152,9 @@ export default class Cart extends React.Component {
 			lineHeight: `22px`,
 			cursor: `pointer`,
 			fontWeight: 200,
+			':hover, :focus': {
+				opacity: .6,
+			},
 		},
 		'.zygoteHeader': {
 			textAlign: `center`,

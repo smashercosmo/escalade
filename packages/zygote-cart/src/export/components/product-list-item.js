@@ -55,11 +55,13 @@ export default class ProductList extends React.Component{
 					${price.toFixed(2)}
 				</div>
 				{editable && (
-					<div
+					<button
 						role='button'
 						className='zygoteProdX'
 						onClick={() => removeFromCart(id)}
-					>×</div>
+						ref={el => this.remove = el}
+						onMouseUp={() => this.remove.blur()}
+					>×</button>
 				)}
 			</li>
 		)
@@ -135,6 +137,12 @@ export default class ProductList extends React.Component{
 			lineHeight: `16px`,
 			fontWeight: 200,
 			cursor: `pointer`,
+			background: `transparent`,
+			border: 0,
+			outline: `none`,
+			':hover, :focus': {
+				opacity: .6,
+			},
 		},
 		'.zygoteProdItemEditable': {
 			'.zygoteProdPrice': {
