@@ -24,20 +24,20 @@ import {
 componentDidMoune() {
  PowerReviewConfig({
   	apiKey: `Your Api Key`,
-			merchantGroupId: `Your merchant Group Id`,
-   merchantId: `Your merchant Id`,
-
-			pageId: id,
-			config: { style_sheet: powerReviewStyles },
-			components: {
-				ReviewSnippet: `pr-reviewSnippet`,
-				ReviewDisplay: `pr-reviewDisplay`,
-   },
-   // this is for feedless, reference power-reviews docs
-			product: {},
-			init: () => {
-				// if you want to edit anything do it here, everything will be loaded before this function is called
-			},
+	merchantGroupId: `Your merchant Group Id`,
+   	merchantId: `Your merchant Id`,
+	pageId: id,
+	config: { style_sheet: powerReviewStyles },
+	components: {
+		ReviewSnippet: `pr-reviewSnippet`,
+		ReviewDisplay: `pr-reviewDisplay`,
+   	},
+	review_wrapper_url: `/write-review?page_id=${id}`,
+   	// this is for feedless, reference power-reviews docs
+	product: {},
+	init: () => {
+		// if you want to edit anything do it here, everything will be loaded before this function is called
+	},
  })
 }
 
