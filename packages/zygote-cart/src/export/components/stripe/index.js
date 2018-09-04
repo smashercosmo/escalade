@@ -20,9 +20,8 @@ export default class StripeWrapper extends React.Component {
 		}
 	}
 	init() {
-		this.setState({
-			stripe: window.Stripe(settingsState.state.stripeApiKey),
-		})
+		const stripe = window.Stripe(settingsState.state.stripeApiKey)
+		this.setState({ stripe })
 	}
 	render() {
 		return (

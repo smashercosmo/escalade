@@ -40,6 +40,13 @@ module.exports = {
 		},
 		`gatsby-plugin-netlify`,
 		{
+			resolve: `gatsby-source-stripe`,
+			options: {
+				objects: [`skus`],
+				secretKey: process.env.STRIPE_API_SECRET,
+			},
+		},
+		{
 			resolve: `gatsby-source-filesystem`,
 			options: {
 				path: `${__dirname}/src/markdown`,

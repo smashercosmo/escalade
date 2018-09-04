@@ -1375,7 +1375,7 @@ axobject-query@^2.0.1:
   dependencies:
     ast-types-flow "0.0.7"
 
-babel-cli@^6.26.0:
+babel-cli@6.26.0, babel-cli@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-cli/-/babel-cli-6.26.0.tgz#502ab54874d7db88ad00b887a06383ce03d002f1"
   dependencies:
@@ -2021,7 +2021,7 @@ babel-plugin-transform-object-assign@^6.22.0, babel-plugin-transform-object-assi
   dependencies:
     babel-runtime "^6.22.0"
 
-babel-plugin-transform-object-rest-spread@^6.22.0, babel-plugin-transform-object-rest-spread@^6.26.0, babel-plugin-transform-object-rest-spread@^6.8.0:
+babel-plugin-transform-object-rest-spread@6.26.0, babel-plugin-transform-object-rest-spread@^6.22.0, babel-plugin-transform-object-rest-spread@^6.26.0, babel-plugin-transform-object-rest-spread@^6.8.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-object-rest-spread/-/babel-plugin-transform-object-rest-spread-6.26.0.tgz#0f36692d50fef6b7e2d4b3ac1478137a963b7b06"
   dependencies:
@@ -6472,6 +6472,14 @@ gatsby-source-filesystem@^1.5.36:
     pretty-bytes "^4.0.2"
     slash "^1.0.0"
     valid-url "^1.0.9"
+
+gatsby-source-stripe@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/gatsby-source-stripe/-/gatsby-source-stripe-1.1.2.tgz#3cc17ad7834b4e76abd4c454fcd45855fc8f812c"
+  dependencies:
+    babel-cli "6.26.0"
+    babel-plugin-transform-object-rest-spread "6.26.0"
+    stripe "6.8.0"
 
 gatsby-transformer-remark@^1.7.41:
   version "1.7.44"
@@ -15440,6 +15448,14 @@ strip-outer@^1.0.0:
   resolved "https://registry.yarnpkg.com/strip-outer/-/strip-outer-1.0.1.tgz#b2fd2abf6604b9d1e6013057195df836b8a9d631"
   dependencies:
     escape-string-regexp "^1.0.2"
+
+stripe@6.8.0:
+  version "6.8.0"
+  resolved "https://registry.yarnpkg.com/stripe/-/stripe-6.8.0.tgz#1311116728728afc34d4eb7459aeb29f0fa2ff91"
+  dependencies:
+    lodash.isplainobject "^4.0.6"
+    qs "~6.5.1"
+    safe-buffer "^5.1.1"
 
 stripe@^6.7.0:
   version "6.7.0"
