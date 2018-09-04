@@ -70,6 +70,10 @@ export default class ProductList extends React.Component{
 			width: `100%`,
 			maxWidth: 65,
 			textAlign: `center`,
+			img: {
+				width: 65,
+				height: 65,
+			},
 		},
 		'.zygoteProdTitle': {
 			marginTop: 5,
