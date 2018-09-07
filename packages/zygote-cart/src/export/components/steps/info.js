@@ -15,6 +15,7 @@ import Header from '../header'
 import Button from '../button'
 import submitInfo from '../../utils/attempt-submit-info'
 import productsState from '../../state/products'
+import SimpleSummary from '../simple-summary'
 
 export default class InfoStep extends React.Component{
 	render() {
@@ -32,6 +33,7 @@ export default class InfoStep extends React.Component{
 									<div>{infoHeader}</div>
 								)}
 								<StepsHeader step='info' />
+								<SimpleSummary />
 								<div className='zygoteInfoSection'>
 									<Header>Let's get started</Header>
 									<NameInput

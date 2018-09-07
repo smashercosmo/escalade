@@ -27,6 +27,7 @@ import { styles as paymentStep } from '../components/steps/payment'
 import { styles as successStep } from '../components/steps/success'
 import { styles as stripe } from '../components/stripe'
 import { styles as stripeInput } from '../components/stripe/input'
+import { styles as simpleSummary } from '../components/simple-summary'
 
 export default function styles(opts){
 	return css({
@@ -58,5 +59,6 @@ export default function styles(opts){
 		...successStep(opts),
 		...stripe(opts),
 		...stripeInput(opts),
+		...simpleSummary(opts),
 	})
 }
