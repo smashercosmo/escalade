@@ -130,8 +130,8 @@ export default class PaymentStep extends React.Component{
 		},
 		'.zygotePaymentShipping': {
 			background: altBackgroundColor,
-			margin: `40px -20px 0 -20px`,
-			padding: `20px 20px`,
+			margin: `50px -20px`,
+			padding: `30px 20px`,
 			h2: {
 				marginTop: 0,
 			},
