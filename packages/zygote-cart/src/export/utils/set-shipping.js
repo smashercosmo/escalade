@@ -9,7 +9,7 @@ export default function setShipping(selected) {
 		id: `shipping`,
 		description: method.description,
 		displayValue: method.displayValue,
-		alteration: method.value,
+		value: method.value,
 	})
 }
 
