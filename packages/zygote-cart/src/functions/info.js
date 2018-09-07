@@ -42,16 +42,17 @@ export async function handler({ body }, __, callback) {
 					country: `US`,
 				},
 			},
+			coupon: body.coupon,
 		})
 		console.log(`Received from Stripe:`, order)
 	}
 	catch(err){
 		order = {}
-		console.error(`Received from Stripe:`, err)
+		console.error(`Received error from Stripe:`, err)
 
 		// Error messages
 		// Create more consumer friendly inventory error message
-		if (err.code === `out_of_inventory` || err.code === `resource_missing`){
+		if (err.code === `out_of_inventory`){
 			let item = Number(err.param
 				.replace(`items[`, ``)
 				.replace(`]`, ``))
@@ -63,6 +64,10 @@ export async function handler({ body }, __, callback) {
 		else if (err.message) {
 			res.messages.error.push(err.message)
 		}
+
+		if (err.param === `coupon`){
+			res.step = `info`
+		}
 	}
 
 
@@ -73,6 +78,20 @@ export async function handler({ body }, __, callback) {
 			if (item.type === `tax`) {
 				res.modifications.push({
 					id: `tax`,
+					value: item.amount / 100,
+					description: item.description,
+				})
+			}
+		}
+	}
+
+	// Modifications
+	if (order.items) {
+		for (let i = 0; i < order.items.length; i++) {
+			const item = order.items[i]
+			if (item.type === `discount`) {
+				res.modifications.push({
+					id: item.parent,
 					value: item.amount / 100,
 					description: item.description,
 				})
