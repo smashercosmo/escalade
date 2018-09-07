@@ -1,12 +1,20 @@
 import shippingState from '../state/shipping'
 import addTotalModification from './add-total-modification'
 
-export default function setShipping(selected) {
+export default function setShipping(selected, setId) {
 	const method = findShippingMethod(selected)
 	if(!method) return
-	shippingState.setState({ selected })
+	if (setId){
+		const selectedSet = shippingState.state.selected
+		selectedSet[setId] = selected
+		console.log(selectedSet)
+		shippingState.setState({ selected: selectedSet })
+	}
+	else {
+		shippingState.setState({ selected })
+	}
 	addTotalModification({
-		id: `shipping`,
+		id: setId ? `shipping-${setId}` : `shipping`,
 		description: method.description,
 		displayValue: method.displayValue,
 		value: method.value,
@@ -16,8 +24,19 @@ export default function setShipping(selected) {
 function findShippingMethod(id){
 	const { methods } = shippingState.state
 	for (let i = methods.length; i--;){
-		if(methods[i].id === id) {
-			return methods[i]
+		const method = methods[i]
+		if (method.shippingMethods){
+			for(let i = method.shippingMethods.length; i--;){
+				const innerMethod = method.shippingMethods[i]
+				if (innerMethod.id === id) {
+					return innerMethod
+				}
+			}
+		}
+		else {
+			if (method.id === id) {
+				return method
+			}
 		}
 	}
 	return false

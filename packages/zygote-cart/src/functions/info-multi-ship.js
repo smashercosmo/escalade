@@ -82,20 +82,47 @@ export async function handler({ body }, __, callback) {
 
 
 	// Get shipping
-	if (order.shipping_methods) {
-		res.shippingMethods = order.shipping_methods.map(({ id, amount, description }) => {
-			return {
-				id,
-				value: amount / 100,
-				description,
-			}
-		})
+	res.shippingMethods = [
+		{
+			id: `ship1`,
+			description: `Pickleball paddle, Basketball`,
+			shippingMethods: [
+				{
+					id: `method1`,
+					value: 0,
+					description: `Standard shipping`,
+				},
+				{
+					id: `method2`,
+					value: 5,
+					description: `Express shipping`,
+				},
+			],
+		},
+		{
+			id: `ship2`,
+			description: `Crossbow`,
+			shippingMethods: [
+				{
+					id: `method1`,
+					value: 0,
+					description: `Standard shipping`,
+				},
+				{
+					id: `method2`,
+					value: 5,
+					description: `Express shipping`,
+				},
+			],
+		},
+	]
+	res.selectedShippingMethod = {
+		ship1: `method1`,
+		ship2: `method1`,
 	}
 
+
 	res.success = order.statusCode === 200
-	if (order.selected_shipping_method){
-		res.selectedShippingMethod = order.selected_shipping_method
-	}
 	if (order.id) {
 		res.meta.orderId = order.id
 	}

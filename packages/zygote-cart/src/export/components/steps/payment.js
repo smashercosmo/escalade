@@ -144,6 +144,7 @@ export default class PaymentStep extends React.Component{
 			cursor: `pointer`,
 			display: `flex`,
 			marginTop: 30,
+			userSelect: `none`,
 			'> *': {
 				':first-of-type': {
 					marginRight: 10,

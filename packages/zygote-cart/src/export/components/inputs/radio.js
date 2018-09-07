@@ -30,20 +30,21 @@ export default class Radio extends React.Component {
 		)
 	}
 	static styles = () => ({
-		'.zygoteCheckbox, .zygoteRadio': {
+		'.zygoteRadio': {
 			width: 20,
 			height: 20,
 			border: `1px solid #666`,
 			position: `relative`,
 			display: `inline-block`,
+			userSelect: `none`,
 			input: {
 				display: `none`,
 			},
 		},
-		'.zygoteCheckboxChecked, .zygoteRadioChecked': {
+		'.zygoteRadioChecked': {
 			background: `#666`,
 		},
-		'.zygoteCheckboxIcon, .zygoteRadioIcon': {
+		'.zygoteRadioIcon': {
 			color: `#fff`,
 			position: `absolute`,
 			left: `50%`,

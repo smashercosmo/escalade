@@ -30,20 +30,21 @@ export default class Checkbox extends React.Component {
 		)
 	}
 	static styles = () => ({
-		'.zygoteCheckbox, .zygoteRadio': {
+		'.zygoteCheckbox': {
 			width: 20,
 			height: 20,
 			border: `1px solid #666`,
 			position: `relative`,
 			display: `inline-block`,
+			userSelect: `none`,
 			input: {
 				display: `none`,
 			},
 		},
-		'.zygoteCheckboxChecked, .zygoteRadioChecked': {
+		'.zygoteCheckboxChecked': {
 			background: `#666`,
 		},
-		'.zygoteCheckboxIcon, .zygoteRadioIcon': {
+		'.zygoteCheckboxIcon': {
 			color: `#fff`,
 			position: `absolute`,
 			left: `50%`,
