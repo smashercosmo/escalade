@@ -15,17 +15,14 @@ import Header from '../header'
 import Button from '../button'
 import submitInfo from '../../utils/attempt-submit-info'
 import productsState from '../../state/products'
+import settingsState from '../../state/settings'
 import SimpleSummary from '../simple-summary'
 
 export default class InfoStep extends React.Component{
 	render() {
-		const {
-			infoHeader,
-			infoFooter,
-		} = this.props
 		return (
-			<Subscribe to={stepState}>
-				{({ step }) => (
+			<Subscribe to={[stepState, settingsState]}>
+				{({ step }, { infoHeader, infoFooter }) => (
 					<Fragment>
 						{(step === `info` || step === `payment`) && (
 							<form data-form='info'>

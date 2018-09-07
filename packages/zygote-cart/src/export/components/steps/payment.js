@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import { Subscribe } from 'statable'
 import stepState from '../../state/step'
 import shippingState from '../../state/shipping'
+import settingsState from '../../state/settings'
 import StepsHeader from '../steps-header'
 import Header from '../header'
 import CardList from '../card-list'
@@ -30,13 +31,9 @@ export default class PaymentStep extends React.Component{
 		this.setState({ sameBilling: !this.state.sameBilling })
 	}
 	render() {
-		const {
-			paymentHeader,
-			paymentFooter,
-		} = this.props
 		return (
-			<Subscribe to={[stepState, shippingState]}>
-				{({ step }, { loading }) => (
+			<Subscribe to={[stepState, shippingState, settingsState]}>
+				{({ step }, { loading }, { paymentHeader, paymentFooter }) => (
 					<Fragment>
 						{(step === `info` || step === `payment`) && (
 							<form data-form='payment'>

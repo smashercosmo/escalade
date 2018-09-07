@@ -4,13 +4,11 @@ import classNames from 'classnames'
 import openState from '../state/open'
 import closeCart from '../utils/close-cart'
 import stepState from '../state/step'
-import addedToCartState from '../state/added-to-cart'
 import settingsState from '../state/settings'
 import CartStep from './steps/cart'
 import InfoStep from './steps/info'
 import PaymentStep from './steps/payment'
 import SuccessStep from './steps/success'
-import AddedToCartMessage from './added-to-cart-message'
 import Processing from './processing'
 import Errors from './errors'
 import Info from './info'
@@ -19,29 +17,10 @@ import capitalize from '../utils/capitalize'
 export default class Cart extends React.Component {
 	render() {
 		return (
-			<Subscribe to={[openState, stepState, addedToCartState, settingsState]}>
-				{({
-					open,
-					init,
-				}, {
-					step,
-					processing,
-				}, {
-					addedToCart,
-				}, {
-					header,
-					cartHeader,
-					cartFooter,
-					infoHeader,
-					infoFooter,
-					paymentHeader,
-					paymentFooter,
-					successHeader,
-					successFooter,
-					addedToCartMsg,
-				}) => (
+			<Subscribe to={[openState, stepState, settingsState]}>
+				{({ open, init }, { step, processing }, { header }) =>
 					<Fragment>
-						{init && (
+						{init &&
 							<Fragment>
 								<div
 									className={classNames(
@@ -60,50 +39,34 @@ export default class Cart extends React.Component {
 											onMouseUp={() => this.closeBtn.blur()}
 										>×</button>
 
-										{header && (
+										{header &&
 											<div className='zygoteHeader'>{header}</div>
-										)}
+										}
 
 										<Errors />
 										<Info />
 
 										<div className='zygoteStep zygoteCartStep'>
-											<CartStep
-												cartHeader={cartHeader}
-												cartFooter={cartFooter}
-												addedToCart={addedToCart
-													? addedToCartMsg || <AddedToCartMessage />
-													: false
-												}
-											/>
+											<CartStep />
 										</div>
 										<div className='zygoteStep zygoteInfoStep'>
-											<InfoStep
-												infoHeader={infoHeader}
-												infoFooter={infoFooter}
-											/>
+											<InfoStep />
 										</div>
 										<div className='zygoteStep zygotePaymentStep'>
-											<PaymentStep
-												paymentHeader={paymentHeader}
-												paymentFooter={paymentFooter}
-											/>
+											<PaymentStep />
 										</div>
 										<div className='zygoteStep zygoteSuccessStep'>
-											<SuccessStep
-												successHeader={successHeader}
-												successFooter={successFooter}
-											/>
+											<SuccessStep />
 										</div>
-										{!!processing && (
+										{!!processing &&
 											<Processing>{processing}</Processing>
-										)}
+										}
 									</div>
 								</div>
 							</Fragment>
-						)}
+						}
 					</Fragment>
-				)}
+				}
 			</Subscribe>
 		)
 	}

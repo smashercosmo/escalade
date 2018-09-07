@@ -7,46 +7,49 @@ import productsState from '../../state/products'
 import Totals from '../totals'
 import nextStep from '../../utils/next-step'
 import CardList from '../card-list'
+import settingsState from '../../state/settings'
+import addedToCartState from '../../state/added-to-cart'
+import AddedToCartMessage from '../added-to-cart-message'
 
 export default class CartStep extends React.Component{
 	render() {
-		const {
-			cartHeader,
-			cartFooter,
-			addedToCart,
-		} = this.props
 		return (
-			<Fragment>
-				{!!cartHeader && (
-					<div className='zygoteCartHeader'>{cartHeader}</div>
+			<Subscribe to={[productsState, addedToCartState, settingsState]}>
+				{({ products }, { addedToCart }, {
+					cartHeader,
+					cartFooter,
+					addedToCartMsg,
+				}) => (
+					<Fragment>
+						{!!cartHeader && (
+							<div className='zygoteCartHeader'>{cartHeader}</div>
+						)}
+						{!!products.length && !!addedToCart && (
+							<div className='zygoteCartHeader'>{
+								addedToCart &&
+										addedToCartMsg || <AddedToCartMessage />
+							}</div>
+						)}
+						<ProductList editable />
+						{!products.length && (
+							<div className='zygoteEmptyMsg'>Your cart is empty</div>
+						)}
+						{!!products.length && (
+							<Fragment>
+								<Totals />
+								<div className='zygoteCardListWrapper'>
+									<CardList />
+								</div>
+								<Button onClick={nextStep}>Place Order</Button>
+							</Fragment>
+						)}
+						<Button secondary onClick={closeCart}>Continue Shopping</Button>
+						{!!cartFooter && (
+							<div className='zygoteCartFooter'>{cartFooter}</div>
+						)}
+					</Fragment>
 				)}
-				<Subscribe to={productsState}>
-					{({ products }) => (
-						<Fragment>
-							{!!products.length && !!addedToCart && (
-								<div className='zygoteCartHeader'>{addedToCart}</div>
-							)}
-							<ProductList editable />
-							{!products.length && (
-								<div className='zygoteEmptyMsg'>Your cart is empty</div>
-							)}
-							{!!products.length && (
-								<Fragment>
-									<Totals />
-									<div className='zygoteCardListWrapper'>
-										<CardList />
-									</div>
-									<Button onClick={nextStep}>Place Order</Button>
-								</Fragment>
-							)}
-							<Button secondary onClick={closeCart}>Continue Shopping</Button>
-						</Fragment>
-					)}
-				</Subscribe>
-				{!!cartFooter && (
-					<div className='zygoteCartFooter'>{cartFooter}</div>
-				)}
-			</Fragment>
+			</Subscribe>
 		)
 	}
 	static styles = () => ({
