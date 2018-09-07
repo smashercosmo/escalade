@@ -23,7 +23,7 @@ export default class ShippingMethods extends React.Component {
 							<LoadingAnimation />
 						)}
 						{!loading && !!methods.length && (
-							<Fragment>
+							<div className='zygoteShipMethods'>
 								<h2>Shipping Options</h2>
 								<ul className='zygoteShipList'>
 									{methods.map(({ id, description, value }) => (
@@ -44,19 +44,30 @@ export default class ShippingMethods extends React.Component {
 										</li>
 									))}
 								</ul>
-							</Fragment>
+							</div>
 						)}
 					</Fragment>
 				)}
 			</Subscribe>
 		)
 	}
-	static styles = () => ({
+	static styles = ({ altBackgroundColor, altBorderColor }) => ({
+		'.zygoteShipMethods': {
+			background: altBackgroundColor,
+			border: `1px solid ${altBorderColor}`,
+			borderRight: 0,
+			borderLeft: 0,
+			margin: `50px -20px`,
+			padding: `30px 20px`,
+			h2: {
+				marginTop: 0,
+			},
+		},
 		'.zygoteShipList': {
 			listStyleType: `none`,
+			userSelect: `none`,
 			margin: 0,
 			padding: 0,
-			userSelect: `none`,
 			li: {
 				marginTop: 10,
 			},

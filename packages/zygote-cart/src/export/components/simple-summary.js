@@ -78,7 +78,7 @@ export default class InfoMessages extends React.Component {
 			border: 0,
 			outline: `none`,
 			background: `transparent`,
-			height: 18,
+			height: 22,
 			':hover, :focus': {
 				opacity: .7,
 			},

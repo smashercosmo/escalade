@@ -97,7 +97,7 @@ export default class PaymentStep extends React.Component{
 									)}
 
 								</div>
-								<div className='zygotePaymentSection zygotePaymentShipping'>
+								<div className='zygotePaymentSection'>
 									<ShippingMethods />
 								</div>
 								<div className='zygotePaymentSection'>
@@ -119,7 +119,7 @@ export default class PaymentStep extends React.Component{
 
 		)
 	}
-	static styles = ({ altBackgroundColor }) => ({
+	static styles = () => ({
 		'.zygotePaymentAddress': {
 			fontWeight: `bold`,
 			marginTop: 10,
@@ -127,14 +127,6 @@ export default class PaymentStep extends React.Component{
 		},
 		'.zygotePaymentSection': {
 			marginTop: 40,
-		},
-		'.zygotePaymentShipping': {
-			background: altBackgroundColor,
-			margin: `50px -20px`,
-			padding: `30px 20px`,
-			h2: {
-				marginTop: 0,
-			},
 		},
 		'.zygotePaymentHeader': {
 			'@media(min-width: 500px)': {
