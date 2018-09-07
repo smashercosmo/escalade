@@ -6,6 +6,8 @@ export default class CompanyNameInput extends React.Component {
 	static defaultProps = {
 		toggleText: `Apply a Coupon`,
 		label: `Coupon Code`,
+		apply: false,
+		name: `coupon`,
 	}
 	constructor(props) {
 		super(props)
@@ -24,6 +26,8 @@ export default class CompanyNameInput extends React.Component {
 			toggleText,
 			label,
 			step,
+			apply,
+			name,
 		} = this.props
 		return (
 			<Fragment>
@@ -40,10 +44,13 @@ export default class CompanyNameInput extends React.Component {
 						<Input
 							inputRef={el => this.input = el}
 							label={label}
+							name={name}
 							step={step}
 						/>
 					</div>
-					<div role='button' className='zygoteCouponApply'>Apply</div>
+					{apply && (
+						<div role='button' className='zygoteCouponApply'>Apply</div>
+					)}
 				</div>
 			</Fragment>
 		)

@@ -17,6 +17,7 @@ import submitInfo from '../../utils/attempt-submit-info'
 import productsState from '../../state/products'
 import settingsState from '../../state/settings'
 import SimpleSummary from '../simple-summary'
+import Coupon from '../inputs/coupon'
 
 export default class InfoStep extends React.Component{
 	render() {
@@ -94,13 +95,16 @@ export default class InfoStep extends React.Component{
 											autoComplete='shipping postal-code'
 											step='info'
 										/>
-										<div className='zygoteInfoBtn'>
-											<Button onClick={submitInfo}>
-												Next Step
-											</Button>
-										</div>
 									</div>
 								)}
+								<div className='zygoteInfoCoupon'>
+									<Coupon />
+								</div>
+								<div className='zygoteInfoBtn'>
+									<Button onClick={submitInfo}>
+										Next Step
+									</Button>
+								</div>
 								{!!infoFooter && (
 									<div>{infoFooter}</div>
 								)}
@@ -145,6 +149,9 @@ export default class InfoStep extends React.Component{
 					},
 				},
 			},
+		},
+		'.zygoteInfoCoupon': {
+			margin: `15px 0`,
 		},
 		'.zygoteInfoBtn': {
 			marginTop: 30,

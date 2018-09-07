@@ -18,55 +18,53 @@ export default class Cart extends React.Component {
 	render() {
 		return (
 			<Subscribe to={[openState, stepState, settingsState]}>
-				{({ open, init }, { step, processing }, { header }) =>
+				{({ open, init }, { step, processing }, { header }) => (
 					<Fragment>
-						{init &&
-							<Fragment>
-								<div
-									className={classNames(
-										`zygote`,
-										`zygoteOn${processing ? `Processing` : `${capitalize(step)}Step`}`,
-										open && `zygoteOpen`,
+						{init && (
+							<div
+								className={classNames(
+									`zygote`,
+									`zygoteOn${processing ? `Processing` : `${capitalize(step)}Step`}`,
+									open && `zygoteOpen`,
+								)}
+							>
+								<div className='zygoteBg' onClick={closeCart} />
+								<div className='zygoteCart'>
+									<button
+										role='button'
+										className='zygoteCloseButton'
+										onClick={closeCart}
+										ref={el => this.closeBtn = el}
+										onMouseUp={() => this.closeBtn.blur()}
+									>×</button>
+
+									{header && (
+										<div className='zygoteHeader'>{header}</div>
 									)}
-								>
-									<div className='zygoteBg' onClick={closeCart} />
-									<div className='zygoteCart'>
-										<button
-											role='button'
-											className='zygoteCloseButton'
-											onClick={closeCart}
-											ref={el => this.closeBtn = el}
-											onMouseUp={() => this.closeBtn.blur()}
-										>×</button>
 
-										{header &&
-											<div className='zygoteHeader'>{header}</div>
-										}
+									<Errors />
+									<Info />
 
-										<Errors />
-										<Info />
-
-										<div className='zygoteStep zygoteCartStep'>
-											<CartStep />
-										</div>
-										<div className='zygoteStep zygoteInfoStep'>
-											<InfoStep />
-										</div>
-										<div className='zygoteStep zygotePaymentStep'>
-											<PaymentStep />
-										</div>
-										<div className='zygoteStep zygoteSuccessStep'>
-											<SuccessStep />
-										</div>
-										{!!processing &&
-											<Processing>{processing}</Processing>
-										}
+									<div className='zygoteStep zygoteCartStep'>
+										<CartStep />
 									</div>
+									<div className='zygoteStep zygoteInfoStep'>
+										<InfoStep />
+									</div>
+									<div className='zygoteStep zygotePaymentStep'>
+										<PaymentStep />
+									</div>
+									<div className='zygoteStep zygoteSuccessStep'>
+										<SuccessStep />
+									</div>
+									{!!processing &&
+										<Processing>{processing}</Processing>
+									}
 								</div>
-							</Fragment>
-						}
+							</div>
+						)}
 					</Fragment>
-				}
+				)}
 			</Subscribe>
 		)
 	}

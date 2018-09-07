@@ -7,7 +7,6 @@ export default function setShipping(selected, setId) {
 	if (setId){
 		const selectedSet = shippingState.state.selected
 		selectedSet[setId] = selected
-		console.log(selectedSet)
 		shippingState.setState({ selected: selectedSet })
 	}
 	else {
