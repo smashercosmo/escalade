@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 import registerInput from '../../utils/register-input'
 import unregisterInput from '../../utils/unregister-input'
 
@@ -65,9 +66,18 @@ export default class Select extends React.Component{
 			name,
 		} = this.props
 		return (
-			<label className={`zygoteSelectWrapper${error ? ` zygoteSelectErr` : ``}${focus ? ` zygoteSelectFocus` : ``}`}>
+			<label
+				className={classNames(
+					`zygoteSelectWrapper`,
+					error && `zygoteSelectErr`,
+					focus && `zygoteSelectFocus`,
+				)}
+			>
 				<span
-					className={`zygoteSelectLabel${(value || focus) ? ` zygoteSelectLabelMoved` : ``}`}
+					className={classNames(
+						`zygoteSelectLabel`,
+						(value || focus) && `zygoteSelectLabelMoved`,
+					)}
 				>
 					{label}
 				</span>

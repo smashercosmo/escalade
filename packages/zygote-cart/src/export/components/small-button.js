@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 
 export default class SmallButton extends React.Component {
 	render() {
@@ -9,7 +10,10 @@ export default class SmallButton extends React.Component {
 		} = this.props
 		return (
 			<div
-				className={`zygoteSmBtn ${!secondary ? `zygotePrimarySmBtn` : `zygoteSecondarySmBtn`}`}
+				className={classNames(
+					`zygoteSmBtn`,
+					!secondary ? `zygotePrimarySmBtn` : `zygoteSecondarySmBtn`,
+				)}
 				onClick={onClick}
 			>
 				<span>{children}</span>

@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import { Subscribe } from 'statable'
+import classNames from 'classnames'
 import openState from '../state/open'
 import closeCart from '../utils/close-cart'
 import stepState from '../state/step'
@@ -42,7 +43,13 @@ export default class Cart extends React.Component {
 					<Fragment>
 						{init && (
 							<Fragment>
-								<div className={`zygote zygoteOn${processing ? `Processing` : `${capitalize(step)}Step`}${open ? ` zygoteOpen` : ``}`}>
+								<div
+									className={classNames(
+										`zygote`,
+										`zygoteOn${processing ? `Processing` : `${capitalize(step)}Step`}`,
+										open && `zygoteOpen`,
+									)}
+								>
 									<div className='zygoteBg' onClick={closeCart} />
 									<div className='zygoteCart'>
 										<button

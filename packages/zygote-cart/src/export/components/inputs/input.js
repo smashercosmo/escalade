@@ -1,5 +1,6 @@
 import React from 'react'
 import InputMask from 'react-input-mask'
+import classNames from 'classnames'
 import registerInput from '../../utils/register-input'
 import unregisterInput from '../../utils/unregister-input'
 
@@ -67,10 +68,19 @@ export default class Input extends React.Component{
 		} = this.props
 		return (
 			<label
-				className={`zygoteInputWrapper${focus ? ` zygoteInputFocus` : ``}${error ? ` zygoteInputErr` : ``}`}
+				className={classNames(
+					`zygoteInputWrapper`,
+					focus && `zygoteInputFocus`,
+					error && `zygoteInputErr`,
+				)}
 				ref={el => this.wrapper = el}
 			>
-				<span className={`zygoteInputLabel${(value || focus) ? ` zygoteInputLabelMoved` : ``}`}>
+				<span
+					className={classNames(
+						`zygoteInputLabel`,
+						(value || focus) && `zygoteInputLabelMoved`,
+					)}
+				>
 					{label}
 				</span>
 				{mask && (

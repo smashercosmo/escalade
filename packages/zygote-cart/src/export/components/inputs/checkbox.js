@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 
 export default class Checkbox extends React.Component {
 	render() {
@@ -9,7 +10,12 @@ export default class Checkbox extends React.Component {
 			onChange,
 		} = this.props
 		return (
-			<div className={`zygoteCheckbox${checked ? ` zygoteCheckboxChecked` : ``}`}>
+			<div
+				className={classNames(
+					`zygoteCheckbox`,
+					checked && `zygoteCheckboxChecked`,
+				)}
+			>
 				<input
 					type='checkbox'
 					name={name}

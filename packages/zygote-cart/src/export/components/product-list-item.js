@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 import SmallButton from './small-button'
 import removeFromCart from '../utils/remove-from-cart'
 import increaseQuantity from '../utils/increase-quantity'
@@ -16,7 +17,12 @@ export default class ProductList extends React.Component{
 			quantity,
 		} = this.props
 		return (
-			<li className={`zygoteProdItem${editable ? ` zygoteProdItemEditable` : ``}`}>
+			<li
+				className={classNames(
+					`zygoteProdItem`,
+					editable && `zygoteProdItemEditable`,
+				)}
+			>
 				<div className='zygoteProdImage'>
 					<img src={image} />
 				</div>

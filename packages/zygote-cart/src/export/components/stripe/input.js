@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 import Visa from '../card-list/visa'
 import Mastercard from '../card-list/mastercard'
 import AmericanExpress from '../card-list/american-express'
@@ -66,7 +67,11 @@ export default class StripeInput extends React.Component {
 		} = this.props
 		return (
 			<label
-				className={`zygoteStripeInputWrapper${focus ? ` zygoteStripeFocus` : ``}${error ? ` zygoteStripeErr` : ``}`}
+				className={classNames(
+					`zygoteStripeInputWrapper`,
+					focus && `zygoteStripeFocus`,
+					error && `zygoteStripeErr`,
+				)}
 			>
 				<span
 					className={`zygoteStripeLabel${(value || focus) ? ` zygoteStripeMoved` : ``}`}

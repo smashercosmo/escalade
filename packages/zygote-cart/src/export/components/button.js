@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 
 export default class Button extends React.Component {
 	render() {
@@ -10,7 +11,10 @@ export default class Button extends React.Component {
 		} = this.props
 		return (
 			<button
-				className={`zygoteBtn ${!secondary ? `zygotePrimaryBtn` : `zygoteSecondaryBtn`}`}
+				className={classNames(
+					`zygoteBtn`,
+					!secondary ? `zygotePrimaryBtn` : `zygoteSecondaryBtn`,
+				)}
 				onClick={onClick}
 				disabled={disabled}
 				type='button'

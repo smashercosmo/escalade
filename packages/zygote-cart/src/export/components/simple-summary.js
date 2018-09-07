@@ -1,5 +1,6 @@
 import React from 'react'
 import { Subscribe } from 'statable'
+import classNames from 'classnames'
 import totalsState from '../state/totals'
 import formatUsd from '../utils/format-usd'
 import Arrow from './arrow'
@@ -22,7 +23,12 @@ export default class InfoMessages extends React.Component {
 		return (
 			<Subscribe to={totalsState}>
 				{({ total }) => (
-					<div className={`zygoteSimpleSummary${open ? ` zygoteSimpleSummaryOpen` : ``}`}>
+					<div
+						className={classNames(
+							`zygoteSimpleSummary`,
+							open && `zygoteSimpleSummaryOpen`,
+						)}
+					>
 						<div className='zygoteSimpleSummaryHeader'>
 							<div>Order Summary</div>
 							<div>

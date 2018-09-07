@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 import changeStep from '../utils/change-step'
 import submitInfo from '../utils/attempt-submit-info'
 
@@ -9,14 +10,20 @@ export default class StepsHeader extends React.Component {
 			<ul className='zygoteStepsHeader'>
 				<li
 					role='button'
-					className={`zygoteStepLink${step === `info` ? ` zygoteActiveStepLink` : ``}`}
+					className={classNames(
+						`zygoteStepLink`,
+						step === `info` && `zygoteActiveStepLink`,
+					)}
 					onClick={step === `info` ? null : () => changeStep(`info`)}
 				>
 					1. Your Details
 				</li>
 				<li
 					role='button'
-					className={`zygoteStepLink${step === `payment` ? ` zygoteActiveStepLink` : ``}`}
+					className={classNames(
+						`zygoteStepLink`,
+						step === `payment` && `zygoteActiveStepLink`,
+					)}
 					onClick={step === `payment` ? null : submitInfo}
 				>
 					2. Payment

@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 
 export default class Radio extends React.Component {
 	render() {
@@ -9,7 +10,12 @@ export default class Radio extends React.Component {
 			onChange,
 		} = this.props
 		return (
-			<div className={`zygoteRadio${checked ? ` zygoteRadioChecked` : ``}`}>
+			<div
+				className={classNames(
+					`zygoteRadio`,
+					checked && `zygoteRadioChecked`,
+				)}
+			>
 				<input
 					type='radio'
 					name={name}
