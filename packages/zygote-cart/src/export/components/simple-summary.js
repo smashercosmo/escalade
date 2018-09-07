@@ -45,10 +45,10 @@ export default class InfoMessages extends React.Component {
 			</Subscribe>
 		)
 	}
-	static styles = ({ altBackgroundColor }) => ({
+	static styles = ({ altBackgroundColor, altBorderColor }) => ({
 		'.zygoteSimpleSummary': {
 			backgroundColor: altBackgroundColor,
-			border: `1px solid #EFF0F0`,
+			border: `1px solid ${altBorderColor}`,
 			borderRight: 0,
 			borderLeft: 0,
 			padding: `10px 20px`,

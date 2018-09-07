@@ -95,14 +95,14 @@ export default class StripeInput extends React.Component {
 			</label>
 		)
 	}
-	static styles = () => ({
+	static styles = ({ altBackgroundColor, altBorderColor }) => ({
 		'.zygoteStripeInputWrapper': {
 			position: `relative`,
 			display: `block`,
 			marginTop: 30,
 			fontSize: `.9em`,
-			background: `#F8F8F8`,
-			border: `1px solid #EFF0F0`,
+			background: altBackgroundColor,
+			border: `1px solid ${altBorderColor}`,
 			borderRadius: 4,
 		},
 		'.zygoteStripeCard': {
