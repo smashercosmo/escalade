@@ -166,7 +166,7 @@ export default class Input extends React.Component{
 			display: `inline-block`,
 			fontSize: `.75em`,
 			right: 0,
-			bottom: -18,
+			top: 42,
 		},
 	})
 }

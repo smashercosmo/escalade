@@ -126,7 +126,7 @@ export default class StripeInput extends React.Component {
 			display: `inline-block`,
 			fontSize: `.75em`,
 			right: 0,
-			bottom: -18,
+			top: 42,
 		},
 		'.zygoteStripeLabel': {
 			position: `absolute`,
