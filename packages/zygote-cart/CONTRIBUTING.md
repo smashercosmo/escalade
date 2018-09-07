@@ -22,6 +22,8 @@ $ cd zygote-cart
 $ yarn dev
 ```
 
+The cart's source files are located in `src/export`.
+
 ## Available scripts
 
 ### `dev`
