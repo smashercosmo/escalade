@@ -46,11 +46,9 @@ export default class Input extends React.Component{
 		this.setState({ error: false })
 	}
 	componentDidMount(){
-		//addValidator(this.validate)
 		registerInput(this)
 	}
 	componentWillUnmount(){
-		//removeValidator(this.validate)
 		unregisterInput(this)
 	}
 	render(){

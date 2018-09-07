@@ -17,6 +17,8 @@ export default async function submitOrder() {
 	clearMessages()
 	validateAllInput()
 
+	await timeout()
+
 	// Check for required fields
 	if (errorCheck()) return
 	stepState.setState({ processing: true })
@@ -86,4 +88,10 @@ export default async function submitOrder() {
 	}
 
 	stepState.setState({ processing: false })
+}
+
+function timeout(n = 1){
+	return new Promise((resolve) => {
+		setTimeout(resolve, n)
+	})
 }

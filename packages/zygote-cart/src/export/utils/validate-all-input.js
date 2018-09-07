@@ -6,6 +6,7 @@ export default function validateAllInputs(step){
 			continue
 		}
 		if (inputs[i].validate) {
+			console.log(inputs[i])
 			inputs[i].validate()
 		}
 	}
