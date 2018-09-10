@@ -17,7 +17,7 @@ export default async function submitStripeInfo({ stripeApiSecret, body, verbose 
 	log(`submitStripeInfo received from invoke:`, body)
 
 	// Create empty result object to be sent later
-	const res = {
+	let res = {
 		messages: {
 			error: [],
 		},
@@ -111,6 +111,11 @@ export default async function submitStripeInfo({ stripeApiSecret, body, verbose 
 	}
 	if (order.id) {
 		res.meta.orderId = order.id
+	}
+
+	res = {
+		...body,
+		...res,
 	}
 
 	log(`submitStripeInfo returning:`, res)

@@ -1,7 +1,7 @@
 import Stripe from 'stripe'
 import noop from '../utils/noop'
 
-export default async function submitStripeInfo({ stripeApiSecret, body, verbose }) {
+export default async function submitStripeOrder({ stripeApiSecret, body, verbose }) {
 	let log = noop
 	let error = noop
 	if(verbose){
@@ -14,10 +14,10 @@ export default async function submitStripeInfo({ stripeApiSecret, body, verbose 
 	}
 
 	// Validate product prices & stock here
-	log(`Received from client:`, body)
+	log(`submitStripeOrder received from invoke:`, body)
 
 	// Create empty result object to be sent later
-	const res = {
+	let res = {
 		messages: {
 			error: [],
 		},
@@ -31,7 +31,7 @@ export default async function submitStripeInfo({ stripeApiSecret, body, verbose 
 				selected_shipping_method: body.selectedShippingMethod,
 			})
 			res.success = true
-			log(`Received from Stripe after updated shipping:`, req)
+			log(`submitStripeOrder received from Stripe after updated shipping:`, req)
 		}
 		catch (err) {
 			error(err)
@@ -55,7 +55,7 @@ export default async function submitStripeInfo({ stripeApiSecret, body, verbose 
 				source: body.payment.id,
 			})
 			res.success = req.status === `paid`
-			log(`Received from Stripe after order placement:`, req)
+			log(`submitStripeOrder received from Stripe after order placement:`, req)
 		}
 		catch (err) {
 			error(err)
@@ -71,7 +71,12 @@ export default async function submitStripeInfo({ stripeApiSecret, body, verbose 
 
 	}
 
-	log(`Sending back to client:`, res)
+	res = {
+		...body,
+		...res,
+	}
+
+	log(`submitStripeOrder returning:`, res)
 
 	return res
 }

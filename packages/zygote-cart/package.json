@@ -46,8 +46,10 @@
     "is-phone": "^2.0.0",
     "is-valid-zip": "^0.0.3",
     "isomorphic-fetch": "^2.2.1",
+    "react-html-email": "^3.0.0",
     "react-input-mask": "^2.0.3",
     "react-stripe-elements": "^2.0.1",
+    "sparkpost": "^2.1.2",
     "statable": "^0.3.2",
     "stripe": "^6.7.0"
   },
@@ -123,7 +125,6 @@
     "react-no-ssr": "^1.1.0",
     "react-testing-library": "^4.1.7",
     "request": "^2.87.0",
-    "sparkpost": "^2.1.2",
     "static-server": "^2.2.1",
     "strip-html-comments": "^1.0.0",
     "toml": "^2.3.3",
