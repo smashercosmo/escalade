@@ -10,9 +10,9 @@ export async function handler({ body }, _, callback) {
 		verbose: true,
 	})
 
-	// Response
 	callback(null, {
 		statusCode: 200,
 		body: JSON.stringify(res),
 	})
+
 }

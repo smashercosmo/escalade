@@ -266,3 +266,49 @@ The webhooks can pass modifications to the total, but if you need some modificat
   orderSubmitError='There was an error with the server. Your information was not placed. Please try again later.'
 />
 ```
+
+## Server Side Helpers
+
+To make it easier to work with payment processors and transactional emails, we've included a few helper functions. These particular examples are using serverless functions to process the data, then send the response back to the client.
+
+Info webhook:
+
+```js
+import { submitStripeInfo } from '../export/server'
+
+export async function handler({ body }, _, callback) {
+
+	const res = await submitStripeInfo({
+		stripeApiSecret: process.env.STRIPE_API_SECRET,
+		body,
+		verbose: true,
+  })
+
+	callback(null, {
+		statusCode: 200,
+		body: JSON.stringify(res),
+  })
+
+}
+```
+
+Order webhook:
+
+```js
+import { submitStripeOrder } from '../export/server'
+
+export async function handler({ body }, _, callback) {
+
+	const res = await submitStripeOrder({
+		stripeApiSecret: process.env.STRIPE_API_SECRET,
+		body,
+		verbose: true,
+	})
+
+	callback(null, {
+		statusCode: 200,
+		body: JSON.stringify(res),
+	})
+
+}
+```
