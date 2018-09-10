@@ -65,7 +65,7 @@ export default async function submitOrder() {
 
 	if (!data.success) {
 		if (!messagesState.state.errors.length){
-			displayError(`We're sorry! There was an error with the server. Your order was not placed. Please try again later.`)
+			displayError(settingsState.state.orderSubmitError)
 		}
 		if(data.returnTo){
 			stepState.setState({ step: data.returnTo })

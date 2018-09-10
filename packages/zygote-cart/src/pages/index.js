@@ -39,28 +39,12 @@ export default class HomePage extends React.Component {
 
 				<Cart
 					header={<img className={logoStyles} src={logo} />}
-					stripeApiKey='pk_test_0EMVTB6nEzmrjGA0Fc0kyVOR'
-
 					cartHeader={<div className={headerStyles}>With FREE shipping!</div>}
 					cartFooter={<div className={footerStyles}>* Free shipping, except Alaska and Hawaii</div>}
 
+					stripeApiKey='pk_test_0EMVTB6nEzmrjGA0Fc0kyVOR'
 					infoWebhook='/.netlify/functions/info'
 					orderWebhook='/.netlify/functions/order'
-
-					onOpen={() => console.log(`Cart opened`)}
-					onClose={() => console.log(`Cart closed`)}
-					onAddProduct={product => console.log(`Added product`, product)}
-					onRemoveProduct={product => console.log(`Removed product`, product)}
-					onInfoAttempt={info => console.log(`Info attempt`, info)}
-					onInfo={info => console.log(`Info submit`, info)}
-					onOrderAttempt={order => console.log(`Order attempt`, order)}
-					onOrder={order => console.log(`Order submit`, order)}
-					onError={err => console.log(`Error caught`, err)}
-
-					preCalculatedShippingDisplay='Calculated at checkout'
-					preCalculatedTaxDisplay='Calculated at checkout'
-					freeShippingDisplay='Free!'
-					freeTaxDisplay='Free!'
 
 					totalModifications={[
 						{

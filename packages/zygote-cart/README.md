@@ -257,3 +257,12 @@ The webhooks can pass modifications to the total, but if you need some modificat
   ]}
 />
 ```
+
+## Customize Default Error Messages
+
+```jsx
+<Cart
+  infoSubmitError='There was an error with the server. Your order was not placed. Please try again later.'
+  orderSubmitError='There was an error with the server. Your information was not placed. Please try again later.'
+/>
+```

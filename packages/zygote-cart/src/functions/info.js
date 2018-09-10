@@ -47,6 +47,7 @@ export async function handler({ body }, __, callback) {
 			obj.coupon = body.coupon
 		}
 		order = await stripe.orders.create(obj)
+		res.success = true
 		console.log(`Received from Stripe:`, order)
 	}
 	catch(err){
@@ -71,6 +72,7 @@ export async function handler({ body }, __, callback) {
 		if (err.param === `coupon`){
 			res.step = `info`
 		}
+		res.success = false
 	}
 
 	// Modifications
@@ -98,7 +100,6 @@ export async function handler({ body }, __, callback) {
 		})
 	}
 
-	res.success = order.statusCode === 200
 	if (order.selected_shipping_method){
 		res.selectedShippingMethod = order.selected_shipping_method
 	}
