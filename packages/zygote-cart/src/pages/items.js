@@ -35,24 +35,24 @@ export default class HomePage extends React.Component {
 					header={<img className={logoStyles} src={logo} />}
 					stripeApiKey='pk_test_0EMVTB6nEzmrjGA0Fc0kyVOR'
 
-					// cartHeader={<div className={headerStyles}>With FREE shipping!</div>}
-					// cartFooter={<div>* Free shipping, except Alaska and Hawaii</div>}
+					cartHeader={<div className={headerStyles}>With FREE shipping!</div>}
+					cartFooter={<div>* Free shipping, except Alaska and Hawaii</div>}
 
 					postInfoWebhook='/.netlify/functions/post-info'
 					orderWebhook='/.netlify/functions/place-order'
 
-					// totalModifications={[
-					// 	{
-					// 		id: `shipping`,
-					// 		description: `Shipping`,
-					// 		displayValue: `FREE`,
-					// 	},
-					// 	{
-					// 		id: `tax`,
-					// 		description: `Tax`,
-					// 		displayValue: `-`,
-					// 	},
-					// ]}
+					totalModifications={[
+						{
+							id: `shipping`,
+							description: `Shipping`,
+							displayValue: `FREE`,
+						},
+						{
+							id: `tax`,
+							description: `Tax`,
+							displayValue: `-`,
+						},
+					]}
 				/>
 
 
@@ -66,6 +66,6 @@ const logoStyles = css({
 	margin: `0 30px`,
 })
 
-// const headerStyles = css({
-// 	textAlign: `center`
-// })
+const headerStyles = css({
+	textAlign: `center`,
+})

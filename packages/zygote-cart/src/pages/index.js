@@ -41,11 +41,10 @@ export default class HomePage extends React.Component {
 					header={<img className={logoStyles} src={logo} />}
 					stripeApiKey='pk_test_0EMVTB6nEzmrjGA0Fc0kyVOR'
 
-					// cartHeader={<div className={headerStyles}>With FREE shipping!</div>}
-					// cartFooter={<div>* Free shipping, except Alaska and Hawaii</div>}
+					cartHeader={<div className={headerStyles}>With FREE shipping!</div>}
+					cartFooter={<div className={footerStyles}>* Free shipping, except Alaska and Hawaii</div>}
 
 					infoWebhook='/.netlify/functions/info'
-					// infoWebhook='/.netlify/functions/info-multi-ship'
 					orderWebhook='/.netlify/functions/order'
 
 					onOpen={() => console.log(`Cart opened`)}
@@ -88,10 +87,16 @@ const logoStyles = css({
 	margin: `0 30px`,
 })
 
-// const headerStyles = css({
-// 	textAlign: `center`
-// })
-
+const headerStyles = css({
+	textAlign: `center`,
+	fontWeight: `bold`,
+	fontSize: `1.3em`,
+})
+const footerStyles = css({
+	marginTop: 30,
+	textAlign: `center`,
+	fontSize: `.9em`,
+})
 
 export const query = graphql`
 	query HomePage {
