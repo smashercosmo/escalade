@@ -1,7 +1,7 @@
 import SparkPost from 'sparkpost'
 import React from 'react'
 import noop from '../utils/noop'
-import EmailTemplate from '../components/confirmation-email'
+import DefaultEmailTemplate from '../components/confirmation-email'
 import { renderEmail } from 'react-html-email'
 
 export default async function sendSparkpostConfirmation({
@@ -12,6 +12,7 @@ export default async function sendSparkpostConfirmation({
 	body,
 	logo,
 	verbose,
+	emailTemplate,
 }) {
 	let log = noop
 	let error = noop
@@ -28,7 +29,8 @@ export default async function sendSparkpostConfirmation({
 	log(`sendSparkpostConfirmation received from invoke:`, body)
 
 	const html = renderEmail(
-		<EmailTemplate
+		emailTemplate ||
+		<DefaultEmailTemplate
 			{...body}
 			logo={logo}
 		/>
