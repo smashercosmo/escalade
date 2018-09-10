@@ -55,7 +55,7 @@ export default async function submitOrder() {
 
 	let data
 	try {
-		data = await fetch(settingsState.state.orderEndpoint, body)
+		data = await fetch(settingsState.state.orderWebhook, body)
 		console.log(`Received from API:`, data)
 	}
 	catch(err){

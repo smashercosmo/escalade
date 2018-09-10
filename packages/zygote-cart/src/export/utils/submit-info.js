@@ -5,13 +5,13 @@ import totalsState from '../state/totals'
 import shippingState from '../state/shipping'
 
 export default async function submitInfo() {
-	const { infoEndpoint } = settingsState.state
-	if (infoEndpoint) {
+	const { infoWebhook } = settingsState.state
+	if (infoWebhook) {
 		totalsState.setState({ loading: true })
 		shippingState.setState({ loading: true })
 		const vals = getFormValues()
 		vals.event = `info`
-		await fetch(infoEndpoint, vals)
+		await fetch(infoWebhook, vals)
 		totalsState.setState({ loading: false })
 		shippingState.setState({ loading: false })
 	}

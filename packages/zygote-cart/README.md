@@ -37,7 +37,7 @@ import { Cart, addToCart } from 'zygote-cart'
 
 <Cart
 	stripeApiKey='pk_test_12345'
-	orderEndpoint='/api/place-order'
+	orderWebhook='/api/place-order'
 />
 ```
 

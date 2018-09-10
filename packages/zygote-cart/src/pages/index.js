@@ -44,9 +44,9 @@ export default class HomePage extends React.Component {
 					// cartHeader={<div className={headerStyles}>With FREE shipping!</div>}
 					// cartFooter={<div>* Free shipping, except Alaska and Hawaii</div>}
 
-					infoEndpoint='/.netlify/functions/info'
-					// infoEndpoint='/.netlify/functions/info-multi-ship'
-					orderEndpoint='/.netlify/functions/order'
+					infoWebhook='/.netlify/functions/info'
+					// infoWebhook='/.netlify/functions/info-multi-ship'
+					orderWebhook='/.netlify/functions/order'
 
 					onOpen={() => console.log(`Cart opened`)}
 					onClose={() => console.log(`Cart closed`)}

@@ -13,8 +13,8 @@ export default class Zygote extends React.Component {
 	constructor(props) {
 		super(props)
 		settingsState.setState(props)
-		if (!props.orderEndpoint){
-			console.warn(`No order endpoint supplied`)
+		if (!props.orderWebhook){
+			console.warn(`No order webhook supplied`)
 		}
 	}
 	componentDidMount() {
