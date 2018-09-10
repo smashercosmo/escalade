@@ -92,14 +92,14 @@ Custom component properties:
 - `successHeader`: Appears at the top of the success stage
 - `successFooter`: Appears at the bottom of the success stage
 
-## Endpoints
+## Webooks
 
-There are two endpoints that can be passed as properties to send the cart information to your server:
+There are two URLs that can be passed as properties to send the cart information to your server:
 
-- `orderEndpoint`: Required. Product, payment, and shipping information will be sent to this endpoint once the order has been completed.
-- `infoEndpoint`: Not required. Product and shipping information will be sent to this endpoing once the first section checkout has been completed. Useful for returning tax and shipping methods with this endpoint.
+- `orderWebhook`: Required. Product, payment, and shipping information will be sent to this webhook once the order has been completed.
+- `infoWebhook`: Not required. Product and shipping information will be sent to this endpoing once the first section checkout has been completed. Useful for returning tax and shipping methods with this webhook.
 
-Example `shippingEndpoint` request:
+Example `shippingWebhook` request:
 
 ```json
 {
@@ -233,4 +233,27 @@ import { addToCart } from 'zygote-cart'
   price: 10.5,
   noShip: true,
 })}>Add to Cart</button>
+```
+
+## Starting Total Modifications
+
+The webhooks can pass modifications to the total, but if you need some modifications to show immediately once the cart is opened, you can use the `totalModifications` prop in the `<Cart />` component.
+
+```jsx
+<Cart
+  totalModifications={[
+    {
+      id: `shipping`,
+      description: `Shipping`,
+      value: 0,
+      displayValue: `Free`,
+    },
+    {
+      id: `tax`,
+      description: `Tax`,
+      value: 0,
+      displayValue: `Calculated at checkout`,
+    },
+  ]}
+/>
 ```
