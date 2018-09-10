@@ -22,7 +22,7 @@ export async function handler({ body }, __, callback) {
 	// Create stripe order
 	let order
 	try {
-		order = await stripe.orders.create({
+		const obj = {
 			currency: `usd`,
 			email: body.infoEmail,
 			items: body.products.map(({ id, quantity }) => {
@@ -42,8 +42,11 @@ export async function handler({ body }, __, callback) {
 					country: `US`,
 				},
 			},
-			coupon: body.coupon,
-		})
+		}
+		if(body.coupon){
+			obj.coupon = body.coupon
+		}
+		order = await stripe.orders.create(obj)
 		console.log(`Received from Stripe:`, order)
 	}
 	catch(err){

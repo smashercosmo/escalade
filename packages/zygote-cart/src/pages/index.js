@@ -58,18 +58,23 @@ export default class HomePage extends React.Component {
 					onOrder={order => console.log(`Order submit`, order)}
 					onError={err => console.log(`Error caught`, err)}
 
-					// totalModifications={[
-					// 	{
-					// 		id: `shipping`,
-					// 		description: `Shipping`,
-					// 		displayValue: `FREE`,
-					// 	},
-					// 	{
-					// 		id: `tax`,
-					// 		description: `Tax`,
-					// 		displayValue: `-`,
-					// 	},
-					// ]}
+					preCalculatedShippingDisplay='Calculated at checkout'
+					preCalculatedTaxDisplay='Calculated at checkout'
+					freeShippingDisplay='Free!'
+					freeTaxDisplay='Free!'
+
+					totalModifications={[
+						{
+							id: `shipping`,
+							description: `Shipping`,
+							displayValue: `FREE`,
+						},
+						{
+							id: `tax`,
+							description: `Tax`,
+							displayValue: `-`,
+						},
+					]}
 				/>
 
 
