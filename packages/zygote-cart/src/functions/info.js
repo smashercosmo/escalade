@@ -75,16 +75,15 @@ export async function handler({ body }, __, callback) {
 
 	// Modifications
 	if (order.items) {
-		for (let i = 0; i < order.items.length; i++) {
-			const item = order.items[i]
-			if (item.type === `discount`) {
+		order.items.forEach(({ type, parent, amount, description }) => {
+			if (type === `discount` || type === `tax` || type === `shipping`) {
 				res.modifications.push({
-					id: item.parent,
-					value: item.amount / 100,
-					description: item.description,
+					id: type === `discount` ? parent : type,
+					value: amount / 100,
+					description,
 				})
 			}
-		}
+		})
 	}
 
 
@@ -97,21 +96,6 @@ export async function handler({ body }, __, callback) {
 				description,
 			}
 		})
-	}
-
-
-	// Get tax
-	if (order.items) {
-		for (let i = order.items.length; i--;) {
-			const item = order.items[i]
-			if (item.type === `tax`) {
-				res.modifications.push({
-					id: `tax`,
-					value: item.amount / 100,
-					description: item.description,
-				})
-			}
-		}
 	}
 
 	res.success = order.statusCode === 200
