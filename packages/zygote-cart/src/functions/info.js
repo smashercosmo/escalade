@@ -73,21 +73,6 @@ export async function handler({ body }, __, callback) {
 		}
 	}
 
-
-	// Get tax
-	if (order.items) {
-		for (let i = order.items.length; i--;) {
-			const item = order.items[i]
-			if (item.type === `tax`) {
-				res.modifications.push({
-					id: `tax`,
-					value: item.amount / 100,
-					description: item.description,
-				})
-			}
-		}
-	}
-
 	// Modifications
 	if (order.items) {
 		for (let i = 0; i < order.items.length; i++) {
@@ -112,6 +97,21 @@ export async function handler({ body }, __, callback) {
 				description,
 			}
 		})
+	}
+
+
+	// Get tax
+	if (order.items) {
+		for (let i = order.items.length; i--;) {
+			const item = order.items[i]
+			if (item.type === `tax`) {
+				res.modifications.push({
+					id: `tax`,
+					value: item.amount / 100,
+					description: item.description,
+				})
+			}
+		}
 	}
 
 	res.success = order.statusCode === 200
