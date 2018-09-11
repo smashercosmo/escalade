@@ -15,8 +15,6 @@ I recommend testing all of the Review components to figure out which one you wan
 ```jsx
 import {
  PowerReviewConfig,
- ReviewDisplay,
- ReviewSnippet
  } from "react-power-reviews"
 
 // Here is an example from a project
