@@ -21,7 +21,7 @@ import {
 
 // Here is an example from a project
 
-componentDidMoune() {
+componentDidMount() {
  PowerReviewConfig({
   	apiKey: `Your Api Key`,
 	merchantGroupId: `Your merchant Group Id`,
