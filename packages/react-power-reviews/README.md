@@ -6,7 +6,7 @@ Here is a reference guide for power review [here](http://help.powerreviews.com/C
 
 For feedless product look [here](http://help.powerreviews.com/Content/Product%20Catalog/Feedless.htm).
 
-As of version 1.0.7 it is recommended to use your own div with a custom id name. This way you can pass whatever id you want and will future proof the module if power-reviews comes out with more components. You will need to use the correct components still however. [Here](http://help.powerreviews.com/Content/Platform/JavaScript%20Reference%20Guide.htm#kanchor60) is a list of the components you can use. Make sure you spell them correctly with case in mind. If not you will get a warning in the console and your component will not render.
+As of version 1.1.0 it is recommended to use your own div with a custom id name. This way you can pass whatever id you want and will future proof the module if power-reviews comes out with more components. You will need to use the correct components still however. [Here](http://help.powerreviews.com/Content/Platform/JavaScript%20Reference%20Guide.htm#kanchor60) is a list of the components you can use. Make sure you spell them correctly with case in mind. If not you will get a warning in the console and your component will not render.
 
 Note: This will not break previous builds if you were using the default exported components. If you are using them just make sure to use the correct id name as well.
 
