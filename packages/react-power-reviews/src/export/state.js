@@ -1,8 +1,8 @@
 import { State } from "statable"
 
-const state = new State({
+const prState = new State({
 	components: {},
 	loading: true,
 })
 
-module.exports = { state }
+module.exports = { prState }

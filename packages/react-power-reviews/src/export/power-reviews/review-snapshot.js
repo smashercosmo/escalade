@@ -1,12 +1,12 @@
 import React, { Component } from "react"
 
-import { state } from "../state"
+import { prState } from "../state"
 
 export default class ReviewSnapshot extends Component {
 	componentDidMount() {
-		state.setState({
+		prState.setState({
 			components: {
-				...state.state.components,
+				...prState.state.components,
 				ReviewSnapshot: `pr-reviewSnapshot`,
 			},
 		})

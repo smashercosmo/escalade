@@ -1,4 +1,4 @@
-import { state } from "../state"
+import { prState } from "../state"
 
 function loadScript(src) {
 	return new Promise((resolve, reject) => {
@@ -11,7 +11,39 @@ function loadScript(src) {
 	})
 }
 
+const defaultComps = [
+	`CategorySnippet`,
+	`ReviewSnippet`,
+	`ReviewDisplay`,
+	`ReviewSnapshot`,
+	`ReviewList`,
+	`QuestionSnippet`,
+	`QuestionDisplay`,
+	`ReviewImageSnippet`,
+	`ReviewImageDisplay`,
+	`WhydYouBuyDisplay`,
+	`Write`,
+	`WhydYouBuy`,
+	`AddToCart`,
+]
+
 export default props => {
+	let updatedComps = {}
+	const userComps = Object.keys(props.components)
+	userComps.forEach(comp => {
+		if (defaultComps.includes(comp)) {
+			updatedComps[comp] = props.components[comp]
+		} else {
+			console.warn(
+				`${comp} does not exist for Power-Reviews and will be removed from your list`
+			)
+		}
+	})
+	if (Object.keys(updatedComps).length === 0) {
+		console.warn(
+			`No components were added to the powerReviewConfig, please make sure you are spelling your component correctly or that it exists`
+		)
+	}
 	let content = {
 		api_key: props.apiKey,
 		locale: props.locale || `en_US`,
@@ -20,7 +52,7 @@ export default props => {
 		page_id: props.pageId,
 		review_wrapper_url:
 			props.wrapperUrl || `/write-review?page_id=${props.pageId}`,
-		components: props.components || null,
+		components: updatedComps,
 		on_render: (config, data) => {
 			if (props.init) {
 				props.init(config, data)
@@ -45,11 +77,11 @@ export default props => {
 			await loadScript(`//ui.powerreviews.com/stable/4.0/ui.js`).catch(err => {
 				reject(`Something went wrong while loading the script: ${err}`)
 			})
-			content.components = content.components || state.state.components
+			content.components = content.components || prState.state.components
 			window.POWERREVIEWS.display.render(content)
 			resolve()
 		} else if (window.POWERREVIEWS) {
-			content.components = content.components || state.state.components
+			content.components = content.components || prState.state.components
 			window.POWERREVIEWS.display.render(content)
 			resolve()
 		}
