@@ -25,6 +25,7 @@ const defaultComps = [
 	`Write`,
 	`WhydYouBuy`,
 	`AddToCart`,
+	`ReviewYourPurchases`,
 ]
 
 export default props => {
@@ -90,7 +91,6 @@ export default props => {
 			})
 		})
 	}
-	console.log(content)
 	return new Promise(async (resolve, reject) => {
 		if (!window.POWERREVIEWS) {
 			await loadScript(`//ui.powerreviews.com/stable/4.0/ui.js`).catch(err => {
