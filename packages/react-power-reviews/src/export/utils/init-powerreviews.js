@@ -32,6 +32,9 @@ export default props => {
 	const userComps = Object.keys(props.components)
 	userComps.forEach(comp => {
 		if (defaultComps.includes(comp)) {
+			if (comp === `CategorySnippet`) {
+				return
+			}
 			updatedComps[comp] = props.components[comp]
 		} else {
 			console.warn(
@@ -44,7 +47,7 @@ export default props => {
 			`No components were added to the powerReviewConfig, please make sure you are spelling your component correctly or that it exists`
 		)
 	}
-	let content = {
+	let mainComp = {
 		api_key: props.apiKey,
 		locale: props.locale || `en_US`,
 		merchant_group_id: props.merchantGroupId,
@@ -65,13 +68,29 @@ export default props => {
 		},
 	}
 	if (props.product) {
-		content.product = props.product
+		mainComp.product = props.product
 	}
 	if (props.config) {
 		Object.keys(props.config).forEach(key => {
-			content[key] = props.config[key]
+			mainComp[key] = props.config[key]
 		})
 	}
+	let content = [mainComp]
+	if (props.categorySnippets) {
+		props.categorySnippets.snippets.forEach(snippet => {
+			content.push({
+				locale: `en_US`,
+				merchant_group_id: props.merchantGroupId,
+				merchant_id: props.merchantId,
+				page_id: snippet,
+				api_key: props.apiKey,
+				components: {
+					CategorySnippet: `${props.categorySnippets.id}-${snippet}`,
+				},
+			})
+		})
+	}
+	console.log(content)
 	return new Promise(async (resolve, reject) => {
 		if (!window.POWERREVIEWS) {
 			await loadScript(`//ui.powerreviews.com/stable/4.0/ui.js`).catch(err => {

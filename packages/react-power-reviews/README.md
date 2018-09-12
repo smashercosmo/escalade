@@ -54,3 +54,73 @@ render() {
  )
 }
 ```
+
+Gotchas
+
+## Multiple snippets on a page
+
+Example:
+You have some related products on your product page and you want to show a snippet to show the star rating of those products. You cannot make a seperate component and just render in a new config.
+
+```jsx
+export default RelatedProducts extends Component {
+ componentDidMount(){
+  // configHere
+ }
+ render(){
+  return (
+   <Fragment>
+    <div id="snippet-1" />
+    <div id="snippet-2" />
+   </Fragment>
+  )
+ }
+}
+```
+
+This will not work. It will override the prev config and render only what was configured last. Power reviews has a fix for this, but we went ahead and did most of the heavy lifting for you.
+
+This will be using a seperate component called `CategorySnippet`, not the same thing as the `ReviewSnippet` and therefore you will not need to worry about passing in the main product-id unless you are using the `CategorySnippet` for that.
+
+You will need to get a list of all your product's ids that you want to have a snippet on the page.
+
+```js
+const ids = [`1`, `2`, `3`]
+```
+
+Then you will need to attach this to your config in this exact way.
+
+```jsx
+//...
+componentDidMount(){
+ let config = { ...normalPowerReviewConfig}
+
+ // use this exact key
+ config[`categorySnippets`] = {
+  // This is the base id of the div that you will use
+  id: `customId`,
+  snippets: ids
+ }
+
+ PowerReviewConfig(config).catch(err => console.log(err))
+}
+```
+
+Now to render these out you will use the base id you provided and append a `-` with the `id` right after like so:
+
+```jsx
+render(){
+ return (
+  <Fragment>
+   <div id="customId-1" />
+   <div id="customId-2" />
+   <div id="customId-3" />
+  </Fragment>
+ )
+}
+```
+
+Each of these will now render that product's snippet. You would want to have a seperate comp or some way of dynamically being able to pass in the id's though. For example:
+`<div id={`customId-${id}`} />`
+
+If you do not see your content being rendered then you are most likely rendering the PowerReviewConfig twice and overriding it somewhere.
