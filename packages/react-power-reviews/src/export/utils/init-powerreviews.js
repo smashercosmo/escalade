@@ -91,17 +91,22 @@ export default props => {
 			})
 		})
 	}
+
 	return new Promise(async (resolve, reject) => {
 		if (!window.POWERREVIEWS) {
 			await loadScript(`//ui.powerreviews.com/stable/4.0/ui.js`).catch(err => {
 				reject(`Something went wrong while loading the script: ${err}`)
 			})
 			content.components = content.components || prState.state.components
-			window.POWERREVIEWS.display.render(content)
+			window.POWERREVIEWS.display.render(
+				content.length === 1 ? content[0] : content
+			)
 			resolve()
 		} else if (window.POWERREVIEWS) {
 			content.components = content.components || prState.state.components
-			window.POWERREVIEWS.display.render(content)
+			window.POWERREVIEWS.display.render(
+				content.length === 1 ? content[0] : content
+			)
 			resolve()
 		}
 	})
