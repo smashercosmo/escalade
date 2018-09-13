@@ -30,7 +30,7 @@ const defaultComps = [
 
 export default props => {
 	let updatedComps = {}
-	const userComps = Object.keys(props.components)
+	const userComps = props.components ? Object.keys(props.components) : []
 	userComps.forEach(comp => {
 		if (defaultComps.includes(comp)) {
 			if (comp === `CategorySnippet`) {
@@ -45,7 +45,7 @@ export default props => {
 	})
 	if (Object.keys(updatedComps).length === 0) {
 		console.warn(
-			`No components were added to the powerReviewConfig, please make sure you are spelling your component correctly or that it exists`
+			`No components were added to the PowerReviewConfig, please make sure you are spelling your component correctly or that it exists, ignore this warning if you are meaning to only pass in categorySnippets`
 		)
 	}
 	let mainComp = {
