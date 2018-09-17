@@ -11,37 +11,14 @@ function loadScript(src) {
 	})
 }
 
-const defaultComps = [
-	`CategorySnippet`,
-	`ReviewSnippet`,
-	`ReviewDisplay`,
-	`ReviewSnapshot`,
-	`ReviewList`,
-	`QuestionSnippet`,
-	`QuestionDisplay`,
-	`ReviewImageSnippet`,
-	`ReviewImageDisplay`,
-	`WhydYouBuyDisplay`,
-	`Write`,
-	`WhydYouBuy`,
-	`AddToCart`,
-	`ReviewYourPurchases`,
-]
-
 export default props => {
 	let updatedComps = {}
 	const userComps = props.components ? Object.keys(props.components) : []
 	userComps.forEach(comp => {
-		if (defaultComps.includes(comp)) {
-			if (comp === `CategorySnippet`) {
-				return
-			}
-			updatedComps[comp] = props.components[comp]
-		} else {
-			console.warn(
-				`${comp} does not exist for Power-Reviews and will be removed from your list`
-			)
+		if (comp === `CategorySnippet`) {
+			return
 		}
+		updatedComps[comp] = props.components[comp]
 	})
 	if (Object.keys(updatedComps).length === 0) {
 		console.warn(
