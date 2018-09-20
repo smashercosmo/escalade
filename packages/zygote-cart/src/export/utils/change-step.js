@@ -8,4 +8,9 @@ export default function changeStep(step) {
 	if (step === `shipping`) {
 		submitInfo()
 	}
+
+	const cartEl = document.querySelector(`.zygoteCart`)
+	if (cartEl){
+		cartEl.scrollTop = 0
+	}
 }
