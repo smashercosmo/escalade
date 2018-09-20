@@ -43,13 +43,22 @@ export default class PaymentRequest extends React.Component {
 	}
 	render() {
 		return this.state.canMakePayment ? (
-			<div>
+			<div className='zygotePaymentRequest'>
 				<PaymentRequestButtonElement
 					paymentRequest={this.state.paymentRequest}
 					className='PaymentRequestButton'
 				/>
-				<div>Or enter card information</div>
+				<div className='zygotePaymentRequestDivider'>Or enter card your information</div>
 			</div>
 		) : null
 	}
+	static styles = () => ({
+		'.zygotePaymentRequest': {
+			marginTop: 10,
+		},
+		'.zygotePaymentRequestDivider': {
+			marginTop: 30,
+			textAlign: `center`,
+		},
+	})
 }

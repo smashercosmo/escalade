@@ -30,6 +30,7 @@ import { styles as successStep } from '../components/steps/success'
 import { styles as simpleSummary } from '../components/simple-summary'
 import { styles as stripe } from '../components/stripe'
 import { styles as stripeInput } from '../components/stripe/input'
+import { styles as stripePaymentRequest } from '../components/stripe/payment-request'
 
 export default function styles(opts){
 	return css({
@@ -63,6 +64,7 @@ export default function styles(opts){
 		...successStep(opts),
 		...stripe(opts),
 		...stripeInput(opts),
+		...stripePaymentRequest(opts),
 		...simpleSummary(opts),
 	})
 }
