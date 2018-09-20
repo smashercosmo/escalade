@@ -29,6 +29,8 @@ export default class PaymentRequest extends React.Component {
 			console.log(`canMakePayment`, result)
 			this.setState({ canMakePayment: !!result })
 		})
+
+		this.setState({ paymentRequest })
 	}
 	componentDidUpdate(){
 		const { stripe } = this.props
@@ -43,7 +45,7 @@ export default class PaymentRequest extends React.Component {
 		return this.state.canMakePayment ? (
 			<PaymentRequestButtonElement
 				paymentRequest={this.state.paymentRequest}
-				className="PaymentRequestButton"
+				className='PaymentRequestButton'
 				style={{
 					// For more details on how to style the Payment Request Button, see:
 					// https://stripe.com/docs/elements/payment-request-button#styling-the-element
