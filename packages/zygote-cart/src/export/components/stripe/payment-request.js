@@ -6,11 +6,14 @@ export default class PaymentRequest extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {}
-		this.update = this.update.bind(this)
+		this.updateTotal = this.updateTotal.bind(this)
 	}
 	update(){
 		const { stripe } = this.props
 		if (!stripe) return
+		if(!this.state.paymentRequest){
+			this.updateTotal()
+		}
 		console.log(`Updating request payment...`)
 		const paymentRequest = stripe.paymentRequest({
 			country: `US`,
@@ -20,6 +23,8 @@ export default class PaymentRequest extends React.Component {
 				amount: totalsState.state.total * 100,
 			},
 		})
+		this.setState({ paymentRequest })
+
 		paymentRequest.on(`token`, ({ complete, token, ...data }) => {
 			console.log(`Received Stripe token: `, token)
 			console.log(`Received customer information: `, data)
@@ -31,7 +36,12 @@ export default class PaymentRequest extends React.Component {
 			this.setState({ canMakePayment: !!result })
 		})
 
-		this.setState({ paymentRequest })
+	}
+	updateTotal(){
+		if(!this.state.paymentRequest) return
+		this.state.paymentRequest.update({
+			amount: totalsState.state.total * 100,
+		})
 	}
 	componentDidUpdate(){
 		const { stripe } = this.props
@@ -41,10 +51,10 @@ export default class PaymentRequest extends React.Component {
 	}
 	componentDidMount(){
 		this.update()
-		totalsState.subscribe(this.update)
+		totalsState.subscribe(this.updateTotal)
 	}
 	componentWillUnmount(){
-		totalsState.unsubscribe(this.update)
+		totalsState.unsubscribe(this.updateTotal)
 	}
 	render() {
 		return this.state.canMakePayment ? (
