@@ -31,7 +31,12 @@ export default class ShippingStep extends React.Component{
 									<Totals />
 								</div>
 								<div className='zygoteShippingBtn'>
-									<Button onClick={nextStep} disabled={loading ? true : false}>Next Step</Button>
+									<Button
+										onClick={loading ? null : nextStep}
+										disabled={loading ? true : false}
+									>
+										Next Step
+									</Button>
 								</div>
 								{!!paymentFooter && (
 									<div>{paymentFooter}</div>

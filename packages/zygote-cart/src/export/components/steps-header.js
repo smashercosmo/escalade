@@ -1,7 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
 import changeStep from '../utils/change-step'
-import submitInfo from '../utils/attempt-submit-info'
 
 export default class StepsHeader extends React.Component {
 	render() {
@@ -13,6 +12,7 @@ export default class StepsHeader extends React.Component {
 					className={classNames(
 						`zygoteStepLink`,
 						step === `info` && `zygoteActiveStepLink`,
+						step !== `info` && `zygoteClickableStepLink`,
 					)}
 					onClick={step === `info` ? null : () => changeStep(`info`)}
 				>
@@ -23,18 +23,21 @@ export default class StepsHeader extends React.Component {
 					className={classNames(
 						`zygoteStepLink`,
 						step === `shipping` && `zygoteActiveStepLink`,
+						step === `payment` && `zygoteClickableStepLink`,
 					)}
-					onClick={step === `shipping` ? null : () => changeStep(`shipping`)}
+					onClick={
+						step === `payment`
+							? () => changeStep(`shipping`)
+							: null
+					}
 				>
 					Shipping
 				</li>
 				<li
-					role='button'
 					className={classNames(
 						`zygoteStepLink`,
 						step === `payment` && `zygoteActiveStepLink`,
 					)}
-					onClick={step === `payment` ? null : submitInfo}
 				>
 					Payment
 				</li>
@@ -57,10 +60,13 @@ export default class StepsHeader extends React.Component {
 			width: 90,
 			borderBottom: `3px solid #C0BFBF`,
 		},
-		'.zygoteActiveStepLink': {
+		'.zygoteActiveStepLink, .zygoteClickableStepLink': {
 			color: primaryColor,
 			borderBottom: `3px solid ${primaryColor}`,
 			cursor: `default !important`,
+		},
+		'.zygoteClickableStepLink': {
+			cursor: `pointer !important`,
 		},
 	})
 }
