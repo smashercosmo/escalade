@@ -43,18 +43,13 @@ export default class PaymentRequest extends React.Component {
 	}
 	render() {
 		return this.state.canMakePayment ? (
-			<PaymentRequestButtonElement
-				paymentRequest={this.state.paymentRequest}
-				className='PaymentRequestButton'
-				style={{
-					// For more details on how to style the Payment Request Button, see:
-					// https://stripe.com/docs/elements/payment-request-button#styling-the-element
-					paymentRequestButton: {
-						theme: `light`,
-						height: `64px`,
-					},
-				}}
-			/>
+			<div>
+				<PaymentRequestButtonElement
+					paymentRequest={this.state.paymentRequest}
+					className='PaymentRequestButton'
+				/>
+				<div>Or enter card information</div>
+			</div>
 		) : null
 	}
 }
