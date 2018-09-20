@@ -6,6 +6,7 @@ export default function nextStep(){
 	let index = steps.indexOf(stepState.state.step) + 1
 	let step = steps[index]
 	if (step) {
+		console.log(`Moving to step ${step}`)
 		changeStep(step)
 	}
 }

@@ -16,7 +16,17 @@ export default class StepsHeader extends React.Component {
 					)}
 					onClick={step === `info` ? null : () => changeStep(`info`)}
 				>
-					1. Your Details
+					1. Details
+				</li>
+				<li
+					role='button'
+					className={classNames(
+						`zygoteStepLink`,
+						step === `shipping` && `zygoteActiveStepLink`,
+					)}
+					onClick={step === `shipping` ? null : () => changeStep(`shipping`)}
+				>
+					2. Shipping
 				</li>
 				<li
 					role='button'
@@ -26,7 +36,7 @@ export default class StepsHeader extends React.Component {
 					)}
 					onClick={step === `payment` ? null : submitInfo}
 				>
-					2. Payment
+					3. Payment
 				</li>
 			</ul>
 		)
@@ -43,7 +53,7 @@ export default class StepsHeader extends React.Component {
 		'.zygoteStepLink': {
 			display: `inline-block`,
 			padding: 10,
-			width: 140,
+			width: 120,
 			borderBottom: `3px solid #C0BFBF`,
 		},
 		'.zygoteActiveStepLink': {

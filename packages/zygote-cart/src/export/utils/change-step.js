@@ -5,7 +5,7 @@ import submitInfo from './submit-info'
 export default function changeStep(step) {
 	stepState.setState({ step })
 	clearMessages()
-	if (step === `payment`) {
+	if (step === `shipping`) {
 		submitInfo()
 	}
 }

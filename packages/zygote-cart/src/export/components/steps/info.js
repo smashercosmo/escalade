@@ -13,7 +13,7 @@ import Zip from '../inputs/zip'
 import StepsHeader from '../steps-header'
 import Header from '../header'
 import Button from '../button'
-import submitInfo from '../../utils/attempt-submit-info'
+import attemptSubmitInfo from '../../utils/attempt-submit-info'
 import productsState from '../../state/products'
 import settingsState from '../../state/settings'
 import SimpleSummary from '../simple-summary'
@@ -25,7 +25,7 @@ export default class InfoStep extends React.Component{
 			<Subscribe to={[stepState, settingsState]}>
 				{({ step }, { infoHeader, infoFooter }) => (
 					<Fragment>
-						{(step === `info` || step === `payment`) && (
+						{(step === `info` || step === `shipping` || step === `payment`) && (
 							<form data-form='info'>
 								{!!infoHeader && (
 									<div>{infoHeader}</div>
@@ -101,7 +101,7 @@ export default class InfoStep extends React.Component{
 									<Coupon />
 								</div>
 								<div className='zygoteInfoBtn'>
-									<Button onClick={submitInfo}>
+									<Button onClick={attemptSubmitInfo}>
 										Next Step
 									</Button>
 								</div>

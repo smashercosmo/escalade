@@ -11,7 +11,6 @@ import Button from '../button'
 import submitOrder from '../../utils/submit-order'
 import ProductList from '../product-list'
 import Totals from '../totals'
-import ShippingMethods from '../shipping-methods'
 import Checkbox from '../inputs/checkbox'
 import inputs from '../../utils/inputs'
 import AddressInput from '../inputs/address'
@@ -35,7 +34,7 @@ export default class PaymentStep extends React.Component{
 			<Subscribe to={[stepState, shippingState, settingsState]}>
 				{({ step }, { loading }, { paymentHeader, paymentFooter }) => (
 					<Fragment>
-						{(step === `info` || step === `payment`) && (
+						{(step === `info` || step === `shipping` || step === `payment`) && (
 							<form data-form='payment'>
 								{!!paymentHeader && (
 									<div>{paymentHeader}</div>
@@ -92,10 +91,6 @@ export default class PaymentStep extends React.Component{
 											<Zip name='billingZip' autoComplete='billing postal-code' />
 										</div>
 									)}
-
-								</div>
-								<div className='zygotePaymentSection'>
-									<ShippingMethods />
 								</div>
 								<div className='zygotePaymentSection'>
 									<h2>Final Order Summary</h2>

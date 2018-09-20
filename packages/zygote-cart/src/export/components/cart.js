@@ -7,6 +7,7 @@ import stepState from '../state/step'
 import settingsState from '../state/settings'
 import CartStep from './steps/cart'
 import InfoStep from './steps/info'
+import ShippingMethodsStep from './steps/shipping-methods'
 import PaymentStep from './steps/payment'
 import SuccessStep from './steps/success'
 import Processing from './processing'
@@ -50,6 +51,9 @@ export default class Cart extends React.Component {
 									</div>
 									<div className='zygoteStep zygoteInfoStep'>
 										<InfoStep />
+									</div>
+									<div className='zygoteStep zygoteShippingStep'>
+										<ShippingMethodsStep />
 									</div>
 									<div className='zygoteStep zygotePaymentStep'>
 										<PaymentStep />
@@ -138,6 +142,11 @@ export default class Cart extends React.Component {
 		},
 		'.zygoteOnInfoStep': {
 			'.zygoteInfoStep': {
+				display: `block`,
+			},
+		},
+		'.zygoteOnShippingStep': {
+			'.zygoteShippingStep': {
 				display: `block`,
 			},
 		},

@@ -1,6 +1,7 @@
 const steps = [
 	`cart`,
 	`info`,
+	`shipping`,
 	`payment`,
 	`complete`,
 ]
