@@ -6,6 +6,7 @@ export default class PaymentRequest extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {}
+		this.update = this.update.bind(this)
 	}
 	update(){
 		const { stripe } = this.props
@@ -40,6 +41,10 @@ export default class PaymentRequest extends React.Component {
 	}
 	componentDidMount(){
 		this.update()
+		totalsState.subscribe(this.update)
+	}
+	componentWillUnmount(){
+		totalsState.unsubscribe(this.update)
 	}
 	render() {
 		return this.state.canMakePayment ? (
