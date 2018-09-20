@@ -26,7 +26,7 @@ export default class ShippingStep extends React.Component{
 									<ShippingMethods />
 								</div>
 								<div className='zygoteShippingSection'>
-									<h2>Final Order Summary</h2>
+									<h2>Order Summary</h2>
 									<ProductList editable={false} />
 									<Totals />
 								</div>

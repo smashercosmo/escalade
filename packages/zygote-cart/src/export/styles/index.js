@@ -24,6 +24,7 @@ import { styles as select } from '../components/inputs/select'
 import { styles as toggle } from '../components/inputs/toggle'
 import { styles as cartStep } from '../components/steps/cart'
 import { styles as infoStep } from '../components/steps/info'
+import { styles as shippingStep } from '../components/steps/shipping-methods'
 import { styles as paymentStep } from '../components/steps/payment'
 import { styles as successStep } from '../components/steps/success'
 import { styles as simpleSummary } from '../components/simple-summary'
@@ -57,6 +58,7 @@ export default function styles(opts){
 		...toggle(opts),
 		...cartStep(opts),
 		...infoStep(opts),
+		...shippingStep(opts),
 		...paymentStep(opts),
 		...successStep(opts),
 		...stripe(opts),

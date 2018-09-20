@@ -54,14 +54,10 @@ export default class ShippingMethods extends React.Component {
 			</Subscribe>
 		)
 	}
-	static styles = ({ altBackgroundColor, altBorderColor }) => ({
+	static styles = () => ({
 		'.zygoteShipMethods': {
-			background: altBackgroundColor,
-			border: `1px solid ${altBorderColor}`,
 			borderRight: 0,
 			borderLeft: 0,
-			margin: `50px -20px`,
-			padding: `30px 20px`,
 			h2: {
 				marginTop: 0,
 			},

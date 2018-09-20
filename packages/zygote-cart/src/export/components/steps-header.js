@@ -49,11 +49,12 @@ export default class StepsHeader extends React.Component {
 			fontWeight: `bold`,
 			textAlign: `center`,
 			color: `#C0BFBF`,
+			fontSize: `.75em`,
 		},
 		'.zygoteStepLink': {
 			display: `inline-block`,
 			padding: 10,
-			width: 120,
+			width: 90,
 			borderBottom: `3px solid #C0BFBF`,
 		},
 		'.zygoteActiveStepLink': {
