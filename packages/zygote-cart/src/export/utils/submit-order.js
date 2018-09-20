@@ -13,9 +13,11 @@ import metaState from '../state/meta'
 import shippingState from '../state/shipping'
 import successState from '../state/success'
 
-export default async function submitOrder() {
+export default async function submitOrder(token) {
 	clearMessages()
-	validateAllInput()
+	if (!token) {
+		validateAllInput()
+	}
 
 	await timeout()
 
@@ -24,18 +26,24 @@ export default async function submitOrder() {
 	stepState.setState({ processing: true })
 
 	const body = getFormValues()
-	if (settingsState.state.stripeApiKey){
-		let { token } = await window.zygoteStripeInstance
-			// .createToken({ name: body.infoName })
-			.createToken({
-				name: body.billingName,
-				address_line1: body.billingAddress1,
-				address_line2: body.billingAddress2,
-				address_city: body.billingCity,
-				address_state: body.billingState,
-				address_zip: body.billingZip,
-			})
-		body.payment = token
+
+	if (settingsState.state.stripeApiKey) {
+		if(token){
+			body.payment = token
+		}
+		else {
+			// Get token from payment inputs
+			let { token } = await window.zygoteStripeInstance
+				.createToken({
+					name: body.billingName,
+					address_line1: body.billingAddress1,
+					address_line2: body.billingAddress2,
+					address_city: body.billingCity,
+					address_state: body.billingState,
+					address_zip: body.billingZip,
+				})
+			body.payment = token
+		}
 	}
 
 	body.products = productsState.state.products

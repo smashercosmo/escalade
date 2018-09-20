@@ -1,6 +1,7 @@
 import React from 'react'
 import { PaymentRequestButtonElement } from 'react-stripe-elements'
 import totalsState from '../../state/totals'
+import submitOrder from '../../utils/submit-order'
 
 export default class PaymentRequest extends React.Component {
 	constructor(props){
@@ -28,6 +29,7 @@ export default class PaymentRequest extends React.Component {
 		paymentRequest.on(`token`, ({ complete, token, ...data }) => {
 			console.log(`Received Stripe token: `, token)
 			console.log(`Received customer information: `, data)
+			submitOrder(token)
 			complete(`success`)
 		})
 
