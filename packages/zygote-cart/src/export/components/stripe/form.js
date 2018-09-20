@@ -3,6 +3,7 @@ import { injectStripe } from 'react-stripe-elements'
 import CardNumber from './card-number'
 import Expiration from './expiration'
 import Cvc from './cvc'
+import PaymentRequest from './payment-request'
 
 class StripePayment extends React.Component {
 	constructor(props) {
@@ -16,6 +17,7 @@ class StripePayment extends React.Component {
 	render() {
 		return (
 			<Fragment>
+				<PaymentRequest stripe={this.props.stripe} />
 				<CardNumber />
 				<div className='zygoteStripeRow'>
 					<div>

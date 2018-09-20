@@ -28,7 +28,7 @@ export default class StripeWrapper extends React.Component {
 			<StripeProvider stripe={this.state.stripe}>
 				<Elements>
 					<div>
-						<StripeForm />
+						<StripeForm stripe={this.state.stripe} />
 					</div>
 				</Elements>
 			</StripeProvider>
