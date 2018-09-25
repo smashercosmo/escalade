@@ -59,6 +59,7 @@ export default class StepsHeader extends React.Component {
 			padding: 10,
 			width: 90,
 			borderBottom: `3px solid #C0BFBF`,
+			cursor: `default !important`,
 		},
 		'.zygoteActiveStepLink, .zygoteClickableStepLink': {
 			color: primaryColor,
