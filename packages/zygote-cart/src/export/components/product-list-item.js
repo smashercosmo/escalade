@@ -4,6 +4,7 @@ import SmallButton from './small-button'
 import removeFromCart from '../utils/remove-from-cart'
 import increaseQuantity from '../utils/increase-quantity'
 import decreaseQuantity from '../utils/decrease-quantity'
+import formatUsd from '../utils/format-usd'
 
 export default class ProductList extends React.Component{
 	render() {
@@ -58,7 +59,7 @@ export default class ProductList extends React.Component{
 					)}
 				</div>
 				<div className='zygoteProdPrice'>
-					${price.toFixed(2)}
+					{formatUsd(price)}
 				</div>
 				{editable && (
 					<button

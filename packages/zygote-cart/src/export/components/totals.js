@@ -12,7 +12,7 @@ class TotalsList extends React.Component{
 			<Fragment>
 				<li>
 					<div>Subtotal</div>
-					<div>${subtotal.toFixed(2)}</div>
+					<div>{formatUsd(subtotal)}</div>
 				</li>
 				{loading && (
 					<li>
@@ -33,7 +33,7 @@ class TotalsList extends React.Component{
 						))}
 						<li className='zygoteGrandTotal'>
 							<div>Total</div>
-							<div>${total.toFixed(2)}</div>
+							<div>{formatUsd(total)}</div>
 						</li>
 					</Fragment>
 				)}

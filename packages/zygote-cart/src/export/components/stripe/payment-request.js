@@ -16,26 +16,11 @@ export default class PaymentRequest extends React.Component {
 		if(!this.state.paymentRequest){
 			this.updateTotal()
 		}
-		const displayItems = []
-		productsState.state.products.forEach(({ name, quantity, price }) => {
-			displayItems.push({
-				label: `${name}${quantity > 1 ? ` (x${quantity})` : ``}`,
-				amount: price * 100 * quantity,
-			})
-		})
-		totalsState.state.modifications.forEach(({ description, value }) => {
-			if (typeof value === `number`) {
-				displayItems.push({
-					label: description,
-					amount: value,
-				})
-			}
-		})
 		const paymentRequest = stripe.paymentRequest({
 			country: `US`,
 			currency: `usd`,
 			requestShipping: false,
-			displayItems,
+			displayItems: this.createDisplayItems(),
 			total: {
 				label: `Total`,
 				amount: totalsState.state.total * 100,
@@ -53,15 +38,35 @@ export default class PaymentRequest extends React.Component {
 		})
 
 	}
-	updateTotal(){
+	updateTotal() {
 		if(!this.state.paymentRequest) return
 		this.state.paymentRequest.update({
 			currency: `usd`,
 			total: {
 				label: `Total`,
 				amount: totalsState.state.total * 100,
+				displayItems: this.createDisplayItems(),
 			},
 		})
+	}
+	createDisplayItems() {
+		const displayItems = []
+		productsState.state.products.forEach(({ name, quantity, price }) => {
+			displayItems.push({
+				label: `${name}${quantity > 1 ? ` (x${quantity})` : ``}`,
+				amount: price * 100 * quantity,
+			})
+		})
+		totalsState.state.modifications.forEach(({ description, value }) => {
+			console.log(description, value)
+			if (typeof value === `number`) {
+				displayItems.push({
+					label: description,
+					amount: value * 100,
+				})
+			}
+		})
+		return displayItems
 	}
 	componentDidUpdate(){
 		const { stripe } = this.props

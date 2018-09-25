@@ -87,7 +87,7 @@ export default async function submitStripeInfo({ stripeApiSecret, body, verbose 
 			if (type === `discount` || type === `tax` || type === `shipping`) {
 				res.modifications.push({
 					id: type === `discount` ? parent : type,
-					value: amount / 100,
+					value: amount,
 					description,
 				})
 			}
@@ -100,7 +100,7 @@ export default async function submitStripeInfo({ stripeApiSecret, body, verbose 
 		res.shippingMethods = order.shipping_methods.map(({ id, amount, description }) => {
 			return {
 				id,
-				value: amount / 100,
+				value: amount,
 				description,
 			}
 		})
