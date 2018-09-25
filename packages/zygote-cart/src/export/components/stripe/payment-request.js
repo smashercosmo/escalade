@@ -1,14 +1,18 @@
 import React from 'react'
-import { PaymentRequestButtonElement } from 'react-stripe-elements'
 import totalsState from '../../state/totals'
 import productsState from '../../state/products'
 import submitOrder from '../../utils/submit-order'
+import ApplePay from '../apple-pay-button'
+import Button from '../button'
 
 export default class PaymentRequest extends React.Component {
 	constructor(props){
 		super(props)
-		this.state = {}
+		this.state = {
+			canMakePayment: false,
+		}
 		this.updateTotal = this.updateTotal.bind(this)
+		this.clickHandler = this.clickHandler.bind(this)
 	}
 	update(){
 		const { stripe } = this.props
@@ -68,6 +72,12 @@ export default class PaymentRequest extends React.Component {
 		})
 		return displayItems
 	}
+	clickHandler(){
+		const { paymentRequest } = this.state
+		if(paymentRequest){
+			paymentRequest.show()
+		}
+	}
 	componentDidUpdate(){
 		const { stripe } = this.props
 		if(!stripe || this.state.stripe) return
@@ -82,12 +92,16 @@ export default class PaymentRequest extends React.Component {
 		totalsState.unsubscribe(this.updateTotal)
 	}
 	render() {
-		return this.state.canMakePayment ? (
+		const { canMakePayment } = this.state
+		const { applePay } = canMakePayment
+		return canMakePayment ? (
 			<div className='zygotePaymentRequest'>
-				<PaymentRequestButtonElement
-					paymentRequest={this.state.paymentRequest}
-					className='PaymentRequestButton'
-				/>
+				{applePay && (
+					<ApplePay onClick={this.clickHandler} />
+				)}
+				{!applePay && (
+					<Button onClick={this.clickHandler}>Pay Now</Button>
+				)}
 				<div className='zygotePaymentRequestDivider'>Or enter card your information</div>
 			</div>
 		) : null
