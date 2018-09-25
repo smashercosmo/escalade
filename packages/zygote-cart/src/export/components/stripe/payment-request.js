@@ -23,7 +23,7 @@ export default class PaymentRequest extends React.Component {
 			displayItems: this.createDisplayItems(),
 			total: {
 				label: `Total`,
-				amount: totalsState.state.total * 100,
+				amount: totalsState.state.total,
 			},
 		})
 		this.setState({ paymentRequest })
@@ -44,7 +44,7 @@ export default class PaymentRequest extends React.Component {
 			currency: `usd`,
 			total: {
 				label: `Total`,
-				amount: totalsState.state.total * 100,
+				amount: totalsState.state.total,
 				displayItems: this.createDisplayItems(),
 			},
 		})
@@ -54,7 +54,7 @@ export default class PaymentRequest extends React.Component {
 		productsState.state.products.forEach(({ name, quantity, price }) => {
 			displayItems.push({
 				label: `${name}${quantity > 1 ? ` (x${quantity})` : ``}`,
-				amount: price * 100 * quantity,
+				amount: price * quantity,
 			})
 		})
 		totalsState.state.modifications.forEach(({ description, value }) => {
@@ -62,7 +62,7 @@ export default class PaymentRequest extends React.Component {
 			if (typeof value === `number`) {
 				displayItems.push({
 					label: description,
-					amount: value * 100,
+					amount: value,
 				})
 			}
 		})
