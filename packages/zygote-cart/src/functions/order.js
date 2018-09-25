@@ -13,14 +13,16 @@ export async function handler({ body }, _, callback) {
 		verbose: true,
 	})
 
-	await sendSparkpostConfirmation({
-		sparkpostApiSecret: process.env.SPARKPOST_API_SECRET,
-		body,
-		from: `noreply@escaladeinc.com`,
-		bcc: `krose@escaladesports.com`,
-		logo: `https://project-boilerplate.netlify.com/backend-logo.png`,
-		verbose: true,
-	})
+	if (res.success === true) {
+		await sendSparkpostConfirmation({
+			sparkpostApiSecret: process.env.SPARKPOST_API_SECRET,
+			body,
+			from: `noreply@escaladeinc.com`,
+			bcc: `krose@escaladesports.com`,
+			logo: `https://project-boilerplate.netlify.com/backend-logo.png`,
+			verbose: true,
+		})
+	}
 
 	callback(null, {
 		statusCode: 200,
