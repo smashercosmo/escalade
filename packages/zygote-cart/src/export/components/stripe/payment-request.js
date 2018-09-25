@@ -16,16 +16,28 @@ export default class PaymentRequest extends React.Component {
 		if(!this.state.paymentRequest){
 			this.updateTotal()
 		}
+		const displayItems = []
+		productsState.state.products.forEach(({ name, quantity, price }) => {
+			displayItems.push({
+				label: `${name}${quantity > 1 ? ` (x${quantity})` : ``}`,
+				amount: price * 100 * quantity,
+			})
+		})
+		totalsState.state.modifications.forEach(({ description, value }) => {
+			if (typeof value === `number`) {
+				displayItems.push({
+					label: description,
+					amount: value,
+				})
+			}
+		})
 		const paymentRequest = stripe.paymentRequest({
 			country: `US`,
 			currency: `usd`,
 			requestShipping: false,
-			displayItems: productsState.state.products.map(({ title, quantity, price}) => ({
-				label: `${title} x${quantity}`,
-				amount: price * 100 * quantity,
-			})),
+			displayItems,
 			total: {
-				label: `Demo total`,
+				label: `Total`,
 				amount: totalsState.state.total * 100,
 			},
 		})
@@ -46,7 +58,7 @@ export default class PaymentRequest extends React.Component {
 		this.state.paymentRequest.update({
 			currency: `usd`,
 			total: {
-				label: `Demo total`,
+				label: `Total`,
 				amount: totalsState.state.total * 100,
 			},
 		})
