@@ -15,10 +15,10 @@ export default class PaymentRequest extends React.Component {
 		if(!this.state.paymentRequest){
 			this.updateTotal()
 		}
-		console.log(`Updating request payment...`)
 		const paymentRequest = stripe.paymentRequest({
 			country: `US`,
 			currency: `usd`,
+			requestShipping: false,
 			total: {
 				label: `Demo total`,
 				amount: totalsState.state.total * 100,
@@ -26,15 +26,12 @@ export default class PaymentRequest extends React.Component {
 		})
 		this.setState({ paymentRequest })
 
-		paymentRequest.on(`token`, ({ complete, token, ...data }) => {
-			console.log(`Received Stripe token: `, token)
-			console.log(`Received customer information: `, data)
+		paymentRequest.on(`token`, ({ complete, token }) => {
 			submitOrder(token)
 			complete(`success`)
 		})
 
 		paymentRequest.canMakePayment().then((result) => {
-			console.log(`canMakePayment`, result)
 			this.setState({ canMakePayment: !!result })
 		})
 
