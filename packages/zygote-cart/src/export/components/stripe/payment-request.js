@@ -42,10 +42,10 @@ export default class PaymentRequest extends React.Component {
 		if(!this.state.paymentRequest) return
 		this.state.paymentRequest.update({
 			currency: `usd`,
+			displayItems: this.createDisplayItems(),
 			total: {
 				label: `Total`,
 				amount: totalsState.state.total,
-				displayItems: this.createDisplayItems(),
 			},
 		})
 	}
