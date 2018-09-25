@@ -2,10 +2,10 @@ import React from 'react'
 import states from 'datasets-us-states-names'
 import Select from './select'
 
-export default class NameInput extends React.Component {
+export default class StateInput extends React.Component {
 	static defaultProps = {
 		label: `State`,
-		autoComplete: `region`,
+		autoComplete: `address-level1`,
 		required: true,
 		name: `state`,
 	}

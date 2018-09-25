@@ -4,7 +4,7 @@ import Input from './input'
 export default class CityInput extends React.Component {
 	static defaultProps = {
 		label: `City`,
-		autoComplete: `locality`,
+		autoComplete: `address-level2`,
 		required: true,
 		name: `city`,
 	}

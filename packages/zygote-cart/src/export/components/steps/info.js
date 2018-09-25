@@ -78,14 +78,14 @@ export default class InfoStep extends React.Component{
 											<div>
 												<City
 													name='shippingCity'
-													autoComplete='shipping locality'
+													autoComplete='shipping address-level2'
 													step='info'
 												/>
 											</div>
 											<div>
 												<State
 													name='shippingState'
-													autoComplete='shipping region'
+													autoComplete='shipping address-level1'
 													step='info'
 												/>
 											</div>

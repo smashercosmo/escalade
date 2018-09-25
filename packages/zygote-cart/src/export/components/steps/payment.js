@@ -82,10 +82,10 @@ export default class PaymentStep extends React.Component{
 											</div>
 											<div className='zygotePaymentCityState'>
 												<div>
-													<City name='billingCity' autoComplete='billing locality' />
+													<City name='billingCity' autoComplete='billing address-level2' />
 												</div>
 												<div>
-													<State name='billingState' autoComplete='billing region' />
+													<State name='billingState' autoComplete='billing address-level1' />
 												</div>
 											</div>
 											<Zip name='billingZip' autoComplete='billing postal-code' />
