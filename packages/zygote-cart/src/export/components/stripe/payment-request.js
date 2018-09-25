@@ -1,6 +1,7 @@
 import React from 'react'
 import { PaymentRequestButtonElement } from 'react-stripe-elements'
 import totalsState from '../../state/totals'
+import productsState from '../../state/products'
 import submitOrder from '../../utils/submit-order'
 
 export default class PaymentRequest extends React.Component {
@@ -19,6 +20,10 @@ export default class PaymentRequest extends React.Component {
 			country: `US`,
 			currency: `usd`,
 			requestShipping: false,
+			displayItems: productsState.state.products.map(({ title, quantity, price}) => ({
+				label: `${title} x${quantity}`,
+				amount: price * 100 * quantity,
+			})),
 			total: {
 				label: `Demo total`,
 				amount: totalsState.state.total * 100,
