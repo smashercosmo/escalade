@@ -28,7 +28,7 @@ import { Cart, addToCart } from 'zygote-cart'
   name: `Billiard Table`,
   image: `https://via.placeholder.com/75x75`,
   description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit...`,
-  price: 299.99,
+  price: 29999,
 })}>
   Add to Cart!
 </button>
@@ -115,7 +115,7 @@ Example `shippingWebhook` request:
       "name": "Billiard Table",
       "image": "https://via.placeholder.com/75x75",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-      "price": 299.99
+      "price": 29999
     }
   ]
 }
@@ -130,12 +130,12 @@ Example response:
     {
       "id": "january-sale",
       "description": "January Sale",
-      "value": -20
+      "value": -2
     },
     {
       "id": "tax",
       "description": "Sales Tax",
-      "value": 8.99
+      "value": 899
     },
   ],
   "shippingMethods": [
@@ -147,12 +147,12 @@ Example response:
     {
       "id": "ship-1",
       "description": "Express Shipping",
-      "value": 11.5
+      "value": 1150
     },
     {
       "id": "ship-2",
       "description": "Overnight Shipping",
-      "value": 49.99
+      "value": 4999
     }
   ],
   "selectedShippingMethod": "ship-0"
@@ -228,7 +228,7 @@ import { addToCart } from 'zygote-cart'
   id: `DIS82`,
   name: `EBook`,
   image: `https://via.placeholder.com/75x75`,
-  price: 10.5,
+  price: 1050,
   noShip: true,
 })}>Add to Cart</button>
 ```
@@ -272,7 +272,7 @@ To make it easier to work with payment processors and transactional emails, we'v
 Info webhook:
 
 ```js
-import { submitStripeInfo } from '../export/server'
+import { submitStripeInfo } from 'zygote-cart/server'
 
 export async function handler({ body }, _, callback) {
 
@@ -293,7 +293,7 @@ export async function handler({ body }, _, callback) {
 Order webhook:
 
 ```js
-import { submitStripeOrder } from '../export/server'
+import { submitStripeOrder } from 'zygote-cart/server'
 
 export async function handler({ body }, _, callback) {
 
