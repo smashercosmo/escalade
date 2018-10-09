@@ -3807,6 +3807,12 @@ create-react-class@^15.5.1, create-react-class@^15.5.2, create-react-class@^15.6
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
+creditcards-types@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/creditcards-types/-/creditcards-types-2.1.0.tgz#c9bd2fa1a4d2f9f6e45721c604df282a3dc2c3a7"
+  dependencies:
+    xtend "~4.0.0"
+
 creditcards-types@~2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/creditcards-types/-/creditcards-types-2.0.0.tgz#e4624515fd91b19dcc516efb09372b30af2c106d"
