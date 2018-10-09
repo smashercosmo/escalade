@@ -1,17 +1,14 @@
 import React from 'react'
-import { Cvc } from 'react-credit-card-primitives'
-import cvc from 'creditcards/cvc'
-import types from 'creditcards-types'
+import { Expiration } from 'react-credit-card-primitives'
+import { isPast, year, month } from 'creditcards/expiration'
 import Input from './input'
 
-const { isValid } = cvc(types)
-
-export default class CardCVC extends React.Component {
+export default class CardExpiration extends React.Component {
 	static defaultProps = {
-		autoComplete: `cc-csc`,
-		label: `CVC`,
+		autoComplete: `cc-exp`,
+		label: `Expiration`,
 		required: true,
-		name: `billingCardCVC`,
+		name: `billingCardExpiration`,
 	}
 	constructor(props){
 		super(props)
@@ -20,8 +17,16 @@ export default class CardCVC extends React.Component {
 		}
 	}
 	validate(val){
-		if (!isValid(val)){
-			return `Please supply a valid security code`
+		val = val.replace(/ /g, ``).split(`/`)
+		const mo = month.parse(val[0])
+		const yr = year.parse(val[1])
+		if(
+			yr > 99 ||
+			!month.isValid(mo) ||
+			!year.isValid(yr) ||
+			isPast(mo, year.parse(yr, true))
+		){
+			return `Please supply a valid expiration date`
 		}
 	}
 	render() {
@@ -34,7 +39,7 @@ export default class CardCVC extends React.Component {
 		} = this.props
 		return (
 			<div className='zygoteCardInput'>
-				<Cvc
+				<Expiration
 					onChange={({ type }) => this.setState({ type })}
 					render={({ getInputProps }) => {
 						const props = getInputProps()

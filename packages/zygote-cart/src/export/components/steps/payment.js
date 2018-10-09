@@ -20,6 +20,7 @@ import City from '../inputs/city'
 import State from '../inputs/state'
 import Zip from '../inputs/zip'
 import CreditCard from '../inputs/credit-card'
+import Expiration from '../inputs/expiration'
 import Cvc from '../inputs/cvc'
 
 export default class PaymentStep extends React.Component{
@@ -58,6 +59,7 @@ export default class PaymentStep extends React.Component{
 									{!stripeApiKey && (
 										<Fragment>
 											<CreditCard step='billing' />
+											<Expiration step='billing' />
 											<Cvc step='billing' />
 										</Fragment>
 									)}
