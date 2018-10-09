@@ -59,8 +59,14 @@ export default class PaymentStep extends React.Component{
 									{!stripeApiKey && (
 										<Fragment>
 											<CreditCard step='billing' />
-											<Expiration step='billing' />
-											<Cvc step='billing' />
+											<div className='zygotePaymentExpCVC'>
+												<div>
+													<Expiration step='billing' />
+												</div>
+												<div>
+													<Cvc step='billing' />
+												</div>
+											</div>
 										</Fragment>
 									)}
 
@@ -185,6 +191,21 @@ export default class PaymentStep extends React.Component{
 					},
 					':last-of-type': {
 						width: `40%`,
+						paddingRight: 0,
+					},
+				},
+			},
+		},
+		'.zygotePaymentExpCVC': {
+			'@media(min-width: 450px)': {
+				display: `flex`,
+				'> div': {
+					padding: `0 10px`,
+					width: `50%`,
+					':first-of-type': {
+						paddingLeft: 0,
+					},
+					':last-of-type': {
 						paddingRight: 0,
 					},
 				},
