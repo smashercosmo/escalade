@@ -22,6 +22,7 @@ import { styles as coupon } from '../components/inputs/coupon'
 import { styles as input } from '../components/inputs/input'
 import { styles as select } from '../components/inputs/select'
 import { styles as toggle } from '../components/inputs/toggle'
+import { styles as cardInput } from '../components/inputs/credit-card'
 import { styles as cartStep } from '../components/steps/cart'
 import { styles as infoStep } from '../components/steps/info'
 import { styles as shippingStep } from '../components/steps/shipping-methods'
@@ -68,5 +69,6 @@ export default function styles(opts){
 		...stripePaymentRequest(opts),
 		...simpleSummary(opts),
 		...applePay(opts),
+		...cardInput(opts),
 	})
 }
