@@ -20,6 +20,7 @@ import City from '../inputs/city'
 import State from '../inputs/state'
 import Zip from '../inputs/zip'
 import CreditCard from '../inputs/credit-card'
+import Cvc from '../inputs/cvc'
 
 export default class PaymentStep extends React.Component{
 	constructor(props){
@@ -55,7 +56,10 @@ export default class PaymentStep extends React.Component{
 										<StripePayment />
 									)}
 									{!stripeApiKey && (
-										<CreditCard step='billing' />
+										<Fragment>
+											<CreditCard step='billing' />
+											<Cvc step='billing' />
+										</Fragment>
 									)}
 
 									<label className='zygotePaymentSame'>

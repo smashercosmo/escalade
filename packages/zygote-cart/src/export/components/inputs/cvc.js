@@ -1,27 +1,17 @@
 import React from 'react'
-import { Number } from 'react-credit-card-primitives'
-import Card from 'creditcards/card'
+import { Cvc } from 'react-credit-card-primitives'
+import cvc from 'creditcards/cvc'
 import types from 'creditcards-types'
 import Input from './input'
-import AmericanExpress from '../card-list/american-express'
-import Discover from '../card-list/discover'
-import Mastercard from '../card-list/mastercard'
-import Visa from '../card-list/visa'
 
-const { isValid } = Card(types)
-const cardImgs = {
-	'American Express': <AmericanExpress />,
-	Mastercard: <Mastercard />,
-	Visa: <Visa />,
-	Discover: <Discover />,
-}
+const { isValid } = cvc(types)
 
 export default class CreditCard extends React.Component {
 	static defaultProps = {
-		autoComplete: `cc-number`,
-		label: `Card Number`,
+		autoComplete: `cc-csc`,
+		label: `CVC`,
 		required: true,
-		name: `billingCardNumber`,
+		name: `billingCardCVC`,
 	}
 	constructor(props){
 		super(props)
@@ -30,9 +20,8 @@ export default class CreditCard extends React.Component {
 		}
 	}
 	validate(val){
-		val = val.replace(/\D/g, ``)
 		if (!isValid(val)){
-			return `Please supply a valid credit card number`
+			return `Please supply a valid security code`
 		}
 	}
 	render() {
@@ -45,7 +34,7 @@ export default class CreditCard extends React.Component {
 		} = this.props
 		return (
 			<div className='zygoteCardInput'>
-				<Number
+				<Cvc
 					onChange={({ type }) => this.setState({ type })}
 					render={({ getInputProps }) => {
 						const props = getInputProps()
@@ -64,21 +53,7 @@ export default class CreditCard extends React.Component {
 						)
 					}}
 				/>
-				<div className='zygoteCardInputType'>
-					{cardImgs[this.state.type]}
-				</div>
 			</div>
 		)
 	}
-	static styles = () => ({
-		'.zygoteCardInput': {
-			position: `relative`,
-		},
-		'.zygoteCardInputType': {
-			position: `absolute`,
-			top: 3,
-			right: 2,
-			width: 49,
-		},
-	})
 }
