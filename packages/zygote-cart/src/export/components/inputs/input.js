@@ -18,11 +18,23 @@ export default class Input extends React.Component{
 		this.handleFocus = this.handleFocus.bind(this)
 		this.validate = this.validate.bind(this)
 	}
-	handleChange(){
+	handleChange(e){
+		if(this.props.onChange){
+			this.props.onChange(e)
+		}
 		this.setState({ value: this.input.value })
 	}
-	handleFocus() {
+	handleFocus(e) {
+		if (this.props.onFocus) {
+			this.props.onFocus(e)
+		}
 		this.setState({ focus: true })
+	}
+	handleBlur(e) {
+		if (this.props.onBlur) {
+			this.props.onBlur(e)
+		}
+		this.validate()
 	}
 	validate(){
 		this.setState({ focus: false })
@@ -114,12 +126,12 @@ export default class Input extends React.Component{
 							this.input = input
 							inputRef(input)
 						}}
-						value={value}
+						value={this.props.value || value}
+						name={name}
+						className='zygoteInput'
 						onChange={this.handleChange}
 						onFocus={this.handleFocus}
 						onBlur={this.validate}
-						name={name}
-						className='zygoteInput'
 					/>
 				)}
 				{error && (

@@ -19,6 +19,7 @@ import CompanyName from '../inputs/company-name'
 import City from '../inputs/city'
 import State from '../inputs/state'
 import Zip from '../inputs/zip'
+import CreditCard from '../inputs/credit-card'
 
 export default class PaymentStep extends React.Component{
 	constructor(props){
@@ -32,7 +33,7 @@ export default class PaymentStep extends React.Component{
 	render() {
 		return (
 			<Subscribe to={[stepState, shippingState, settingsState]}>
-				{({ step }, { loading }, { paymentHeader, paymentFooter }) => (
+				{({ step }, { loading }, { paymentHeader, paymentFooter, stripeApiKey }) => (
 					<Fragment>
 						{(step === `info` || step === `shipping` || step === `payment`) && (
 							<form data-form='payment'>
@@ -49,7 +50,13 @@ export default class PaymentStep extends React.Component{
 											<CardList />
 										</div>
 									</div>
-									<StripePayment />
+
+									{!!stripeApiKey && (
+										<StripePayment />
+									)}
+									{!stripeApiKey && (
+										<CreditCard step='billing' />
+									)}
 
 									<label className='zygotePaymentSame'>
 										<Checkbox

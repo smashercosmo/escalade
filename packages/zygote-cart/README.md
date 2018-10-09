@@ -106,9 +106,9 @@ Example `shippingWebhook` request:
   "infoPhone": "555-555-1234",
   "shippingAddress1": "123 Some Street",
   "shippingAddress2": "Apt. 5F",
-  "city": "Kansas City",
-  "state": "Missouri",
-  "zip": "64030",
+  "shippingCity": "Kansas City",
+  "shippingState": "Missouri",
+  "shippingZip": "64030",
   "products": [
     {
       "id": "TESTID",
@@ -130,7 +130,7 @@ Example response:
     {
       "id": "january-sale",
       "description": "January Sale",
-      "value": -2
+      "value": -2000
     },
     {
       "id": "tax",
