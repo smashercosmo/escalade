@@ -1,4 +1,4 @@
-export async function handler({ body }, _, callback) {
+export async function handler({ body }) {
 
 	console.log(`Received from client:`, JSON.parse(body))
 
@@ -37,8 +37,8 @@ export async function handler({ body }, _, callback) {
 	}
 
 	// Response
-	callback(null, {
+	return {
 		statusCode: 200,
 		body: JSON.stringify(response),
-	})
+	}
 }

@@ -3,7 +3,7 @@ import Stripe from 'stripe'
 dotenv.config({ silent: true })
 const stripe = Stripe(process.env.STRIPE_API_SECRET)
 
-export async function handler({ body }, __, callback) {
+export async function handler({ body }) {
 
 	body = JSON.parse(body)
 
@@ -130,8 +130,8 @@ export async function handler({ body }, __, callback) {
 	console.log(`Sending to client:`, res)
 
 	// Response
-	callback(null, {
+	return {
 		statusCode: 200,
 		body: JSON.stringify(res),
-	})
+	}
 }

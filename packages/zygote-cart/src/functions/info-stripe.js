@@ -2,7 +2,7 @@ import dotenv from 'dotenv'
 import { submitStripeInfo } from '../export/server'
 dotenv.config({ silent: true })
 
-export async function handler({ body }, _, callback) {
+export async function handler({ body }) {
 
 	const res = await submitStripeInfo({
 		stripeApiSecret: process.env.STRIPE_API_SECRET,
@@ -11,8 +11,8 @@ export async function handler({ body }, _, callback) {
 	})
 
 	// Response
-	callback(null, {
+	return {
 		statusCode: 200,
 		body: JSON.stringify(res),
-	})
+	}
 }
