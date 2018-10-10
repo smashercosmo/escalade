@@ -1,17 +1,8 @@
-import Cart from './components'
-import CartQuantity from './components/cart-quantity'
-import openCart from './utils/open-cart'
-import closeCart from './utils/close-cart'
-import toggleCart from './utils/toggle-cart'
-import addToCart from './utils/add-to-cart'
-import removeFromCart from './utils/remove-from-cart'
-
-export {
-	Cart,
-	CartQuantity,
-	openCart,
-	closeCart,
-	toggleCart,
-	addToCart,
-	removeFromCart,
-}
+export { default as Cart } from './components'
+export { default as CartQuantity } from './components/cart-quantity'
+export { default as openCart } from './utils/open-cart'
+export { default as closeCart } from './utils/close-cart'
+export { default as toggleCart } from './utils/toggle-cart'
+export { default as addToCart } from './utils/add-to-cart'
+export { default as removeFromCart } from './utils/remove-from-cart'
+export { default as settingsState } from './state/settings'
