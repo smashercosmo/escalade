@@ -3,6 +3,7 @@ import PaypalExpressBtn from 'react-paypal-express-checkout'
 import { Subscribe } from 'statable'
 import settingsState from '../state/settings'
 import totalsState from '../state/totals'
+import submitOrder from '../utils/submit-order'
 
 export default class Paypal extends React.Component {
 	render() {
@@ -14,8 +15,14 @@ export default class Paypal extends React.Component {
 						currency='USD'
 						env='sandbox'
 						total={total / 100}
+						shipping={1}
 						onError={err => console.error(err)}
-						onSuccess={payment => console.log(payment)}
+						onSuccess={token => {
+							submitOrder({
+								token,
+								type: `paypal`,
+							})
+						}}
 					/>
 				)}
 			</Subscribe>

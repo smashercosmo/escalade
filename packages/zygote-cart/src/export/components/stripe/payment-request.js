@@ -33,7 +33,7 @@ export default class PaymentRequest extends React.Component {
 		this.setState({ paymentRequest })
 
 		paymentRequest.on(`token`, ({ complete, token }) => {
-			submitOrder(token)
+			submitOrder({ type: `stripe`, token })
 			complete(`success`)
 		})
 

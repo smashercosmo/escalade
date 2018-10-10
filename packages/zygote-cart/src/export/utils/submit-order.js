@@ -13,7 +13,7 @@ import metaState from '../state/meta'
 import shippingState from '../state/shipping'
 import successState from '../state/success'
 
-export default async function submitOrder(token) {
+export default async function submitOrder({ type, token }) {
 	clearMessages()
 	if (!token) {
 		validateAllInput()
@@ -27,8 +27,12 @@ export default async function submitOrder(token) {
 
 	const body = getFormValues()
 
-	if (settingsState.state.stripeApiKey) {
-		if(token){
+	if(type === `paypal`){
+		body.paymentType = `paypal`
+		body.payment = token
+	}
+	else if (settingsState.state.stripeApiKey) {
+		if(token && type === `stripe`){
 			body.payment = token
 		}
 		else {
@@ -44,6 +48,7 @@ export default async function submitOrder(token) {
 				})
 			body.payment = token
 		}
+		body.paymentType = `stripe`
 	}
 
 	body.products = productsState.state.products
