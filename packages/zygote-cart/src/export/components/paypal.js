@@ -9,11 +9,14 @@ export default class Paypal extends React.Component {
 	render() {
 		return (
 			<Subscribe to={[settingsState, totalsState]}>
-				{({ paypalAppId }, { total }) => (
+				{({ paypalAppId, paypalEnv=`production` }, { total }) => (
 					<PaypalExpressBtn
-						client={{ sandbox: paypalAppId }}
+						client={{
+							sandbox: paypalAppId,
+							production: paypalAppId,
+						}}
 						currency='USD'
-						env='sandbox'
+						env={paypalEnv}
 						total={total / 100}
 						shipping={1}
 						onError={err => console.error(err)}
