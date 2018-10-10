@@ -22,6 +22,7 @@ import Zip from '../inputs/zip'
 import CreditCard from '../inputs/credit-card'
 import Expiration from '../inputs/expiration'
 import Cvc from '../inputs/cvc'
+import Paypal from '../paypal'
 
 export default class PaymentStep extends React.Component{
 	constructor(props){
@@ -35,7 +36,16 @@ export default class PaymentStep extends React.Component{
 	render() {
 		return (
 			<Subscribe to={[stepState, shippingState, settingsState]}>
-				{({ step }, { loading }, { paymentHeader, paymentFooter, stripeApiKey }) => (
+				{({
+					step,
+				}, {
+					loading,
+				}, {
+					paymentHeader,
+					paymentFooter,
+					stripeApiKey,
+					paypalAppId,
+				}) => (
 					<Fragment>
 						{(step === `info` || step === `shipping` || step === `payment`) && (
 							<form data-form='payment'>
@@ -53,6 +63,9 @@ export default class PaymentStep extends React.Component{
 										</div>
 									</div>
 
+									{!!paypalAppId && (
+										<Paypal id={paypalAppId} />
+									)}
 									{!!stripeApiKey && (
 										<StripePayment />
 									)}

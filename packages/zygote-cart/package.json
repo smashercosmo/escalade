@@ -49,6 +49,7 @@
     "react-credit-card-primitives": "^1.5.1",
     "react-html-email": "^3.0.0",
     "react-input-mask": "^2.0.3",
+    "react-paypal-express-checkout": "^1.0.5",
     "react-stripe-elements": "^2.0.1",
     "sparkpost": "^2.1.2",
     "statable": "^0.3.2",
