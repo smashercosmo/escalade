@@ -46,9 +46,9 @@ export default class CardCVC extends React.Component {
 								label={label}
 								required={required}
 								validators={[this.validate]}
-								name={name}
 								step={step}
 								{...props}
+								name={name}
 							/>
 						)
 					}}
