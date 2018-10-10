@@ -1,19 +1,17 @@
 import React from 'react'
 import { css } from 'emotion'
+import { Subscribe } from 'statable'
 import { Cart, openCart, addToCart, settingsState } from '../export'
 import logo from '../img/logo.svg'
 
+const exposeSettings = [
+	`paypalAppId`,
+	`paypalEnv`,
+	`infoWebhook`,
+	`orderWebhook`,
+]
+
 export default class HomePage extends React.Component {
-	constructor(props){
-		super(props)
-		this.state = {
-			//stripeApiKey: `pk_test_0EMVTB6nEzmrjGA0Fc0kyVOR`,
-			paypalAppId: `ATP-SVtvHjAfyOGdr_8RRXgizsofojJV32mMt3WRmf5ignVi1TZkA67UYwm5sAitwETQuEigH91w70_6`,
-			paypalEnv: `sandbox`,
-			infoWebhook: `/.netlify/functions/info`,
-			orderWebhook: `/.netlify/functions/order`,
-		}
-	}
 	render() {
 		let products = this.props.data.allStripeSku.edges.map(edge => edge.node)
 		return (
@@ -47,30 +45,32 @@ export default class HomePage extends React.Component {
 				</div>
 
 				<div className={styles.editControls}>
-					{(() => {
-						const els = []
-						for(let i in this.state){
-							const changeHandler = ({ target: { value }}) => {
-								console.log(value)
-								settingsState.setState({
-									[i]: value,
-								})
+					<Subscribe to={settingsState}>
+						{state => {
+							const els = []
+							for (let i = 0; i < exposeSettings.length; i++) {
+								const name = exposeSettings[i]
+								const changeHandler = ({ target: { value } }) => {
+									settingsState.setState({
+										[name]: value,
+									})
+								}
+								els.push(
+									<div key={`control-${name}`}>
+										<label>
+											<span>{name}:</span>
+											<input
+												type='text'
+												value={state[name]}
+												onChange={changeHandler.bind(this)}
+											/>
+										</label>
+									</div>
+								)
 							}
-							els.push(
-								<div key={`control-${i}`}>
-									<label>
-										<span>{i}:</span>
-										<input
-											type='text'
-											value={this.state[i]}
-											onChange={changeHandler.bind(this)}
-										/>
-									</label>
-								</div>
-							)
-						}
-						return els
-					})()}
+							return els
+						}}
+					</Subscribe>
 				</div>
 
 				<Cart
@@ -78,7 +78,11 @@ export default class HomePage extends React.Component {
 					cartHeader={<div className={styles.header}>With FREE shipping!</div>}
 					cartFooter={<div className={styles.footer}>* Free shipping, except Alaska and Hawaii</div>}
 
-					{...this.state}
+					//stripeApiKey='pk_test_0EMVTB6nEzmrjGA0Fc0kyVOR'
+					paypalAppId='ATP-SVtvHjAfyOGdr_8RRXgizsofojJV32mMt3WRmf5ignVi1TZkA67UYwm5sAitwETQuEigH91w70_6'
+					paypalEnv='sandbox'
+					infoWebhook='/.netlify/functions/info'
+					orderWebhook='/.netlify/functions/order'
 
 					totalModifications={[
 						{
