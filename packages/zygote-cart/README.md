@@ -94,10 +94,12 @@ Custom component properties:
 
 There are two URLs that can be passed as properties to send the cart information to your server:
 
-- `orderWebhook`: Required. Product, payment, and shipping information will be sent to this webhook once the order has been completed.
 - `infoWebhook`: Not required. Product and shipping information will be sent to this endpoing once the first section checkout has been completed. Useful for returning tax and shipping methods with this webhook.
+- `orderWebhook`: Required. Product, payment, and shipping information will be sent to this webhook once the order has been completed.
 
-Example `shippingWebhook` request:
+### `infoWebhook`:
+
+Example request:
 
 ```json
 {
