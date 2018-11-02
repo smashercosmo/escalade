@@ -7,7 +7,7 @@ function loadScript(src) {
 		s.src = src
 		s.onload = resolve
 		s.onerror = reject
-		document.head.appendChild(s)
+		document.body.appendChild(s)
 	})
 }
 
@@ -54,6 +54,7 @@ export default props => {
 		})
 	}
 	let content = [mainComp]
+
 	if (props.categorySnippets) {
 		props.categorySnippets.snippets.forEach(snippet => {
 			content.push({
@@ -68,7 +69,6 @@ export default props => {
 			})
 		})
 	}
-
 	return new Promise(async (resolve, reject) => {
 		if (!window.POWERREVIEWS) {
 			await loadScript(`//ui.powerreviews.com/stable/4.0/ui.js`).catch(err => {
