@@ -12,9 +12,8 @@ module.exports = async function({ cmsConfig = `/static/admin/config.yml` }){
 		console.error(`Missing media_folder in Netlify CMS config`)
 		process.exit(1)
 	}
-	if(!public_folder ){
-		console.error(`Missing public_folder in Netlify CMS config`)
-		process.exit(1)
+	if (!public_folder) {
+		public_folder = media_folder
 	}
 	obj = {
 		mediaPath: media_folder,
