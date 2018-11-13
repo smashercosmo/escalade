@@ -7,7 +7,7 @@ let obj
 module.exports = async function({ cmsConfig = `/static/admin/config.yml` }){
 	if(obj) return obj
 	const configPath = join(cwd, cmsConfig)
-	let { media_folder, public_folder } = await readYaml(configPath)
+	const { media_folder, public_folder } = await readYaml(configPath)
 	if(!media_folder ){
 		console.error(`Missing media_folder in Netlify CMS config`)
 		process.exit(1)
