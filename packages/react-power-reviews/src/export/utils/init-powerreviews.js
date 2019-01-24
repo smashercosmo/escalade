@@ -78,12 +78,18 @@ export default props => {
 			window.POWERREVIEWS.display.render(
 				content.length === 1 ? content[0] : content
 			)
+			if (Object.keys(content[0].components).length === 0) {
+				content[0].on_render(props.config || {}, content.length === 1 ? content[0] : content)
+			}
 			resolve()
 		} else if (window.POWERREVIEWS) {
 			content.components = content.components || prState.state.components
 			window.POWERREVIEWS.display.render(
 				content.length === 1 ? content[0] : content
 			)
+			if (Object.keys(content[0].components).length === 0) {
+				content[0].on_render(props.config || {}, content.length === 1 ? content[0] : content)
+			}
 			resolve()
 		}
 	})
