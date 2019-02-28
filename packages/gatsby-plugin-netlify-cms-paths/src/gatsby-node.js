@@ -59,5 +59,8 @@ exports.onCreateNode = async ({ node, getNode }, options) => {
 		nodeAbsPath = getNode(node.parent).absolutePath
 
 		await walkObject(node, iteratee, commonProps)
-	}
+	} else if (node.internal.type === "ContentJson") {
+    nodeAbsPath = getNode(node.parent).absolutePath;
+    await walkObject(node, iteratee, commonProps);
+  }
 }
