@@ -55,12 +55,9 @@ exports.onCreateNode = async ({ node, getNode }, options) => {
 		if(typeof node.frontmatter === `object`) {
 			await walkObject(node.frontmatter, iteratee, commonProps)
 		}
-	} else if (/^\w+Yaml$/.test(node.internal.type) ) {
+	} else if (/^\w+(Yaml|Json)$/.test(node.internal.type) ) {
 		nodeAbsPath = getNode(node.parent).absolutePath
 
 		await walkObject(node, iteratee, commonProps)
-	} else if (node.internal.type === "ContentJson") {
-    nodeAbsPath = getNode(node.parent).absolutePath;
-    await walkObject(node, iteratee, commonProps);
-  }
+	}
 }
