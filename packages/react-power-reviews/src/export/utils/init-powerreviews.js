@@ -72,17 +72,15 @@ export default props => {
 			await loadScript(`//ui.powerreviews.com/stable/4.0/ui.js`).catch(err => {
 				reject(`Something went wrong while loading the script: ${err}`)
 			})
-			if (content) {
-				console.log(window.POWERREVIEWS)
-
-				window.POWERREVIEWS.display.render(content)
+			window.POWERREVIEWS.display.render(content)
+			if (Object.keys(content[0].components).length === 0) {
+				content[0].on_render(props.config || {}, content)
 			}
 			resolve(content)
 		} else if (window.POWERREVIEWS) {
-			console.log(window.POWERREVIEWS)
-
-			if (content) {
-				window.POWERREVIEWS.display.render(content)
+			window.POWERREVIEWS.display.render(content)
+			if (Object.keys(content[0].components).length === 0) {
+				content[0].on_render(props.config || {}, content)
 			}
 			resolve(content)
 		}
