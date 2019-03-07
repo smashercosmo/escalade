@@ -1,5 +1,3 @@
-import { prState } from "../state"
-
 function loadScript(src) {
 	return new Promise((resolve, reject) => {
 		let s
@@ -12,14 +10,9 @@ function loadScript(src) {
 }
 
 export default props => {
-	let updatedComps = {}
-	const userComps = props.components ? Object.keys(props.components) : []
-	userComps.forEach(comp => {
-		if (comp === `CategorySnippet`) {
-			return
-		}
-		updatedComps[comp] = props.components[comp]
-	})
+	let updatedComps = { ...props.components }
+	delete updatedComps.CategorySnippet
+
 	if (Object.keys(updatedComps).length === 0) {
 		console.warn(
 			`No components were added to the PowerReviewConfig, please make sure you are spelling your component correctly or that it exists, ignore this warning if you are meaning to only pass in categorySnippets`
@@ -69,22 +62,29 @@ export default props => {
 			})
 		})
 	}
+
+	if (content.length === 1) {
+		content = content[0]
+	}
+
 	return new Promise(async (resolve, reject) => {
 		if (!window.POWERREVIEWS) {
 			await loadScript(`//ui.powerreviews.com/stable/4.0/ui.js`).catch(err => {
 				reject(`Something went wrong while loading the script: ${err}`)
 			})
-			content.components = content.components || prState.state.components
-			window.POWERREVIEWS.display.render(
-				content.length === 1 ? content[0] : content
-			)
-			resolve()
+			if (content) {
+				console.log(window.POWERREVIEWS)
+
+				window.POWERREVIEWS.display.render(content)
+			}
+			resolve(content)
 		} else if (window.POWERREVIEWS) {
-			content.components = content.components || prState.state.components
-			window.POWERREVIEWS.display.render(
-				content.length === 1 ? content[0] : content
-			)
-			resolve()
+			console.log(window.POWERREVIEWS)
+
+			if (content) {
+				window.POWERREVIEWS.display.render(content)
+			}
+			resolve(content)
 		}
 	})
 }
