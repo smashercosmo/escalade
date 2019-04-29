@@ -121,7 +121,7 @@ render(){
 ```
 
 Each of these will now render that product's snippet. You would want to have a seperate comp or some way of dynamically being able to pass in the id's though. For example:
-```
+```jsx
 <div id={`customId-${id}`} />
 ```
 
