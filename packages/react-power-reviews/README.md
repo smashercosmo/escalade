@@ -121,6 +121,8 @@ render(){
 ```
 
 Each of these will now render that product's snippet. You would want to have a seperate comp or some way of dynamically being able to pass in the id's though. For example:
-`<div id={`customId-${id}`} />`
+```
+<div id={`customId-${id}`} />
+```
 
 If you do not see your content being rendered then you are most likely rendering the PowerReviewConfig twice and overriding it somewhere.
