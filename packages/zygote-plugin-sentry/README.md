@@ -1,2 +1,2 @@
-# zygote-plugin-paypal
-Zygote cart Paypal Plugin
+# zygote-plugin-sentry
+Zygote Sentry Reporting Plugin
