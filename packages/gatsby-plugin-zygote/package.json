@@ -4,6 +4,7 @@
   "keywords": [
     "gatsby",
     "plugin",
+    "gatsby-plugin",
     "zygote"
   ],
   "main": "gatsby-browser.js",
