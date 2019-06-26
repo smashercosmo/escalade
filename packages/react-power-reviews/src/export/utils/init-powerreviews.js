@@ -63,9 +63,7 @@ export default props => {
 		})
 	}
 
-	if (content.length === 1) {
-		content = content[0]
-	}
+	// content = content.length > 1 ? content : content[0]
 
 	return new Promise(async (resolve, reject) => {
 		if (!window.POWERREVIEWS || !window.POWERREVIEWS.display) {
@@ -77,7 +75,7 @@ export default props => {
 				content[0].on_render(props.config || {}, content)
 			}
 			resolve(content)
-		}{
+		} {
 			window.POWERREVIEWS.display.render(content)
 			if (Object.keys(content[0].components).length === 0) {
 				content[0].on_render(props.config || {}, content)
