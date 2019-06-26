@@ -144,21 +144,21 @@ module.exports = {
 				respectDNT: true,
 			},
 		},
-		{
-			resolve: `download-google-fonts`,
-			options: {
-				fonts: [
-					{
-						family: `Oswald`,
-						subsets: [ `latin` ],
-					},
-					{
-						family: `Open Sans`,
-						subsets: [ `latin` ],
-					},
-				],
-			},
-		},
+		// {
+		// 	resolve: `download-google-fonts`,
+		// 	options: {
+		// 		fonts: [
+		// 			{
+		// 				family: `Oswald`,
+		// 				subsets: [ `latin` ],
+		// 			},
+		// 			{
+		// 				family: `Open Sans`,
+		// 				subsets: [ `latin` ],
+		// 			},
+		// 		],
+		// 	},
+		// },
 	],
 	siteMetadata: config,
 	developMiddleware: app => {
