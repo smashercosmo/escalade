@@ -1,5 +1,6 @@
 const { relative, dirname } = require(`path`)
 const getConfig = require(`./get-config`)
+const slash = require(`slash`)
 
 const cwd = process.cwd()
 
@@ -14,5 +15,5 @@ module.exports = async (markdownPath, imagePath, options) => {
 	markdownPath = dirname(markdownPath).replace(`${cwd}/`, ``)
 	imagePath = imagePath.replace(publicPath, mediaPath)
 	const newPath = relative(markdownPath, imagePath)
-	return newPath
+	return slash(newPath)
 }
