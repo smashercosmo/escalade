@@ -31,7 +31,7 @@ exports.onRenderBody = ({ setPostBodyComponents }, options = {}) => {
 		components.push(<link key='snipcartStyle' href={options.styles} type="text/css" rel="stylesheet" />)
 	}
 	if {options.language}{
-		components.unshift(<script key='snipcartLanguage' src={options.language}></script>)
+		components.push(<script key='snipcartLanguage' src={options.language}></script>)
 	}
 
 	return setPostBodyComponents(components)
