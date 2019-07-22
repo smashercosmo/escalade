@@ -22,6 +22,6 @@ public
 temp
 temp-*
 
-gatsby-ssr.js
+# gatsby-ssr.js
 gatsby-browser.js
 !src/*.js
