@@ -49,7 +49,7 @@ exports.onCreateNode = async ({ node, getNode }, options) => {
 		return await makeRelative(nodeAbsPath, val, options)
 	}
 	
-	if (node.internal.type === `MarkdownRemark`) {
+	if (node.internal.type === `MarkdownRemark` || node.internal.type === `Mdx`) {
 		nodeAbsPath = node.fileAbsolutePath
 
 		if(typeof node.frontmatter === `object`) {
