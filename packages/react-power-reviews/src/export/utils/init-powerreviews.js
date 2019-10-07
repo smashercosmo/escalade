@@ -67,6 +67,7 @@ export default props => {
 
 	return new Promise(async (resolve, reject) => {
 		if (!window.POWERREVIEWS || !window.POWERREVIEWS.display) {
+			console.log(`Loading Power Reviews Script`)
 			await loadScript(`//ui.powerreviews.com/stable/4.0/ui.js`).catch(err => {
 				reject(`Something went wrong while loading the script: ${err}`)
 			})
