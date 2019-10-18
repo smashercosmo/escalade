@@ -11,6 +11,15 @@ A quick boilerplate for [Zygote Cart](https://escaladesports.github.io/zygote-ca
 ```
 git clone https://github.com/escaladesports/zygote-plugin-boilerplate.git <your_project_name>
 cd <your_project_name>
+```
+
+Go to your `package.json` file and update your name to match your project name
+
+```
+"name": "<your-project-name>",
+```
+Then,
+```
 rm -rf .git
 git init
 yarn
@@ -37,6 +46,24 @@ From the root of the project you will be running the plugin run:
 or
 
 `npm link <plugin-name>`
+
+---
+
+## Injecting the plugin
+
+On the file for your Cart import the package
+
+``` javascript
+import * as <name-plugin> from "<plugin-name>"
+```
+
+and
+
+```jsx
+<Cart
+    plugins={[<name-plugin>]}
+/>
+```
 
 ---
 
