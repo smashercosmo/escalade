@@ -1,8 +1,8 @@
 # Zygote Plugin Boilerplate
+ 
 
 
-
-A quick boilerplate for [Zygote Cart](https://escaladesports.github.io/zygote-cart/)
+A boilerplate for creating custom plugins for [Zygote Cart](https://escaladesports.github.io/zygote-cart/)
 
 ---
 
@@ -16,7 +16,7 @@ cd <your_project_name>
 Go to your `package.json` file and update your name to match your project name
 
 ```
-"name": "<your-project-name>",
+"name": "<plugin-name>",
 ```
 Then,
 ```
@@ -24,7 +24,30 @@ rm -rf .git
 git init
 yarn
 yarn build
-yarn dev
+```
+---
+
+After you created and pushed to your remote repository, make sure to update the other properties in your `package.json`
+
+```json
+  "repository": {
+    "type": "git",
+    "url": "<your-repo-remote-url>"
+  },
+  "keywords": [
+    "Zygote"
+  ],
+  "author": "<author-info>",
+  "license": "MIT",
+  "bugs": {
+    "url": "<your-repo-remote-url-for-issues>"
+  },
+  "homepage": "<your-plugin-page-or-readme>",
+  "dependencies": {
+    "emotion": "^10.0.17",
+    "react": "^16.10.2"
+  },
+
 ```
 
 ---
@@ -89,6 +112,18 @@ or
 For more details visit: [npm-link docs](https://docs.npmjs.com/cli/link.html)
 
 ---
+## What's in the box :package:
+
+The plugin comes with some examples of: 
+
+- two hooks  (`preOrder` and `postOrder`)
+- one component (`Info`)
+
+Feel free to add/remove more hooks and components as you need.
+
+To view what components and hooks visit: [Zygote Cart- Plugin API](https://escaladesports.github.io/zygote-cart/#plugin-api)
+
+---
 
 ## Publishing your package
 
@@ -107,6 +142,8 @@ npm version <version>
 npm publish
 ```
 
+For additional info on npm packages:
 
-For additional info on npm version:
-[npm-version](https://docs.npmjs.com/cli/version)
+
+- [npm - Contributing packages to the registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry)
+- [npm-version](https://docs.npmjs.com/cli/version)
