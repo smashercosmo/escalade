@@ -141,6 +141,10 @@ npm publish
 npm version <version>
 npm publish
 ```
+Public Org scoped packages (@escaladesports.com\<plugin-name>) are published with 
+```
+npm publish --access public
+````
 
 For additional info on npm packages:
 
