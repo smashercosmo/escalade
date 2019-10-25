@@ -1,0 +1,23 @@
+{
+  "name": "@escaladesports/us-states-lib",
+  "version": "1.0.0",
+  "description": "US State names with options",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dale Wray dwray@escaladesports.com",
+  "license": "MIT",
+  "keywords": [
+    "zygote"
+	],
+	"repository": {
+    "git": "git",
+    "url": "git+https://github.com/escaladesports/us-states-lib.git"
+	},
+	"bugs": {
+    "url": "https://github.com/escaladesports/us-states-lib/issues"
+  },
+  "homepage": "https://github.com/escaladesports/us-states-lib#readme",
+  "dependencies": {}
+}
