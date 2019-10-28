@@ -1,38 +1,30 @@
 
-export function stateList(args){
-	console.log('args', args)
-	if( args.length === 0) {
-		let stateList = require('./lib/state-list.json')
-		return stateList.sort()
+export function getStateList(args){
+
+	if( !args ) {
+		return require('./lib/state-list.json').sort()
+	} else if ( args === `all-list` ) {
+		return require('./lib/all-list')
+	} else if ( args === `all-abbrv` ) {
+		return require('./lib/all-abbrv')
 	} else {
-		let outArray = []
-		let outObj = {}
-		if (args.includes(`state-list`)) { 
-			outArray = outArray.concat( require('./lib/state-list.json'))
+		var outObj = {}
+
+		for ( let arg in args ) {
+			outObj = {...outObj, ...( require(`./lib/${args[arg]}.json`))}
 		}
-		if (args.includes(`dc`)) { 
-			outArray = outArray.concat( require('./lib/dc.json'))
-		}
-		if (args.includes(`insular-list`)) { 
-			outArray = outArray.concat( require('./lib/insular-list.json'))
-		}
-		if (args.includes(`state-abbrv`)) { 
-			outObj = {...outObj, ...( require('./lib/state-abbrv.json'))}
-		}
-		if (args.includes(`dc-abbrv`)) { 
-			outObj = {...outObj, ...( require('./lib/dc-abbrv.json'))}
-		}
-		if (args.includes(`insular-abbrv`)) { 
-			outObj = {...outObj, ...( require('./lib/insular-abbrv.json'))}
+		if( !args.includes('abbrv') ) {
+			return Object.values(outObj).sort()
 		}
 
-		if ( outArray.length && !Object.keys(outObj).length ) {
-			return outArray.sort()
-		} else if ( !outArray.length && Object.keys(outObj).length ) {
-			return outObj
-		} else {
-			console.log(`US-State-Lib input mismatch. args were:`, args)
-			return {...outObj, ...outArray}
+		keys = Object.keys(outObj)
+		for ( var i=keys; i--; ) {
+			if ( Number.isNaN(parseInt(keys[i])) ) {
+				console.log(`US-State-Lib input mismatch. args were:`, args)
+				break
+			}
 		}
+
+		return outObj
 	}
 } 
