@@ -2,29 +2,27 @@ exports.getStateList = getStateList
 
 function getStateList(args) {
   if (!args) {
-    return require('./lib/state-list.json').sort()
+		return require('./lib/state-list.json').sort()
   } else {
     var outObj = {}
+		var outArray = []
 
     for (var arg in args) {
-      outObj = { ...outObj,
-        ...require("./lib/".concat(args[arg]))
-      }
-    }
+			const add = require("./lib/".concat(args[arg]))
+			if (Array.isArray(add)) {
+				 outArray = [ ...outArray, ...add ]
+    	} else {
+				outObj = { ...outObj, ...add }
+			}
+		}
 
-    if (!args.includes('abbrv')) {
-      return Object.values(outObj).sort()
-    }
-
-    keys = Object.keys(outObj)
-
-    for (var i = keys; i--;) {
-      if (Number.isNaN(parseInt(keys[i]))) {
-        console.log("US-State-Lib input mismatch. args were:", args)
-        break
-      }
-    }
-
-    return outObj
-  }
+		if ( outArray.length && !Object.keys(outObj).length ) {
+			return outArray.sort()
+		} else if ( !outArray.length && Object.keys(outObj).length ) {
+			return outObj
+		} else {
+			console.log(`US-State-Lib input mismatch. args were:`, args)
+			return {...outObj, ...outArray}
+		}
+	}
 }
