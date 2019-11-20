@@ -1,6 +1,6 @@
 {
   "name": "@escaladesports/us-states-lib",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "US State names with options",
   "main": "dist/index.js",
   "scripts": {
