@@ -52,19 +52,21 @@ export default props => {
 		props.categorySnippets.snippets.forEach(snippet => {
 			content.push({
 				locale: `en_US`,
-				merchant_group_id: props.merchantGroupId,
-				merchant_id: props.merchantId,
-				page_id: snippet,
-				api_key: props.apiKey,
+				merchant_group_id: snippet.merchantGroupId || props.merchantGroupId,
+				merchant_id: snippet.merchantId || props.merchantId,
+				page_id: snippet.id || snippet,
+				api_key: snippet.apiKey || props.apiKey,
 				components: {
-					CategorySnippet: `${props.categorySnippets.id}-${snippet}`,
+					CategorySnippet: snippet.slug
+						? `${snippet.slug}-${snippet.id || snippet}`
+						: `${props.categorySnippets.id}-${snippet.id || snippet}`,
 				},
 			})
 		})
 	}
 
 	// content = content.length > 1 ? content : content[0]
-
+	// console.log(`COMP: `, content)
 	return new Promise(async (resolve, reject) => {
 		if (!window.POWERREVIEWS || !window.POWERREVIEWS.display) {
 			console.log(`Loading Power Reviews Script`)
