@@ -146,6 +146,12 @@ Public Org scoped packages (@escaladesports.com\<plugin-name>) are published wit
 npm publish --access public
 ````
 
+** If you need to publish tags then make sure to do:
+```
+git push --tags
+git push
+```
+
 For additional info on npm packages:
 
 
