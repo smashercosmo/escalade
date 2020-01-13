@@ -65,8 +65,11 @@ export default props => {
 		})
 	}
 
+	if(props.log){
+		console.log(`COMP: `, content)
+	}
 	// content = content.length > 1 ? content : content[0]
-	// console.log(`COMP: `, content)
+
 	return new Promise(async (resolve, reject) => {
 		if (!window.POWERREVIEWS || !window.POWERREVIEWS.display) {
 			console.log(`Loading Power Reviews Script`)
