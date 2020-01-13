@@ -66,7 +66,8 @@ export default props => {
 	}
 
 	if(props.log){
-		console.log(`COMP: `, content)
+		console.log(`content: `, content)
+		console.log(`JSON Stringify content: `, JSON.stringify(content))
 	}
 	// content = content.length > 1 ? content : content[0]
 
