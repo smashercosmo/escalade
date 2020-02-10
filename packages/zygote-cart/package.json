@@ -16,10 +16,10 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "npm run build:module && npm run docs",
+    "build:all": "npm run build:module && npm run docs",
     "build:lambda": "netlify-lambda build src/functions",
     "build:gatsby": "npm run patch && npm run build:lambda && NODE_ENV=production gatsby build",
-    "build:module": "rm -rf dist && mkdir dist && babel src/export --out-dir dist",
+    "build": "rm -rf dist && mkdir dist && babel src/export --out-dir dist",
     "build:plugin": "babel plugins/export --out-dir ./",
     "clean": "run-p clean:cache clean:public clean:functions",
     "clean:cache": "rm -rf .cache",

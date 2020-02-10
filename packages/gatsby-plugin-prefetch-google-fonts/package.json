@@ -23,10 +23,8 @@
   "author": "Kennedy Rose <krose@escaladesports.com>",
   "license": "MIT",
   "scripts": {
-    "build": "npm run build:plugin",
     "build:gatsby": "npm run patch && NODE_ENV=production gatsby build",
-    "build:module": "rm -rf dist && mkdir dist && babel src/export --out-dir dist",
-    "build:plugin": "cd plugins/export && babel ./ --out-dir ../../",
+    "build": "cd plugins/export && babel ./ --out-dir ../../",
     "build:plugin:dev": "rm -rf plugins/dist && mkdir plugins/dist && cd plugins/export && babel ./ --out-dir ../dist && cp package.json ../dist/package.json",
     "clean": "run-p clean:cache clean:public",
     "clean:cache": "rm -rf .cache",
