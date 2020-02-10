@@ -1,0 +1,33 @@
+{
+  "name": "gatsby-plugin-polyfill-io",
+  "version": "1.1.0",
+  "keywords": [
+    "gatsby-plugin",
+    "gatsby",
+    "plugin",
+    "polyfill",
+    "polyfill.io"
+  ],
+  "main": "gatsby-ssr.js",
+  "author": "Kennedy Rose <krose@escaladesports.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/escaladesports/gatsby-plugin-polyfill-io.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "analyze": "esca-scripts analyze --input './src/gatsby-ssr.js'",
+    "build": "esca-scripts build --input src --output . --multiple --react --babel",
+    "prepublishOnly": "npm run build",
+    "reset": "esca-scripts reset",
+    "test": "npm run build && esca-scripts test",
+    "travis": "opn https://travis-ci.org/escaladesports/gatsby-plugin-polyfill-io/branches"
+  },
+  "devDependencies": {
+    "esca-scripts": "^0.14.3",
+    "opn-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0"
+  }
+}
