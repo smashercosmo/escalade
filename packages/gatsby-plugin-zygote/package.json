@@ -1,0 +1,32 @@
+{
+  "name": "gatsby-plugin-zygote",
+  "version": "1.0.4",
+  "keywords": [
+    "gatsby",
+    "plugin",
+    "gatsby-plugin",
+    "zygote"
+  ],
+  "main": "gatsby-browser.js",
+  "author": "Kennedy Rose <krose@escaladesports.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/escaladesports/gatsby-plugin-zygote.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "analyze": "esca-scripts analyze --input './src/gatsby-browser.js'",
+    "build": "esca-scripts build --input src --output . --multiple --react --babel",
+    "prepublishOnly": "npm run build",
+    "reset": "esca-scripts reset",
+    "test": "npm run build && esca-scripts test",
+    "travis": "opn https://travis-ci.org/escaladesports/gatsby-plugin-zygote/branches"
+  },
+  "devDependencies": {
+    "esca-scripts": "^0.14.3",
+    "opn-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0"
+  }
+}
