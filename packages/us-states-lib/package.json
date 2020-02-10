@@ -1,0 +1,34 @@
+{
+  "name": "@escaladesports/us-states-lib",
+  "version": "1.0.6",
+  "description": "US State names with options",
+  "main": "dist/index.js",
+  "scripts": {
+    "analyze": "esca-scripts analyze --component --input  ./src/index.js",
+    "build": "esca-scripts build --component --babel --input src --output dist --multiple && rsync -ar src/data/ dist/data/",
+    "dev": "esca-scripts dev --input './dev/dev.js, ./dev/index.html' --react --browser",
+    "prepublishOnly": "npm run build",
+    "reset": "esca-scripts reset",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dale Wray dwray@escaladesports.com",
+  "license": "MIT",
+  "keywords": [
+    "us",
+    "states",
+    "lib"
+  ],
+  "repository": {
+    "git": "git",
+    "url": "git+https://github.com/escaladesports/us-states-lib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/escaladesports/us-states-lib/issues"
+  },
+  "homepage": "https://github.com/escaladesports/us-states-lib#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "esca-scripts": "^1.5.4",
+    "eslint-config-escalade-sports": "^1.0.2"
+  }
+}
