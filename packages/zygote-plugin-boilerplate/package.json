@@ -1,0 +1,35 @@
+{
+  "name": "zygote-plugin-boilerplate",
+  "version": "0.1.0",
+  "description": "A boilerplate for creating plugins for Zygote Cart",
+  "main": "dist/index.js",
+  "scripts": {    
+    "analyze": "esca-scripts analyze --react --component --input ./src/index.js",
+    "build": "esca-scripts build --react --component --babel --input src --output dist --multiple",
+    "dev": "esca-scripts dev --input './dev/dev.js, ./dev/index.html' --react --browser",
+    "prepublishOnly": "npm run build",
+    "reset": "esca-scripts reset",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/escaladesports/zygote-plugin-boilerplate.git"
+  },
+  "keywords": [
+    "Zygote"
+  ],
+  "author": "<author-info>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/escaladesports/zygote-plugin-boilerplate/issues"
+  },
+  "homepage": "https://github.com/escaladesports/zygote-plugin-boilerplate#readme",
+  "dependencies": {
+    "emotion": "^10.0.17",
+    "react": "^16.10.2"
+  },
+  "devDependencies": {
+    "esca-scripts": "^1.5.4",
+    "eslint-config-escalade-sports": "^1.0.2"
+  }
+}
