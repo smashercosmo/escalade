@@ -1,0 +1,25 @@
+{
+  "name": "@escaladesports/babel-preset",
+  "version": "0.0.1",
+  "description": "Escalade Sport's babel preset",
+  "main": "index.js",
+  "scripts": {
+    "publish": "npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/escaladesports/escalade/tree/master/packages/@escaladesports/babel-preset"
+  },
+  "keywords": [
+		"babel",
+		"preset",
+		"escalade"
+  ],
+  "author": "Taylor Austin <taustin@escaladesports.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/helper-plugin-utils": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3"
+  }
+}

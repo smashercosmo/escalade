@@ -1,6 +1,7 @@
 {
 	"packages": [
-		"packages/*"
+		"packages/*",
+		"packages/@escaladesports/*"
 	],
 	"version": "independent",
 	"npmClient": "yarn",

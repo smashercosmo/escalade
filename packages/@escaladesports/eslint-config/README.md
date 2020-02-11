@@ -1,0 +1,1 @@
+# @escaladesports/eslint-config

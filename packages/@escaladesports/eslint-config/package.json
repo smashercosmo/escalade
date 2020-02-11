@@ -1,0 +1,24 @@
+{
+  "name": "@escaladesports/eslint-config",
+  "version": "0.0.1",
+  "description": "Escalade Sport's eslint config",
+  "main": "index.js",
+  "scripts": {
+    "publish": "npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/escaladesports/escalade/tree/master/packages/@escaladesports/eslint-config"
+  },
+  "keywords": [
+    "eslint",
+    "escalade"
+  ],
+  "author": "Taylor Austin <taustin@escaladesports.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint-plugin-jest": "^23.7.0",
+    "eslint-plugin-react": "^7.18.3"
+  }
+}
