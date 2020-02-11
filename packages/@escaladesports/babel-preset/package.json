@@ -1,6 +1,6 @@
 {
   "name": "@escaladesports/babel-preset",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Escalade Sport's babel preset",
   "main": "index.js",
   "scripts": {
@@ -11,9 +11,9 @@
     "url": "https://github.com/escaladesports/escalade/tree/master/packages/@escaladesports/babel-preset"
   },
   "keywords": [
-		"babel",
-		"preset",
-		"escalade"
+    "babel",
+    "preset",
+    "escalade"
   ],
   "author": "Taylor Austin <taustin@escaladesports.com>",
   "license": "MIT",

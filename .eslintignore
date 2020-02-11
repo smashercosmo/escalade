@@ -1,0 +1,9 @@
+dist
+dist-*
+public
+.cache
+.serverless
+_optimize
+temp
+temp-*
+/needs-updated/**
