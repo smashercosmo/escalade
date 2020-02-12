@@ -21,7 +21,7 @@
 		}
 	},
 	"lint-staged": {
-		"**/*.js": [
+		"!(legacy|needs-updated|node_modules)/**/*.js": [
 			"eslint --fix"
 		]
 	},

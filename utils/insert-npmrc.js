@@ -1,7 +1,6 @@
 const { readdir, outputFile, readFile } = require(`fs-extra`)
 const globby = require(`globby`).sync
 
-
 const globPaths = (path) => {
 	return globby([
 		`${path}/*`,
