@@ -21,5 +21,6 @@
     "@babel/helper-plugin-utils": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3"
-  }
+  },
+  "gitHead": "42b59872eeb4fcc5ebe07fed38ad5d87c055b0ad"
 }
