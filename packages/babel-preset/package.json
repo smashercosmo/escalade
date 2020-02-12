@@ -2,8 +2,8 @@
   "name": "@escaladesports/babel-preset",
   "version": "0.0.0",
   "description": "Escalade Sport's babel preset",
-	"main": "index.js",
-	"publishConfig": {
+  "main": "index.js",
+  "publishConfig": {
     "access": "public"
   },
   "scripts": {
@@ -25,5 +25,5 @@
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3"
   },
-  "gitHead": "cbb7bf00cc6d9629946cbc1da8942d1d289e31f6"
+  "gitHead": "a99e4eae6ee51718291ea0d43aed335406523181"
 }
