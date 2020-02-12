@@ -12,7 +12,7 @@
 		"clean:all": "npx lerna run clean --stream",
 		"clean": "npx lerna clean",
 		"new-version": "npx lerna version --conventional-commits --yes",
-		"new-publish": "npx lerna publish --yes",
+		"new-publish": "npx lerna publish from-package --yes",
 		"insert-version-prefix": "node utils/insert-npmrc.js"
 	},
 	"husky": {
