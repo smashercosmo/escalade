@@ -4,8 +4,7 @@
 	"license": "MIT",
 	"private": true,
 	"workspaces": [
-		"packages/*",
-		"packages/@escaladesports/*"
+		"packages/*"
 	],
 	"scripts": {
 		"bootstrap": "npx lerna bootstrap --use-workspaces",
@@ -27,6 +26,7 @@
 		]
 	},
 	"devDependencies": {
+		"eslint": "^6.8.0",
 		"fs-extra": "^8.1.0",
 		"globby": "^11.0.0",
 		"husky": "^4.2.1",

@@ -21,7 +21,6 @@ public
 .serverless
 _optimize
 /netlify.toml
-.npmrc
 
 # Temporary
 temp

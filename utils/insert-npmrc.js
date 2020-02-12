@@ -1,5 +1,4 @@
-const { readdir, outputFile } = require(`fs-extra`)
-const { basename } = require(`path`)
+const { readdir, outputFile, readFile } = require(`fs-extra`)
 const globby = require(`globby`).sync
 
 
@@ -7,7 +6,7 @@ const globPaths = (path) => {
 	return globby([
 		`${path}/*`,
 	], {
-		onlyDirectories: true // only want to get directories not files
+		onlyDirectories: true, // only want to get directories not files
 	})
 }
 
@@ -21,7 +20,7 @@ const insertIntoDirs =  (parentPath) => {
 
 		if(directory.includes(`package.json`)) {
 			// if the dir has a package.json, it is considered a package and needs to insert an .npmrc
-			const name = basename(childPath)
+			const { name } = JSON.parse(await readFile(`${childPath}/package.json`, `utf8`))
 			await outputFile(`${childPath}/.npmrc`, `tag-version-prefix="${name}@"`)
 		} else if (Array.isArray(paths) && paths.length) {
 			// directory with child packages
