@@ -7,3 +7,4 @@ _optimize
 temp
 temp-*
 /needs-updated/**
+/node_modules/
