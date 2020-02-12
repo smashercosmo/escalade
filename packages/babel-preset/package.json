@@ -1,6 +1,6 @@
 {
   "name": "@escaladesports/babel-preset",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Escalade Sport's babel preset",
   "main": "index.js",
   "publishConfig": {
