@@ -1,6 +1,3 @@
-packages/*/yarn.lock
-packages/*/package-lock.json
-
 # System generated files
 .DS_Store
 
@@ -10,27 +7,30 @@ logs
 npm-debug.log*
 
 # Dependency directories
-node_modules
 node_modules/
 
 # Development/Environment
 .env
 .env.*
-test-env.txt
-!.env.example
 dist
 dist-*
+.next
+json
 public
-public/
 .cache
+envdotjs-key
+env.js
+env.key
+env.js.key
+.env.js
+.env.key
+.env.js.key
 .serverless
 _optimize
-/netlify.toml
+headers.js
+aws-headers.js
+aws-headers-trimmed.js
 
 # Temporary
 temp
 temp-*
-
-# lock files
-yarn.lock
-package-lock.json

@@ -24,6 +24,10 @@ module.exports = declare((api, options) => { // declare function allows better e
 			}],
 			[require(`@babel/preset-react`), { development }],
 		], // presets that include most of the plugins needed
-		plugins: [], // plugins not included in presets
+		plugins: [
+			[require(`@babel/plugin-proposal-class-properties`), {
+				loose: false,
+			}],
+		], // plugins not included in presets
 	}
 })
