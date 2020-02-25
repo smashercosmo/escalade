@@ -49,7 +49,7 @@ const init = async (
 				getTagProps(`${acState.state.config.serviceName}-abandoned-order`, `contact`, `Abandoned cart tag.`),
 			)
 			acAbandonedTag = await acAbandonedTag.init()
-			if(!acAbandonedTag) return `no "acAbandonedTag"` // info is not defined, turning this into a string for now
+			if(!acAbandonedTag) return `no "acAbandonedTag"!` // info is not defined, turning this into a string for now
 		}
 	} catch (e) {
 		console.error(`ZygoteAC Error!: `, e)
