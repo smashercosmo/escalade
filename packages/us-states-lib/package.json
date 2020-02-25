@@ -1,0 +1,31 @@
+{
+  "name": "@escaladesports/us-states-lib",
+  "version": "1.0.6",
+  "description": "US State names with options",
+  "main": "dist/index.js",
+  "scripts": {
+		"build": "rm -rf dist && npx babel src --out-dir dist",
+    "test": "jest"
+  },
+  "author": "Dale Wray dwray@escaladesports.com",
+  "license": "MIT",
+  "keywords": [
+    "us",
+    "states",
+    "lib"
+  ],
+  "repository": {
+    "git": "git",
+    "url": "git+https://github.com/escaladesports/escalade/packages/us-states-lib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/escaladesports/escalade/packages/us-states-lib/issues"
+  },
+  "homepage": "https://github.com/escaladesports/escalade/packages/us-states-lib#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@escaladesports/babel-preset": "^1.0.0"
+  }
+}

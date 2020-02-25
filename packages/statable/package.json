@@ -14,7 +14,7 @@
   "author": "Kennedy Rose <krose@escaladesports.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/escaladesports/statable.git"
+    "url": "https://github.com/escaladesports/escalade/packages/statable.git"
   },
   "license": "MIT",
   "scripts": {

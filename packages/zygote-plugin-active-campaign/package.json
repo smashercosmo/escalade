@@ -1,0 +1,36 @@
+{
+  "name": "zygote-plugin-active-campaign",
+  "version": "0.3.131",
+  "description": "Integration for Zygote and Active Campaign",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rm -rf dist && npx babel src --out-dir dist",
+    "test": "jest"
+  },
+  "repository": {
+    "git": "git",
+    "url": "git+https://github.com/escaladesports/escalade/packages/zygote-plugin-active-campaign.git"
+  },
+  "keywords": [
+    "zygote",
+    "active campaign"
+  ],
+  "author": "Pedro Sivero <psivero@escaladesports.com.>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/escaladesports/escalade/packages/zygote-plugin-active-campaign/issues"
+  },
+  "homepage": "https://github.com/escaladesports/escalade/packages/zygote-plugin-active-campaign#readme",
+  "dependencies": {
+    "emotion": "^10.0.17",
+    "isomorphic-fetch": "^2.2.1",
+    "moment": "^2.24.0",
+    "react": "^16.10.2",
+    "statable": "^0.3.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@escaladesports/babel-preset": "^1.0.0"
+  }
+}
