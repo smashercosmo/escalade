@@ -1,0 +1,32 @@
+{
+  "name": "statable",
+  "version": "0.3.3",
+  "keywords": [
+    "statable",
+    "state",
+    "management",
+    "simple",
+    "react",
+    "vanilla",
+    "javascript"
+  ],
+  "main": "dist/index.js",
+  "author": "Kennedy Rose <krose@escaladesports.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/escaladesports/statable.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "rm -rf dist && npx babel src --out-dir dist",
+    "test": "jest"
+  },
+  "devDependencies": {
+		"@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@escaladesports/babel-preset": "^1.0.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
+  },
+  "dependencies": {}
+}
