@@ -1,0 +1,34 @@
+{
+  "name": "react-power-reviews",
+  "version": "1.2.15",
+  "author": "Taylor Austin <taustin@escaladesports.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/escaladesports/react-power-reviews.git"
+  },
+  "keywords": [
+    "react",
+    "power-reviews"
+  ],
+  "license": "MIT",
+  "description": "React module for Power Reviews",
+  "scripts": {
+    "build": "rm -rf dist && npx babel src --out-dir dist",
+    "test": "jest"
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "main": "dist/index.js",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@escaladesports/babel-preset": "^1.0.0"
+  },
+  "dependencies": {
+    "statable": "^0.3.2"
+  }
+}
