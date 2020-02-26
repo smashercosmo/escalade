@@ -50,7 +50,9 @@ module.exports = {
       resolve: `gatsby-plugin-netlify-cms-paths`,
       options: {
         // Path to your Netlify CMS config file
-        cmsConfig: `/static/admin/config.yml`
+        cmsConfig: `/static/admin/config.yml`,
+        // File types to process
+        extensions: [`.png`, `.jpeg`]
       }
     }
   ]
